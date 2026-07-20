@@ -47,17 +47,24 @@ Prerequis :
   - Python 3.10+
   - Connexion Internet (pour les dependances et les scans externes)
 
-Installation rapide :
-    mkdir -p ~/SCANNER/
-    cd ~/SCANNER/
-    
-- deposer le dossier "omega-scan" dans le dossier SCANNER et ensuite :
-    python -m venv .venv
-    source .venv/bin/activate
-    pip install -r requirements.txt
-    
-- render le script de départ executable :
-    chmod +x omega-scan.sh
+# 1. Création du dossier parent et on s'y place
+mkdir -p ~/SCANNER/
+cd ~/SCANNER/
+
+# [Déposer le dossier "omega-scan" dans le dossier SCANNER]
+
+# 2. On entre dans le projet
+cd omega-scan/
+
+# 3. Création du venv AU BON ENDROIT
+python -m venv .venv
+
+# 4. Activation et installation des dépendances
+source .venv/bin/activate
+pip install -r requirements.txt
+
+# 5. Rendre le script de départ exécutable
+chmod +x omega-scan.sh
 
 
 Dependances :
