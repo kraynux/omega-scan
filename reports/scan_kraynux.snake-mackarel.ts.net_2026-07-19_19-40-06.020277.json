@@ -1,0 +1,364 @@
+{
+  "meta": {
+    "scan_id": "scan-1d35fb1ae228",
+    "scanner_name": "Omega-Scan",
+    "scanner_version": "1.0.0",
+    "started_at": "2026-07-19T19:40:06.020277Z",
+    "finished_at": "2026-07-19T19:40:11.364025Z",
+    "duration_ms": 5343,
+    "host_machine": "kraynux-vpc",
+    "operator_mode": "interactif",
+    "export_targets": [
+      "json"
+    ]
+  },
+  "target": {
+    "input_raw": "https://kraynux.snake-mackarel.ts.net",
+    "normalized_host": "kraynux.snake-mackarel.ts.net",
+    "normalized_url_http": "http://kraynux.snake-mackarel.ts.net/",
+    "normalized_url_https": "https://kraynux.snake-mackarel.ts.net/",
+    "requested_scheme": "https",
+    "requested_port": null,
+    "requested_path": "/",
+    "target_kind": "hostname",
+    "scope_kind": "hostname",
+    "scan_modes": "https",
+    "is_ip": false,
+    "ip_version": null,
+    "is_private": false,
+    "is_loopback": false,
+    "is_link_local": false,
+    "is_global": false
+  },
+  "scan_profile": {
+    "profile_name": "standard",
+    "timeout_connect": 3,
+    "timeout_read": 6,
+    "http_methods_tested": [
+      "OPTIONS",
+      "TRACE"
+    ],
+    "path_checks_enabled": true,
+    "path_probe_delay_ms": 200,
+    "path_probe_max_targets": 20,
+    "tls_checks_enabled": true,
+    "follow_redirects": true,
+    "max_redirects": 5,
+    "user_agent": "Omega-scan/1.0 (standard)"
+  },
+  "connectivity": {
+    "dns_resolution_attempted": true,
+    "resolved_addresses": [
+      "100.72.94.104"
+    ],
+    "preferred_address": "100.72.94.104",
+    "http_reachable": false,
+    "https_reachable": true,
+    "ports_tested": [
+      443
+    ],
+    "reachable_ports": [],
+    "first_successful_scheme": "https",
+    "latency_overview_ms": 43,
+    "connection_notes": "HTTPS accessible, HTTP injoignable",
+    "failure_category": null
+  },
+  "http": {
+    "overview": {
+      "preferred_scheme": "https",
+      "catch_all_suspected": false,
+      "proxy_suspected": false,
+      "content_profile": "html_page",
+      "path_probe_context": [
+        {
+          "path": "/admin",
+          "status_code": 404,
+          "content_profile": "unknown",
+          "reason": "not_found"
+        },
+        {
+          "path": "/administrator",
+          "status_code": 404,
+          "content_profile": "unknown",
+          "reason": "not_found"
+        },
+        {
+          "path": "/wp-admin",
+          "status_code": 403,
+          "content_profile": "unknown",
+          "reason": "protected"
+        },
+        {
+          "path": "/phpmyadmin",
+          "status_code": 403,
+          "content_profile": "unknown",
+          "reason": "protected"
+        },
+        {
+          "path": "/manager",
+          "status_code": 404,
+          "content_profile": "unknown",
+          "reason": "not_found"
+        },
+        {
+          "path": "/console",
+          "status_code": 404,
+          "content_profile": "unknown",
+          "reason": "not_found"
+        },
+        {
+          "path": "/dashboard",
+          "status_code": 404,
+          "content_profile": "unknown",
+          "reason": "not_found"
+        },
+        {
+          "path": "/login",
+          "status_code": 404,
+          "content_profile": "unknown",
+          "reason": "not_found"
+        },
+        {
+          "path": "/signin",
+          "status_code": 404,
+          "content_profile": "unknown",
+          "reason": "not_found"
+        },
+        {
+          "path": "/auth",
+          "status_code": 404,
+          "content_profile": "unknown",
+          "reason": "not_found"
+        },
+        {
+          "path": "/webadmin",
+          "status_code": 404,
+          "content_profile": "unknown",
+          "reason": "not_found"
+        },
+        {
+          "path": "/sysadmin",
+          "status_code": 404,
+          "content_profile": "unknown",
+          "reason": "not_found"
+        },
+        {
+          "path": "/controlpanel",
+          "status_code": 404,
+          "content_profile": "unknown",
+          "reason": "not_found"
+        },
+        {
+          "path": "/backend",
+          "status_code": 404,
+          "content_profile": "unknown",
+          "reason": "not_found"
+        },
+        {
+          "path": "/cms",
+          "status_code": 404,
+          "content_profile": "unknown",
+          "reason": "not_found"
+        },
+        {
+          "path": "/.env",
+          "status_code": 403,
+          "content_profile": "unknown",
+          "reason": "protected"
+        },
+        {
+          "path": "/config.php",
+          "status_code": 404,
+          "content_profile": "unknown",
+          "reason": "not_found"
+        },
+        {
+          "path": "/debug",
+          "status_code": 404,
+          "content_profile": "unknown",
+          "reason": "not_found"
+        },
+        {
+          "path": "/server-status",
+          "status_code": 403,
+          "content_profile": "unknown",
+          "reason": "protected"
+        },
+        {
+          "path": "/actuator",
+          "status_code": 404,
+          "content_profile": "unknown",
+          "reason": "not_found"
+        }
+      ]
+    },
+    "http": {
+      "attempted": false,
+      "requested_url": "http://kraynux.snake-mackarel.ts.net/",
+      "final_url": "http://kraynux.snake-mackarel.ts.net/",
+      "status_code": null,
+      "reason": null,
+      "ok": false,
+      "elapsed_ms": null,
+      "content_type": null,
+      "content_length": null,
+      "headers": {},
+      "cookies": [],
+      "redirect_chain": [],
+      "request": {
+        "method": "GET",
+        "headers_sent": {},
+        "user_agent": "Omega-scan/1.0 (standard)"
+      },
+      "body_preview": {
+        "text_preview": "",
+        "size_bytes": 0,
+        "encoding": "unknown",
+        "preview_truncated": false
+      },
+      "error": null,
+      "content_profile": "unknown"
+    },
+    "https": {
+      "attempted": true,
+      "requested_url": "https://kraynux.snake-mackarel.ts.net/",
+      "final_url": "https://kraynux.snake-mackarel.ts.net/",
+      "status_code": 200,
+      "reason": "OK",
+      "ok": true,
+      "elapsed_ms": 28,
+      "content_type": "text/html",
+      "content_length": 8343,
+      "headers": {
+        "accept-ranges": "bytes",
+        "content-length": "8343",
+        "content-security-policy": "default-src 'none'; script-src 'self'; style-src 'self'; img-src 'self' data:; font-src 'self'; connect-src 'self'; frame-ancestors 'none'; base-uri 'self'; form-action 'self'",
+        "content-type": "text/html",
+        "cross-origin-opener-policy": "same-origin",
+        "cross-origin-resource-policy": "same-origin",
+        "date": "Sun, 19 Jul 2026 19:40:06 GMT",
+        "etag": "\"1830033886\"",
+        "last-modified": "Sat, 11 Jul 2026 18:40:07 GMT",
+        "permissions-policy": "geolocation=(), microphone=(), camera=(), payment=(), usb=(), bluetooth=(), clipboard-read=()",
+        "referrer-policy": "same-origin",
+        "strict-transport-security": "max-age=31536000; includeSubDomains; preload",
+        "x-content-type-options": "nosniff",
+        "x-frame-options": "SAMEORIGIN",
+        "x-permitted-cross-domain-policies": "none"
+      },
+      "cookies": [],
+      "redirect_chain": [],
+      "request": {
+        "method": "GET",
+        "headers_sent": {},
+        "user_agent": "Omega-scan/1.0 (standard)"
+      },
+      "body_preview": {
+        "text_preview": "<!DOCTYPE html>\n<html lang=\"fr\">\n<head>\n    <meta charset=\"UTF-8\">\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0, viewport-fit=cover\">\n    <meta name=\"description\" content=\"Omega-Server - Infrastructure sécurisée, partage de fichiers, outils réseau, proxy privé, moteur de recherche et services sous ArchLinux à performances optimisées.\">\n    <meta name=\"theme-color\" content=\"#0a0e1a\">\n    <title>Ω Omega-Server | Kraynux</title>\n    <link rel=\"stylesheet\" href=\"/.assets/",
+        "size_bytes": 8343,
+        "encoding": "utf-8",
+        "preview_truncated": true
+      },
+      "error": null,
+      "content_profile": "html_page"
+    }
+  },
+  "tls": {
+    "attempted": true,
+    "handshake_success": true,
+    "tls_version": "TLSv1.3",
+    "cipher": "TLS_CHACHA20_POLY1305_SHA256",
+    "certificate_present": true,
+    "certificate_subject": "kraynux.snake-mackarel.ts.net",
+    "certificate_issuer": "YE1",
+    "certificate_san": [
+      "DNS:kraynux.snake-mackarel.ts.net"
+    ],
+    "not_before": "2026-06-24T23:38:46Z",
+    "not_after": "2026-09-22T23:38:45Z",
+    "hostname_match": true,
+    "validation_error": null,
+    "self_signed": false,
+    "sni_hostname_sent": "kraynux.snake-mackarel.ts.net",
+    "notes": ""
+  },
+  "findings": [
+    {
+      "finding_id": "f-53d3e69b",
+      "rule_id": "MTH-OPTIONS-001",
+      "category": "methods",
+      "title": "Méthode HTTP OPTIONS activée (protégée)",
+      "status": "N/A",
+      "severity": "info",
+      "confidence": "high",
+      "applicability": "not_applicable",
+      "description": "La méthode OPTIONS est activée et peut révéler les méthodes autorisées. Cependant, elle semble protégée par authentification.",
+      "impact": "Risque mitigé par la présence d'une authentification.",
+      "remediation": "Vérifier que l'authentification est robuste.",
+      "evidence": null,
+      "location": {
+        "url": "https://kraynux.snake-mackarel.ts.net",
+        "host": "kraynux.snake-mackarel.ts.net",
+        "port": null,
+        "scheme": "https",
+        "path": "/",
+        "component": "methods"
+      },
+      "references": [],
+      "tags": [
+        "methods",
+        "options"
+      ]
+    },
+    {
+      "finding_id": "f-b0f15f46",
+      "rule_id": "MTH-TRACE-001",
+      "category": "methods",
+      "title": "Méthode HTTP TRACE activée (protégée)",
+      "status": "N/A",
+      "severity": "info",
+      "confidence": "high",
+      "applicability": "not_applicable",
+      "description": "La méthode TRACE est activée, ce qui peut faciliter les attaques Cross-Site Tracing (XST). Cependant, elle semble protégée par authentification.",
+      "impact": "Risque mitigé par la présence d'une authentification.",
+      "remediation": "Vérifier que l'authentification est robuste.",
+      "evidence": null,
+      "location": {
+        "url": "https://kraynux.snake-mackarel.ts.net",
+        "host": "kraynux.snake-mackarel.ts.net",
+        "port": null,
+        "scheme": "https",
+        "path": "/",
+        "component": "methods"
+      },
+      "references": [],
+      "tags": [
+        "methods",
+        "trace"
+      ]
+    }
+  ],
+  "summary": {
+    "scan_status": "completed",
+    "checks_total": 2,
+    "findings_total": 0,
+    "status_breakdown": {
+      "OK": 0,
+      "WARN": 0,
+      "FAIL": 0,
+      "N/A": 2
+    },
+    "severity_breakdown": {
+      "info": 0,
+      "low": 0,
+      "medium": 0,
+      "high": 0,
+      "critical": 0
+    },
+    "category_breakdown": {},
+    "top_issues": [],
+    "overall_rating": "A",
+    "short_message": "Posture de sécurité excellente."
+  },
+  "errors": []
+}

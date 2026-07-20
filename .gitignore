@@ -1,0 +1,15 @@
+# Fichiers Python
+__pycache__/
+*.py[cod]
+*.env
+*.veenv
+venv/
+
+# Fichiers système Linux
+.DS_Store
+Thumbs.db
+*.swp
+
+# Fichiers sensibles
+.env
+config.ini

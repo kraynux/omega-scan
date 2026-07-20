@@ -1,0 +1,81 @@
+======================================================================
+OMEGA-SCAN ~ RAPPORT DE SCAN DE POSTURE DE SÉCURITÉ
+======================================================================
+
+Scan ID      : scan-053a1d991811
+Cible        : kraynux.snake-mackarel.ts.net
+Profil       : standard
+Démarré      : 2026-07-19T20:18:00.554268Z
+Terminé      : 2026-07-19T20:18:05.785162Z
+Durée        : 5.2s
+Machine      : kraynux-vpc
+
+----------------------------------------------------------------------
+RÉSUMÉ
+----------------------------------------------------------------------
+Note globale : A
+Statut       : completed_with_errors
+Message      : Posture de sécurité excellente.
+
+Checks totaux    : 2
+Findings (W+F)   : 0
+
+Ventilation par statut :
+  [N/A]    : 2
+
+----------------------------------------------------------------------
+FINDINGS DÉTAILLÉS
+----------------------------------------------------------------------
+
+[METHODS]
+
+  [N/A] Méthode HTTP OPTIONS activée (protégée)
+    Règle      : MTH-OPTIONS-001
+    Sévérité   : INFO
+    Confiance  : high
+    Description: La méthode OPTIONS est activée et peut révéler les méthodes autorisées. Cependant, elle semble protégée par authentification.
+    Impact     : Risque mitigé par la présence d'une authentification.
+    Action     : Vérifier que l'authentification est robuste.
+
+  [N/A] Méthode HTTP TRACE activée (protégée)
+    Règle      : MTH-TRACE-001
+    Sévérité   : INFO
+    Confiance  : high
+    Description: La méthode TRACE est activée, ce qui peut faciliter les attaques Cross-Site Tracing (XST). Cependant, elle semble protégée par authentification.
+    Impact     : Risque mitigé par la présence d'une authentification.
+    Action     : Vérifier que l'authentification est robuste.
+
+----------------------------------------------------------------------
+CONNECTIVITÉ
+----------------------------------------------------------------------
+DNS résolu       : Oui
+Adresses résolues: 100.72.94.104
+HTTP accessible  : Non
+HTTPS accessible : Oui
+Premier schéma   : https
+Latence moyenne  : 42ms
+Notes            : HTTPS accessible, HTTP injoignable
+
+----------------------------------------------------------------------
+TLS
+----------------------------------------------------------------------
+Handshake réussi : Oui
+Version TLS      : TLSv1.3
+Cipher           : TLS_CHACHA20_POLY1305_SHA256
+Sujet certificat : kraynux.snake-mackarel.ts.net
+Émetteur         : YE1
+SAN              : DNS:kraynux.snake-mackarel.ts.net
+Validité         : 2026-06-24T23:38:46Z → 2026-09-22T23:38:45Z
+Hostname match   : Oui
+
+----------------------------------------------------------------------
+ERREURS
+----------------------------------------------------------------------
+  [connectivity] ConnectError: [Errno 111] Connection refused
+    Catégorie: connection_refused
+  [http_probe] ConnectError: [Errno 111] Connection refused
+    Catégorie: connection_refused
+
+======================================================================
+Rapport généré le 2026-07-19 22:18:13 par Omega-scan v1.0.0
+======================================================================
