@@ -1,7 +1,5 @@
 # Copyright (c) 2026 kraynux - kraynux@proton.me - Licence MIT (voir fichier LICENSE)
 
-# Copyright (c) 2026 kraynux - kraynux@proton.me - Licence MIT (voir fichier LICENSE)
-
 """
 Point d'entrée principal d'Omega-scan.
 Gère le parsing des arguments CLI et lance l'application.
