@@ -16,9 +16,13 @@ def display_welcome(console: Console):
     Écran d'accueil.
     """
     welcome_text = """
+    
 [bold cyan]🔒 Omega-scan — Scanner de Posture de Sécurité Web[/bold cyan]
-
-Analysez rapidement l'hygiène de configuration de vos services HTTP/HTTPS.
+____ _  _ ____ ____ ____    ____ ____ ____ _  _ 
+|  | |\/| |___ | __ |__| __ [__  |    |__| |\ | 
+|__| |  | |___ |__] |  |    ___] |___ |  | | \| 
+                                                
+[bold cyan]Analysez rapidement l'hygiène de configuration de vos services HTTP/HTTPS.[/bold cyan]
 
 [bold]Fonctionnalités :[/bold]
   • Vérification transport (HTTPS, HSTS, redirections)
