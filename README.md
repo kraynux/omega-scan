@@ -2,9 +2,11 @@
 
 **Scanner de posture de sécurité web**
 
-Élaboré par kraynux pour Omega-server  
+Élaboré par kraynux pour Omega-server
 [https://kraynux.snake-mackarel.ts.net](https://kraynux.snake-mackarel.ts.net)
-
+Page officiel :
+[OMEGA-SCAN](https://kraynux.snake-mackarel.ts.net/omega-scan/)
+Apercu : https://kraynux.snake-mackarel.ts.net/omega-scan/screenshots/)
 ---
 
 Omega-scan est un outil en ligne de commande qui analyse l'hygiène de configuration visible de vos services HTTP/HTTPS. Il observe, collecte des faits, applique des règles interprétatives et produit des rapports actionnables, sans jamais effectuer d'attaque active.
