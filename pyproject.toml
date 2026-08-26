@@ -1,0 +1,168 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "omega-scan"
+version = "2.0.0"
+description = "Scanner de posture de securite web (TUI + CLI), troisieme outil de la suite omega-"
+readme = "README.md"
+license = { file = "LICENCE" }
+authors = [{ name = "kraynux", email = "kraynux@proton.me" }]
+requires-python = ">=3.10"
+dependencies = [
+    "textual>=0.60",
+    "httpx>=0.27",
+    "jinja2>=3.1",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=8.0",
+    "pytest-asyncio>=0.24",
+    "pytest-cov>=5.0",
+    "pytest-httpserver>=1.0",
+    "trustme>=1.0",
+    "ruff>=0.6",
+    "mypy>=1.11",
+    "import-linter>=2.0",
+]
+
+[project.scripts]
+omega-scan = "omega_scan.__main__:main"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/omega_scan"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+asyncio_mode = "auto"
+python_classes = []
+
+[tool.ruff]
+line-length = 100
+target-version = "py310"
+
+[tool.mypy]
+python_version = "3.10"
+mypy_path = "src"
+disallow_untyped_defs = true
+check_untyped_defs = true
+warn_return_any = true
+warn_unused_ignores = true
+no_implicit_optional = true
+
+# Controle d'imports entre couches (ARCHITECTURE.md §3 et §11) : fait echouer
+# la CI si la Dependency Rule est violee ou si un import a technologie unique
+# (textual/sqlite3/httpx/jinja2) fuit hors de son point d'entree designe.
+[tool.importlinter]
+root_package = "omega_scan"
+include_external_packages = true
+# Les imports places sous `if TYPE_CHECKING:` (voir interfaces/cli/main.py,
+# interfaces/tui/app.py) ne comptent pas dans le graphe de dependances
+# analyse : mecanisme retenu pour typer un parametre avec
+# DependencyContainer sans creer de dependance reelle (a l'execution) de
+# interfaces/ vers app/.
+exclude_type_checking_imports = true
+
+[[tool.importlinter.contracts]]
+# Ordre du plus exterieur (haut, autorise a importer tout ce qui suit) au
+# plus interieur (bas, n'importe rien de la liste) :
+#   app                                     -- racine de composition
+#   infrastructure | interfaces | plugins   -- adaptateurs, independants entre eux
+#   application                             -- cas d'usage
+#   ports                                   -- contrats
+#   domain                                  -- metier pur
+#   core                                    -- vocabulaire transverse
+name = "Dependency Rule : les couches externes dependent des internes, jamais l'inverse"
+type = "layers"
+layers = [
+    "omega_scan.app",
+    "omega_scan.infrastructure | omega_scan.interfaces | omega_scan.plugins",
+    "omega_scan.application",
+    "omega_scan.ports",
+    "omega_scan.domain",
+    "omega_scan.core",
+]
+
+[[tool.importlinter.contracts]]
+# interfaces/ (TUI+CLI) ne doit jamais court-circuiter application/ports/
+# pour aller chercher un adaptateur d'infrastructure directement — regle
+# plus stricte que "layers" seul ne peut exprimer.
+name = "interfaces ne dependent jamais directement de infrastructure"
+type = "independence"
+modules = [
+    "omega_scan.interfaces",
+    "omega_scan.infrastructure",
+]
+
+[[tool.importlinter.contracts]]
+name = "textual seulement dans interfaces.tui"
+type = "forbidden"
+source_modules = [
+    "omega_scan.core",
+    "omega_scan.domain",
+    "omega_scan.application",
+    "omega_scan.ports",
+    "omega_scan.infrastructure",
+    "omega_scan.plugins",
+    "omega_scan.shared",
+    "omega_scan.app",
+    "omega_scan.interfaces.cli",
+]
+forbidden_modules = ["textual"]
+
+[[tool.importlinter.contracts]]
+# app/ est volontairement absente de source_modules ici : c'est la racine
+# de composition, elle doit pouvoir construire un SqliteScanRepository etc.
+# (voir app/dependency_container.py) — verifie au niveau du module qui
+# importe sqlite3 lui-meme, pas de tout module qui construit une instance
+# d'une classe qui l'importe.
+name = "sqlite3 seulement dans infrastructure.storage.sqlite"
+type = "forbidden"
+source_modules = [
+    "omega_scan.core",
+    "omega_scan.domain",
+    "omega_scan.application",
+    "omega_scan.ports",
+    "omega_scan.interfaces",
+    "omega_scan.plugins",
+    "omega_scan.shared",
+]
+forbidden_modules = ["sqlite3"]
+
+[[tool.importlinter.contracts]]
+name = "httpx seulement dans infrastructure.network"
+type = "forbidden"
+source_modules = [
+    "omega_scan.core",
+    "omega_scan.domain",
+    "omega_scan.application",
+    "omega_scan.ports",
+    "omega_scan.interfaces",
+    "omega_scan.plugins",
+    "omega_scan.shared",
+]
+forbidden_modules = ["httpx"]
+
+[[tool.importlinter.contracts]]
+name = "jinja2 seulement dans infrastructure.exporters.html_exporter"
+type = "forbidden"
+source_modules = [
+    "omega_scan.core",
+    "omega_scan.domain",
+    "omega_scan.application",
+    "omega_scan.ports",
+    "omega_scan.interfaces",
+    "omega_scan.plugins",
+    "omega_scan.shared",
+    "omega_scan.infrastructure.config",
+    "omega_scan.infrastructure.exceptions",
+    "omega_scan.infrastructure.logging",
+    "omega_scan.infrastructure.network",
+    "omega_scan.infrastructure.storage",
+    "omega_scan.infrastructure.terminal",
+    "omega_scan.infrastructure.exporters.json_exporter",
+    "omega_scan.infrastructure.exporters.text_exporter",
+]
+forbidden_modules = ["jinja2"]

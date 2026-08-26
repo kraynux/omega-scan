@@ -1,0 +1,324 @@
+/* Regles communes aux 4 profils de rendu. Les degradations structurelles
+   (bordures, ornements) vivent dans complete/standard/reduced/mono.tcss.
+
+   Boutons : patron porte tel quel depuis omega-stress. Le contour rond
+   vit EXCLUSIVEMENT sur ".omega-btn-frame" (un Container), jamais sur le
+   Button lui-meme ("border: none" partout) : remplir le fond d'un widget
+   au survol/focus peint TOUJOURS tout son rectangle, y compris l'anneau
+   de bordure round (bug reel confirme : "le surlignage est carre et
+   depasse le bouton") — separer decoration (frame, jamais recolore) et
+   interactivite (Button, fond $accent au survol/focus) evite le bug tout
+   en gardant un focus colore selon le theme (pas de "text-style: reverse"
+   qui produit un blanc hors charte, retour reel : "focus... en blanc").
+   ".omega-actions"/".omega-confirm-buttons" ne portent PLUS de contour a
+   eux : le bouton est deja entoure par son propre frame, un deuxieme
+   cadre autour du groupe est redondant (retour reel : "retire les
+   containers... c'est moche, prend de la place"). */
+
+Screen {
+    background: $background;
+    color: $foreground;
+}
+
+.omega-title {
+    text-style: bold;
+    color: $primary;
+    border: round $accent;
+    padding: 0 1;
+    width: auto;
+    margin: 1 0;
+}
+
+.omega-subtitle {
+    color: $secondary;
+    padding: 0 0 1 0;
+}
+
+.omega-hint {
+    color: $foreground 60%;
+    padding: 0 0 1 0;
+}
+
+/* overflow-y: auto (retour reel : ecrans Reglages/Aide illisibles en
+   entier, pas d'ascenseur) : tout .omega-panel/.omega-form-panel devient
+   scrollable des qu'il deborde, sans avoir besoin d'un conteneur
+   VerticalScroll different par ecran. */
+.omega-panel {
+    padding: 1 2;
+    height: 1fr;
+    overflow-y: auto;
+}
+
+.omega-form-panel {
+    padding: 1 2;
+    height: 1fr;
+    align-horizontal: center;
+    overflow-y: auto;
+}
+
+.omega-form-panel > Select,
+.omega-form-panel > Input {
+    width: 70;
+    margin-bottom: 1;
+}
+
+.omega-form-panel .omega-title,
+.omega-form-panel .omega-subtitle,
+.omega-form-panel .omega-hint {
+    width: 70;
+}
+
+/* .omega-title est width:auto par defaut (la boite epouse le texte, pas
+   besoin de centrage) — mais .omega-form-panel force sa largeur a 70 pour
+   aligner avec les champs, laissant le texte cale a gauche dans une boite
+   bien plus large (retour reel : "le titre... doit etre centre dans son
+   container"). */
+.omega-form-panel .omega-title {
+    content-align: center middle;
+}
+
+/* align: center (retour reel : "centrer les boutons du bas... puisque
+   tout est centre sur cette page, que cela soit coherent") — le reste du
+   formulaire est deja centre par ".omega-form-panel". */
+.omega-form-panel > .omega-actions {
+    width: 70;
+    align: center middle;
+    height: auto;
+}
+
+.omega-home-root {
+    align: center middle;
+    height: 1fr;
+    overflow-y: auto;
+}
+
+/* Middle() est width:auto par defaut, ambigu avec deux Center() enfants
+   width:1fr (retour reel : "le texte sous le splash... collé à gauche et
+   pas centré") : sans ce width:1fr, seul le premier Center() (le plus
+   large, le logo) fixe la largeur de Middle(), et le second Center()
+   (l'invite) se retrouve centre sur CETTE largeur-la plutot que sur le
+   terminal entier. */
+.omega-splash-middle {
+    width: 1fr;
+}
+
+.omega-splash-hero {
+    color: $accent;
+    text-align: left;
+    width: auto;
+}
+
+.omega-splash-prompt {
+    color: $secondary;
+    width: auto;
+    margin-top: 1;
+    text-style: italic;
+}
+
+.omega-home-wordmark {
+    width: auto;
+    text-align: left;
+    padding-bottom: 1;
+}
+
+.omega-home-menu {
+    background: $panel;
+    border: round $accent;
+    border-title-align: center;
+    border-title-color: $background;
+    border-title-background: $accent;
+    border-title-style: bold;
+    padding: 1 4;
+    width: auto;
+    height: auto;
+}
+
+/* Barre d'actions : pas de cadre propre (voir commentaire d'en-tete) —
+   juste un espacement avec ce qui precede et un defilement horizontal de
+   secours sur un terminal etroit avec des libelles longs. */
+.omega-actions {
+    align: left middle;
+    height: auto;
+    width: auto;
+    margin-top: 1;
+    overflow-x: auto;
+}
+
+/* Frame de bordure reutilisable : SEUL porteur du contour round, jamais
+   modifie par :hover/:focus (voir commentaire d'en-tete). */
+.omega-btn-frame {
+    border: round $accent;
+    padding: 0;
+    width: auto;
+    height: auto;
+}
+
+.omega-home-menu .omega-btn-frame {
+    width: 32;
+    height: 3;
+    margin-bottom: 1;
+}
+
+/* Bouton interactif : plus aucune bordure propre (voir .omega-btn-frame
+   ci-dessus) — seule la couleur du TEXTE distingue une action normale
+   (primary) d'une action destructrice (error), jamais le fond ni le
+   contour au repos. */
+.omega-actions Button,
+.omega-confirm-buttons Button,
+.omega-home-menu Button {
+    background: $surface;
+    border: none;
+    color: $foreground;
+    min-width: 10;
+}
+
+.omega-home-menu Button {
+    width: 100%;
+    height: 100%;
+    min-width: 0;
+}
+
+.omega-actions Button.-primary,
+.omega-confirm-buttons Button.-primary {
+    background: $surface;
+    border: none;
+    color: $primary;
+}
+
+.omega-actions Button.-error,
+.omega-confirm-buttons Button.-error {
+    background: $surface;
+    border: none;
+    color: $error;
+}
+
+/* Survol souris ET focus clavier : MEME traitement (retour reel : "pas de
+   focus au passage de la souris" — :hover recoit exactement le meme
+   style que :focus). Fond plein $accent, texte $background : sans risque
+   ici, le Button n'a plus de bordure propre a lui (voir plus haut), donc
+   rien a faire deborder sous un anneau round — celui-ci reste
+   exclusivement celui de .omega-btn-frame, jamais modifie. */
+.omega-actions Button:hover,
+.omega-confirm-buttons Button:hover,
+.omega-home-menu Button:hover,
+.omega-actions Button:focus,
+.omega-confirm-buttons Button:focus,
+.omega-home-menu Button:focus {
+    background: $accent;
+    color: $background;
+    text-style: bold;
+}
+
+.omega-actions Button.-error:hover,
+.omega-confirm-buttons Button.-error:hover,
+.omega-actions Button.-error:focus,
+.omega-confirm-buttons Button.-error:focus {
+    background: $error;
+    color: $background;
+    text-style: bold;
+}
+
+.omega-confirm-box {
+    width: 60;
+    height: auto;
+    border: round $accent;
+    padding: 1 2;
+    align: center middle;
+}
+
+.omega-confirm-title {
+    text-style: bold;
+    color: $error;
+    width: 60;
+    content-align: center middle;
+    margin-bottom: 1;
+}
+
+.omega-confirm-buttons {
+    width: 60;
+    height: auto;
+    align: center middle;
+}
+
+/* width: 1fr explicite (retour reel : "pendant le scan, ecran vide") :
+   ProgressPanel(Middle) est width:auto par defaut, et LoadingIndicator ne
+   participe pas correctement au calcul de largeur automatique d'un
+   parent "auto" (verifie par introspection directe : Size(width=0, ...))
+   — tout le panneau (texte + spinner) se retrouvait invisible, ecrase a
+   une largeur de 0. */
+.omega-progress-panel {
+    align: center middle;
+    width: 1fr;
+    height: 1fr;
+}
+
+/* Static heritant du defaut Widget (width:1fr) : sans ce width:auto, le
+   message s'etale sur toute la largeur et son texte (aligne a gauche par
+   defaut) se retrouve colle au bord plutot que centre par ".omega-progress-
+   panel" ci-dessus. LoadingIndicator est width/height:100% par defaut
+   (DEFAULT_CSS Textual) : sans hauteur fixe ici, il occupe TOUT l'espace
+   restant du Middle et ecrase ".omega-progress-log" en dessous (hauteur 0). */
+.omega-progress-panel > Static {
+    width: auto;
+}
+
+.omega-progress-panel LoadingIndicator {
+    width: auto;
+    height: 3;
+}
+
+.omega-progress-log {
+    width: 80%;
+    max-width: 120;
+    height: 12;
+    margin-top: 1;
+    border: round $accent;
+    background: $surface;
+    color: $foreground 80%;
+}
+
+.omega-modal {
+    width: 80%;
+    max-width: 100;
+    border: round $primary;
+    padding: 1 2;
+    background: $surface;
+}
+
+.omega-grade-badge {
+    text-style: bold;
+    padding: 0 1;
+    margin: 0 0 1 0;
+}
+
+.omega-grade-a { background: $success; color: $background; }
+.omega-grade-b { background: $success; color: $background; }
+.omega-grade-c { background: $warning; color: $background; }
+.omega-grade-d { background: $warning; color: $background; }
+.omega-grade-f { background: $error; color: $background; }
+.omega-grade-na { background: $panel; color: $foreground; }
+
+DataTable {
+    height: 1fr;
+}
+
+/* Tableau statique dans un ecran par ailleurs scrollable (Aide) : hauteur
+   fixe (pas 1fr, qui casserait le defilement du conteneur parent). */
+#profile-table {
+    height: 10;
+}
+
+/* Textual degrade le glyphe non coche d'un ToggleButton/Checkbox vers
+   $panel-darken-2 : sur des themes tres sombres (fonds omega-* proches du
+   noir), cette couleur devient quasi invisible sur son propre fond
+   $panel, rendant AuthorizationCheckbox illisible comme decochee (meme
+   bug deja rencontre et corrige cote omega-stress). */
+ToggleButton > .toggle--button {
+    color: $foreground;
+    text-style: dim;
+}
+
+ToggleButton.-on > .toggle--button {
+    color: $success;
+    text-style: bold;
+}

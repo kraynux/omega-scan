@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Omega-scan Rapport de scan - {{ target.normalized_host }}</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            line-height: 1.6;
+            color: {{ palette.foreground }};
+            background: {{ palette.background }};
+            padding: 20px;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: {{ palette.surface }};
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.3);
+        }
+        h1 {
+            color: {{ palette.foreground }};
+            border-bottom: 3px solid {{ palette.accent }};
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+        }
+        h2 {
+            color: {{ palette.foreground }};
+            margin-top: 30px;
+            margin-bottom: 15px;
+            border-left: 4px solid {{ palette.accent }};
+            padding-left: 10px;
+        }
+        .meta-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+        .meta-item {
+            background: {{ palette.panel }};
+            padding: 10px;
+            border-radius: 4px;
+        }
+        .meta-item strong {
+            color: {{ palette.secondary }};
+        }
+        .summary-box {
+            background: {{ palette.panel }};
+            border: 1px solid {{ palette.accent }};
+            color: {{ palette.foreground }};
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+        }
+        .rating {
+            font-size: 48px;
+            font-weight: bold;
+            text-align: center;
+            margin: 10px 0;
+            color: {{ palette.accent }};
+        }
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 10px;
+            margin-top: 15px;
+        }
+        .stat {
+            background: {{ palette.surface }};
+            padding: 10px;
+            border-radius: 4px;
+            text-align: center;
+        }
+        .stat-value {
+            font-size: 24px;
+            font-weight: bold;
+        }
+        .finding {
+            background: {{ palette.surface }};
+            border-left: 4px solid {{ palette.secondary }};
+            padding: 15px;
+            margin-bottom: 15px;
+            border-radius: 4px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.2);
+        }
+        .finding.fail { border-left-color: {{ palette.error }}; }
+        .finding.warn { border-left-color: {{ palette.warning }}; }
+        .finding.ok { border-left-color: {{ palette.success }}; }
+        .finding.na { border-left-color: {{ palette.secondary }}; }
+        .finding-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+        .finding-title {
+            font-weight: bold;
+            font-size: 16px;
+        }
+        .badge {
+            display: inline-block;
+            padding: 4px 12px;
+            border-radius: 12px;
+            font-size: 12px;
+            font-weight: bold;
+            text-transform: uppercase;
+            color: {{ palette.background }};
+        }
+        .badge.fail { background: {{ palette.error }}; }
+        .badge.warn { background: {{ palette.warning }}; }
+        .badge.ok { background: {{ palette.success }}; }
+        .badge.na { background: {{ palette.secondary }}; }
+        .finding-details {
+            margin-top: 10px;
+            font-size: 14px;
+        }
+        .finding-details dt {
+            font-weight: bold;
+            color: {{ palette.secondary }};
+            margin-top: 8px;
+        }
+        .finding-details dd {
+            margin-left: 0;
+            margin-bottom: 5px;
+        }
+        .category-section {
+            margin-bottom: 30px;
+        }
+        .category-title {
+            background: {{ palette.accent }};
+            color: {{ palette.background }};
+            padding: 8px 15px;
+            border-radius: 4px;
+            margin-bottom: 15px;
+            font-size: 18px;
+        }
+        .error {
+            background: {{ palette.panel }};
+            border-left: 4px solid {{ palette.warning }};
+            padding: 10px;
+            margin-bottom: 10px;
+            border-radius: 4px;
+        }
+        .error.fatal {
+            border-left-color: {{ palette.error }};
+        }
+        footer {
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid {{ palette.panel }};
+            text-align: center;
+            color: {{ palette.secondary }};
+            font-size: 12px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Omega-scan ~ Rapport de scan de securite</h1>
+
+        <div class="meta-grid">
+            <div class="meta-item">
+                <strong>Cible :</strong> {{ target.normalized_host }}
+            </div>
+            <div class="meta-item">
+                <strong>Profil :</strong> {{ scan_profile.profile_name }}
+            </div>
+            <div class="meta-item">
+                <strong>Scan ID :</strong> {{ meta.scan_id }}
+            </div>
+            <div class="meta-item">
+                <strong>Duree :</strong> {{ meta.duration_ms }}ms
+            </div>
+            <div class="meta-item">
+                <strong>Demarre :</strong> {{ meta.started_at }}
+            </div>
+            <div class="meta-item">
+                <strong>Termine :</strong> {{ meta.finished_at }}
+            </div>
+        </div>
+
+        <div class="summary-box">
+            <div class="rating">{{ summary.overall_rating }}</div>
+            <div style="text-align: center; font-size: 18px;">{{ summary.short_message }}</div>
+            <div class="stats-grid">
+                <div class="stat">
+                    <div class="stat-value">{{ summary.checks_total }}</div>
+                    <div>Checks totaux</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-value">{{ summary.findings_total }}</div>
+                    <div>Findings (W+F)</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-value">{{ summary.status_breakdown.FAIL | default(0) }}</div>
+                    <div>FAIL</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-value">{{ summary.status_breakdown.WARN | default(0) }}</div>
+                    <div>WARN</div>
+                </div>
+            </div>
+        </div>
+
+        {% if findings %}
+        <h2>Findings detailles</h2>
+
+        {% set categories = {} %}
+        {% for finding in findings %}
+            {% if finding.category not in categories %}
+                {% set _ = categories.update({finding.category: []}) %}
+            {% endif %}
+            {% set _ = categories[finding.category].append(finding) %}
+        {% endfor %}
+
+        {% for category, category_findings in categories.items() %}
+        <div class="category-section">
+            <div class="category-title">{{ category | upper }}</div>
+
+            {% for finding in category_findings %}
+            <div class="finding {{ finding.status | lower }}">
+                <div class="finding-header">
+                    <div class="finding-title">{{ finding.title }}</div>
+                    <span class="badge {{ finding.status | lower }}">{{ finding.status }}</span>
+                </div>
+                <div class="finding-details">
+                    <dl>
+                        <dt>Regle</dt>
+                        <dd>{{ finding.rule_id }}</dd>
+
+                        <dt>Severite</dt>
+                        <dd>{{ finding.severity | upper }}</dd>
+
+                        <dt>Confiance</dt>
+                        <dd>{{ finding.confidence }}</dd>
+
+                        <dt>Description</dt>
+                        <dd>{{ finding.description }}</dd>
+
+                        {% if finding.impact %}
+                        <dt>Impact</dt>
+                        <dd>{{ finding.impact }}</dd>
+                        {% endif %}
+
+                        {% if finding.remediation %}
+                        <dt>Action recommandee</dt>
+                        <dd>{{ finding.remediation }}</dd>
+                        {% endif %}
+
+                        {% if finding.evidence %}
+                        <dt>Preuve</dt>
+                        <dd><code>{{ finding.evidence.value }}</code></dd>
+                        {% endif %}
+                    </dl>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+        {% endfor %}
+        {% endif %}
+
+        <h2>Connectivite</h2>
+        <div class="meta-grid">
+            <div class="meta-item">
+                <strong>DNS resolu :</strong> {{ 'Oui' if connectivity.dns_resolution_attempted else 'Non' }}
+            </div>
+            <div class="meta-item">
+                <strong>HTTP accessible :</strong> {{ 'Oui' if connectivity.http_reachable else 'Non' }}
+            </div>
+            <div class="meta-item">
+                <strong>HTTPS accessible :</strong> {{ 'Oui' if connectivity.https_reachable else 'Non' }}
+            </div>
+            {% if connectivity.first_successful_scheme %}
+            <div class="meta-item">
+                <strong>Premier schema :</strong> {{ connectivity.first_successful_scheme }}
+            </div>
+            {% endif %}
+            {% if connectivity.latency_overview_ms %}
+            <div class="meta-item">
+                <strong>Latence moyenne :</strong> {{ connectivity.latency_overview_ms }}ms
+            </div>
+            {% endif %}
+        </div>
+
+        {% if tls.attempted %}
+        <h2>TLS</h2>
+        <div class="meta-grid">
+            <div class="meta-item">
+                <strong>Handshake reussi :</strong> {{ 'Oui' if tls.handshake_success else 'Non' }}
+            </div>
+            {% if tls.tls_version %}
+            <div class="meta-item">
+                <strong>Version TLS :</strong> {{ tls.tls_version }}
+            </div>
+            {% endif %}
+            {% if tls.cipher %}
+            <div class="meta-item">
+                <strong>Cipher :</strong> {{ tls.cipher }}
+            </div>
+            {% endif %}
+            {% if tls.certificate_subject %}
+            <div class="meta-item">
+                <strong>Sujet certificat :</strong> {{ tls.certificate_subject }}
+            </div>
+            {% endif %}
+            {% if tls.certificate_issuer %}
+            <div class="meta-item">
+                <strong>Emetteur :</strong> {{ tls.certificate_issuer }}
+            </div>
+            {% endif %}
+            <div class="meta-item">
+                <strong>Hostname match :</strong> {{ 'Oui' if tls.hostname_match else 'Non' }}
+            </div>
+            {% if tls.self_signed %}
+            <div class="meta-item">
+                <strong>Auto-signe :</strong> Oui
+            </div>
+            {% endif %}
+        </div>
+        {% endif %}
+
+        {% if errors %}
+        <h2>Erreurs</h2>
+        {% for error in errors %}
+        <div class="error {{ 'fatal' if error.fatal else '' }}">
+            <strong>[{{ error.module }}]</strong> {{ error.error_type }}: {{ error.message }}
+            {% if error.fatal %}<span style="color: {{ palette.error }}; font-weight: bold;"> [FATAL]</span>{% endif %}
+            {% if error.failure_category %}<br><small>Categorie: {{ error.failure_category }}</small>{% endif %}
+        </div>
+        {% endfor %}
+        {% endif %}
+
+        <footer>
+            Rapport genere le {{ generated_at }} par <strong>Omega-scan</strong> v{{ meta.scanner_version }}
+        </footer>
+    </div>
+</body>
+</html>

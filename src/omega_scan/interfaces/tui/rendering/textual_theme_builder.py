@@ -1,0 +1,39 @@
+# Copyright (c) 2026 kraynux - kraynux@proton.me - Licence MIT (voir fichier LICENSE)
+"""Construction des objets textual.theme.Theme a partir de domain/theme/policies.py.
+
+Seul fichier, avec le reste de interfaces/tui/, autorise a combiner donnees
+de theme et API Textual (ARCHITECTURE.md §2.4, §8)."""
+from __future__ import annotations
+
+from textual.theme import Theme as TextualTheme
+
+from omega_scan.domain.theme.policies import TUI_THEMES, ThemeDefinition
+
+
+def build_textual_theme(definition: ThemeDefinition) -> TextualTheme:
+    """Traduit une palette de domain/theme/policies.py en objet
+    textual.theme.Theme. Textual distingue `primary` (obligatoire) et
+    `accent` (optionnel) ; notre modele n'a que `accent` (couleur
+    principale) et `secondary` — mappe `primary <- palette.accent` et
+    laisse `accent` non renseigne."""
+    palette = definition.palette
+    return TextualTheme(
+        name=definition.name,
+        primary=palette.accent,
+        secondary=palette.secondary,
+        warning=palette.warning,
+        error=palette.error,
+        success=palette.success,
+        foreground=palette.foreground,
+        background=palette.background,
+        surface=palette.surface,
+        panel=palette.panel,
+        dark=definition.dark,
+        variables={},
+    )
+
+
+def build_all_textual_themes() -> tuple[TextualTheme, ...]:
+    """Construit les 10 themes du catalogue, dans l'ordre de
+    domain/theme/policies.py::TUI_THEMES."""
+    return tuple(build_textual_theme(definition) for definition in TUI_THEMES.values())
