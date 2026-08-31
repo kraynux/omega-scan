@@ -1,13 +1,16 @@
+<!-- Copyright (c) 2026 kraynux - kraynux@proton.me - Licence MIT (voir fichier LICENSE) -->
+<div align="center">
+  <img src="docs/assets/omega-scan.png" alt="Omega-Scan" width="256">
+</div>
+
 # 🔍 OMEGA-SCAN
 
 **Scanner de posture de sécurité web**
 
-Élaboré par kraynux pour Omega-server
+> Élaboré par **kraynux** pour **Omega-server** 
 [https://kraynux.snake-mackarel.ts.net](https://kraynux.snake-mackarel.ts.net)
-Page officiel :
-[OMEGA-SCAN](https://kraynux.snake-mackarel.ts.net/omega-scan/) 
-Apercu :
-[Screenshots](https://kraynux.snake-mackarel.ts.net/omega-scan/screenshots/)
+
+Page officiel : [OMEGA-SCAN](https://kraynux.snake-mackarel.ts.net/omega-scan/) &nbsp; Apercu : [Screenshots](https://kraynux.snake-mackarel.ts.net/omega-scan/screenshots/)  
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENCE)
 [![Python](https://img.shields.io/badge/Python-3.10%2B-blue.svg)](https://www.python.org/)
@@ -16,7 +19,7 @@ Apercu :
 
 ---
 
-Omega-scan est un outil TUI + CLI qui analyse l'hygiène de configuration visible de vos services HTTP/HTTPS. Il observe, collecte des faits, applique des règles interprétatives et produit des rapports actionnables, sans jamais effectuer d'attaque active. Troisième outil de la suite `omega-` (après `omega-fire` et `omega-stress`), structuré en Clean Architecture — voir `ARCHITECTURE.md` pour le détail technique complet.
+**Omega-scan** est un outil TUI + CLI qui analyse l'hygiène de configuration visible de vos services HTTP/HTTPS. Il observe, collecte des faits, applique des règles interprétatives et produit des rapports actionnables, sans jamais effectuer d'attaque active. Troisième outil de la suite `omega-` (après `omega-fire` et `omega-stress`), structuré en Clean Architecture — voir `ARCHITECTURE.md` pour le détail technique complet.
 
 ## 1. Vision et périmètre
 

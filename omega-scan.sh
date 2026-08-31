@@ -6,6 +6,21 @@
 
 set -e
 
+# Couleurs pour le terminal
+RED='\033[0;31m'
+GREEN='\033[0;32m'
+YELLOW='\033[1;33m'
+WHITE='\033[1;37m'
+NC='\033[0m'
+
+echo -e "${WHITE}${NC}"
+echo -e "${WHITE}DÉMARRAGE DE L'APPLICATION${NC}"
+echo -e "${WHITE}${NC}"
+echo -e "${WHITE}    ░▒▓█████████████████████▓▒░${NC}"
+echo -e "${WHITE}    ░▒▓ Ω M E G A - S C A N ▓▒░${NC}"
+echo -e "${WHITE}    ░▒▓█████████████████████▓▒░${NC}"
+echo -e "${WHITE}${NC}"
+
 # Déterminer le répertoire où se trouve ce script
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]:-$0}")" && pwd)"
 VENV_DIR="$SCRIPT_DIR/.venv"
