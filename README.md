@@ -17,6 +17,9 @@ Page officiel : [OMEGA-SCAN](https://kraynux.snake-mackarel.ts.net/omega-scan/) 
 [![Platform](https://img.shields.io/badge/Platform-Linux-informational.svg)](https://www.linux.org/)
 [![Interface](https://img.shields.io/badge/Interface-TUI%20%2B%20Rich-cyan.svg)](https://github.com/Textualize/rich)
 
+**Langues:**  
+[Français](README.md) · [English](README.en.md) · [Español](README.es.md) · [Русский](README.ru.md) · [中文](README.zh-CN.md)
+
 ---
 
 **Omega-scan** est un outil TUI + CLI qui analyse l'hygiène de configuration visible de vos services HTTP/HTTPS. Il observe, collecte des faits, applique des règles interprétatives et produit des rapports actionnables, sans jamais effectuer d'attaque active. Troisième outil de la suite `omega-` (après `omega-fire` et `omega-stress`), structuré en Clean Architecture — voir `ARCHITECTURE.md` pour le détail technique complet.
