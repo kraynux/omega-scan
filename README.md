@@ -1,6 +1,6 @@
 <!-- Copyright (c) 2026 kraynux - kraynux@proton.me - Licence MIT (voir fichier LICENSE) -->
 <div align="center">
-  <img src="docs/assets/omega-scan.png" alt="Omega-Scan" width="256">
+  <img src="docs/assets/omega-scan.png" alt="Omega-Scan" width="384">
 </div>
 
 # 🔍 OMEGA-SCAN
