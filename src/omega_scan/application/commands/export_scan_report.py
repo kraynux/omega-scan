@@ -4,10 +4,11 @@ from __future__ import annotations
 
 from pathlib import Path
 
+from omega_lib.theme.policies import DEFAULT_EXPORT_THEME
+
 from omega_scan.core.enums import ExportFormat
 from omega_scan.core.results import Err, Ok, Result
 from omega_scan.domain.scans.exceptions import ScanNotFoundError
-from omega_scan.domain.theme.policies import DEFAULT_EXPORT_THEME
 from omega_scan.ports.report_exporter import ReportExporter
 from omega_scan.ports.scan_repository import ScanRepository
 

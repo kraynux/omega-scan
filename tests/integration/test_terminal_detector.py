@@ -4,10 +4,9 @@
 from __future__ import annotations
 
 import pytest
-
-from omega_scan.infrastructure.terminal.detector import SystemTerminalDetector
-from omega_scan.infrastructure.terminal.fallback_resolver import resolve_family
-from omega_scan.infrastructure.terminal.raw_capabilities import read_raw_signals
+from omega_lib.infrastructure.terminal.detector import SystemTerminalDetector
+from omega_lib.infrastructure.terminal.fallback_resolver import resolve_family
+from omega_lib.infrastructure.terminal.raw_capabilities import read_raw_signals
 
 
 def _clear_terminal_env(monkeypatch: pytest.MonkeyPatch) -> None:

@@ -5,6 +5,7 @@ from __future__ import annotations
 
 from typing import TYPE_CHECKING
 
+from omega_lib.theme.policies import TUI_THEMES
 from textual.app import ComposeResult
 from textual.containers import Container, Horizontal, Vertical
 from textual.widgets import Button, Footer, Header, Input, Select, Static
@@ -15,7 +16,6 @@ from omega_scan.application.commands.select_render_profile import select_render_
 from omega_scan.application.commands.select_theme import select_theme
 from omega_scan.core.enums import RenderProfile
 from omega_scan.core.results import Err
-from omega_scan.domain.theme.policies import TUI_THEMES
 from omega_scan.interfaces.tui.screens._base import OmegaScreen
 from omega_scan.interfaces.tui.screens.confirm import ConfirmScreen
 

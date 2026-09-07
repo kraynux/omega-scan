@@ -2,7 +2,7 @@
 """Resolution d'un nom de theme d'export vers sa palette. Aucun import Jinja2 ici."""
 from __future__ import annotations
 
-from omega_scan.domain.theme.policies import DEFAULT_EXPORT_THEME, EXPORT_PALETTES, Palette
+from omega_lib.theme.policies import DEFAULT_EXPORT_THEME, EXPORT_PALETTES, Palette
 
 
 def resolve_export_palette(theme_name: str) -> Palette:

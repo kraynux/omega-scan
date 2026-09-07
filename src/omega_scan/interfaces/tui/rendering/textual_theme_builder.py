@@ -5,9 +5,8 @@ Seul fichier, avec le reste de interfaces/tui/, autorise a combiner donnees
 de theme et API Textual (ARCHITECTURE.md §2.4, §8)."""
 from __future__ import annotations
 
+from omega_lib.theme.policies import TUI_THEMES, ThemeDefinition
 from textual.theme import Theme as TextualTheme
-
-from omega_scan.domain.theme.policies import TUI_THEMES, ThemeDefinition
 
 
 def build_textual_theme(definition: ThemeDefinition) -> TextualTheme:

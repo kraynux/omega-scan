@@ -4,6 +4,10 @@ from __future__ import annotations
 
 from enum import Enum
 
+from omega_lib.terminal.models import RenderProfile
+
+__all__ = ["CapabilityStatus", "ExportFormat", "RenderProfile", "ScanProfileName", "ScanStatus"]
+
 
 class ScanProfileName(str, Enum):
     """Les 4 profils de scan predefinis (lecture seule, pas de CRUD
@@ -13,16 +17,6 @@ class ScanProfileName(str, Enum):
     STANDARD = "standard"
     EXTENDED = "extended"
     LOCAL_LAB = "local-lab"
-
-
-class RenderProfile(str, Enum):
-    """Niveau de complexite structurelle affiche par le TUI, decide depuis
-    la capacite terminal detectee (distinct du choix de theme de couleur)."""
-
-    COMPLETE = "complete"
-    STANDARD = "standard"
-    REDUCED = "reduced"
-    MONO = "mono"
 
 
 class ScanStatus(str, Enum):

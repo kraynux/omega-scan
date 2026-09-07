@@ -1,16 +1,9 @@
 # Copyright (c) 2026 kraynux - kraynux@proton.me - Licence MIT (voir fichier LICENSE)
-"""Contrat de lecture/ecriture des preferences globales (settings.json)."""
+"""Re-export depuis omega_lib (consolidation omega-lib, migration SCAN) :
+garde la convention 'importer depuis omega_scan.ports.X' uniforme dans
+tout le reste du code, meme principe que core/enums.py::RenderProfile."""
 from __future__ import annotations
 
-from typing import Protocol
+from omega_lib.ports.settings_store import SettingsStore
 
-
-class SettingsStore(Protocol):
-    """Port consomme par application/ (select_theme, select_render_profile),
-    implemente par infrastructure/storage/files/json_settings_store.py."""
-
-    def get(self, key: str, default: str | None = None) -> str | None: ...
-
-    def set(self, key: str, value: str) -> None: ...
-
-    def all(self) -> dict[str, str]: ...
+__all__ = ["SettingsStore"]

@@ -3,6 +3,8 @@
 entite/VO de domain/ est lue pour produire un objet de application/dto/."""
 from __future__ import annotations
 
+from omega_lib.terminal.models import TerminalProfile
+
 from omega_scan.application.dto.comparison_dto import ChangedFindingDTO, ScanComparisonDTO
 from omega_scan.application.dto.profile_dto import ScanProfileDTO
 from omega_scan.application.dto.scan_dto import EvidenceDTO, FindingDTO, ScanRunDTO, ScanSummaryDTO
@@ -14,7 +16,6 @@ from omega_scan.domain.profiles.models import ScanProfile
 from omega_scan.domain.reports.comparison import ScanComparison
 from omega_scan.domain.scans.models import ScanRun
 from omega_scan.domain.targets.models import PinnedTarget
-from omega_scan.domain.terminal.models import TerminalProfile
 
 
 def pinned_target_to_dto(pinned: PinnedTarget) -> PinnedTargetDTO:

@@ -3,8 +3,9 @@
 (ARCHITECTURE.md §4, chaine Capacite terminal)."""
 from __future__ import annotations
 
+from omega_lib.terminal.service import resolve_render_profile
+
 from omega_scan.core.enums import RenderProfile
-from omega_scan.domain.terminal.service import resolve_render_profile
 from omega_scan.ports.terminal_detector import TerminalDetector
 
 

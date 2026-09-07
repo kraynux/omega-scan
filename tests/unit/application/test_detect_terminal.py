@@ -1,8 +1,9 @@
 # Copyright (c) 2026 kraynux - kraynux@proton.me - Licence MIT (voir fichier LICENSE)
 from __future__ import annotations
 
+from omega_lib.terminal.models import TerminalSignals
+
 from omega_scan.application.queries.detect_terminal import detect_terminal
-from omega_scan.domain.terminal.models import TerminalSignals
 from tests.unit.application.conftest import FakeTerminalDetector
 
 

@@ -7,6 +7,8 @@ import sqlite3
 from dataclasses import dataclass, field
 from pathlib import Path
 
+from omega_lib.infrastructure.terminal.detector import SystemTerminalDetector
+
 from omega_scan.application.pipeline.hooks.audit_hook import AuditSink
 from omega_scan.infrastructure.config import paths
 from omega_scan.infrastructure.exporters.exporter import DefaultReportExporter
@@ -22,7 +24,6 @@ from omega_scan.infrastructure.storage.sqlite.connection import open_connection
 from omega_scan.infrastructure.storage.sqlite.migrations import apply_schema
 from omega_scan.infrastructure.storage.sqlite.scan_repository import SqliteScanRepository
 from omega_scan.infrastructure.storage.sqlite.target_repository import SqliteTargetRepository
-from omega_scan.infrastructure.terminal.detector import SystemTerminalDetector
 
 
 @dataclass(frozen=True, slots=True)

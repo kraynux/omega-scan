@@ -4,12 +4,13 @@ from __future__ import annotations
 
 from dataclasses import dataclass
 
+from omega_lib.theme.models import AppliedTheme
+from omega_lib.theme.policies import DEFAULT_TUI_THEME
+from omega_lib.theme.service import resolve_applied_theme
+
 from omega_scan.application.dto.terminal_dto import TerminalProfileDTO
 from omega_scan.application.queries.detect_terminal import detect_terminal
 from omega_scan.core.enums import RenderProfile
-from omega_scan.domain.theme.models import AppliedTheme
-from omega_scan.domain.theme.policies import DEFAULT_TUI_THEME
-from omega_scan.domain.theme.service import resolve_applied_theme
 from omega_scan.ports.settings_store import SettingsStore
 from omega_scan.ports.terminal_detector import TerminalDetector
 

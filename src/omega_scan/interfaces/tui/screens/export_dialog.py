@@ -5,6 +5,7 @@ from __future__ import annotations
 from pathlib import Path
 from typing import TYPE_CHECKING
 
+from omega_lib.theme.policies import DEFAULT_EXPORT_THEME, EXPORT_PALETTES
 from textual.app import ComposeResult
 from textual.containers import Container, Horizontal, Vertical
 from textual.widgets import Button, Footer, Header, Input, Select, Static
@@ -12,7 +13,6 @@ from textual.widgets import Button, Footer, Header, Input, Select, Static
 from omega_scan.application.commands.export_scan_report import export_scan_report
 from omega_scan.core.enums import ExportFormat
 from omega_scan.core.results import Err
-from omega_scan.domain.theme.policies import DEFAULT_EXPORT_THEME, EXPORT_PALETTES
 from omega_scan.interfaces.tui.screens._base import OmegaScreen
 
 if TYPE_CHECKING:

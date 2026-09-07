@@ -54,10 +54,21 @@ fi
 
 # -------------------------------------------------------------------------
 # 2. Dépendances — pyproject.toml reste l'unique source de verite (pas de
-#    requirements.txt separe a maintenir en double).
+#    requirements.txt separe a maintenir en double). omega-lib n'est pas
+#    publiee sur PyPI : l'archive distribuable la vendore dans
+#    vendor/omega-lib/ (voir build-release.sh des autres outils de la
+#    suite) — installee ICI, avant omega-scan lui-meme, pour que pip la
+#    trouve deja satisfaite dans le venv et ne tente jamais de la chercher
+#    sur PyPI. Absente en clone de developpement (omega-lib vient alors du
+#    monorepo local ~/DEV/LIB/omega-lib, deja installee a part) : etape
+#    silencieusement ignoree si vendor/omega-lib/ n'existe pas.
 # -------------------------------------------------------------------------
 source .venv/bin/activate
 pip install -q --upgrade pip
+if [ -d "$SCRIPT_DIR/vendor/omega-lib" ]; then
+    pip install -q -e "$SCRIPT_DIR/vendor/omega-lib"
+    ok "Dépendance vendorée omega-lib installée."
+fi
 pip install -q -e .
 ok "Dépendances installées."
 

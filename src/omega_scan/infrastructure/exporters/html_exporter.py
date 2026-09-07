@@ -11,9 +11,9 @@ from datetime import datetime, timezone
 from pathlib import Path
 
 import jinja2
+from omega_lib.theme.policies import DEFAULT_EXPORT_THEME
 
 from omega_scan.domain.scans.models import ScanRun
-from omega_scan.domain.theme.policies import DEFAULT_EXPORT_THEME
 from omega_scan.infrastructure.exporters.html_theme_resolver import resolve_export_palette
 from omega_scan.infrastructure.logging.app_logger import get_logger
 

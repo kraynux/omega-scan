@@ -3,9 +3,10 @@
 (ARCHITECTURE.md §8)."""
 from __future__ import annotations
 
+from omega_lib.theme.policies import TUI_THEMES
+
 from omega_scan.core.results import Err, Ok, Result
 from omega_scan.domain.errors import ValidationError
-from omega_scan.domain.theme.policies import TUI_THEMES
 from omega_scan.ports.settings_store import SettingsStore
 
 

@@ -1,11 +1,12 @@
 # Copyright (c) 2026 kraynux - kraynux@proton.me - Licence MIT (voir fichier LICENSE)
+from omega_lib.theme.policies import DEFAULT_TUI_THEME, TUI_THEMES
+from omega_lib.theme.service import resolve_applied_theme, resolve_palette
+
 from omega_scan.core.enums import RenderProfile
-from omega_scan.domain.theme.policies import DEFAULT_TUI_THEME, TUI_THEMES
-from omega_scan.domain.theme.service import resolve_applied_theme, resolve_palette
 
 
 def test_catalog_has_10_tui_themes_and_5_export_palettes():
-    from omega_scan.domain.theme.policies import EXPORT_PALETTES
+    from omega_lib.theme.policies import EXPORT_PALETTES
     assert len(TUI_THEMES) == 10
     assert len(EXPORT_PALETTES) == 5
 

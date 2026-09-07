@@ -4,9 +4,10 @@ from __future__ import annotations
 
 from pathlib import Path
 
+from omega_lib.theme.policies import DEFAULT_EXPORT_THEME
+
 from omega_scan.core.enums import ExportFormat
 from omega_scan.domain.scans.models import ScanRun
-from omega_scan.domain.theme.policies import DEFAULT_EXPORT_THEME
 from omega_scan.infrastructure.exporters.html_exporter import export_html
 from omega_scan.infrastructure.exporters.json_exporter import export_json
 from omega_scan.infrastructure.exporters.text_exporter import export_text

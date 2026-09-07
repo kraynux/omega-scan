@@ -9,10 +9,10 @@ from pathlib import Path
 from typing import Any
 
 import pytest
+from omega_lib.terminal.models import TerminalSignals
 
 from omega_scan.domain.scans.models import ScanError
 from omega_scan.domain.targets.models import PinnedTarget
-from omega_scan.domain.terminal.models import TerminalSignals
 
 
 class FakeTargetRepository:

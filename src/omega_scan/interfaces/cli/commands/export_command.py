@@ -6,10 +6,11 @@ import argparse
 from pathlib import Path
 from typing import TYPE_CHECKING
 
+from omega_lib.theme.policies import DEFAULT_EXPORT_THEME
+
 from omega_scan.application.commands.export_scan_report import export_scan_report
 from omega_scan.core.enums import ExportFormat
 from omega_scan.core.results import Err, Ok, Result
-from omega_scan.domain.theme.policies import DEFAULT_EXPORT_THEME
 
 if TYPE_CHECKING:
     # Import reserve au typage statique (voir interfaces/cli/main.py).

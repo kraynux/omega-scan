@@ -8,6 +8,8 @@ from collections.abc import Iterable
 from pathlib import Path, PurePath
 from typing import TYPE_CHECKING, ClassVar, cast
 
+from omega_lib.terminal.policies import MINIMUM_USABLE_COLUMNS, MINIMUM_USABLE_ROWS
+from omega_lib.theme.policies import TUI_THEMES
 from textual.app import App, SystemCommand
 from textual.binding import Binding, BindingType
 
@@ -15,8 +17,6 @@ from omega_scan.application.commands.select_theme import select_theme
 from omega_scan.application.queries.detect_terminal import detect_terminal
 from omega_scan.core.enums import RenderProfile
 from omega_scan.core.results import Err
-from omega_scan.domain.terminal.policies import MINIMUM_USABLE_COLUMNS, MINIMUM_USABLE_ROWS
-from omega_scan.domain.theme.policies import TUI_THEMES
 from omega_scan.interfaces.tui.controllers.startup_controller import (
     StartupState,
     resolve_startup_state,

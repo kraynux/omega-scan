@@ -1,7 +1,8 @@
 # Copyright (c) 2026 kraynux - kraynux@proton.me - Licence MIT (voir fichier LICENSE)
+from omega_lib.terminal.models import TerminalSignals
+from omega_lib.terminal.service import resolve_render_profile
+
 from omega_scan.core.enums import RenderProfile
-from omega_scan.domain.terminal.models import TerminalSignals
-from omega_scan.domain.terminal.service import resolve_render_profile
 
 
 def test_ghostty_large_terminal_is_complete():
