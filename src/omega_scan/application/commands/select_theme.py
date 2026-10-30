@@ -8,6 +8,7 @@ from omega_lib.theme.policies import TUI_THEMES
 from omega_scan.core.results import Err, Ok, Result
 from omega_scan.domain.errors import ValidationError
 from omega_scan.ports.settings_store import SettingsStore
+from omega_scan.shared.i18n import _
 
 
 def select_theme(*, settings_store: SettingsStore, theme_name: str) -> Result[None, ValidationError]:
@@ -17,7 +18,7 @@ def select_theme(*, settings_store: SettingsStore, theme_name: str) -> Result[No
     if theme_name not in TUI_THEMES:
         return Err(
             ValidationError(
-                f"Theme inconnu : {theme_name!r}. Choix : {sorted(TUI_THEMES.keys())}"
+                _("Thème inconnu : {theme_name!r}. Choix : {value}").format(theme_name=theme_name, value=sorted(TUI_THEMES.keys()))
             )
         )
     settings_store.set("theme", theme_name)

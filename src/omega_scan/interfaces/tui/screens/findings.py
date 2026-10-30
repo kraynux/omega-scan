@@ -17,6 +17,7 @@ from omega_scan.interfaces.tui.screens._base import OmegaScreen
 from omega_scan.interfaces.tui.screens.export_dialog import ExportDialogScreen
 from omega_scan.interfaces.tui.widgets.findings_table import FindingsTable
 from omega_scan.interfaces.tui.widgets.grade_badge import GradeBadge
+from omega_scan.shared.i18n import _
 
 if TYPE_CHECKING:
     from omega_scan.app.dependency_container import DependencyContainer
@@ -35,15 +36,15 @@ class FindingDetailScreen(ModalScreen[None]):
     def compose(self) -> ComposeResult:
         finding = self._finding
         with Vertical(classes="omega-panel omega-modal"):
-            yield Static(f"{finding.rule_id} — {finding.title}", classes="omega-title")
-            yield Static(f"Statut: {finding.status}  Severite: {finding.severity}  Confiance: {finding.confidence}")
-            yield Static(finding.description)
-            yield Static(f"[b]Impact[/b]\n{finding.impact}")
-            yield Static(f"[b]Remediation[/b]\n{finding.remediation}")
+            yield Static(_("{rule_id} — {title}").format(rule_id=finding.rule_id, title=_(finding.title)), classes="omega-title")
+            yield Static(_("Statut: {status}  Sévérité: {severity}  Confiance: {confidence}").format(status=finding.status, severity=finding.severity, confidence=finding.confidence))
+            yield Static(_(finding.description))
+            yield Static(_("[b]Impact[/b]\n{impact}").format(impact=_(finding.impact)))
+            yield Static(_("[b]Remediation[/b]\n{remediation}").format(remediation=_(finding.remediation)))
             if finding.evidence is not None:
-                yield Static(f"[b]Preuve[/b] ({finding.evidence.source})\n{finding.evidence.value}")
+                yield Static(_("[b]Preuve[/b] ({source})\n{value}").format(source=finding.evidence.source, value=finding.evidence.value))
             with Horizontal(classes="omega-actions"), Container(classes="omega-btn-frame"):
-                yield Button("Fermer", id="close")
+                yield Button(_("Fermer"), id="close")
 
     def on_button_pressed(self, event: Button.Pressed) -> None:
         if event.button.id == "close":
@@ -61,17 +62,17 @@ class FindingsScreen(OmegaScreen):
     def compose(self) -> ComposeResult:
         yield Header()
         with Vertical(classes="omega-panel"):
-            yield Static(f"RESULTATS — {self._scan.normalized_host}", classes="omega-title")
+            yield Static(_("RÉSULTATS — {normalized_host}").format(normalized_host=self._scan.normalized_host), classes="omega-title")
             yield GradeBadge(
                 overall_rating=self._scan.summary.overall_rating,
                 short_message=self._scan.summary.short_message,
             )
             yield Static(
-                "Cliquez sur une ligne (ou Entree) pour le diagnostic detaille de ce finding.",
+                _("Cliquez sur une ligne (ou Entrée) pour le diagnostic détaillé de ce finding."),
                 classes="omega-hint",
             )
             yield Select(
-                [("Toutes categories", _ALL_CATEGORIES)]
+                [(_("Toutes catégories"), _ALL_CATEGORIES)]
                 + [(c, c) for c in sorted({f.category for f in self._scan.findings})],
                 value=_ALL_CATEGORIES,
                 id="category-filter",
@@ -79,9 +80,9 @@ class FindingsScreen(OmegaScreen):
             yield FindingsTable(id="findings-table")
             with Horizontal(classes="omega-actions"):
                 with Container(classes="omega-btn-frame"):
-                    yield Button("Exporter", id="export", variant="primary")
+                    yield Button(_("Exporter"), id="export", variant="primary")
                 with Container(classes="omega-btn-frame"):
-                    yield Button("Retour", id="back")
+                    yield Button(_("Retour"), id="back")
         yield Footer()
 
     def on_mount(self) -> None:

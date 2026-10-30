@@ -11,6 +11,7 @@ from typing import Any
 from omega_scan.domain.findings.builders import build_finding, degrade_confidence_for_proxy
 from omega_scan.domain.findings.evidence import Evidence
 from omega_scan.domain.findings.models import Finding
+from omega_scan.shared.i18n import _
 
 
 def _location(target: dict[str, Any], scheme: str) -> dict[str, Any]:
@@ -45,17 +46,17 @@ def check_coo_secure_001(
             findings.append(build_finding(
                 rule_id="COO-SECURE-001",
                 category="cookies",
-                title=f"Cookie sans attribut Secure : {cookie.get('name')}",
+                title=_("Cookie sans attribut Secure : {get}").format(get=cookie.get('name')),
                 status="WARN",
                 severity="medium",
                 confidence=confidence,
                 applicability="applicable",
                 description=(
-                    f"Le cookie '{cookie.get('name')}' est pose sur une reponse HTTPS "
-                    "sans l'attribut Secure."
+                    _("Le cookie '{get}' est posé sur une réponse HTTPS sans l'attribut Secure.").format(get=cookie.get('name'))
                 ),
-                impact="Le cookie peut etre transmis en clair si le site est aussi accessible en HTTP.",
-                remediation="Ajouter l'attribut Secure a ce cookie.",
+                impact=_("Le cookie peut être transmis en clair si le site est aussi "
+                         "accessible en HTTP."),
+                remediation=_("Ajouter l'attribut Secure à ce cookie."),
                 evidence=Evidence(
                     type="cookie", value=cookie.get("name", ""), source="response.cookies"
                 ),
@@ -87,14 +88,16 @@ def check_coo_httponly_001(
                 findings.append(build_finding(
                     rule_id="COO-HTTPONLY-001",
                     category="cookies",
-                    title=f"Cookie sans attribut HttpOnly : {cookie.get('name')}",
+                    title=_("Cookie sans attribut HttpOnly : {get}").format(get=cookie.get('name')),
                     status="WARN",
                     severity="low",
                     confidence=confidence,
                     applicability="applicable",
-                    description=f"Le cookie '{cookie.get('name')}' n'a pas l'attribut HttpOnly.",
-                    impact="Le cookie est accessible en JavaScript, ce qui aggrave l'impact d'un XSS.",
-                    remediation="Ajouter l'attribut HttpOnly si ce cookie n'est pas requis cote client.",
+                    description=_("Le cookie '{get}' n'a pas l'attribut HttpOnly.").format(get=cookie.get('name')),
+                    impact=_("Le cookie est accessible en JavaScript, ce qui aggrave l'impact "
+                             "d'un XSS."),
+                    remediation=_("Ajouter l'attribut HttpOnly si ce cookie n'est pas requis "
+                                  "côté client."),
                     evidence=Evidence(
                         type="cookie", value=cookie.get("name", ""), source="response.cookies"
                     ),
@@ -126,22 +129,24 @@ def check_coo_samesite_001(
                 continue
 
             reason = (
-                "l'attribut SameSite est absent"
+                _("l'attribut SameSite est absent")
                 if samesite is None
-                else "SameSite=None est declare sans l'attribut Secure"
+                else _("SameSite=None est déclaré sans l'attribut Secure")
             )
             confidence = degrade_confidence_for_proxy("certain", proxy_suspected)
             findings.append(build_finding(
                 rule_id="COO-SAMESITE-001",
                 category="cookies",
-                title=f"Cookie a risque CSRF : {cookie.get('name')}",
+                title=_("Cookie à risque CSRF : {get}").format(get=cookie.get('name')),
                 status="WARN",
                 severity="medium",
                 confidence=confidence,
                 applicability="applicable",
-                description=f"Le cookie '{cookie.get('name')}' est a risque : {reason}.",
-                impact="Le cookie peut etre envoye lors de requetes intersites, favorisant les attaques CSRF.",
-                remediation="Definir SameSite=Lax ou Strict, ou SameSite=None accompagne de Secure.",
+                description=_("Le cookie '{get}' est à risque : {reason}.").format(get=cookie.get('name'), reason=reason),
+                impact=_("Le cookie peut être envoyé lors de requêtes intersites, favorisant "
+                         "les attaques CSRF."),
+                remediation=_("Définir SameSite=Lax ou Strict, ou SameSite=None accompagné de "
+                              "Secure."),
                 evidence=Evidence(
                     type="cookie", value=cookie.get("name", ""), source="response.cookies"
                 ),

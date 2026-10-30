@@ -6,6 +6,7 @@ import sqlite3
 
 from omega_scan.infrastructure.exceptions import StorageError
 from omega_scan.infrastructure.storage.sqlite.schema import SCHEMA_STATEMENTS
+from omega_scan.shared.i18n import _
 
 
 def apply_schema(connection: sqlite3.Connection) -> None:
@@ -18,4 +19,4 @@ def apply_schema(connection: sqlite3.Connection) -> None:
             connection.execute(statement)
         connection.commit()
     except sqlite3.Error as exc:
-        raise StorageError(f"Echec de l'initialisation du schema SQLite : {exc}") from exc
+        raise StorageError(_("Échec de l'initialisation du schéma SQLite : {exc}").format(exc=exc)) from exc

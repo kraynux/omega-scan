@@ -13,6 +13,7 @@ from omega_scan.domain.scans.models import FAILURE_CATEGORY_DNS, ScanError
 from omega_scan.domain.targets.models import Target
 from omega_scan.infrastructure.exceptions import build_error_from_exception
 from omega_scan.infrastructure.logging.app_logger import get_logger
+from omega_scan.shared.i18n import N_, _, log_text
 
 
 class HttpxConnectivityProber:
@@ -26,7 +27,7 @@ class HttpxConnectivityProber:
         errors: list[ScanError],
     ) -> dict[str, Any]:
         logger = get_logger()
-        logger.info(f"[CONNECTIVITY] Debut du pre-scan pour {target.normalized_host}")
+        logger.info(log_text(N_("[CONNECTIVITY] Début du pré-scan pour {normalized_host}"), normalized_host=target.normalized_host))
 
         connectivity: dict[str, Any] = {
             "dns_resolution_attempted": False,
@@ -45,7 +46,7 @@ class HttpxConnectivityProber:
         if target.target_kind == "hostname":
             connectivity["dns_resolution_attempted"] = True
             try:
-                logger.debug(f"[DNS] Resolution de {target.normalized_host}")
+                logger.debug(log_text(N_("[DNS] Résolution de {normalized_host}"), normalized_host=target.normalized_host))
                 addrinfo = socket.getaddrinfo(
                     target.normalized_host, None, socket.AF_UNSPEC, socket.SOCK_STREAM
                 )
@@ -53,15 +54,16 @@ class HttpxConnectivityProber:
                 connectivity["resolved_addresses"] = resolved
                 if resolved:
                     connectivity["preferred_address"] = resolved[0]
-                    logger.info(f"[DNS] Resolu : {resolved}")
+                    logger.info(log_text(N_("[DNS] Résolu : {resolved}"), resolved=resolved))
                 else:
-                    logger.warning(f"[DNS] Aucune adresse resolue pour {target.normalized_host}")
+                    logger.warning(log_text(N_("[DNS] Aucune adresse résolue pour "
+                                               "{normalized_host}"), normalized_host=target.normalized_host))
                     errors.append(
                         ScanError(
                             module="connectivity",
                             phase="connectivity",
                             error_type="DnsResolutionError",
-                            message=f"Aucune adresse IP resolue pour {target.normalized_host}",
+                            message=_("Aucune adresse IP résolue pour {normalized_host}").format(normalized_host=target.normalized_host),
                             fatal=False,
                             related_target=target.input_raw,
                             failure_category=FAILURE_CATEGORY_DNS,
@@ -70,7 +72,7 @@ class HttpxConnectivityProber:
                     connectivity["failure_category"] = FAILURE_CATEGORY_DNS
                     return connectivity
             except socket.gaierror as exc:
-                logger.error(f"[DNS] Echec de resolution : {exc}")
+                logger.error(log_text(N_("[DNS] Échec de résolution : {exc}"), exc=exc))
                 errors.append(
                     build_error_from_exception(
                         exc,
@@ -109,7 +111,7 @@ class HttpxConnectivityProber:
 
         if target.scan_modes in ("http", "both"):
             http_url = target.normalized_url_http
-            logger.info(f"[HTTP] Test de {http_url}")
+            logger.info(log_text(N_("[HTTP] Test de {http_url}"), http_url=http_url))
             try:
                 with httpx.Client(timeout=timeout, follow_redirects=False) as client:
                     start = time.time()
@@ -128,7 +130,7 @@ class HttpxConnectivityProber:
                     else:
                         logger.warning(f"[HTTP] {http_url} -> {response.status_code} (5xx)")
             except Exception as exc:  # noqa: BLE001 - traduit en ScanError, jamais leve
-                logger.warning(f"[HTTP] {http_url} -> ECHEC : {exc}")
+                logger.warning(log_text(N_("[HTTP] {http_url} -> ÉCHEC : {exc}"), http_url=http_url, exc=exc))
                 errors.append(
                     build_error_from_exception(
                         exc,
@@ -142,7 +144,7 @@ class HttpxConnectivityProber:
 
         if target.scan_modes in ("https", "both"):
             https_url = target.normalized_url_https
-            logger.info(f"[HTTPS] Test de {https_url}")
+            logger.info(log_text(N_("[HTTPS] Test de {https_url}"), https_url=https_url))
             try:
                 with httpx.Client(timeout=timeout, follow_redirects=False, verify=False) as client:
                     start = time.time()
@@ -166,7 +168,7 @@ class HttpxConnectivityProber:
                     else:
                         logger.warning(f"[HTTPS] {https_url} -> {response.status_code} (5xx)")
             except Exception as exc:  # noqa: BLE001
-                logger.warning(f"[HTTPS] {https_url} -> ECHEC : {exc}")
+                logger.warning(log_text(N_("[HTTPS] {https_url} -> ÉCHEC : {exc}"), https_url=https_url, exc=exc))
                 errors.append(
                     build_error_from_exception(
                         exc,
@@ -184,15 +186,15 @@ class HttpxConnectivityProber:
 
         notes = []
         if not http_ok and not https_ok:
-            notes.append("Aucun schema accessible")
+            notes.append(_("Aucun schéma accessible"))
         elif http_ok and not https_ok:
-            notes.append("HTTP accessible, HTTPS injoignable")
+            notes.append(_("HTTP accessible, HTTPS injoignable"))
         elif https_ok and not http_ok:
-            notes.append("HTTPS accessible, HTTP injoignable")
+            notes.append(_("HTTPS accessible, HTTP injoignable"))
         connectivity["connection_notes"] = "; ".join(notes)
 
         logger.info(
-            f"[CONNECTIVITY] Fin du pre-scan : HTTP={http_ok}, HTTPS={https_ok}, "
-            f"first={first_success}, latency={connectivity['latency_overview_ms']}ms"
+            log_text(N_("[CONNECTIVITY] Fin du pré-scan : HTTP={http_ok}, HTTPS={https_ok}, "
+                        "first={first_success}, latency={latency_overview_ms}ms"), http_ok=http_ok, https_ok=https_ok, first_success=first_success, latency_overview_ms=connectivity['latency_overview_ms'])
         )
         return connectivity

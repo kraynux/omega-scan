@@ -14,6 +14,7 @@ from omega_scan.application.commands.export_scan_report import export_scan_repor
 from omega_scan.core.enums import ExportFormat
 from omega_scan.core.results import Err
 from omega_scan.interfaces.tui.screens._base import OmegaScreen
+from omega_scan.shared.i18n import LANGUAGE, _, translating_as
 
 if TYPE_CHECKING:
     from omega_scan.app.dependency_container import DependencyContainer
@@ -31,14 +32,14 @@ class ExportDialogScreen(OmegaScreen):
         default_format = next(iter(ExportFormat))
         yield Header()
         with Vertical(classes="omega-form-panel"):
-            yield Static("EXPORTER LE SCAN", classes="omega-title")
-            yield Static("Format", classes="omega-subtitle")
+            yield Static(_("EXPORTER LE SCAN"), classes="omega-title")
+            yield Static(_("Format"), classes="omega-subtitle")
             yield Select(
                 [(f.value, f.value) for f in ExportFormat],
                 value=default_format.value,
                 id="format-select",
             )
-            yield Static("Theme d'export (HTML uniquement)", classes="omega-subtitle")
+            yield Static(_("Thème d'export (HTML uniquement)"), classes="omega-subtitle")
             yield Select(
                 [(name, name) for name in EXPORT_PALETTES],
                 value=DEFAULT_EXPORT_THEME,
@@ -51,9 +52,9 @@ class ExportDialogScreen(OmegaScreen):
             yield Input(value=str(default_path), id="path-input")
             with Horizontal(classes="omega-actions"):
                 with Container(classes="omega-btn-frame"):
-                    yield Button("Exporter", id="confirm-export", variant="primary")
+                    yield Button(_("Exporter"), id="confirm-export", variant="primary")
                 with Container(classes="omega-btn-frame"):
-                    yield Button("Retour", id="back")
+                    yield Button(_("Retour"), id="back")
         yield Footer()
 
     def on_select_changed(self, event: Select.Changed) -> None:
@@ -72,16 +73,18 @@ class ExportDialogScreen(OmegaScreen):
         format_select = self.query_one("#format-select", Select)
         theme_select = self.query_one("#theme-select", Select)
         output_path = Path(self.query_one("#path-input", Input).value)
-        result = export_scan_report(
-            scan_repository=self._container.scan_repository,
-            report_exporter=self._container.report_exporter,
-            scan_id=self._scan_id,
-            output_path=output_path,
-            export_format=ExportFormat(format_select.value),
-            export_theme=str(theme_select.value),
-        )
+        # Lot N (Q5) : rapport ecrit dans la langue des exports (reglage ; dans la suite, le sien).
+        with translating_as(LANGUAGE.export_state(self._container.settings_store)):
+            result = export_scan_report(
+                scan_repository=self._container.scan_repository,
+                report_exporter=self._container.report_exporter,
+                scan_id=self._scan_id,
+                output_path=output_path,
+                export_format=ExportFormat(format_select.value),
+                export_theme=str(theme_select.value),
+            )
         if isinstance(result, Err):
-            self.app.notify(str(result.error), title="Export impossible", severity="error")
+            self.app.notify(str(result.error), title=_("Export impossible"), severity="error")
             return
-        self.app.notify(f"Ecrit vers {result.value}", title="Export reussi")
+        self.app.notify(_("Écrit vers {value}").format(value=result.value), title=_("Export réussi"))
         self.dismiss()

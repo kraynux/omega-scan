@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="{{ html_lang() }}" dir="{{ html_dir() }}">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Omega-scan Rapport de scan - {{ target.normalized_host }}</title>
+    <title>{{ _("Omega-scan Rapport de scan - {normalized_host}").format(normalized_host=target.normalized_host) }}</title>
     <style>
         * {
             margin: 0;
@@ -164,40 +164,40 @@
 </head>
 <body>
     <div class="container">
-        <h1>Omega-scan ~ Rapport de scan de securite</h1>
+        <h1>{{ _("Omega-scan ~ Rapport de scan de sécurité") }}</h1>
 
         <div class="meta-grid">
             <div class="meta-item">
-                <strong>Cible :</strong> {{ target.normalized_host }}
+                <strong>{{ _("Cible :") }}</strong> {{ target.normalized_host }}
             </div>
             <div class="meta-item">
-                <strong>Profil :</strong> {{ scan_profile.profile_name }}
+                <strong>{{ _("Profil :") }}</strong> {{ scan_profile.profile_name }}
             </div>
             <div class="meta-item">
-                <strong>Scan ID :</strong> {{ meta.scan_id }}
+                <strong>{{ _("Scan ID :") }}</strong> {{ meta.scan_id }}
             </div>
             <div class="meta-item">
-                <strong>Duree :</strong> {{ meta.duration_ms }}ms
+                <strong>{{ _("Durée :") }}</strong> {{ meta.duration_ms }}ms
             </div>
             <div class="meta-item">
-                <strong>Demarre :</strong> {{ meta.started_at }}
+                <strong>{{ _("Démarré :") }}</strong> {{ meta.started_at }}
             </div>
             <div class="meta-item">
-                <strong>Termine :</strong> {{ meta.finished_at }}
+                <strong>{{ _("Terminé :") }}</strong> {{ meta.finished_at }}
             </div>
         </div>
 
         <div class="summary-box">
             <div class="rating">{{ summary.overall_rating }}</div>
-            <div style="text-align: center; font-size: 18px;">{{ summary.short_message }}</div>
+            <div style="text-align: center; font-size: 18px;">{{ summary.short_message | tr }}</div>
             <div class="stats-grid">
                 <div class="stat">
                     <div class="stat-value">{{ summary.checks_total }}</div>
-                    <div>Checks totaux</div>
+                    <div>{{ _("Checks totaux") }}</div>
                 </div>
                 <div class="stat">
                     <div class="stat-value">{{ summary.findings_total }}</div>
-                    <div>Findings (W+F)</div>
+                    <div>{{ _("Findings (W+F)") }}</div>
                 </div>
                 <div class="stat">
                     <div class="stat-value">{{ summary.status_breakdown.FAIL | default(0) }}</div>
@@ -211,7 +211,7 @@
         </div>
 
         {% if findings %}
-        <h2>Findings detailles</h2>
+        <h2>{{ _("Findings détaillés") }}</h2>
 
         {% set categories = {} %}
         {% for finding in findings %}
@@ -228,35 +228,35 @@
             {% for finding in category_findings %}
             <div class="finding {{ finding.status | lower }}">
                 <div class="finding-header">
-                    <div class="finding-title">{{ finding.title }}</div>
+                    <div class="finding-title">{{ finding.title | tr }}</div>
                     <span class="badge {{ finding.status | lower }}">{{ finding.status }}</span>
                 </div>
                 <div class="finding-details">
                     <dl>
-                        <dt>Regle</dt>
+                        <dt>{{ _("Règle") }}</dt>
                         <dd>{{ finding.rule_id }}</dd>
 
-                        <dt>Severite</dt>
+                        <dt>{{ _("Sévérité") }}</dt>
                         <dd>{{ finding.severity | upper }}</dd>
 
-                        <dt>Confiance</dt>
+                        <dt>{{ _("Confiance") }}</dt>
                         <dd>{{ finding.confidence }}</dd>
 
-                        <dt>Description</dt>
-                        <dd>{{ finding.description }}</dd>
+                        <dt>{{ _("Description") }}</dt>
+                        <dd>{{ finding.description | tr }}</dd>
 
                         {% if finding.impact %}
-                        <dt>Impact</dt>
-                        <dd>{{ finding.impact }}</dd>
+                        <dt>{{ _("Impact") }}</dt>
+                        <dd>{{ finding.impact | tr }}</dd>
                         {% endif %}
 
                         {% if finding.remediation %}
-                        <dt>Action recommandee</dt>
-                        <dd>{{ finding.remediation }}</dd>
+                        <dt>{{ _("Action recommandée") }}</dt>
+                        <dd>{{ finding.remediation | tr }}</dd>
                         {% endif %}
 
                         {% if finding.evidence %}
-                        <dt>Preuve</dt>
+                        <dt>{{ _("Preuve") }}</dt>
                         <dd><code>{{ finding.evidence.value }}</code></dd>
                         {% endif %}
                     </dl>
@@ -267,25 +267,25 @@
         {% endfor %}
         {% endif %}
 
-        <h2>Connectivite</h2>
+        <h2>{{ _("Connectivité") }}</h2>
         <div class="meta-grid">
             <div class="meta-item">
-                <strong>DNS resolu :</strong> {{ 'Oui' if connectivity.dns_resolution_attempted else 'Non' }}
+                <strong>{{ _("DNS résolu :") }}</strong> {{ _("Oui") if connectivity.dns_resolution_attempted else _("Non") }}
             </div>
             <div class="meta-item">
-                <strong>HTTP accessible :</strong> {{ 'Oui' if connectivity.http_reachable else 'Non' }}
+                <strong>{{ _("HTTP accessible :") }}</strong> {{ _("Oui") if connectivity.http_reachable else _("Non") }}
             </div>
             <div class="meta-item">
-                <strong>HTTPS accessible :</strong> {{ 'Oui' if connectivity.https_reachable else 'Non' }}
+                <strong>{{ _("HTTPS accessible :") }}</strong> {{ _("Oui") if connectivity.https_reachable else _("Non") }}
             </div>
             {% if connectivity.first_successful_scheme %}
             <div class="meta-item">
-                <strong>Premier schema :</strong> {{ connectivity.first_successful_scheme }}
+                <strong>{{ _("Premier schéma :") }}</strong> {{ connectivity.first_successful_scheme }}
             </div>
             {% endif %}
             {% if connectivity.latency_overview_ms %}
             <div class="meta-item">
-                <strong>Latence moyenne :</strong> {{ connectivity.latency_overview_ms }}ms
+                <strong>{{ _("Latence moyenne :") }}</strong> {{ connectivity.latency_overview_ms }}ms
             </div>
             {% endif %}
         </div>
@@ -294,52 +294,52 @@
         <h2>TLS</h2>
         <div class="meta-grid">
             <div class="meta-item">
-                <strong>Handshake reussi :</strong> {{ 'Oui' if tls.handshake_success else 'Non' }}
+                <strong>{{ _("Handshake réussi :") }}</strong> {{ _("Oui") if tls.handshake_success else _("Non") }}
             </div>
             {% if tls.tls_version %}
             <div class="meta-item">
-                <strong>Version TLS :</strong> {{ tls.tls_version }}
+                <strong>{{ _("Version TLS :") }}</strong> {{ tls.tls_version }}
             </div>
             {% endif %}
             {% if tls.cipher %}
             <div class="meta-item">
-                <strong>Cipher :</strong> {{ tls.cipher }}
+                <strong>{{ _("Cipher :") }}</strong> {{ tls.cipher }}
             </div>
             {% endif %}
             {% if tls.certificate_subject %}
             <div class="meta-item">
-                <strong>Sujet certificat :</strong> {{ tls.certificate_subject }}
+                <strong>{{ _("Sujet certificat :") }}</strong> {{ tls.certificate_subject }}
             </div>
             {% endif %}
             {% if tls.certificate_issuer %}
             <div class="meta-item">
-                <strong>Emetteur :</strong> {{ tls.certificate_issuer }}
+                <strong>{{ _("Émetteur :") }}</strong> {{ tls.certificate_issuer }}
             </div>
             {% endif %}
             <div class="meta-item">
-                <strong>Hostname match :</strong> {{ 'Oui' if tls.hostname_match else 'Non' }}
+                <strong>{{ _("Hostname match :") }}</strong> {{ _("Oui") if tls.hostname_match else _("Non") }}
             </div>
             {% if tls.self_signed %}
             <div class="meta-item">
-                <strong>Auto-signe :</strong> Oui
+                <strong>{{ _("Auto-signé :") }}</strong> {{ _("Oui") }}
             </div>
             {% endif %}
         </div>
         {% endif %}
 
         {% if errors %}
-        <h2>Erreurs</h2>
+        <h2>{{ _("Erreurs") }}</h2>
         {% for error in errors %}
         <div class="error {{ 'fatal' if error.fatal else '' }}">
             <strong>[{{ error.module }}]</strong> {{ error.error_type }}: {{ error.message }}
             {% if error.fatal %}<span style="color: {{ palette.error }}; font-weight: bold;"> [FATAL]</span>{% endif %}
-            {% if error.failure_category %}<br><small>Categorie: {{ error.failure_category }}</small>{% endif %}
+            {% if error.failure_category %}<br><small>{{ _("Catégorie: {failure_category}").format(failure_category=error.failure_category) }}</small>{% endif %}
         </div>
         {% endfor %}
         {% endif %}
 
         <footer>
-            Rapport genere le {{ generated_at }} par <strong>Omega-scan</strong> v{{ meta.scanner_version }}
+            {{ _("Rapport généré le {generated_at} par").format(generated_at=generated_at) }} <strong>Omega-scan</strong> v{{ meta.scanner_version }}
         </footer>
     </div>
 </body>

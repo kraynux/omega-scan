@@ -17,6 +17,7 @@ from omega_scan.ports.path_prober import PathProber
 from omega_scan.ports.scan_repository import ScanRepository
 from omega_scan.ports.target_repository import TargetRepository
 from omega_scan.ports.tls_prober import TlsProber
+from omega_scan.shared.i18n import _
 
 
 def replay_scan(
@@ -41,7 +42,7 @@ def replay_scan(
     cible non epinglee exige `authorization_confirmed=True` a nouveau."""
     previous = scan_repository.get(scan_id)
     if previous is None:
-        return Err(ScanNotFoundError(f"Aucun scan trouve pour l'identifiant {scan_id!r}."))
+        return Err(ScanNotFoundError(_("Aucun scan trouvé pour l'identifiant {scan_id!r}.").format(scan_id=scan_id)))
 
     return run_scan(
         target_repository=target_repository,

@@ -52,7 +52,7 @@ def test_scan_denied_without_authorize(container: FakeContainer, capsys: pytest.
     captured = capsys.readouterr()
 
     assert code == 1
-    assert "non autorisee" in captured.err
+    assert "non autorisée" in captured.err
 
 
 def test_scan_succeeds_with_authorize(container: FakeContainer, capsys: pytest.CaptureFixture) -> None:
@@ -165,7 +165,7 @@ def test_export_unknown_scan(container: FakeContainer, capsys: pytest.CaptureFix
     captured = capsys.readouterr()
 
     assert code == 1
-    assert "Aucun scan trouve" in captured.err
+    assert "Aucun scan trouvé" in captured.err
 
 
 def test_invalid_subcommand_exits_nonzero(container: FakeContainer) -> None:

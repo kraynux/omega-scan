@@ -12,6 +12,7 @@ from omega_scan.domain.findings.builders import (
 )
 from omega_scan.domain.findings.evidence import Evidence
 from omega_scan.domain.findings.models import Finding
+from omega_scan.shared.i18n import _
 
 
 def check_exr_admin_001(
@@ -35,14 +36,14 @@ def check_exr_admin_001(
             findings.append(build_finding(
                 rule_id="EXR-ADMIN-001",
                 category="exposure",
-                title=f"Chemin admin accessible : {probe['path']}",
+                title=_("Chemin admin accessible : {path}").format(path=probe['path']),
                 status="WARN",
                 severity="medium",
                 confidence=confidence,
                 applicability="applicable",
-                description=f"Le chemin {probe['path']} est accessible sans authentification.",
-                impact="Interface d'administration potentiellement exposee.",
-                remediation="Restreindre l'acces par IP ou exiger une authentification forte.",
+                description=_("Le chemin {path} est accessible sans authentification.").format(path=probe['path']),
+                impact=_("Interface d'administration potentiellement exposée."),
+                remediation=_("Restreindre l'accès par IP ou exiger une authentification forte."),
                 evidence=Evidence(
                     type="status_code",
                     value=f"{probe['path']} -> {probe['status_code']}",
@@ -83,14 +84,15 @@ def check_exr_sensitive_001(
             findings.append(build_finding(
                 rule_id="EXR-SENSITIVE-001",
                 category="exposure",
-                title=f"Fichier sensible accessible : {probe['path']}",
+                title=_("Fichier sensible accessible : {path}").format(path=probe['path']),
                 status="FAIL",
                 severity="high",
                 confidence=confidence,
                 applicability="applicable",
-                description=f"Le fichier {probe['path']} est accessible publiquement.",
-                impact="Fuite de donnees sensibles (credentials, configuration).",
-                remediation="Bloquer l'acces a ces fichiers via la configuration du serveur web.",
+                description=_("Le fichier {path} est accessible publiquement.").format(path=probe['path']),
+                impact=_("Fuite de données sensibles (credentials, configuration)."),
+                remediation=_("Bloquer l'accès à ces fichiers via la configuration du serveur "
+                              "web."),
                 evidence=Evidence(
                     type="status_code",
                     value=f"{probe['path']} -> {probe['status_code']}",

@@ -6,6 +6,7 @@ from typing import Any
 
 from omega_scan.domain.findings.models import Finding
 from omega_scan.domain.scans.models import Summary
+from omega_scan.shared.i18n import _
 
 
 def calculate_summary(
@@ -52,22 +53,22 @@ def calculate_summary(
         # correcte") selon l'endroit exact ou la connexion echouait — bug
         # reel rapporte dans les deux cas.
         overall_rating = "N/A"
-        short_message = "Scan incomplet : cible injoignable, aucune verification possible."
+        short_message = _("Scan incomplet : cible injoignable, aucune vérification possible.")
     elif findings_total == 0:
         overall_rating = "A"
-        short_message = "Posture de securite excellente."
+        short_message = _("Posture de sécurité excellente.")
     elif findings_total <= 2:
         overall_rating = "B"
-        short_message = "Posture correcte, quelques ameliorations recommandees."
+        short_message = _("Posture correcte, quelques améliorations recommandées.")
     elif findings_total <= 5:
         overall_rating = "C"
-        short_message = "Posture moyenne, plusieurs points a corriger."
+        short_message = _("Posture moyenne, plusieurs points à corriger.")
     elif findings_total <= 10:
         overall_rating = "D"
-        short_message = "Posture faible, corrections prioritaires necessaires."
+        short_message = _("Posture faible, corrections prioritaires nécessaires.")
     else:
         overall_rating = "F"
-        short_message = "Posture critique, action immediate requise."
+        short_message = _("Posture critique, action immédiate requise.")
 
     return Summary(
         scan_status=scan_status,

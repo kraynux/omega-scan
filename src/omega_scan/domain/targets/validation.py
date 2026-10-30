@@ -12,6 +12,7 @@ import urllib.parse
 
 from omega_scan.domain.targets.exceptions import TargetParseError
 from omega_scan.domain.targets.models import Target
+from omega_scan.shared.i18n import _
 
 
 def _preprocess_ipv6(raw_input: str) -> str:
@@ -58,7 +59,7 @@ def parse_target(raw_input: str) -> Target:
     Leve TargetParseError si l'entree est invalide."""
     raw_input = raw_input.strip()
     if not raw_input:
-        raise TargetParseError("L'entree cible est vide.")
+        raise TargetParseError(_("L'entrée cible est vide."))
 
     raw_input = _preprocess_ipv6(raw_input)
 
@@ -77,7 +78,7 @@ def parse_target(raw_input: str) -> Target:
     path = parsed.path if parsed.path else "/"
 
     if not host:
-        raise TargetParseError(f"Impossible d'extraire un hote valide de : {raw_input}")
+        raise TargetParseError(_("Impossible d'extraire un hôte valide de : {raw_input}").format(raw_input=raw_input))
 
     is_ip = False
     ip_version = None

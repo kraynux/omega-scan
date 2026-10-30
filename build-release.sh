@@ -6,6 +6,10 @@
 # non publiee sur PyPI depuis la migration D-013, voir install.sh), archive
 # le tout dans ../dist/. Outil de maintenance, jamais lui-meme inclus dans
 # l'archive generee.
+#
+# `docs/assets/` exclu (retour utilisateur) : logo utilise par le rendu
+# README sur GitHub uniquement (docs/assets/omega-scan.png, ~2.7 Mo) - jamais lu par
+# le code. `docs/translation/` (README en 16 langues) reste inclus.
 # ==============================================================================
 
 set -e
@@ -41,11 +45,12 @@ rsync -a \
     --exclude='.pytest_cache/' --exclude='.mypy_cache/' --exclude='.ruff_cache/' \
     --exclude='.import_linter_cache/' --exclude='*.egg-info/' \
     --exclude='.git/' --exclude='.claude/' \
+    --exclude='docs/assets/' \
     --exclude='var/db/*' --exclude='var/exports/*' --exclude='var/screenshots/*' \
     --exclude='var/settings.json' --exclude='var/*.log' --exclude='var/*.jsonl' \
     --exclude='*~' --exclude='*.bak' --exclude='*.swp' \
     --exclude='.coverage' --exclude='htmlcov/' \
-    --exclude='build-release.sh' --exclude='omega-scan.tar.gz' \
+    --exclude='build-release.sh' --exclude='omega-scan.tar.gz' --exclude='dist/' \
     "$PROJECT_ROOT/" "$DEST/"
 
 info "Vendoring d'omega-lib (dependance obligatoire, non publiee sur PyPI)..."
@@ -53,8 +58,24 @@ mkdir -p "$DEST/vendor/omega-lib"
 rsync -a \
     --exclude='.venv/' --exclude='__pycache__/' --exclude='*.pyc' \
     --exclude='.pytest_cache/' --exclude='.mypy_cache/' --exclude='.ruff_cache/' \
-    --exclude='*.egg-info/' --exclude='.git/' --exclude='tests/' \
+    --exclude='*.egg-info/' --exclude='.git/' --exclude='tests/' --exclude='*~' \
     "$OMEGA_LIB_SRC/" "$DEST/vendor/omega-lib/"
+
+# Langues de l'interface et des exports (OMEGA-SUITE_PLAN-DETAILLE_I18N.md, lot N+1) : chaque
+# .po de l'archive (outil, omega-lib vendoree et son catalogue partage) est recompile en .mo
+# depuis sa source - jamais un .mo plus ancien que son .po ; .po et .pot ne sont pas livres.
+if find "$DEST" -name '*.po' -path '*/LC_MESSAGES/*' | grep -q .; then
+    if ! command -v msgfmt > /dev/null; then
+        err "msgfmt introuvable (paquet gettext) : impossible de compiler les langues."
+        exit 1
+    fi
+    info "Compilation des langues..."
+    while IFS= read -r po; do
+        msgfmt --check -o "${po%.po}.mo" "$po" || { err "Catalogue invalide : $po"; exit 1; }
+        rm -f "$po"
+    done < <(find "$DEST" -name '*.po' -path '*/LC_MESSAGES/*')
+    find "$DEST" -name '*.pot' -path '*/locale/*' -delete
+fi
 
 info "Archivage..."
 mkdir -p "$DIST_DIR"

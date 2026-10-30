@@ -14,6 +14,7 @@ from omega_scan.application.queries.list_targets import list_targets
 from omega_scan.interfaces.tui.screens._base import OmegaScreen
 from omega_scan.interfaces.tui.screens.scan_progress import ScanProgressScreen
 from omega_scan.interfaces.tui.widgets.authorization_checkbox import AuthorizationCheckbox
+from omega_scan.shared.i18n import _
 
 if TYPE_CHECKING:
     from omega_scan.app.dependency_container import DependencyContainer
@@ -39,20 +40,20 @@ class ScanSetupScreen(OmegaScreen):
         )
         self._pinned_hosts = {p.normalized_host for p in pinned}
 
-        picker_options: list[tuple[str, str]] = [("(saisie libre ci-dessous)", _NONE)]
+        picker_options: list[tuple[str, str]] = [(_("(saisie libre ci-dessous)"), _NONE)]
         if pinned:
-            picker_options += [(f"★ {p.normalized_host}", p.normalized_host) for p in pinned]
+            picker_options += [(_("★ {normalized_host}").format(normalized_host=p.normalized_host), p.normalized_host) for p in pinned]
         if recent:
             picker_options += [(host, host) for host in recent]
 
         yield Header()
         with Vertical(classes="omega-form-panel"):
-            yield Static("SCANNER UNE CIBLE", classes="omega-title")
-            yield Static("Cibles epinglees (★) et recentes", classes="omega-subtitle")
+            yield Static(_("SCANNER UNE CIBLE"), classes="omega-title")
+            yield Static(_("Cibles épinglées (★) et récentes"), classes="omega-subtitle")
             yield Select(picker_options, value=_NONE, id="target-picker")
-            yield Static("Cible", classes="omega-subtitle")
-            yield Input(placeholder="ex. example.org, 192.168.1.10, https://intranet.lan:8443", id="target-input")
-            yield Static("Profil", classes="omega-subtitle")
+            yield Static(_("Cible"), classes="omega-subtitle")
+            yield Input(placeholder=_("ex. example.org, 192.168.1.10, https://intranet.lan:8443"), id="target-input")
+            yield Static(_("Profil"), classes="omega-subtitle")
             yield Select(
                 [(profile.profile_name, profile.profile_name) for profile in list_profiles()],
                 value="standard",
@@ -60,14 +61,14 @@ class ScanSetupScreen(OmegaScreen):
             )
             yield AuthorizationCheckbox(id="authorization-checkbox")
             yield Static(
-                "Non requis si la cible est deja epinglee (ecran Cibles).",
+                _("Non requis si la cible est déjà épinglée (écran Cibles)."),
                 classes="omega-hint",
             )
             with Horizontal(classes="omega-actions"):
                 with Container(classes="omega-btn-frame"):
-                    yield Button("Lancer", id="launch", variant="primary")
+                    yield Button(_("Lancer"), id="launch", variant="primary")
                 with Container(classes="omega-btn-frame"):
-                    yield Button("Retour", id="back")
+                    yield Button(_("Retour"), id="back")
         yield Footer()
 
     def on_select_changed(self, event: Select.Changed) -> None:
@@ -91,7 +92,7 @@ class ScanSetupScreen(OmegaScreen):
             return
         raw_target = self.query_one("#target-input", Input).value.strip()
         if not raw_target:
-            self.app.notify("Saisissez une cible.", severity="warning")
+            self.app.notify(_("Saisissez une cible."), severity="warning")
             return
         profile_name = self.query_one("#profile-select", Select).value
         authorization_confirmed = self.query_one(

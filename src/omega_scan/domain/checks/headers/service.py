@@ -11,6 +11,7 @@ from omega_scan.domain.checks.headers.policies import (
 from omega_scan.domain.findings.builders import build_finding, degrade_confidence_for_proxy
 from omega_scan.domain.findings.evidence import Evidence
 from omega_scan.domain.findings.models import Finding
+from omega_scan.shared.i18n import _
 
 
 def check_hdr_csp_001(
@@ -38,14 +39,14 @@ def check_hdr_csp_001(
         return build_finding(
             rule_id="HDR-CSP-001",
             category="headers",
-            title="Content-Security-Policy absente",
+            title=_("Content-Security-Policy absente"),
             status="FAIL",
             severity="medium",
             confidence="certain",
             applicability="applicable",
-            description="Le header Content-Security-Policy est absent sur une page HTML.",
-            impact="Vulnerable aux attaques XSS et injection de contenu.",
-            remediation="Ajouter un header Content-Security-Policy restrictif.",
+            description=_("Le header Content-Security-Policy est absent sur une page HTML."),
+            impact=_("Vulnérable aux attaques XSS et injection de contenu."),
+            remediation=_("Ajouter un header Content-Security-Policy restrictif."),
             location={
                 "url": http_result.get("requested_url"),
                 "host": target.get("normalized_host"),
@@ -95,19 +96,19 @@ def check_hdr_csp_002(
         return build_finding(
             rule_id="HDR-CSP-002",
             category="headers",
-            title="Content-Security-Policy trop permissive",
+            title=_("Content-Security-Policy trop permissive"),
             status="WARN",
             severity="low",
             confidence=confidence,
             applicability="applicable",
-            description=f"CSP presente mais contient des directives permissives: {', '.join(found_patterns)}",
-            impact="La protection CSP est affaiblie.",
-            remediation="Restreindre les directives CSP (eviter 'unsafe-inline', '*', etc.).",
+            description=_("CSP présente mais contient des directives permissives: {join}").format(join=', '.join(found_patterns)),
+            impact=_("La protection CSP est affaiblie."),
+            remediation=_("Restreindre les directives CSP (éviter 'unsafe-inline', '*', etc.)."),
             evidence=Evidence(
                 type="header",
                 value=csp_header,
                 source="response.headers",
-                excerpt=f"Motifs permissifs detectes: {', '.join(found_patterns)}",
+                excerpt=_("Motifs permissifs détectés: {join}").format(join=', '.join(found_patterns)),
             ),
             location={
                 "url": http_result.get("requested_url"),
@@ -146,14 +147,14 @@ def check_hdr_nosniff_001(
         return build_finding(
             rule_id="HDR-NOSNIFF-001",
             category="headers",
-            title="X-Content-Type-Options absent ou invalide",
+            title=_("X-Content-Type-Options absent ou invalide"),
             status="WARN",
             severity="low",
             confidence="certain",
             applicability="applicable",
-            description="Le header X-Content-Type-Options: nosniff est absent.",
-            impact="Vulnerable aux attaques MIME sniffing.",
-            remediation="Ajouter le header: X-Content-Type-Options: nosniff",
+            description=_("Le header X-Content-Type-Options: nosniff est absent."),
+            impact=_("Vulnérable aux attaques MIME sniffing."),
+            remediation=_("Ajouter le header: X-Content-Type-Options: nosniff"),
             location={
                 "url": http_result.get("requested_url"),
                 "host": target.get("normalized_host"),
@@ -194,14 +195,14 @@ def check_hdr_server_001(
         return build_finding(
             rule_id="HDR-SERVER-001",
             category="headers",
-            title="Banniere Server exposee",
+            title=_("Bannière Server exposée"),
             status="WARN",
             severity="low",
             confidence=confidence,
             applicability="applicable",
-            description=f"Le header Server expose des informations: {server}",
-            impact="Fuite d'information sur la technologie serveur.",
-            remediation="Configurer le serveur pour masquer ou minimiser le header Server.",
+            description=_("Le header Server expose des informations: {server}").format(server=server),
+            impact=_("Fuite d'information sur la technologie serveur."),
+            remediation=_("Configurer le serveur pour masquer ou minimiser le header Server."),
             evidence=Evidence(
                 type="header",
                 value=server,
@@ -253,17 +254,19 @@ def check_hdr_cache_001(
     return build_finding(
         rule_id="HDR-CACHE-001",
         category="headers",
-        title="Cache-Control absent ou permissif",
+        title=_("Cache-Control absent ou permissif"),
         status="WARN",
         severity="low",
         confidence="medium",
         applicability="applicable",
         description=(
-            "Le header Cache-Control est absent ou ne restreint pas explicitement la "
-            f"mise en cache (valeur observee : {cache_control!r})."
+            _("Le header Cache-Control est absent ou ne restreint pas explicitement la mise en "
+              "cache (valeur observée : {cache_control!r}).").format(cache_control=cache_control)
         ),
-        impact="Du contenu potentiellement sensible pourrait etre conserve par des caches partages.",
-        remediation="Definir Cache-Control: no-store (ou private) sur les reponses porteuses de donnees utilisateur.",
+        impact=_("Du contenu potentiellement sensible pourrait être conservé par des caches "
+                 "partagés."),
+        remediation=_("Définir Cache-Control: no-store (ou private) sur les réponses porteuses "
+                      "de données utilisateur."),
         evidence=Evidence(type="header", value=cache_control or "(absent)", source="response.headers"),
         location={
             "url": http_result.get("requested_url"),

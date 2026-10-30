@@ -8,6 +8,7 @@ from omega_scan.domain.checks.transport.policies import HSTS_MIN_MAX_AGE_SECONDS
 from omega_scan.domain.findings.builders import build_finding
 from omega_scan.domain.findings.evidence import Evidence
 from omega_scan.domain.findings.models import Finding
+from omega_scan.shared.i18n import _
 
 
 def check_trn_http_001(
@@ -28,19 +29,19 @@ def check_trn_http_001(
     return build_finding(
         rule_id="TRN-HTTP-001",
         category="transport",
-        title="HTTP accessible sans redirection vers HTTPS",
+        title=_("HTTP accessible sans redirection vers HTTPS"),
         status="WARN",
         severity="medium",
         confidence="certain",
         applicability="applicable",
-        description="Le service est accessible en HTTP sans redirection automatique vers HTTPS.",
-        impact="Les donnees transitent en clair, exposees a l'interception.",
-        remediation="Configurer une redirection permanente (301) de HTTP vers HTTPS.",
+        description=_("Le service est accessible en HTTP sans redirection automatique vers HTTPS."),
+        impact=_("Les données transitent en clair, exposées à l'interception."),
+        remediation=_("Configurer une redirection permanente (301) de HTTP vers HTTPS."),
         evidence=Evidence(
             type="status_code",
             value=f"HTTP {http_result.get('status_code')} sur {http_result.get('requested_url')}",
             source="http_probe",
-            excerpt=f"Final URL: {final_url}",
+            excerpt=_("Final URL: {final_url}").format(final_url=final_url),
         ),
         location={
             "url": http_result.get("requested_url"),
@@ -71,19 +72,19 @@ def check_trn_https_001(
     return build_finding(
         rule_id="TRN-HTTPS-001",
         category="transport",
-        title="HTTPS non accessible",
+        title=_("HTTPS non accessible"),
         status="FAIL",
         severity="high",
         confidence="certain",
         applicability="applicable",
-        description="Le service n'est pas accessible en HTTPS.",
-        impact="Aucune communication chiffree possible, donnees exposees.",
-        remediation="Configurer HTTPS avec un certificat valide.",
+        description=_("Le service n'est pas accessible en HTTPS."),
+        impact=_("Aucune communication chiffrée possible, données exposées."),
+        remediation=_("Configurer HTTPS avec un certificat valide."),
         evidence=Evidence(
             type="error",
             value=https_result.get("error", "HTTPS injoignable"),
             source="http_probe",
-            excerpt=f"URL testee: {https_result.get('requested_url')}",
+            excerpt=_("URL testée: {get}").format(get=https_result.get('requested_url')),
         ),
         location={
             "url": https_result.get("requested_url"),
@@ -119,14 +120,14 @@ def check_trn_hsts_001(
         return build_finding(
             rule_id="TRN-HSTS-001",
             category="transport",
-            title="HSTS non evalue (profil local-lab sur LAN)",
+            title=_("HSTS non évalué (profil local-lab sur LAN)"),
             status="N/A",
             severity="info",
             confidence="certain",
             applicability="not_applicable",
-            description="HSTS n'est pas evalue en profil local-lab sur loopback/LAN.",
-            impact="Aucun impact en environnement local controle.",
-            remediation="Aucune action requise.",
+            description=_("HSTS n'est pas évalué en profil local-lab sur loopback/LAN."),
+            impact=_("Aucun impact en environnement local contrôlé."),
+            remediation=_("Aucune action requise."),
             location={
                 "url": https_result.get("requested_url"),
                 "host": target.get("normalized_host"),
@@ -142,14 +143,15 @@ def check_trn_hsts_001(
         return build_finding(
             rule_id="TRN-HSTS-001",
             category="transport",
-            title="Header HSTS absent",
+            title=_("Header HSTS absent"),
             status="FAIL",
             severity="medium",
             confidence="certain",
             applicability="applicable",
-            description="Le header Strict-Transport-Security est absent.",
-            impact="Les navigateurs ne forcent pas HTTPS, vulnerable aux attaques downgrade.",
-            remediation="Ajouter le header: Strict-Transport-Security: max-age=31536000; includeSubDomains",
+            description=_("Le header Strict-Transport-Security est absent."),
+            impact=_("Les navigateurs ne forcent pas HTTPS, vulnérable aux attaques downgrade."),
+            remediation=_("Ajouter le header: Strict-Transport-Security: max-age=31536000; "
+                          "includeSubDomains"),
             location={
                 "url": https_result.get("requested_url"),
                 "host": target.get("normalized_host"),
@@ -195,14 +197,14 @@ def check_trn_hsts_002(
             return build_finding(
                 rule_id="TRN-HSTS-002",
                 category="transport",
-                title="HSTS max-age faible",
+                title=_("HSTS max-age faible"),
                 status="WARN",
                 severity="low",
                 confidence="certain",
                 applicability="applicable",
-                description=f"Le max-age HSTS est de {max_age} secondes (< 1 an).",
-                impact="La protection HSTS est de courte duree.",
-                remediation="Augmenter max-age a au moins 31536000 (1 an).",
+                description=_("Le max-age HSTS est de {max_age} secondes (< 1 an).").format(max_age=max_age),
+                impact=_("La protection HSTS est de courte durée."),
+                remediation=_("Augmenter max-age à au moins 31536000 (1 an)."),
                 evidence=Evidence(
                     type="header",
                     value=hsts_header,

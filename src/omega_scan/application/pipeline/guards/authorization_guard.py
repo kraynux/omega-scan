@@ -6,6 +6,7 @@ from omega_scan.core.results import Err, Ok, Result
 from omega_scan.domain.targets.exceptions import UnauthorizedTargetError
 from omega_scan.domain.targets.models import Target
 from omega_scan.ports.target_repository import TargetRepository
+from omega_scan.shared.i18n import _
 
 
 def check_authorization(
@@ -29,7 +30,7 @@ def check_authorization(
         return Ok(None)
     return Err(
         UnauthorizedTargetError(
-            f"Cible {target.normalized_host!r} non autorisee : ni epinglee, "
-            f"ni confirmation explicite fournie pour ce scan."
+            _("Cible {normalized_host!r} non autorisée : ni épinglée, ni confirmation "
+              "explicite fournie pour ce scan.").format(normalized_host=target.normalized_host)
         )
     )

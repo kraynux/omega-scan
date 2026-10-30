@@ -11,6 +11,7 @@ from typing import Any
 
 from omega_scan.domain.scans.models import ScanRun
 from omega_scan.infrastructure.logging.app_logger import get_logger
+from omega_scan.shared.i18n import N_, log_text
 
 
 def _to_jsonable(obj: Any) -> Any:
@@ -43,7 +44,7 @@ def export_json(run: ScanRun, output_path: str | Path, indent: int = 2) -> Path:
     logger = get_logger()
 
     abs_path = Path(output_path).absolute().resolve()
-    logger.info(f"[JSON_EXPORT] Chemin absolu cible : {abs_path}")
+    logger.info(log_text(N_("[JSON_EXPORT] Chemin absolu cible : {abs_path}"), abs_path=abs_path))
 
     abs_path.parent.mkdir(parents=True, exist_ok=True)
     json_str = _dumps(run, indent=indent)
@@ -51,7 +52,8 @@ def export_json(run: ScanRun, output_path: str | Path, indent: int = 2) -> Path:
     with open(abs_path, "w", encoding="utf-8") as handle:
         handle.write(json_str)
 
-    logger.info(f"[JSON_EXPORT] Export termine avec succes : {abs_path} ({len(json_str)} octets)")
+    logger.info(log_text(N_("[JSON_EXPORT] Export terminé avec succès : {abs_path} ({count} "
+                            "octets)"), abs_path=abs_path, count=len(json_str)))
     return abs_path
 
 

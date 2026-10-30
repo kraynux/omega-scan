@@ -6,6 +6,8 @@ from typing import TYPE_CHECKING
 
 from textual.widgets import DataTable
 
+from omega_scan.shared.i18n import _
+
 if TYPE_CHECKING:
     from omega_scan.application.dto.scan_dto import FindingDTO
 
@@ -17,7 +19,7 @@ class FindingsTable(DataTable[str]):
 
     def on_mount(self) -> None:
         self.cursor_type = "row"
-        self.add_columns("Categorie", "Regle", "Titre", "Statut", "Severite")
+        self.add_columns(_("Catégorie"), _("Règle"), _("Titre"), _("Statut"), _("Sévérité"))
 
     def set_findings(self, findings: tuple[FindingDTO, ...]) -> None:
         self.clear()
@@ -26,7 +28,7 @@ class FindingsTable(DataTable[str]):
             self.add_row(
                 finding.category,
                 finding.rule_id,
-                finding.title,
+                _(finding.title),
                 finding.status,
                 finding.severity,
                 key=finding.finding_id,

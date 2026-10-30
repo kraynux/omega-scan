@@ -11,6 +11,7 @@ from omega_scan.domain.scans.models import ScanError
 from omega_scan.domain.targets.models import Target
 from omega_scan.infrastructure.exceptions import build_error_from_exception
 from omega_scan.infrastructure.logging.app_logger import get_logger
+from omega_scan.shared.i18n import N_, log_text
 
 
 class HttpxMethodsProber:
@@ -24,18 +25,19 @@ class HttpxMethodsProber:
         errors: list[ScanError],
     ) -> dict[str, Any]:
         logger = get_logger()
-        logger.info(f"[METHODS_PROBE] Debut du test des methodes HTTP pour {target.normalized_host}")
+        logger.info(log_text(N_("[METHODS_PROBE] Début du test des méthodes HTTP pour "
+                                "{normalized_host}"), normalized_host=target.normalized_host))
 
         result: dict[str, Any] = {"methods_tested": []}
 
         preferred_scheme = http_data.get("overview", {}).get("preferred_scheme")
         if not preferred_scheme:
-            logger.warning("[METHODS_PROBE] Aucun schema prefere, test des methodes annule")
+            logger.warning(N_("[METHODS_PROBE] Aucun schéma préféré, test des méthodes annulé"))
             return result
 
         base_url = http_data.get(preferred_scheme, {}).get("final_url")
         if not base_url:
-            logger.warning("[METHODS_PROBE] Pas d'URL finale, test des methodes annule")
+            logger.warning(N_("[METHODS_PROBE] Pas d'URL finale, test des méthodes annulé"))
             return result
 
         methods_to_test = profile.http_methods_tested
@@ -48,7 +50,7 @@ class HttpxMethodsProber:
         )
 
         for method in methods_to_test:
-            logger.debug(f"[METHODS_PROBE] Test de la methode {method} sur {base_url}")
+            logger.debug(log_text(N_("[METHODS_PROBE] Test de la méthode {method} sur {base_url}"), method=method, base_url=base_url))
             method_result: dict[str, Any] = {
                 "method": method,
                 "status_code": None,
@@ -86,5 +88,6 @@ class HttpxMethodsProber:
 
             result["methods_tested"].append(method_result)
 
-        logger.info(f"[METHODS_PROBE] Fin du test des methodes : {len(result['methods_tested'])} methodes testees")
+        logger.info(log_text(N_("[METHODS_PROBE] Fin du test des méthodes : {count} méthodes "
+                                "testées"), count=len(result['methods_tested'])))
         return result

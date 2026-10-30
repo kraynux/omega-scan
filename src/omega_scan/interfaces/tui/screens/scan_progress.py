@@ -21,6 +21,7 @@ from omega_scan.domain.errors import DomainError
 from omega_scan.interfaces.tui.screens.findings import FindingsScreen
 from omega_scan.interfaces.tui.widgets.progress_panel import ProgressPanel
 from omega_scan.shared.clock import utc_now
+from omega_scan.shared.i18n import _, log_message
 
 if TYPE_CHECKING:
     from omega_scan.app.dependency_container import DependencyContainer
@@ -37,7 +38,8 @@ class _RelayHandler(logging.Handler):
         self._callback = callback
 
     def emit(self, record: logging.LogRecord) -> None:
-        self._callback(record.getMessage())
+        # Plan i18n R2 : le fichier journal reste en francais, l'ecran retraduit la ligne.
+        self._callback(log_message(record.msg, record.args))
 
 
 class ScanProgressScreen(Screen[None]):
@@ -64,8 +66,8 @@ class ScanProgressScreen(Screen[None]):
         self._replay_scan_id = replay_scan_id
 
     def compose(self) -> ComposeResult:
-        label = self._raw_target or f"relecture de {self._replay_scan_id}"
-        yield ProgressPanel(message=f"Scan de {label} en cours...")
+        label = self._raw_target or _("relecture de {replay_scan_id}").format(replay_scan_id=self._replay_scan_id)
+        yield ProgressPanel(message=_("Scan de {label} en cours...").format(label=label))
 
     def on_mount(self) -> None:
         self.run_worker(self._run_scan(), exclusive=True)
@@ -130,7 +132,7 @@ class ScanProgressScreen(Screen[None]):
         finally:
             technical_logger.removeHandler(handler)
         if isinstance(result, Err):
-            self.app.notify(str(result.error), title="Scan refuse", severity="error")
+            self.app.notify(str(result.error), title=_("Scan refusé"), severity="error")
             self.dismiss()
             return
         self.app.switch_screen(FindingsScreen(container=self._container, scan=result.value))

@@ -17,12 +17,13 @@ Page officiel : [OMEGA-SCAN](https://kraynux.snake-mackarel.ts.net/omega-scan/) 
 [![Platform](https://img.shields.io/badge/Platform-Linux-informational.svg)](https://www.linux.org/)
 [![Interface](https://img.shields.io/badge/Interface-TUI%20%2B%20Rich-cyan.svg)](https://github.com/Textualize/rich)
 
-**Langues:**  
-[Français](README.md) · [English](README.en.md) · [Español](README.es.md) · [Русский](README.ru.md) · [中文](README.zh-CN.md)
+🌐 Interface et rapports exportés disponibles en **17 langues** — voir [Langues de l'interface](#langues-de-linterface).  
+**Langues :**  
+<img src="https://flagcdn.com/w20/fr.png" alt="Français" style="height:14px;"> [Français](README.md) · <img src="https://flagcdn.com/w20/gb.png" alt="English" style="height:14px;"> [English](docs/translation/en/README.md) · <img src="https://flagcdn.com/w20/es.png" alt="Español" style="height:14px;"> [Español](docs/translation/es/README.md) · <img src="https://flagcdn.com/w20/br.png" alt="Português (Brasil)" style="height:14px;"> [Português (Brasil)](docs/translation/pt-BR/README.md) · <img src="https://flagcdn.com/w20/it.png" alt="Italiano" style="height:14px;"> [Italiano](docs/translation/it/README.md) · <img src="https://flagcdn.com/w20/de.png" alt="Deutsch" style="height:14px;"> [Deutsch](docs/translation/de/README.md) · <img src="https://flagcdn.com/w20/nl.png" alt="Nederlands" style="height:14px;"> [Nederlands](docs/translation/nl/README.md) · <img src="https://flagcdn.com/w20/pl.png" alt="Polski" style="height:14px;"> [Polski](docs/translation/pl/README.md) · <img src="https://flagcdn.com/w20/ru.png" alt="Русский" style="height:14px;"> [Русский](docs/translation/ru/README.md) · <img src="https://flagcdn.com/w20/cn.png" alt="中文" style="height:14px;"> [中文](docs/translation/zh-CN/README.md) · <img src="https://flagcdn.com/w20/vn.png" alt="Tiếng Việt" style="height:14px;"> [Tiếng Việt](docs/translation/vi/README.md) · <img src="https://flagcdn.com/w20/th.png" alt="ไทย" style="height:14px;"> [ไทย](docs/translation/th/README.md) · <img src="https://flagcdn.com/w20/id.png" alt="Bahasa Indonesia" style="height:14px;"> [Bahasa Indonesia](docs/translation/id/README.md) · <img src="https://flagcdn.com/w20/jp.png" alt="日本語" style="height:14px;"> [日本語](docs/translation/ja/README.md) · <img src="https://flagcdn.com/w20/kr.png" alt="한국어" style="height:14px;"> [한국어](docs/translation/ko/README.md) · <img src="https://flagcdn.com/w20/in.png" alt="हिन्दी" style="height:14px;"> [हिन्दी](docs/translation/hi/README.md) · <img src="https://flagcdn.com/w20/ae.png" alt="العربية" style="height:14px;"> [العربية](docs/translation/ar/README.md)
 
 ---
 
-**Omega-scan** est un outil TUI + CLI qui analyse l'hygiène de configuration visible de vos services HTTP/HTTPS. Il observe, collecte des faits, applique des règles interprétatives et produit des rapports actionnables, sans jamais effectuer d'attaque active. Troisième outil de la suite `omega-` (après `omega-fire` et `omega-stress`), structuré en Clean Architecture — voir `ARCHITECTURE.md` pour le détail technique complet.
+**Omega-scan** est un outil TUI + CLI qui analyse l'hygiène de configuration visible de vos services HTTP/HTTPS. Il observe, collecte des faits, applique des règles interprétatives et produit des rapports actionnables, sans jamais effectuer d'attaque active. Outil de la suite `omega-`, structuré en Clean Architecture — voir `ARCHITECTURE.md` pour le détail technique complet.
 
 ## 1. Vision et périmètre
 
@@ -122,6 +123,10 @@ Parcours : écran de démarrage (se ferme sur une touche ou un clic) → menu pr
 | `r` | Rafraîchir la détection du terminal |
 | `a` | Afficher l'aide |
 | `q` | Quitter (avec confirmation) |
+
+### Langues de l'interface
+
+L'interface est disponible en 17 langues : français, anglais, espagnol, portugais (Brésil), italien, allemand, néerlandais, polonais, russe, chinois simplifié, vietnamien, thaï, indonésien, japonais, coréen, hindi et arabe. Le choix se fait dans les Réglages (« Langue / Language ») et s'applique après un redémarrage de l'interface ; la variable `OMEGA_SCAN_LANG` (par exemple `OMEGA_SCAN_LANG=en ./omega-scan.sh`) force une langue le temps d'une session. Lancé depuis omega-suite, omega-scan prend la langue de la suite. Sur une console texte Linux (TTY), les langues à écriture non latine s'affichent en anglais pour la session. La ligne de commande reste en français.
 
 ### Mode scriptable (CLI)
 
@@ -299,7 +304,7 @@ Le TUI (Textual) détecte automatiquement les capacités du terminal (couleur, t
 
 ## 10. Exports
 
-Les rapports sont générés dans `var/exports/` par défaut (chemin runtime, voir `ARCHITECTURE.md`), ou au chemin indiqué (`--output` en CLI, boîte de dialogue en TUI).
+Les rapports texte et HTML s'écrivent dans la langue choisie dans les Réglages (« Langue des exports », par défaut celle de l'interface) ; le JSON reste une donnée, non traduite. Les rapports sont générés dans `var/exports/` par défaut (chemin runtime, voir `ARCHITECTURE.md`), ou au chemin indiqué (`--output` en CLI, boîte de dialogue en TUI).
 
 ### JSON, source de vérité
 

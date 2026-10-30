@@ -14,6 +14,7 @@ from omega_scan.domain.findings.models import Finding
 from omega_scan.domain.scans.models import ScanRun, Summary
 from omega_scan.domain.targets.models import Target
 from omega_scan.infrastructure.exceptions import StorageError
+from omega_scan.shared.i18n import _
 
 
 class SqliteScanRepository:
@@ -42,7 +43,7 @@ class SqliteScanRepository:
             self._connection.commit()
         except sqlite3.Error as exc:
             raise StorageError(
-                f"Echec de sauvegarde du scan {run.meta.get('scan_id')!r} : {exc}"
+                _("Échec de sauvegarde du scan {get!r} : {exc}").format(get=run.meta.get('scan_id'), exc=exc)
             ) from exc
 
     def get(self, scan_id: str) -> ScanRun | None:
@@ -51,7 +52,7 @@ class SqliteScanRepository:
                 "SELECT run_json FROM scans WHERE scan_id = ?", (scan_id,)
             ).fetchone()
         except sqlite3.Error as exc:
-            raise StorageError(f"Echec de lecture du scan {scan_id!r} : {exc}") from exc
+            raise StorageError(_("Échec de lecture du scan {scan_id!r} : {exc}").format(scan_id=scan_id, exc=exc)) from exc
         return _run_from_json(row["run_json"]) if row is not None else None
 
     def list_history(
@@ -71,7 +72,7 @@ class SqliteScanRepository:
         try:
             rows = self._connection.execute(query, params).fetchall()
         except sqlite3.Error as exc:
-            raise StorageError(f"Echec de listage de l'historique des scans : {exc}") from exc
+            raise StorageError(_("Échec de listage de l'historique des scans : {exc}").format(exc=exc)) from exc
         return tuple(_run_from_json(row["run_json"]) for row in rows)
 
     def clear(self) -> None:
@@ -79,7 +80,7 @@ class SqliteScanRepository:
             self._connection.execute("DELETE FROM scans")
             self._connection.commit()
         except sqlite3.Error as exc:
-            raise StorageError(f"Echec de purge de l'historique des scans : {exc}") from exc
+            raise StorageError(_("Échec de purge de l'historique des scans : {exc}").format(exc=exc)) from exc
 
 
 def _run_from_json(raw: str) -> ScanRun:

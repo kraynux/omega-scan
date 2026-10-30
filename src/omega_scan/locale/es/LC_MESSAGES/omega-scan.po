@@ -1,0 +1,1540 @@
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: omega-scan\n"
+"Language: es\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Omega-Status: testing\n"
+
+#: src/omega_scan/application/commands/export_scan_report.py:31 src/omega_scan/application/commands/replay_scan.py:45
+msgid "Aucun scan trouvé pour l'identifiant {scan_id!r}."
+msgstr "No se ha encontrado ningún escaneo con el identificador {scan_id!r}."
+
+#: src/omega_scan/application/commands/select_theme.py:21
+msgid "Thème inconnu : {theme_name!r}. Choix : {value}"
+msgstr "Tema desconocido: {theme_name!r}. Opciones: {value}"
+
+#: src/omega_scan/application/pipeline/guards/authorization_guard.py:33
+msgid "Cible {normalized_host!r} non autorisée : ni épinglée, ni confirmation explicite fournie pour ce scan."
+msgstr "Objetivo {normalized_host!r} no autorizado: ni anclado, ni confirmado explícitamente para este escaneo."
+
+#: src/omega_scan/application/queries/compare_scans.py:29
+msgid "Aucun scan trouvé pour l'identifiant {previous_scan_id!r}."
+msgstr "No se ha encontrado ningún escaneo con el identificador {previous_scan_id!r}."
+
+#: src/omega_scan/application/queries/compare_scans.py:34
+msgid "Aucun scan trouvé pour l'identifiant {current_scan_id!r}."
+msgstr "No se ha encontrado ningún escaneo con el identificador {current_scan_id!r}."
+
+#: src/omega_scan/domain/checks/cookies/service.py:49
+#, python-brace-format
+msgid "Cookie sans attribut Secure : {get}"
+msgstr "Cookie sin atributo Secure: {get}"
+
+#: src/omega_scan/domain/checks/cookies/service.py:55
+#, python-brace-format
+msgid "Le cookie '{get}' est posé sur une réponse HTTPS sans l'attribut Secure."
+msgstr "La cookie '{get}' se establece en una respuesta HTTPS sin el atributo Secure."
+
+#: src/omega_scan/domain/checks/cookies/service.py:57
+msgid "Le cookie peut être transmis en clair si le site est aussi accessible en HTTP."
+msgstr "La cookie puede transmitirse en claro si el sitio también es accesible por HTTP."
+
+#: src/omega_scan/domain/checks/cookies/service.py:59
+msgid "Ajouter l'attribut Secure à ce cookie."
+msgstr "Añadir el atributo Secure a esta cookie."
+
+#: src/omega_scan/domain/checks/cookies/service.py:91
+#, python-brace-format
+msgid "Cookie sans attribut HttpOnly : {get}"
+msgstr "Cookie sin atributo HttpOnly: {get}"
+
+#: src/omega_scan/domain/checks/cookies/service.py:96
+#, python-brace-format
+msgid "Le cookie '{get}' n'a pas l'attribut HttpOnly."
+msgstr "La cookie '{get}' no tiene el atributo HttpOnly."
+
+#: src/omega_scan/domain/checks/cookies/service.py:97
+msgid "Le cookie est accessible en JavaScript, ce qui aggrave l'impact d'un XSS."
+msgstr "La cookie es accesible desde JavaScript, lo que agrava el impacto de un XSS."
+
+#: src/omega_scan/domain/checks/cookies/service.py:99
+msgid "Ajouter l'attribut HttpOnly si ce cookie n'est pas requis côté client."
+msgstr "Añadir el atributo HttpOnly si esta cookie no es necesaria en el lado del cliente."
+
+#: src/omega_scan/domain/checks/cookies/service.py:132
+msgid "l'attribut SameSite est absent"
+msgstr "falta el atributo SameSite"
+
+#: src/omega_scan/domain/checks/cookies/service.py:134
+msgid "SameSite=None est déclaré sans l'attribut Secure"
+msgstr "SameSite=None se declara sin el atributo Secure"
+
+#: src/omega_scan/domain/checks/cookies/service.py:140
+#, python-brace-format
+msgid "Cookie à risque CSRF : {get}"
+msgstr "Cookie con riesgo de CSRF: {get}"
+
+#: src/omega_scan/domain/checks/cookies/service.py:145
+#, python-brace-format
+msgid "Le cookie '{get}' est à risque : {reason}."
+msgstr "La cookie '{get}' está en riesgo: {reason}."
+
+#: src/omega_scan/domain/checks/cookies/service.py:146
+msgid "Le cookie peut être envoyé lors de requêtes intersites, favorisant les attaques CSRF."
+msgstr "La cookie puede enviarse en peticiones entre sitios, lo que favorece los ataques CSRF."
+
+#: src/omega_scan/domain/checks/cookies/service.py:148
+msgid "Définir SameSite=Lax ou Strict, ou SameSite=None accompagné de Secure."
+msgstr "Definir SameSite=Lax o Strict, o SameSite=None junto con Secure."
+
+#: src/omega_scan/domain/checks/cors/service.py:47
+msgid "CORS wildcard combiné à des credentials autorisés"
+msgstr "Comodín CORS combinado con credenciales autorizadas"
+
+#: src/omega_scan/domain/checks/cors/service.py:53
+msgid "Access-Control-Allow-Origin: * est combiné à Access-Control-Allow-Credentials: true."
+msgstr "Access-Control-Allow-Origin: * se combina con Access-Control-Allow-Credentials: true."
+
+#: src/omega_scan/domain/checks/cors/service.py:56
+msgid "N'importe quel site tiers peut lire des réponses authentifiées de l'utilisateur."
+msgstr "Cualquier sitio de terceros puede leer las respuestas autenticadas del usuario."
+
+#: src/omega_scan/domain/checks/cors/service.py:58
+msgid "Ne jamais combiner un wildcard avec Allow-Credentials ; whitelister les origines."
+msgstr "No combinar nunca un comodín con Allow-Credentials; poner los orígenes en una lista blanca."
+
+#: src/omega_scan/domain/checks/cors/service.py:83
+msgid "Origine arbitraire réfléchie dans Access-Control-Allow-Origin"
+msgstr "Origen arbitrario reflejado en Access-Control-Allow-Origin"
+
+#: src/omega_scan/domain/checks/cors/service.py:89
+msgid "Le service reflète telle quelle une origine arbitraire et non reconnue dans Access-Control-Allow-Origin."
+msgstr "El servicio refleja tal cual un origen arbitrario y no reconocido en Access-Control-Allow-Origin."
+
+#: src/omega_scan/domain/checks/cors/service.py:92
+msgid "Absence apparente de validation d'origine : un site tiers peut lire les réponses."
+msgstr "Aparente ausencia de validación del origen: un sitio de terceros puede leer las respuestas."
+
+#: src/omega_scan/domain/checks/cors/service.py:94
+msgid "Valider l'origine reçue contre une liste explicite avant de la réfléchir."
+msgstr "Validar el origen recibido contra una lista explícita antes de reflejarlo."
+
+#: src/omega_scan/domain/checks/exposure/service.py:39
+#, python-brace-format
+msgid "Chemin admin accessible : {path}"
+msgstr "Ruta de administración accesible: {path}"
+
+#: src/omega_scan/domain/checks/exposure/service.py:44
+#, python-brace-format
+msgid "Le chemin {path} est accessible sans authentification."
+msgstr "La ruta {path} es accesible sin autenticación."
+
+#: src/omega_scan/domain/checks/exposure/service.py:45
+msgid "Interface d'administration potentiellement exposée."
+msgstr "Interfaz de administración potencialmente expuesta."
+
+#: src/omega_scan/domain/checks/exposure/service.py:46
+msgid "Restreindre l'accès par IP ou exiger une authentification forte."
+msgstr "Restringir el acceso por IP o exigir una autenticación fuerte."
+
+#: src/omega_scan/domain/checks/exposure/service.py:87
+#, python-brace-format
+msgid "Fichier sensible accessible : {path}"
+msgstr "Archivo sensible accesible: {path}"
+
+#: src/omega_scan/domain/checks/exposure/service.py:92
+#, python-brace-format
+msgid "Le fichier {path} est accessible publiquement."
+msgstr "El archivo {path} es accesible públicamente."
+
+#: src/omega_scan/domain/checks/exposure/service.py:93
+msgid "Fuite de données sensibles (credentials, configuration)."
+msgstr "Fuga de datos sensibles (credenciales, configuración)."
+
+#: src/omega_scan/domain/checks/exposure/service.py:94
+msgid "Bloquer l'accès à ces fichiers via la configuration du serveur web."
+msgstr "Bloquear el acceso a estos archivos en la configuración del servidor web."
+
+#: src/omega_scan/domain/checks/headers/service.py:42
+msgid "Content-Security-Policy absente"
+msgstr "Content-Security-Policy ausente"
+
+#: src/omega_scan/domain/checks/headers/service.py:47
+msgid "Le header Content-Security-Policy est absent sur une page HTML."
+msgstr "El header Content-Security-Policy falta en una página HTML."
+
+#: src/omega_scan/domain/checks/headers/service.py:48
+msgid "Vulnérable aux attaques XSS et injection de contenu."
+msgstr "Vulnerable a ataques XSS e inyección de contenido."
+
+#: src/omega_scan/domain/checks/headers/service.py:49
+msgid "Ajouter un header Content-Security-Policy restrictif."
+msgstr "Añadir un header Content-Security-Policy restrictivo."
+
+#: src/omega_scan/domain/checks/headers/service.py:99
+msgid "Content-Security-Policy trop permissive"
+msgstr "Content-Security-Policy demasiado permisiva"
+
+#: src/omega_scan/domain/checks/headers/service.py:104
+#, python-brace-format
+msgid "CSP présente mais contient des directives permissives: {join}"
+msgstr "CSP presente pero contiene directivas permisivas: {join}"
+
+#: src/omega_scan/domain/checks/headers/service.py:105
+msgid "La protection CSP est affaiblie."
+msgstr "La protección CSP está debilitada."
+
+#: src/omega_scan/domain/checks/headers/service.py:106
+msgid "Restreindre les directives CSP (éviter 'unsafe-inline', '*', etc.)."
+msgstr "Restringir las directivas CSP (evitar 'unsafe-inline', '*', etc.)."
+
+#: src/omega_scan/domain/checks/headers/service.py:111
+#, python-brace-format
+msgid "Motifs permissifs détectés: {join}"
+msgstr "Patrones permisivos detectados: {join}"
+
+#: src/omega_scan/domain/checks/headers/service.py:150
+msgid "X-Content-Type-Options absent ou invalide"
+msgstr "X-Content-Type-Options ausente o no válido"
+
+#: src/omega_scan/domain/checks/headers/service.py:155
+msgid "Le header X-Content-Type-Options: nosniff est absent."
+msgstr "Falta el header X-Content-Type-Options: nosniff."
+
+#: src/omega_scan/domain/checks/headers/service.py:156
+msgid "Vulnérable aux attaques MIME sniffing."
+msgstr "Vulnerable a ataques de MIME sniffing."
+
+#: src/omega_scan/domain/checks/headers/service.py:157
+msgid "Ajouter le header: X-Content-Type-Options: nosniff"
+msgstr "Añadir el header: X-Content-Type-Options: nosniff"
+
+#: src/omega_scan/domain/checks/headers/service.py:198 src/omega_scan/domain/checks/information_leaks/service.py:45
+msgid "Bannière Server exposée"
+msgstr "Banner Server expuesto"
+
+#: src/omega_scan/domain/checks/headers/service.py:203
+#, python-brace-format
+msgid "Le header Server expose des informations: {server}"
+msgstr "El header Server expone información: {server}"
+
+#: src/omega_scan/domain/checks/headers/service.py:204 src/omega_scan/domain/checks/information_leaks/service.py:51
+msgid "Fuite d'information sur la technologie serveur."
+msgstr "Fuga de información sobre la tecnología del servidor."
+
+#: src/omega_scan/domain/checks/headers/service.py:205 src/omega_scan/domain/checks/information_leaks/service.py:52
+msgid "Configurer le serveur pour masquer ou minimiser le header Server."
+msgstr "Configurar el servidor para ocultar o reducir el header Server."
+
+#: src/omega_scan/domain/checks/headers/service.py:257
+msgid "Cache-Control absent ou permissif"
+msgstr "Cache-Control ausente o permisivo"
+
+#: src/omega_scan/domain/checks/headers/service.py:263
+msgid "Le header Cache-Control est absent ou ne restreint pas explicitement la mise en cache (valeur observée : {cache_control!r})."
+msgstr "El header Cache-Control falta o no restringe explícitamente el almacenamiento en caché (valor observado: {cache_control!r})."
+
+#: src/omega_scan/domain/checks/headers/service.py:266
+msgid "Du contenu potentiellement sensible pourrait être conservé par des caches partagés."
+msgstr "Contenido potencialmente sensible podría quedar almacenado en cachés compartidas."
+
+#: src/omega_scan/domain/checks/headers/service.py:268
+msgid "Définir Cache-Control: no-store (ou private) sur les réponses porteuses de données utilisateur."
+msgstr "Definir Cache-Control: no-store (o private) en las respuestas que contienen datos de usuario."
+
+#: src/omega_scan/domain/checks/information_leaks/service.py:50
+#, python-brace-format
+msgid "Le header Server expose des informations : {server}"
+msgstr "El header Server expone información: {server}"
+
+#: src/omega_scan/domain/checks/information_leaks/service.py:71
+msgid "Bannière X-Powered-By exposée"
+msgstr "Banner X-Powered-By expuesto"
+
+#: src/omega_scan/domain/checks/information_leaks/service.py:76
+#, python-brace-format
+msgid "Le header X-Powered-By expose des informations : {powered_by}"
+msgstr "El header X-Powered-By expone información: {powered_by}"
+
+#: src/omega_scan/domain/checks/information_leaks/service.py:77
+msgid "Fuite d'information sur le framework/technologie."
+msgstr "Fuga de información sobre el framework/tecnología."
+
+#: src/omega_scan/domain/checks/information_leaks/service.py:78
+msgid "Supprimer le header X-Powered-By de la configuration."
+msgstr "Eliminar el header X-Powered-By de la configuración."
+
+#: src/omega_scan/domain/checks/information_leaks/service.py:119
+msgid "Messages d'erreur détaillés exposés"
+msgstr "Mensajes de error detallados expuestos"
+
+#: src/omega_scan/domain/checks/information_leaks/service.py:124
+#, python-brace-format
+msgid "Des messages d'erreur détaillés sont visibles dans la réponse : {join}"
+msgstr "Hay mensajes de error detallados visibles en la respuesta: {join}"
+
+#: src/omega_scan/domain/checks/information_leaks/service.py:125
+msgid "Fuite d'information sur l'implémentation, potentiellement exploitable."
+msgstr "Fuga de información sobre la implementación, potencialmente explotable."
+
+#: src/omega_scan/domain/checks/information_leaks/service.py:126
+msgid "Configurer le serveur pour afficher des pages d'erreur génériques en production."
+msgstr "Configurar el servidor para mostrar páginas de error genéricas en producción."
+
+#: src/omega_scan/domain/checks/information_leaks/service.py:173
+msgid "Stack trace exposé"
+msgstr "Stack trace expuesto"
+
+#: src/omega_scan/domain/checks/information_leaks/service.py:178
+#, python-brace-format
+msgid "Un stack trace est visible dans la réponse : {join}"
+msgstr "Hay un stack trace visible en la respuesta: {join}"
+
+#: src/omega_scan/domain/checks/information_leaks/service.py:179
+msgid "Fuite d'information critique sur l'implémentation, paths internes, versions."
+msgstr "Fuga de información crítica sobre la implementación, rutas internas, versiones."
+
+#: src/omega_scan/domain/checks/information_leaks/service.py:181
+msgid "Désactiver l'affichage des stack traces en production. Utiliser des pages d'erreur génériques."
+msgstr "Desactivar la visualización de los stack traces en producción. Usar páginas de error genéricas."
+
+#: src/omega_scan/domain/checks/information_leaks/service.py:217
+msgid "Fichier robots.txt présent"
+msgstr "Archivo robots.txt presente"
+
+#: src/omega_scan/domain/checks/information_leaks/service.py:222
+msgid "Le fichier /robots.txt est présent et peut révéler des chemins sensibles."
+msgstr "El archivo /robots.txt está presente y puede revelar rutas sensibles."
+
+#: src/omega_scan/domain/checks/information_leaks/service.py:224
+msgid "Fuite d'information mineure sur la structure du site."
+msgstr "Fuga de información menor sobre la estructura del sitio."
+
+#: src/omega_scan/domain/checks/information_leaks/service.py:225
+msgid "Vérifier que /robots.txt ne liste pas de chemins sensibles ou administratifs."
+msgstr "Comprobar que /robots.txt no enumera rutas sensibles o administrativas."
+
+#: src/omega_scan/domain/checks/information_leaks/service.py:233
+#, python-brace-format
+msgid "{get}://{get2}/robots.txt"
+msgstr "{get}://{get2}/robots.txt"
+
+#: src/omega_scan/domain/checks/information_leaks/service.py:262
+msgid "Fichier security.txt présent"
+msgstr "Archivo security.txt presente"
+
+#: src/omega_scan/domain/checks/information_leaks/service.py:267
+msgid "Le fichier /.well-known/security.txt est présent (RFC 9116)."
+msgstr "El archivo /.well-known/security.txt está presente (RFC 9116)."
+
+#: src/omega_scan/domain/checks/information_leaks/service.py:268
+msgid "Bonne pratique : facilite le signalement responsable de vulnérabilités."
+msgstr "Buena práctica: facilita la notificación responsable de vulnerabilidades."
+
+#: src/omega_scan/domain/checks/information_leaks/service.py:269 src/omega_scan/domain/checks/transport/service.py:130
+msgid "Aucune action requise."
+msgstr "No se requiere ninguna acción."
+
+#: src/omega_scan/domain/checks/information_leaks/service.py:277
+#, python-brace-format
+msgid "{get}://{get2}/.well-known/security.txt"
+msgstr "{get}://{get2}/.well-known/security.txt"
+
+#: src/omega_scan/domain/checks/information_leaks/service.py:323
+#, python-brace-format
+msgid "Header technique exposé : {verbose_header}"
+msgstr "Header técnico expuesto: {verbose_header}"
+
+#: src/omega_scan/domain/checks/information_leaks/service.py:328
+#, python-brace-format
+msgid "Le header {verbose_header} expose des informations techniques : {value}"
+msgstr "El header {verbose_header} expone información técnica: {value}"
+
+#: src/omega_scan/domain/checks/information_leaks/service.py:330
+msgid "Fuite d'information sur l'implémentation."
+msgstr "Fuga de información sobre la implementación."
+
+#: src/omega_scan/domain/checks/information_leaks/service.py:331
+#, python-brace-format
+msgid "Supprimer le header {verbose_header} de la configuration."
+msgstr "Eliminar el header {verbose_header} de la configuración."
+
+#: src/omega_scan/domain/checks/methods/policies.py:12
+msgid "Méthode HTTP OPTIONS activée"
+msgstr "Método HTTP OPTIONS activado"
+
+#: src/omega_scan/domain/checks/methods/policies.py:15
+msgid "La méthode OPTIONS est activée et peut révéler les méthodes autorisées."
+msgstr "El método OPTIONS está activado y puede revelar los métodos permitidos."
+
+#: src/omega_scan/domain/checks/methods/policies.py:16
+msgid "Fuite d'information mineure sur la configuration du serveur."
+msgstr "Fuga de información menor sobre la configuración del servidor."
+
+#: src/omega_scan/domain/checks/methods/policies.py:17
+msgid "Désactiver la méthode OPTIONS si elle n'est pas nécessaire."
+msgstr "Desactivar el método OPTIONS si no es necesario."
+
+#: src/omega_scan/domain/checks/methods/policies.py:21
+msgid "Méthode HTTP TRACE activée"
+msgstr "Método HTTP TRACE activado"
+
+#: src/omega_scan/domain/checks/methods/policies.py:24
+msgid "La méthode TRACE est activée, ce qui peut faciliter les attaques Cross-Site Tracing (XST)."
+msgstr "El método TRACE está activado, lo que puede facilitar los ataques Cross-Site Tracing (XST)."
+
+#: src/omega_scan/domain/checks/methods/policies.py:26
+msgid "Risque de vol de cookies ou d'identifiants via XST."
+msgstr "Riesgo de robo de cookies o de credenciales mediante XST."
+
+#: src/omega_scan/domain/checks/methods/policies.py:27
+msgid "Désactiver la méthode TRACE dans la configuration du serveur web."
+msgstr "Desactivar el método TRACE en la configuración del servidor web."
+
+#: src/omega_scan/domain/checks/methods/policies.py:31
+msgid "Méthode HTTP PUT activée"
+msgstr "Método HTTP PUT activado"
+
+#: src/omega_scan/domain/checks/methods/policies.py:34
+msgid "La méthode PUT est activée, permettant potentiellement l'upload de fichiers."
+msgstr "El método PUT está activado, lo que puede permitir la subida de archivos."
+
+#: src/omega_scan/domain/checks/methods/policies.py:36
+msgid "Risque de dépôt de contenu malveillant ou de modification de ressources."
+msgstr "Riesgo de depósito de contenido malicioso o de modificación de recursos."
+
+#: src/omega_scan/domain/checks/methods/policies.py:37
+msgid "Désactiver la méthode PUT sauf si explicitement requise et sécurisée."
+msgstr "Desactivar el método PUT salvo si es explícitamente necesario y está protegido."
+
+#: src/omega_scan/domain/checks/methods/policies.py:41
+msgid "Méthode HTTP DELETE activée"
+msgstr "Método HTTP DELETE activado"
+
+#: src/omega_scan/domain/checks/methods/policies.py:44
+msgid "La méthode DELETE est activée, permettant potentiellement la suppression de ressources."
+msgstr "El método DELETE está activado, lo que puede permitir la eliminación de recursos."
+
+#: src/omega_scan/domain/checks/methods/policies.py:46
+msgid "Risque de suppression non autorisée de données."
+msgstr "Riesgo de eliminación no autorizada de datos."
+
+#: src/omega_scan/domain/checks/methods/policies.py:47
+msgid "Désactiver la méthode DELETE sauf si explicitement requise et sécurisée."
+msgstr "Desactivar el método DELETE salvo si es explícitamente necesario y está protegido."
+
+#: src/omega_scan/domain/checks/methods/policies.py:52
+msgid "Méthode HTTP PATCH activée"
+msgstr "Método HTTP PATCH activado"
+
+#: src/omega_scan/domain/checks/methods/policies.py:55
+msgid "La méthode PATCH est activée, permettant la modification partielle de ressources."
+msgstr "El método PATCH está activado, lo que permite la modificación parcial de recursos."
+
+#: src/omega_scan/domain/checks/methods/policies.py:57
+msgid "Risque de modification non autorisée de données."
+msgstr "Riesgo de modificación no autorizada de datos."
+
+#: src/omega_scan/domain/checks/methods/policies.py:58
+msgid "Désactiver la méthode PATCH sauf si explicitement requise et sécurisée."
+msgstr "Desactivar el método PATCH salvo si es explícitamente necesario y está protegido."
+
+#: src/omega_scan/domain/checks/methods/policies.py:62
+msgid "Méthode HTTP CONNECT activée"
+msgstr "Método HTTP CONNECT activado"
+
+#: src/omega_scan/domain/checks/methods/policies.py:65
+msgid "La méthode CONNECT est activée, permettant l'établissement de tunnels TCP."
+msgstr "El método CONNECT está activado, lo que permite establecer túneles TCP."
+
+#: src/omega_scan/domain/checks/methods/policies.py:67
+msgid "Risque d'utilisation du serveur comme proxy ouvert pour des attaques."
+msgstr "Riesgo de uso del servidor como proxy abierto para ataques."
+
+#: src/omega_scan/domain/checks/methods/policies.py:68
+msgid "Restreindre la méthode CONNECT aux seuls ports nécessaires (ex: 443) ou la désactiver."
+msgstr "Restringir el método CONNECT solo a los puertos necesarios (p. ej. 443) o desactivarlo."
+
+#: src/omega_scan/domain/checks/methods/service.py:49
+msgid " Cependant, elle semble protégée par authentification."
+msgstr " Sin embargo, parece estar protegido por autenticación."
+
+#: src/omega_scan/domain/checks/methods/service.py:51
+msgid "Risque mitigé par la présence d'une authentification."
+msgstr "Riesgo mitigado por la presencia de una autenticación."
+
+#: src/omega_scan/domain/checks/methods/service.py:52
+msgid "Vérifier que l'authentification est robuste."
+msgstr "Comprobar que la autenticación es robusta."
+
+#: src/omega_scan/domain/checks/methods/service.py:78
+msgid " (statut incertain)"
+msgstr " (estado incierto)"
+
+#: src/omega_scan/domain/checks/methods/service.py:83
+msgid " Le statut exact n'a pas pu être déterminé clairement."
+msgstr " No se ha podido determinar claramente el estado exacto."
+
+#: src/omega_scan/domain/checks/tls_depth/service.py:49
+#, python-brace-format
+msgid "Protocole TLS obsolète : {version}"
+msgstr "Protocolo TLS obsoleto: {version}"
+
+#: src/omega_scan/domain/checks/tls_depth/service.py:54
+#, python-brace-format
+msgid "Le service négocie {version}, un protocole obsolète et vulnérable."
+msgstr "El servicio negocia {version}, un protocolo obsoleto y vulnerable."
+
+#: src/omega_scan/domain/checks/tls_depth/service.py:55
+msgid "Vulnérable aux attaques connues sur les protocoles TLS anciens (ex. POODLE, BEAST)."
+msgstr "Vulnerable a ataques conocidos contra los protocolos TLS antiguos (p. ej. POODLE, BEAST)."
+
+#: src/omega_scan/domain/checks/tls_depth/service.py:57
+msgid "Désactiver les protocoles antérieurs à TLSv1.2 côté serveur."
+msgstr "Desactivar los protocolos anteriores a TLSv1.2 en el servidor."
+
+#: src/omega_scan/domain/checks/tls_depth/service.py:85
+#, python-brace-format
+msgid "Suite cryptographique faible : {cipher}"
+msgstr "Suite criptográfica débil: {cipher}"
+
+#: src/omega_scan/domain/checks/tls_depth/service.py:90
+#, python-brace-format
+msgid "La suite cryptographique négociée ({cipher}) est considérée faible."
+msgstr "La suite criptográfica negociada ({cipher}) se considera débil."
+
+#: src/omega_scan/domain/checks/tls_depth/service.py:91
+msgid "Le chiffrement peut être cassé ou affaibli face à un attaquant motivé."
+msgstr "El cifrado puede romperse o debilitarse ante un atacante motivado."
+
+#: src/omega_scan/domain/checks/tls_depth/service.py:92
+msgid "Restreindre la configuration TLS du serveur aux suites modernes (ex. AEAD/GCM)."
+msgstr "Restringir la configuración TLS del servidor a suites modernas (p. ej. AEAD/GCM)."
+
+#: src/omega_scan/domain/checks/transport/service.py:32
+msgid "HTTP accessible sans redirection vers HTTPS"
+msgstr "HTTP accesible sin redirección a HTTPS"
+
+#: src/omega_scan/domain/checks/transport/service.py:37
+msgid "Le service est accessible en HTTP sans redirection automatique vers HTTPS."
+msgstr "El servicio es accesible por HTTP sin redirección automática a HTTPS."
+
+#: src/omega_scan/domain/checks/transport/service.py:38
+msgid "Les données transitent en clair, exposées à l'interception."
+msgstr "Los datos circulan en claro, expuestos a la interceptación."
+
+#: src/omega_scan/domain/checks/transport/service.py:39
+msgid "Configurer une redirection permanente (301) de HTTP vers HTTPS."
+msgstr "Configurar una redirección permanente (301) de HTTP a HTTPS."
+
+#: src/omega_scan/domain/checks/transport/service.py:44
+#, python-brace-format
+msgid "Final URL: {final_url}"
+msgstr "URL final: {final_url}"
+
+#: src/omega_scan/domain/checks/transport/service.py:75
+msgid "HTTPS non accessible"
+msgstr "HTTPS no accesible"
+
+#: src/omega_scan/domain/checks/transport/service.py:80
+msgid "Le service n'est pas accessible en HTTPS."
+msgstr "El servicio no es accesible por HTTPS."
+
+#: src/omega_scan/domain/checks/transport/service.py:81
+msgid "Aucune communication chiffrée possible, données exposées."
+msgstr "Ninguna comunicación cifrada posible, datos expuestos."
+
+#: src/omega_scan/domain/checks/transport/service.py:82
+msgid "Configurer HTTPS avec un certificat valide."
+msgstr "Configurar HTTPS con un certificado válido."
+
+#: src/omega_scan/domain/checks/transport/service.py:87
+#, python-brace-format
+msgid "URL testée: {get}"
+msgstr "URL probada: {get}"
+
+#: src/omega_scan/domain/checks/transport/service.py:123
+msgid "HSTS non évalué (profil local-lab sur LAN)"
+msgstr "HSTS no evaluado (perfil local-lab en LAN)"
+
+#: src/omega_scan/domain/checks/transport/service.py:128
+msgid "HSTS n'est pas évalué en profil local-lab sur loopback/LAN."
+msgstr "HSTS no se evalúa en el perfil local-lab en loopback/LAN."
+
+#: src/omega_scan/domain/checks/transport/service.py:129
+msgid "Aucun impact en environnement local contrôlé."
+msgstr "Ningún impacto en un entorno local controlado."
+
+#: src/omega_scan/domain/checks/transport/service.py:146
+msgid "Header HSTS absent"
+msgstr "Header HSTS ausente"
+
+#: src/omega_scan/domain/checks/transport/service.py:151
+msgid "Le header Strict-Transport-Security est absent."
+msgstr "Falta el header Strict-Transport-Security."
+
+#: src/omega_scan/domain/checks/transport/service.py:152
+msgid "Les navigateurs ne forcent pas HTTPS, vulnérable aux attaques downgrade."
+msgstr "Los navegadores no fuerzan HTTPS, vulnerable a ataques de downgrade."
+
+#: src/omega_scan/domain/checks/transport/service.py:153
+msgid "Ajouter le header: Strict-Transport-Security: max-age=31536000; includeSubDomains"
+msgstr "Añadir el header: Strict-Transport-Security: max-age=31536000; includeSubDomains"
+
+#: src/omega_scan/domain/checks/transport/service.py:200
+msgid "HSTS max-age faible"
+msgstr "HSTS max-age bajo"
+
+#: src/omega_scan/domain/checks/transport/service.py:205
+#, python-brace-format
+msgid "Le max-age HSTS est de {max_age} secondes (< 1 an)."
+msgstr "El max-age de HSTS es de {max_age} segundos (< 1 año)."
+
+#: src/omega_scan/domain/checks/transport/service.py:206
+msgid "La protection HSTS est de courte durée."
+msgstr "La protección HSTS es de corta duración."
+
+#: src/omega_scan/domain/checks/transport/service.py:207
+msgid "Augmenter max-age à au moins 31536000 (1 an)."
+msgstr "Aumentar max-age a al menos 31536000 (1 año)."
+
+#: src/omega_scan/domain/profiles/policies.py:79
+#, python-brace-format
+msgid "Profil inconnu : {name}. Choix : {value}"
+msgstr "Perfil desconocido: {name}. Opciones: {value}"
+
+#: src/omega_scan/domain/reports/service.py:56
+msgid "Scan incomplet : cible injoignable, aucune vérification possible."
+msgstr "Escaneo incompleto: objetivo inalcanzable, ninguna comprobación posible."
+
+#: src/omega_scan/domain/reports/service.py:59
+msgid "Posture de sécurité excellente."
+msgstr "Postura de seguridad excelente."
+
+#: src/omega_scan/domain/reports/service.py:62
+msgid "Posture correcte, quelques améliorations recommandées."
+msgstr "Postura correcta, se recomiendan algunas mejoras."
+
+#: src/omega_scan/domain/reports/service.py:65
+msgid "Posture moyenne, plusieurs points à corriger."
+msgstr "Postura media, varios puntos que corregir."
+
+#: src/omega_scan/domain/reports/service.py:68
+msgid "Posture faible, corrections prioritaires nécessaires."
+msgstr "Postura débil, correcciones prioritarias necesarias."
+
+#: src/omega_scan/domain/reports/service.py:71
+msgid "Posture critique, action immédiate requise."
+msgstr "Postura crítica, se requiere una acción inmediata."
+
+#: src/omega_scan/domain/targets/validation.py:62
+msgid "L'entrée cible est vide."
+msgstr "La entrada del objetivo está vacía."
+
+#: src/omega_scan/domain/targets/validation.py:81
+#, python-brace-format
+msgid "Impossible d'extraire un hôte valide de : {raw_input}"
+msgstr "No se puede extraer un host válido de: {raw_input}"
+
+#: src/omega_scan/infrastructure/exceptions.py:64
+msgid "Timeout de connexion"
+msgstr "Tiempo de conexión agotado"
+
+#: src/omega_scan/infrastructure/exceptions.py:69
+msgid "Connexion refusée"
+msgstr "Conexión rechazada"
+
+#: src/omega_scan/infrastructure/exceptions.py:74
+msgid "Échec de résolution DNS"
+msgstr "Fallo de resolución DNS"
+
+#: src/omega_scan/infrastructure/exceptions.py:79
+msgid "Échec du handshake TLS"
+msgstr "Fallo del handshake TLS"
+
+#: src/omega_scan/infrastructure/exceptions.py:84
+msgid "Connexion réinitialisée par le pair"
+msgstr "Conexión restablecida por el par"
+
+#: src/omega_scan/infrastructure/network/httpx_connectivity_prober.py:30
+#, python-brace-format
+msgid "[CONNECTIVITY] Début du pré-scan pour {normalized_host}"
+msgstr "[CONNECTIVITY] Inicio del pre-escaneo para {normalized_host}"
+
+#: src/omega_scan/infrastructure/network/httpx_connectivity_prober.py:49
+#, python-brace-format
+msgid "[DNS] Résolution de {normalized_host}"
+msgstr "[DNS] Resolución de {normalized_host}"
+
+#: src/omega_scan/infrastructure/network/httpx_connectivity_prober.py:57
+#, python-brace-format
+msgid "[DNS] Résolu : {resolved}"
+msgstr "[DNS] Resuelto: {resolved}"
+
+#: src/omega_scan/infrastructure/network/httpx_connectivity_prober.py:59
+#, python-brace-format
+msgid "[DNS] Aucune adresse résolue pour {normalized_host}"
+msgstr "[DNS] Ninguna dirección resuelta para {normalized_host}"
+
+#: src/omega_scan/infrastructure/network/httpx_connectivity_prober.py:66
+#, python-brace-format
+msgid "Aucune adresse IP résolue pour {normalized_host}"
+msgstr "Ninguna dirección IP resuelta para {normalized_host}"
+
+#: src/omega_scan/infrastructure/network/httpx_connectivity_prober.py:75
+#, python-brace-format
+msgid "[DNS] Échec de résolution : {exc}"
+msgstr "[DNS] Fallo de resolución: {exc}"
+
+#: src/omega_scan/infrastructure/network/httpx_connectivity_prober.py:114
+#, python-brace-format
+msgid "[HTTP] Test de {http_url}"
+msgstr "[HTTP] Prueba de {http_url}"
+
+#: src/omega_scan/infrastructure/network/httpx_connectivity_prober.py:133
+#, python-brace-format
+msgid "[HTTP] {http_url} -> ÉCHEC : {exc}"
+msgstr "[HTTP] {http_url} -> FALLO: {exc}"
+
+#: src/omega_scan/infrastructure/network/httpx_connectivity_prober.py:147
+#, python-brace-format
+msgid "[HTTPS] Test de {https_url}"
+msgstr "[HTTPS] Prueba de {https_url}"
+
+#: src/omega_scan/infrastructure/network/httpx_connectivity_prober.py:171
+#, python-brace-format
+msgid "[HTTPS] {https_url} -> ÉCHEC : {exc}"
+msgstr "[HTTPS] {https_url} -> FALLO: {exc}"
+
+#: src/omega_scan/infrastructure/network/httpx_connectivity_prober.py:189
+msgid "Aucun schéma accessible"
+msgstr "Ningún esquema accesible"
+
+#: src/omega_scan/infrastructure/network/httpx_connectivity_prober.py:191
+msgid "HTTP accessible, HTTPS injoignable"
+msgstr "HTTP accesible, HTTPS inalcanzable"
+
+#: src/omega_scan/infrastructure/network/httpx_connectivity_prober.py:193
+msgid "HTTPS accessible, HTTP injoignable"
+msgstr "HTTPS accesible, HTTP inalcanzable"
+
+#: src/omega_scan/infrastructure/network/httpx_connectivity_prober.py:197
+#, python-brace-format
+msgid "[CONNECTIVITY] Fin du pré-scan : HTTP={http_ok}, HTTPS={https_ok}, first={first_success}, latency={latency_overview_ms}ms"
+msgstr "[CONNECTIVITY] Fin del pre-escaneo: HTTP={http_ok}, HTTPS={https_ok}, first={first_success}, latency={latency_overview_ms}ms"
+
+#: src/omega_scan/infrastructure/network/httpx_http_prober.py:224
+#, python-brace-format
+msgid "[HTTP_PROBE] Début de la collecte HTTP pour {normalized_host}"
+msgstr "[HTTP_PROBE] Inicio de la recopilación HTTP para {normalized_host}"
+
+#: src/omega_scan/infrastructure/network/httpx_http_prober.py:274
+#, python-brace-format
+msgid "[HTTP_PROBE] Fin de la collecte : preferred={preferred_scheme}, proxy={proxy_suspected}, content={content_profile}"
+msgstr "[HTTP_PROBE] Fin de la recopilación: preferred={preferred_scheme}, proxy={proxy_suspected}, content={content_profile}"
+
+#: src/omega_scan/infrastructure/network/httpx_methods_prober.py:28
+#, python-brace-format
+msgid "[METHODS_PROBE] Début du test des méthodes HTTP pour {normalized_host}"
+msgstr "[METHODS_PROBE] Inicio de la prueba de métodos HTTP para {normalized_host}"
+
+#: src/omega_scan/infrastructure/network/httpx_methods_prober.py:35
+msgid "[METHODS_PROBE] Aucun schéma préféré, test des méthodes annulé"
+msgstr "[METHODS_PROBE] Ningún esquema preferido, prueba de métodos cancelada"
+
+#: src/omega_scan/infrastructure/network/httpx_methods_prober.py:40
+msgid "[METHODS_PROBE] Pas d'URL finale, test des méthodes annulé"
+msgstr "[METHODS_PROBE] Sin URL final, prueba de métodos cancelada"
+
+#: src/omega_scan/infrastructure/network/httpx_methods_prober.py:53
+#, python-brace-format
+msgid "[METHODS_PROBE] Test de la méthode {method} sur {base_url}"
+msgstr "[METHODS_PROBE] Prueba del método {method} en {base_url}"
+
+#: src/omega_scan/infrastructure/network/httpx_methods_prober.py:91
+#, python-brace-format
+msgid "[METHODS_PROBE] Fin du test des méthodes : {count} méthodes testées"
+msgstr "[METHODS_PROBE] Fin de la prueba de métodos: {count} métodos probados"
+
+#: src/omega_scan/infrastructure/network/httpx_path_prober.py:50
+#, python-brace-format
+msgid "[PATH_PROBE] Test catch-all : {probe_url}"
+msgstr "[PATH_PROBE] Prueba catch-all: {probe_url}"
+
+#: src/omega_scan/infrastructure/network/httpx_path_prober.py:61
+#, python-brace-format
+msgid "[PATH_PROBE] Catch-all détecté (même profil : {probe_profile})"
+msgstr "[PATH_PROBE] Catch-all detectado (mismo perfil: {probe_profile})"
+
+#: src/omega_scan/infrastructure/network/httpx_path_prober.py:64
+#, python-brace-format
+msgid "[PATH_PROBE] Réponse 200 sur chemin improbable (profil: {probe_profile})"
+msgstr "[PATH_PROBE] Respuesta 200 en una ruta improbable (perfil: {probe_profile})"
+
+#: src/omega_scan/infrastructure/network/httpx_path_prober.py:70
+#, python-brace-format
+msgid "[PATH_PROBE] Test catch-all échoué : {exc}"
+msgstr "[PATH_PROBE] Prueba catch-all fallida: {exc}"
+
+#: src/omega_scan/infrastructure/network/httpx_path_prober.py:142
+#, python-brace-format
+msgid "[PATH_PROBE] Début du path probing pour {normalized_host}"
+msgstr "[PATH_PROBE] Inicio del path probing para {normalized_host}"
+
+#: src/omega_scan/infrastructure/network/httpx_path_prober.py:147
+msgid "[PATH_PROBE] Path probing désactivé par le profil"
+msgstr "[PATH_PROBE] Path probing desactivado por el perfil"
+
+#: src/omega_scan/infrastructure/network/httpx_path_prober.py:153
+msgid "[PATH_PROBE] Aucun schéma préféré, path probing annulé"
+msgstr "[PATH_PROBE] Ningún esquema preferido, path probing cancelado"
+
+#: src/omega_scan/infrastructure/network/httpx_path_prober.py:158
+msgid "[PATH_PROBE] Pas d'URL finale, path probing annulé"
+msgstr "[PATH_PROBE] Sin URL final, path probing cancelado"
+
+#: src/omega_scan/infrastructure/network/httpx_path_prober.py:163
+msgid "[PATH_PROBE] Test catch-all..."
+msgstr "[PATH_PROBE] Prueba catch-all..."
+
+#: src/omega_scan/infrastructure/network/httpx_path_prober.py:169
+msgid "[PATH_PROBE] Catch-all détecté, les findings de path probing auront une confiance dégradée"
+msgstr "[PATH_PROBE] Catch-all detectado, los hallazgos de path probing tendrán una confianza degradada"
+
+#: src/omega_scan/infrastructure/network/httpx_path_prober.py:177
+#, python-brace-format
+msgid "[PATH_PROBE] Test de {count} chemins..."
+msgstr "[PATH_PROBE] Prueba de {count} rutas..."
+
+#: src/omega_scan/infrastructure/network/httpx_path_prober.py:195
+#, python-brace-format
+msgid "[PATH_PROBE] Fin : {count} chemins testés, {count2} intéressants"
+msgstr "[PATH_PROBE] Fin: {count} rutas probadas, {count2} interesantes"
+
+#: src/omega_scan/infrastructure/network/httpx_tls_prober.py:73
+#, python-brace-format
+msgid "[TLS_PROBE] Début de la collecte TLS pour {normalized_host}"
+msgstr "[TLS_PROBE] Inicio de la recopilación TLS para {normalized_host}"
+
+#: src/omega_scan/infrastructure/network/httpx_tls_prober.py:94
+msgid "[TLS_PROBE] TLS désactivé par le profil"
+msgstr "[TLS_PROBE] TLS desactivado por el perfil"
+
+#: src/omega_scan/infrastructure/network/httpx_tls_prober.py:95
+msgid "TLS désactivé par le profil"
+msgstr "TLS desactivado por el perfil"
+
+#: src/omega_scan/infrastructure/network/httpx_tls_prober.py:111
+#, python-brace-format
+msgid "[TLS_PROBE] Connexion à {tls_host}:{tls_port} (SNI: {sni_hostname})"
+msgstr "[TLS_PROBE] Conexión a {tls_host}:{tls_port} (SNI: {sni_hostname})"
+
+#: src/omega_scan/infrastructure/network/httpx_tls_prober.py:159
+#, python-brace-format
+msgid "Le certificat ne correspond pas à {sni_hostname}. Possible multi-vhost."
+msgstr "El certificado no corresponde a {sni_hostname}. Posible multi-vhost."
+
+#: src/omega_scan/infrastructure/network/httpx_tls_prober.py:166
+#, python-brace-format
+msgid "[TLS_PROBE] TLS OK : version={tls_version}, subject={certificate_subject}"
+msgstr "[TLS_PROBE] TLS OK: version={tls_version}, subject={certificate_subject}"
+
+#: src/omega_scan/infrastructure/network/httpx_tls_prober.py:171
+#, python-brace-format
+msgid "[TLS_PROBE] Certificat non valide : {exc}"
+msgstr "[TLS_PROBE] Certificado no válido: {exc}"
+
+#: src/omega_scan/infrastructure/network/httpx_tls_prober.py:177
+msgid "Certificat présent mais non approuvé par la chaîne de confiance."
+msgstr "Certificado presente pero no aprobado por la cadena de confianza."
+
+#: src/omega_scan/infrastructure/network/httpx_tls_prober.py:181
+#, python-brace-format
+msgid "[TLS_PROBE] Erreur SSL (handshake échoué) : {exc}"
+msgstr "[TLS_PROBE] Error SSL (handshake fallido): {exc}"
+
+#: src/omega_scan/infrastructure/network/httpx_tls_prober.py:191
+#, python-brace-format
+msgid "[TLS_PROBE] Erreur inattendue : {exc}"
+msgstr "[TLS_PROBE] Error inesperado: {exc}"
+
+#: src/omega_scan/infrastructure/storage/sqlite/scan_repository.py:46
+msgid "Échec de sauvegarde du scan {get!r} : {exc}"
+msgstr "Error al guardar el escaneo {get!r}: {exc}"
+
+#: src/omega_scan/infrastructure/storage/sqlite/scan_repository.py:55
+msgid "Échec de lecture du scan {scan_id!r} : {exc}"
+msgstr "Error al leer el escaneo {scan_id!r}: {exc}"
+
+#: src/omega_scan/infrastructure/storage/sqlite/scan_repository.py:75
+#, python-brace-format
+msgid "Échec de listage de l'historique des scans : {exc}"
+msgstr "Error al listar el historial de escaneos: {exc}"
+
+#: src/omega_scan/infrastructure/storage/sqlite/scan_repository.py:83
+#, python-brace-format
+msgid "Échec de purge de l'historique des scans : {exc}"
+msgstr "Error al purgar el historial de escaneos: {exc}"
+
+#: src/omega_scan/infrastructure/storage/sqlite/target_repository.py:36
+msgid "Échec d'épinglage de la cible {normalized_host!r} : {exc}"
+msgstr "Error al anclar el objetivo {normalized_host!r}: {exc}"
+
+#: src/omega_scan/infrastructure/storage/sqlite/target_repository.py:47
+msgid "Échec de désépinglage de la cible {normalized_host!r} : {exc}"
+msgstr "Error al desanclar el objetivo {normalized_host!r}: {exc}"
+
+#: src/omega_scan/infrastructure/storage/sqlite/target_repository.py:57
+msgid "Échec de lecture de la cible épinglée {normalized_host!r} : {exc}"
+msgstr "Error al leer el objetivo anclado {normalized_host!r}: {exc}"
+
+#: src/omega_scan/infrastructure/storage/sqlite/target_repository.py:75
+#, python-brace-format
+msgid "Échec de purge des cibles épinglées : {exc}"
+msgstr "Error al purgar los objetivos anclados: {exc}"
+
+#: src/omega_scan/interfaces/tui/app.py:39
+msgid "🔍 OMEGA-SCAN"
+msgstr "🔍 OMEGA-SCAN"
+
+#: src/omega_scan/interfaces/tui/screens/compare.py:40
+msgid "COMPARAISON"
+msgstr "COMPARACIÓN"
+
+#: src/omega_scan/interfaces/tui/screens/compare.py:45
+msgid "Nouveaux findings"
+msgstr "Hallazgos nuevos"
+
+#: src/omega_scan/interfaces/tui/screens/compare.py:46
+msgid "Findings résolus"
+msgstr "Hallazgos resueltos"
+
+#: src/omega_scan/interfaces/tui/screens/compare.py:47
+msgid "Findings inchangés"
+msgstr "Hallazgos sin cambios"
+
+#: src/omega_scan/interfaces/tui/screens/compare.py:49
+msgid "Findings changés"
+msgstr "Hallazgos modificados"
+
+#: src/omega_scan/interfaces/tui/screens/compare.py:54
+#, python-brace-format
+msgid "{rule_id} : {status} -> {status2}"
+msgstr "{rule_id}: {status} -> {status2}"
+
+#: src/omega_scan/interfaces/tui/screens/compare.py:70 src/omega_scan/interfaces/tui/screens/findings.py:39
+#, python-brace-format
+msgid "{rule_id} — {title}"
+msgstr "{rule_id} — {title}"
+
+#: src/omega_scan/interfaces/tui/screens/export_dialog.py:42
+msgid "Thème d'export (HTML uniquement)"
+msgstr "Tema de exportación (solo HTML)"
+
+#: src/omega_scan/interfaces/tui/screens/export_dialog.py:87
+msgid "Export impossible"
+msgstr "Exportación imposible"
+
+#: src/omega_scan/interfaces/tui/screens/export_dialog.py:89
+msgid "Export réussi"
+msgstr "Exportación realizada"
+
+#: src/omega_scan/interfaces/tui/screens/export_dialog.py:89
+#, python-brace-format
+msgid "Écrit vers {value}"
+msgstr "Escrito en {value}"
+
+#: src/omega_scan/interfaces/tui/screens/findings.py:40
+#, python-brace-format
+msgid "Statut: {status}  Sévérité: {severity}  Confiance: {confidence}"
+msgstr "Estado: {status}  Gravedad: {severity}  Confianza: {confidence}"
+
+#: src/omega_scan/interfaces/tui/screens/findings.py:42
+#, python-brace-format
+msgid ""
+"[b]Impact[/b]\n"
+"{impact}"
+msgstr ""
+"[b]Impacto[/b]\n"
+"{impact}"
+
+#: src/omega_scan/interfaces/tui/screens/findings.py:43
+#, python-brace-format
+msgid ""
+"[b]Remediation[/b]\n"
+"{remediation}"
+msgstr ""
+"[b]Remediación[/b]\n"
+"{remediation}"
+
+#: src/omega_scan/interfaces/tui/screens/findings.py:45
+#, python-brace-format
+msgid ""
+"[b]Preuve[/b] ({source})\n"
+"{value}"
+msgstr ""
+"[b]Prueba[/b] ({source})\n"
+"{value}"
+
+#: src/omega_scan/interfaces/tui/screens/findings.py:47
+msgid "Fermer"
+msgstr "Cerrar"
+
+#: src/omega_scan/interfaces/tui/screens/findings.py:65
+#, python-brace-format
+msgid "RÉSULTATS — {normalized_host}"
+msgstr "RESULTADOS — {normalized_host}"
+
+#: src/omega_scan/interfaces/tui/screens/findings.py:71
+msgid "Cliquez sur une ligne (ou Entrée) pour le diagnostic détaillé de ce finding."
+msgstr "Haga clic en una fila (o Intro) para el diagnóstico detallado de este hallazgo."
+
+#: src/omega_scan/interfaces/tui/screens/findings.py:75
+msgid "Toutes catégories"
+msgstr "Todas las categorías"
+
+#: src/omega_scan/interfaces/tui/screens/help_screen.py:24
+msgid "Approfondi"
+msgstr "En profundidad"
+
+#: src/omega_scan/interfaces/tui/screens/help_screen.py:24
+msgid "Complet (défaut)"
+msgstr "Completo (por defecto)"
+
+#: src/omega_scan/interfaces/tui/screens/help_screen.py:24
+msgid "Usage"
+msgstr "Uso"
+
+#: src/omega_scan/interfaces/tui/screens/help_screen.py:24
+msgid "Vérif. rapide"
+msgstr "Verif. rápida"
+
+#: src/omega_scan/interfaces/tui/screens/help_screen.py:24
+msgid "localhost / LAN"
+msgstr "localhost / LAN"
+
+#: src/omega_scan/interfaces/tui/screens/help_screen.py:25
+msgid "Timeout connect/read"
+msgstr "Timeout connect/read"
+
+#: src/omega_scan/interfaces/tui/screens/help_screen.py:27
+msgid "Méthodes HTTP"
+msgstr "Métodos HTTP"
+
+#: src/omega_scan/interfaces/tui/screens/help_screen.py:33
+msgid "Oui (complet)"
+msgstr "Sí (completo)"
+
+#: src/omega_scan/interfaces/tui/screens/help_screen.py:33
+msgid "Oui (~20)"
+msgstr "Sí (~20)"
+
+#: src/omega_scan/interfaces/tui/screens/help_screen.py:33
+msgid "Path probing"
+msgstr "Path probing"
+
+#: src/omega_scan/interfaces/tui/screens/help_screen.py:34
+msgid "Oui (détaillé)"
+msgstr "Sí (detallado)"
+
+#: src/omega_scan/interfaces/tui/screens/help_screen.py:34
+msgid "Oui (tolérant)"
+msgstr "Sí (tolerante)"
+
+#: src/omega_scan/interfaces/tui/screens/help_screen.py:35
+msgid "Catch-all"
+msgstr "Catch-all"
+
+#: src/omega_scan/interfaces/tui/screens/help_screen.py:36
+msgid "Non évaluée"
+msgstr "No evaluada"
+
+#: src/omega_scan/interfaces/tui/screens/help_screen.py:36
+msgid "Politique HSTS"
+msgstr "Política HSTS"
+
+#: src/omega_scan/interfaces/tui/screens/help_screen.py:36
+msgid "Standard"
+msgstr "Estándar"
+
+#: src/omega_scan/interfaces/tui/screens/help_screen.py:36
+msgid "Strict"
+msgstr "Estricta"
+
+#: src/omega_scan/interfaces/tui/screens/help_screen.py:36
+msgid "Tolérante"
+msgstr "Tolerante"
+
+#: src/omega_scan/interfaces/tui/screens/help_screen.py:40
+msgid "vérification éclair avant mise en production"
+msgstr "verificación rápida antes de pasar a producción"
+
+#: src/omega_scan/interfaces/tui/screens/help_screen.py:41
+msgid "audit complet d'un service en production, recommandé"
+msgstr "auditoría completa de un servicio en producción, recomendado"
+
+#: src/omega_scan/interfaces/tui/screens/help_screen.py:42
+msgid "audit approfondi incluant les méthodes HTTP risquées"
+msgstr "auditoría en profundidad incluidos los métodos HTTP de riesgo"
+
+#: src/omega_scan/interfaces/tui/screens/help_screen.py:45
+msgid "scan de localhost ou LAN sans pénaliser les règles pensées pour le public, HSTS notamment"
+msgstr "escaneo de localhost o LAN sin penalizar las reglas pensadas para lo público, HSTS en particular"
+
+#: src/omega_scan/interfaces/tui/screens/help_screen.py:54
+msgid "Saisir une cible (IPv4, IPv6, hostname ou URL), choisir un profil (quick/standard/extended/local-lab), confirmer l'autorisation si la cible n'est pas déjà épinglée, puis lancer le scan."
+msgstr "Introducir un objetivo (IPv4, IPv6, hostname o URL), elegir un perfil (quick/standard/extended/local-lab), confirmar la autorización si el objetivo aún no está anclado y lanzar el escaneo."
+
+#: src/omega_scan/interfaces/tui/screens/help_screen.py:62
+msgid "Épingler un hôte dispense de recocher la confirmation d'autorisation à chaque scan sur cette même cible."
+msgstr "Anclar un host evita volver a marcar la confirmación de autorización en cada escaneo de ese mismo objetivo."
+
+#: src/omega_scan/interfaces/tui/screens/help_screen.py:69
+msgid "Liste tous les scans passés : détail complet, comparaison entre deux scans, ou rejouer un scan sur la même cible."
+msgstr "Lista todos los escaneos pasados: detalle completo, comparación entre dos escaneos o repetir un escaneo sobre el mismo objetivo."
+
+#: src/omega_scan/interfaces/tui/screens/help_screen.py:76
+msgid "Depuis le détail d'un scan : JSON (source de vérité), texte (rapport compact) ou HTML (rapport lisible et partageable)."
+msgstr "Desde el detalle de un escaneo: JSON (fuente de verdad), texto (informe compacto) o HTML (informe legible y compartible)."
+
+#: src/omega_scan/interfaces/tui/screens/help_screen.py:83
+msgid "Omega-scan observe la posture de sécurité visible d'un service HTTP/HTTPS : il ne réalise jamais de test actif (pas de SQLi, XSS, RCE, scan de CVE, fuzzing ou bruteforce)."
+msgstr "Omega-scan observa la postura de seguridad visible de un servicio HTTP/HTTPS: nunca realiza pruebas activas (ni SQLi, XSS, RCE, escaneo de CVE, fuzzing ni fuerza bruta)."
+
+#: src/omega_scan/interfaces/tui/screens/help_screen.py:104
+msgid "Profils de scan"
+msgstr "Perfiles de escaneo"
+
+#: src/omega_scan/interfaces/tui/screens/history.py:38
+msgid "Filtrer par hôte..."
+msgstr "Filtrar por host..."
+
+#: src/omega_scan/interfaces/tui/screens/quit_confirm.py:20
+msgid "QUITTER OMEGA-SCAN ?"
+msgstr "¿SALIR DE OMEGA-SCAN?"
+
+#: src/omega_scan/interfaces/tui/screens/scan_progress.py:69
+#, python-brace-format
+msgid "relecture de {replay_scan_id}"
+msgstr "repetición de {replay_scan_id}"
+
+#: src/omega_scan/interfaces/tui/screens/scan_progress.py:70
+#, python-brace-format
+msgid "Scan de {label} en cours..."
+msgstr "Escaneo de {label} en curso..."
+
+#: src/omega_scan/interfaces/tui/screens/scan_progress.py:135
+msgid "Scan refusé"
+msgstr "Escaneo rechazado"
+
+#: src/omega_scan/interfaces/tui/screens/scan_setup.py:45
+#, python-brace-format
+msgid "★ {normalized_host}"
+msgstr "★ {normalized_host}"
+
+#: src/omega_scan/interfaces/tui/screens/scan_setup.py:52
+msgid "Cibles épinglées (★) et récentes"
+msgstr "Objetivos anclados (★) y recientes"
+
+#: src/omega_scan/interfaces/tui/screens/scan_setup.py:55
+msgid "ex. example.org, 192.168.1.10, https://intranet.lan:8443"
+msgstr "p. ej. example.org, 192.168.1.10, https://intranet.lan:8443"
+
+#: src/omega_scan/interfaces/tui/screens/scan_setup.py:64
+msgid "Non requis si la cible est déjà épinglée (écran Cibles)."
+msgstr "No es necesario si el objetivo ya está anclado (pantalla Objetivos)."
+
+#: src/omega_scan/interfaces/tui/screens/settings_screen.py:72
+msgid "Cibles et historique"
+msgstr "Objetivos e historial"
+
+#: src/omega_scan/interfaces/tui/screens/settings_screen.py:128
+msgid "Toutes les cibles épinglées-autorisées seront désépinglées."
+msgstr "Todos los objetivos anclados-autorizados se desanclarán."
+
+#: src/omega_scan/interfaces/tui/screens/settings_screen.py:145
+msgid "Toutes les cibles ont été désépinglées."
+msgstr "Todos los objetivos se han desanclado."
+
+#: src/omega_scan/interfaces/tui/screens/targets.py:39
+msgid "Hôte à épingler..."
+msgstr "Host que anclar..."
+
+#: src/omega_scan/interfaces/tui/screens/targets.py:45
+msgid "Désépingler la sélection"
+msgstr "Desanclar la selección"
+
+#: src/omega_scan/interfaces/tui/screens/targets.py:90
+msgid "Cible invalide"
+msgstr "Objetivo no válido"
+
+#: src/omega_scan/interfaces/tui/widgets/authorization_checkbox.py:16
+msgid "Je confirme être autorisé à scanner cette cible"
+msgstr "Confirmo que estoy autorizado a escanear este objetivo"
+
+#: src/omega_scan/interfaces/tui/widgets/findings_table.py:22
+msgid "Catégorie"
+msgstr "Categoría"
+
+#: src/omega_scan/interfaces/tui/widgets/findings_table.py:22 src/omega_scan/infrastructure/exporters/templates/report.html.jinja:236
+msgid "Règle"
+msgstr "Regla"
+
+#: src/omega_scan/infrastructure/exporters/html_exporter.py:45
+#, python-brace-format
+msgid "[HTML_EXPORT] Export vers {output_path} (thème {export_theme})"
+msgstr "[HTML_EXPORT] Exportando a {output_path} (tema {export_theme})"
+
+#: src/omega_scan/infrastructure/exporters/html_exporter.py:71
+#, python-brace-format
+msgid "[HTML_EXPORT] Export terminé : {output_path}"
+msgstr "[HTML_EXPORT] Exportación terminada: {output_path}"
+
+#: src/omega_scan/infrastructure/exporters/json_exporter.py:47
+#, python-brace-format
+msgid "[JSON_EXPORT] Chemin absolu cible : {abs_path}"
+msgstr "[JSON_EXPORT] Ruta absoluta de destino: {abs_path}"
+
+#: src/omega_scan/infrastructure/exporters/json_exporter.py:55
+#, python-brace-format
+msgid "[JSON_EXPORT] Export terminé avec succès : {abs_path} ({count} octets)"
+msgstr "[JSON_EXPORT] Exportación terminada con éxito: {abs_path} ({count} bytes)"
+
+#: src/omega_scan/infrastructure/exporters/text_exporter.py:42
+#, python-brace-format
+msgid "[TEXT_EXPORT] Export vers {output_path}"
+msgstr "[TEXT_EXPORT] Exportando a {output_path}"
+
+#: src/omega_scan/infrastructure/exporters/text_exporter.py:47
+msgid "OMEGA-SCAN ~ RAPPORT DE SCAN DE POSTURE DE SÉCURITÉ"
+msgstr "OMEGA-SCAN ~ INFORME DE ESCANEO DE POSTURA DE SEGURIDAD"
+
+#: src/omega_scan/infrastructure/exporters/text_exporter.py:52
+#, python-brace-format
+msgid "Scan ID      : {scan_id}"
+msgstr "ID escaneo   : {scan_id}"
+
+#: src/omega_scan/infrastructure/exporters/text_exporter.py:53
+#, python-brace-format
+msgid "Cible        : {normalized_host}"
+msgstr "Objetivo     : {normalized_host}"
+
+#: src/omega_scan/infrastructure/exporters/text_exporter.py:54
+#, python-brace-format
+msgid "Profil       : {profile_name}"
+msgstr "Perfil       : {profile_name}"
+
+#: src/omega_scan/infrastructure/exporters/text_exporter.py:55
+#, python-brace-format
+msgid "Démarré      : {started_at}"
+msgstr "Iniciado     : {started_at}"
+
+#: src/omega_scan/infrastructure/exporters/text_exporter.py:56
+#, python-brace-format
+msgid "Terminé      : {finished_at}"
+msgstr "Terminado    : {finished_at}"
+
+#: src/omega_scan/infrastructure/exporters/text_exporter.py:57
+#, python-brace-format
+msgid "Durée        : {value}"
+msgstr "Duración     : {value}"
+
+#: src/omega_scan/infrastructure/exporters/text_exporter.py:58
+#, python-brace-format
+msgid "Machine      : {host_machine}"
+msgstr "Máquina      : {host_machine}"
+
+#: src/omega_scan/infrastructure/exporters/text_exporter.py:65
+#, python-brace-format
+msgid "Note globale : {overall_rating}"
+msgstr "Nota global  : {overall_rating}"
+
+#: src/omega_scan/infrastructure/exporters/text_exporter.py:66
+#, python-brace-format
+msgid "Statut       : {scan_status}"
+msgstr "Estado       : {scan_status}"
+
+#: src/omega_scan/infrastructure/exporters/text_exporter.py:67
+#, python-brace-format
+msgid "Message      : {short_message}"
+msgstr "Mensaje      : {short_message}"
+
+#: src/omega_scan/infrastructure/exporters/text_exporter.py:69
+#, python-brace-format
+msgid "Checks totaux    : {checks_total}"
+msgstr "Checks totales   : {checks_total}"
+
+#: src/omega_scan/infrastructure/exporters/text_exporter.py:70
+#, python-brace-format
+msgid "Findings (W+F)   : {findings_total}"
+msgstr "Findings (W+F)   : {findings_total}"
+
+#: src/omega_scan/infrastructure/exporters/text_exporter.py:73
+msgid "Ventilation par statut :"
+msgstr "Desglose por estado:"
+
+#: src/omega_scan/infrastructure/exporters/text_exporter.py:80
+msgid "Ventilation par sévérité :"
+msgstr "Desglose por severidad:"
+
+#: src/omega_scan/infrastructure/exporters/text_exporter.py:87
+msgid "Principaux problèmes :"
+msgstr "Principales problemas:"
+
+#: src/omega_scan/infrastructure/exporters/text_exporter.py:94
+msgid "FINDINGS DÉTAILLÉS"
+msgstr "FINDINGS DETALLADOS"
+
+#: src/omega_scan/infrastructure/exporters/text_exporter.py:108
+#, python-brace-format
+msgid "    Règle      : {rule_id}"
+msgstr "    Regla      : {rule_id}"
+
+#: src/omega_scan/infrastructure/exporters/text_exporter.py:109
+#, python-brace-format
+msgid "    Sévérité   : {value}"
+msgstr "    Severidad  : {value}"
+
+#: src/omega_scan/infrastructure/exporters/text_exporter.py:110
+#, python-brace-format
+msgid "    Confiance  : {confidence}"
+msgstr "    Confianza  : {confidence}"
+
+#: src/omega_scan/infrastructure/exporters/text_exporter.py:111
+#, python-brace-format
+msgid "    Description: {description}"
+msgstr "    Descripción: {description}"
+
+#: src/omega_scan/infrastructure/exporters/text_exporter.py:114
+#, python-brace-format
+msgid "    Impact     : {impact}"
+msgstr "    Impacto    : {impact}"
+
+#: src/omega_scan/infrastructure/exporters/text_exporter.py:116
+#, python-brace-format
+msgid "    Action     : {remediation}"
+msgstr "    Acción     : {remediation}"
+
+#: src/omega_scan/infrastructure/exporters/text_exporter.py:118
+#, python-brace-format
+msgid "    Preuve     : {value}"
+msgstr "    Prueba     : {value}"
+
+#: src/omega_scan/infrastructure/exporters/text_exporter.py:126
+#, python-brace-format
+msgid "DNS résolu       : {value}"
+msgstr "DNS resuelto     : {value}"
+
+#: src/omega_scan/infrastructure/exporters/text_exporter.py:128
+#, python-brace-format
+msgid "Adresses résolues: {join}"
+msgstr "Direcciones resueltas: {join}"
+
+#: src/omega_scan/infrastructure/exporters/text_exporter.py:129
+#, python-brace-format
+msgid "HTTP accessible  : {value}"
+msgstr "HTTP accesible   : {value}"
+
+#: src/omega_scan/infrastructure/exporters/text_exporter.py:130
+#, python-brace-format
+msgid "HTTPS accessible : {value}"
+msgstr "HTTPS accesible  : {value}"
+
+#: src/omega_scan/infrastructure/exporters/text_exporter.py:132
+#, python-brace-format
+msgid "Premier schéma   : {first_successful_scheme}"
+msgstr "Primer esquema   : {first_successful_scheme}"
+
+#: src/omega_scan/infrastructure/exporters/text_exporter.py:134
+#, python-brace-format
+msgid "Latence moyenne  : {value}"
+msgstr "Latencia media   : {value}"
+
+#: src/omega_scan/infrastructure/exporters/text_exporter.py:136
+#, python-brace-format
+msgid "Notes            : {connection_notes}"
+msgstr "Notas            : {connection_notes}"
+
+#: src/omega_scan/infrastructure/exporters/text_exporter.py:144
+#, python-brace-format
+msgid "Handshake réussi : {value}"
+msgstr "Handshake correcto: {value}"
+
+#: src/omega_scan/infrastructure/exporters/text_exporter.py:146
+#, python-brace-format
+msgid "Version TLS      : {tls_version}"
+msgstr "Versión TLS      : {tls_version}"
+
+#: src/omega_scan/infrastructure/exporters/text_exporter.py:148
+#, python-brace-format
+msgid "Cipher           : {cipher}"
+msgstr "Cipher           : {cipher}"
+
+#: src/omega_scan/infrastructure/exporters/text_exporter.py:150
+#, python-brace-format
+msgid "Sujet certificat : {certificate_subject}"
+msgstr "Sujeto certificado: {certificate_subject}"
+
+#: src/omega_scan/infrastructure/exporters/text_exporter.py:152
+#, python-brace-format
+msgid "Émetteur         : {certificate_issuer}"
+msgstr "Emisor           : {certificate_issuer}"
+
+#: src/omega_scan/infrastructure/exporters/text_exporter.py:154
+#, python-brace-format
+msgid "SAN              : {join}"
+msgstr "SAN              : {join}"
+
+#: src/omega_scan/infrastructure/exporters/text_exporter.py:156
+#, python-brace-format
+msgid "Validité         : {not_before} -> {not_after}"
+msgstr "Validez          : {not_before} -> {not_after}"
+
+#: src/omega_scan/infrastructure/exporters/text_exporter.py:157
+#, python-brace-format
+msgid "Hostname match   : {value}"
+msgstr "Hostname match   : {value}"
+
+#: src/omega_scan/infrastructure/exporters/text_exporter.py:159
+msgid "Auto-signé       : Oui"
+msgstr "Autofirmado      : Sí"
+
+#: src/omega_scan/infrastructure/exporters/text_exporter.py:161
+#, python-brace-format
+msgid "Erreur validation: {validation_error}"
+msgstr "Error validación : {validation_error}"
+
+#: src/omega_scan/infrastructure/exporters/text_exporter.py:163
+#, python-brace-format
+msgid "Notes            : {notes}"
+msgstr "Notas            : {notes}"
+
+#: src/omega_scan/infrastructure/exporters/text_exporter.py:168
+msgid "ERREURS"
+msgstr "ERRORES"
+
+#: src/omega_scan/infrastructure/exporters/text_exporter.py:174
+#, python-brace-format
+msgid "    Catégorie: {failure_category}"
+msgstr "    Categoría: {failure_category}"
+
+#: src/omega_scan/infrastructure/exporters/text_exporter.py:179
+#, python-brace-format
+msgid "Rapport généré le {strftime} par Omega-scan v{scanner_version}"
+msgstr "Informe generado el {strftime} por Omega-scan v{scanner_version}"
+
+#: src/omega_scan/infrastructure/exporters/text_exporter.py:187
+#, python-brace-format
+msgid "[TEXT_EXPORT] Export terminé : {output_path}"
+msgstr "[TEXT_EXPORT] Exportación terminada: {output_path}"
+
+#: src/omega_scan/infrastructure/exporters/templates/report.html.jinja:6
+#, python-brace-format
+msgid "Omega-scan Rapport de scan - {normalized_host}"
+msgstr "Omega-scan Informe de escaneo - {normalized_host}"
+
+#: src/omega_scan/infrastructure/exporters/templates/report.html.jinja:167
+msgid "Omega-scan ~ Rapport de scan de sécurité"
+msgstr "Omega-scan ~ Informe de escaneo de seguridad"
+
+#: src/omega_scan/infrastructure/exporters/templates/report.html.jinja:180
+msgid "Durée :"
+msgstr "Duración:"
+
+#: src/omega_scan/infrastructure/exporters/templates/report.html.jinja:183
+msgid "Démarré :"
+msgstr "Iniciado:"
+
+#: src/omega_scan/infrastructure/exporters/templates/report.html.jinja:186
+msgid "Terminé :"
+msgstr "Terminado:"
+
+#: src/omega_scan/infrastructure/exporters/templates/report.html.jinja:196
+msgid "Checks totaux"
+msgstr "Checks totales"
+
+#: src/omega_scan/infrastructure/exporters/templates/report.html.jinja:200
+msgid "Findings (W+F)"
+msgstr "Findings (W+F)"
+
+#: src/omega_scan/infrastructure/exporters/templates/report.html.jinja:214
+msgid "Findings détaillés"
+msgstr "Findings detallados"
+
+#: src/omega_scan/infrastructure/exporters/templates/report.html.jinja:249
+msgid "Impact"
+msgstr "Impacto"
+
+#: src/omega_scan/infrastructure/exporters/templates/report.html.jinja:254
+msgid "Action recommandée"
+msgstr "Acción recomendada"
+
+#: src/omega_scan/infrastructure/exporters/templates/report.html.jinja:259
+msgid "Preuve"
+msgstr "Prueba"
+
+#: src/omega_scan/infrastructure/exporters/templates/report.html.jinja:270
+msgid "Connectivité"
+msgstr "Conectividad"
+
+#: src/omega_scan/infrastructure/exporters/templates/report.html.jinja:273
+msgid "DNS résolu :"
+msgstr "DNS resuelto:"
+
+#: src/omega_scan/infrastructure/exporters/templates/report.html.jinja:276
+msgid "HTTP accessible :"
+msgstr "HTTP accesible:"
+
+#: src/omega_scan/infrastructure/exporters/templates/report.html.jinja:279
+msgid "HTTPS accessible :"
+msgstr "HTTPS accesible:"
+
+#: src/omega_scan/infrastructure/exporters/templates/report.html.jinja:283
+msgid "Premier schéma :"
+msgstr "Primer esquema:"
+
+#: src/omega_scan/infrastructure/exporters/templates/report.html.jinja:288
+msgid "Latence moyenne :"
+msgstr "Latencia media:"
+
+#: src/omega_scan/infrastructure/exporters/templates/report.html.jinja:297
+msgid "Handshake réussi :"
+msgstr "Handshake correcto:"
+
+#: src/omega_scan/infrastructure/exporters/templates/report.html.jinja:301
+msgid "Version TLS :"
+msgstr "Versión TLS:"
+
+#: src/omega_scan/infrastructure/exporters/templates/report.html.jinja:306
+msgid "Cipher :"
+msgstr "Cipher:"
+
+#: src/omega_scan/infrastructure/exporters/templates/report.html.jinja:311
+msgid "Sujet certificat :"
+msgstr "Sujeto del certificado:"
+
+#: src/omega_scan/infrastructure/exporters/templates/report.html.jinja:316
+msgid "Émetteur :"
+msgstr "Emisor:"
+
+#: src/omega_scan/infrastructure/exporters/templates/report.html.jinja:320
+msgid "Hostname match :"
+msgstr "Hostname match:"
+
+#: src/omega_scan/infrastructure/exporters/templates/report.html.jinja:324
+msgid "Auto-signé :"
+msgstr "Autofirmado:"
+
+#: src/omega_scan/infrastructure/exporters/templates/report.html.jinja:336
+#, python-brace-format
+msgid "Catégorie: {failure_category}"
+msgstr "Categoría: {failure_category}"
+
+#: src/omega_scan/infrastructure/exporters/templates/report.html.jinja:342
+#, python-brace-format
+msgid "Rapport généré le {generated_at} par"
+msgstr "Informe generado el {generated_at} por"

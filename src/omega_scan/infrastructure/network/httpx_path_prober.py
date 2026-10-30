@@ -20,6 +20,7 @@ from omega_scan.domain.targets.models import Target
 from omega_scan.infrastructure.exceptions import build_error_from_exception
 from omega_scan.infrastructure.logging.app_logger import get_logger
 from omega_scan.infrastructure.network._shaping import deduce_content_profile
+from omega_scan.shared.i18n import N_, log_text
 
 
 def _generate_probe_token() -> str:
@@ -46,7 +47,7 @@ def _detect_catch_all(
     token = _generate_probe_token()
     probe_url = f"{base_url.rstrip('/')}/{token}"
 
-    logger.debug(f"[PATH_PROBE] Test catch-all : {probe_url}")
+    logger.debug(log_text(N_("[PATH_PROBE] Test catch-all : {probe_url}"), probe_url=probe_url))
 
     try:
         with httpx.Client(timeout=_timeout_for(profile), follow_redirects=False, verify=False) as client:
@@ -57,14 +58,16 @@ def _detect_catch_all(
                     response.headers.get("content-type"), response.text[:500]
                 )
                 if probe_profile == base_content_profile and probe_profile != "unknown":
-                    logger.warning(f"[PATH_PROBE] Catch-all detecte (meme profil : {probe_profile})")
+                    logger.warning(log_text(N_("[PATH_PROBE] Catch-all détecté (même profil : "
+                                               "{probe_profile})"), probe_profile=probe_profile))
                     return True
-                logger.warning(f"[PATH_PROBE] Reponse 200 sur chemin improbable (profil: {probe_profile})")
+                logger.warning(log_text(N_("[PATH_PROBE] Réponse 200 sur chemin improbable "
+                                           "(profil: {probe_profile})"), probe_profile=probe_profile))
                 return True
             return False
 
     except Exception as exc:  # noqa: BLE001 - traduit en ScanError, jamais leve
-        logger.debug(f"[PATH_PROBE] Test catch-all echoue : {exc}")
+        logger.debug(log_text(N_("[PATH_PROBE] Test catch-all échoué : {exc}"), exc=exc))
         errors.append(
             build_error_from_exception(
                 exc,
@@ -136,41 +139,42 @@ class HttpxPathProber:
         errors: list[ScanError],
     ) -> dict[str, Any]:
         logger = get_logger()
-        logger.info(f"[PATH_PROBE] Debut du path probing pour {target.normalized_host}")
+        logger.info(log_text(N_("[PATH_PROBE] Début du path probing pour {normalized_host}"), normalized_host=target.normalized_host))
 
         result: dict[str, Any] = {"catch_all_suspected": False, "path_probe_context": []}
 
         if not profile.path_checks_enabled:
-            logger.info("[PATH_PROBE] Path probing desactive par le profil")
+            logger.info(N_("[PATH_PROBE] Path probing désactivé par le profil"))
             return result
 
         overview = http_data.get("overview", {})
         preferred_scheme = overview.get("preferred_scheme")
         if not preferred_scheme:
-            logger.warning("[PATH_PROBE] Aucun schema prefere, path probing annule")
+            logger.warning(N_("[PATH_PROBE] Aucun schéma préféré, path probing annulé"))
             return result
 
         base_url = http_data.get(preferred_scheme, {}).get("final_url")
         if not base_url:
-            logger.warning("[PATH_PROBE] Pas d'URL finale, path probing annule")
+            logger.warning(N_("[PATH_PROBE] Pas d'URL finale, path probing annulé"))
             return result
 
         base_content_profile = overview.get("content_profile", "unknown")
 
-        logger.info("[PATH_PROBE] Test catch-all...")
+        logger.info(N_("[PATH_PROBE] Test catch-all..."))
         result["catch_all_suspected"] = _detect_catch_all(
             base_url, base_content_profile, profile, errors, target
         )
         if result["catch_all_suspected"]:
             logger.warning(
-                "[PATH_PROBE] Catch-all detecte, les findings de path probing auront une confiance degradee"
+                N_("[PATH_PROBE] Catch-all détecté, les findings de path probing auront une "
+                   "confiance dégradée")
             )
 
         paths_to_test = get_all_probe_paths()
         if profile.path_probe_max_targets > 0:
             paths_to_test = paths_to_test[: profile.path_probe_max_targets]
 
-        logger.info(f"[PATH_PROBE] Test de {len(paths_to_test)} chemins...")
+        logger.info(log_text(N_("[PATH_PROBE] Test de {count} chemins..."), count=len(paths_to_test)))
 
         for i, path in enumerate(paths_to_test):
             if i > 0 and profile.path_probe_delay_ms > 0:
@@ -188,7 +192,6 @@ class HttpxPathProber:
             if p["reason"] in ("ok", "protected", "catch_all_suspected")
         ]
         logger.info(
-            f"[PATH_PROBE] Fin : {len(result['path_probe_context'])} chemins testes, "
-            f"{len(interesting)} interessants"
+            log_text(N_("[PATH_PROBE] Fin : {count} chemins testés, {count2} intéressants"), count=len(result['path_probe_context']), count2=len(interesting))
         )
         return result

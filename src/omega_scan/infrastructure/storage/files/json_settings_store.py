@@ -6,6 +6,7 @@ import json
 from pathlib import Path
 
 from omega_scan.infrastructure.exceptions import StorageError
+from omega_scan.shared.i18n import _
 
 
 class JsonSettingsStore:
@@ -36,7 +37,7 @@ class JsonSettingsStore:
                 data: dict[str, str] = json.load(handle)
                 return data
         except (OSError, json.JSONDecodeError) as exc:
-            raise StorageError(f"Echec de lecture de {self._path} : {exc}") from exc
+            raise StorageError(_("Échec de lecture de {path} : {exc}").format(path=self._path, exc=exc)) from exc
 
     def _write(self, data: dict[str, str]) -> None:
         try:
@@ -44,4 +45,4 @@ class JsonSettingsStore:
             with self._path.open("w", encoding="utf-8") as handle:
                 json.dump(data, handle, indent=2, sort_keys=True)
         except OSError as exc:
-            raise StorageError(f"Echec d'ecriture de {self._path} : {exc}") from exc
+            raise StorageError(_("Échec d'écriture de {path} : {exc}").format(path=self._path, exc=exc)) from exc

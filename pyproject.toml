@@ -4,7 +4,7 @@ build-backend = "hatchling.build"
 
 [project]
 name = "omega-scan"
-version = "2.0.0"
+version = "2.5.0"
 description = "Scanner de posture de securite web (TUI + CLI), troisieme outil de la suite omega-"
 readme = "README.md"
 license = { file = "LICENCE" }

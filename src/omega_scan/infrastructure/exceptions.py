@@ -13,6 +13,7 @@ from omega_scan.domain.scans.models import (
     VALID_FAILURE_CATEGORIES,
     ScanError,
 )
+from omega_scan.shared.i18n import _
 
 
 class InfrastructureError(OmegaScanError):
@@ -60,27 +61,27 @@ class ConnectivityError(InfrastructureError):
 
 
 class TimeoutError(ConnectivityError):
-    def __init__(self, message: str = "Timeout de connexion") -> None:
+    def __init__(self, message: str = _("Timeout de connexion")) -> None:
         super().__init__(message, FAILURE_CATEGORY_TIMEOUT)
 
 
 class ConnectionRefusedError(ConnectivityError):
-    def __init__(self, message: str = "Connexion refusee") -> None:
+    def __init__(self, message: str = _("Connexion refusée")) -> None:
         super().__init__(message, FAILURE_CATEGORY_REFUSED)
 
 
 class DnsResolutionError(ConnectivityError):
-    def __init__(self, message: str = "Echec de resolution DNS") -> None:
+    def __init__(self, message: str = _("Échec de résolution DNS")) -> None:
         super().__init__(message, FAILURE_CATEGORY_DNS)
 
 
 class TlsHandshakeError(ConnectivityError):
-    def __init__(self, message: str = "Echec du handshake TLS") -> None:
+    def __init__(self, message: str = _("Échec du handshake TLS")) -> None:
         super().__init__(message, FAILURE_CATEGORY_TLS_HANDSHAKE)
 
 
 class ConnectionResetError(ConnectivityError):
-    def __init__(self, message: str = "Connexion reinitialisee par le pair") -> None:
+    def __init__(self, message: str = _("Connexion réinitialisée par le pair")) -> None:
         super().__init__(message, FAILURE_CATEGORY_RESET)
 
 

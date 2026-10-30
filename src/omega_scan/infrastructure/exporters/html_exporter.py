@@ -16,6 +16,7 @@ from omega_lib.theme.policies import DEFAULT_EXPORT_THEME
 from omega_scan.domain.scans.models import ScanRun
 from omega_scan.infrastructure.exporters.html_theme_resolver import resolve_export_palette
 from omega_scan.infrastructure.logging.app_logger import get_logger
+from omega_scan.shared.i18n import N_, TRANSLATOR, _, log_text
 
 _TEMPLATE_DIR = Path(__file__).parent / "templates"
 _TEMPLATE_NAME = "report.html.jinja"
@@ -24,6 +25,11 @@ _environment = jinja2.Environment(
     loader=jinja2.FileSystemLoader(_TEMPLATE_DIR),
     autoescape=jinja2.select_autoescape(["html", "jinja"]),
 )
+# Lot N (langue des exports) : texte des gabarits traduit par `_` dans la langue active
+# (celle des exports sous translating_as) ; lang= et dir= du document suivent.
+_environment.globals.update(_=_, html_lang=TRANSLATOR.html_lang, html_dir=TRANSLATOR.html_dir)
+# R1 : texte enregistre en francais (titre, impact...) retraduit dans la langue de l'export.
+_environment.filters["tr"] = lambda value: _(value) if isinstance(value, str) and value else value
 
 
 def export_html(
@@ -34,7 +40,13 @@ def export_html(
     logger = get_logger()
     output_path = Path(output_path).resolve()
 
-    logger.info(f"[HTML_EXPORT] Export vers {output_path} (theme {export_theme})")
+    logger.info(
+        log_text(
+            N_("[HTML_EXPORT] Export vers {output_path} (thème {export_theme})"),
+            output_path=output_path,
+            export_theme=export_theme,
+        )
+    )
 
     palette = resolve_export_palette(export_theme)
     template = _environment.get_template(_TEMPLATE_NAME)
@@ -55,5 +67,7 @@ def export_html(
     output_path.parent.mkdir(parents=True, exist_ok=True)
     output_path.write_text(html_content, encoding="utf-8")
 
-    logger.info(f"[HTML_EXPORT] Export termine : {output_path}")
+    logger.info(
+        log_text(N_("[HTML_EXPORT] Export terminé : {output_path}"), output_path=output_path)
+    )
     return output_path

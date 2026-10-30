@@ -1,0 +1,1540 @@
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: omega-scan\n"
+"Language: vi\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"X-Omega-Status: testing\n"
+
+#: src/omega_scan/application/commands/export_scan_report.py:31 src/omega_scan/application/commands/replay_scan.py:45
+msgid "Aucun scan trouvé pour l'identifiant {scan_id!r}."
+msgstr "Không tìm thấy bản quét với mã {scan_id!r}."
+
+#: src/omega_scan/application/commands/select_theme.py:21
+msgid "Thème inconnu : {theme_name!r}. Choix : {value}"
+msgstr "Giao diện không xác định: {theme_name!r}. Lựa chọn: {value}"
+
+#: src/omega_scan/application/pipeline/guards/authorization_guard.py:33
+msgid "Cible {normalized_host!r} non autorisée : ni épinglée, ni confirmation explicite fournie pour ce scan."
+msgstr "Mục tiêu {normalized_host!r} chưa được cho phép: chưa ghim và không có xác nhận rõ ràng cho lần quét này."
+
+#: src/omega_scan/application/queries/compare_scans.py:29
+msgid "Aucun scan trouvé pour l'identifiant {previous_scan_id!r}."
+msgstr "Không tìm thấy bản quét với mã {previous_scan_id!r}."
+
+#: src/omega_scan/application/queries/compare_scans.py:34
+msgid "Aucun scan trouvé pour l'identifiant {current_scan_id!r}."
+msgstr "Không tìm thấy bản quét với mã {current_scan_id!r}."
+
+#: src/omega_scan/domain/checks/cookies/service.py:49
+#, python-brace-format
+msgid "Cookie sans attribut Secure : {get}"
+msgstr "Cookie thiếu thuộc tính Secure: {get}"
+
+#: src/omega_scan/domain/checks/cookies/service.py:55
+#, python-brace-format
+msgid "Le cookie '{get}' est posé sur une réponse HTTPS sans l'attribut Secure."
+msgstr "Cookie '{get}' được đặt trên phản hồi HTTPS mà không có thuộc tính Secure."
+
+#: src/omega_scan/domain/checks/cookies/service.py:57
+msgid "Le cookie peut être transmis en clair si le site est aussi accessible en HTTP."
+msgstr "Cookie có thể bị truyền dạng rõ nếu trang web cũng truy cập được qua HTTP."
+
+#: src/omega_scan/domain/checks/cookies/service.py:59
+msgid "Ajouter l'attribut Secure à ce cookie."
+msgstr "Thêm thuộc tính Secure cho cookie này."
+
+#: src/omega_scan/domain/checks/cookies/service.py:91
+#, python-brace-format
+msgid "Cookie sans attribut HttpOnly : {get}"
+msgstr "Cookie thiếu thuộc tính HttpOnly: {get}"
+
+#: src/omega_scan/domain/checks/cookies/service.py:96
+#, python-brace-format
+msgid "Le cookie '{get}' n'a pas l'attribut HttpOnly."
+msgstr "Cookie '{get}' không có thuộc tính HttpOnly."
+
+#: src/omega_scan/domain/checks/cookies/service.py:97
+msgid "Le cookie est accessible en JavaScript, ce qui aggrave l'impact d'un XSS."
+msgstr "Cookie truy cập được bằng JavaScript, làm tăng tác động của XSS."
+
+#: src/omega_scan/domain/checks/cookies/service.py:99
+msgid "Ajouter l'attribut HttpOnly si ce cookie n'est pas requis côté client."
+msgstr "Thêm thuộc tính HttpOnly nếu phía máy khách không cần cookie này."
+
+#: src/omega_scan/domain/checks/cookies/service.py:132
+msgid "l'attribut SameSite est absent"
+msgstr "thiếu thuộc tính SameSite"
+
+#: src/omega_scan/domain/checks/cookies/service.py:134
+msgid "SameSite=None est déclaré sans l'attribut Secure"
+msgstr "SameSite=None được khai báo mà không có thuộc tính Secure"
+
+#: src/omega_scan/domain/checks/cookies/service.py:140
+#, python-brace-format
+msgid "Cookie à risque CSRF : {get}"
+msgstr "Cookie có rủi ro CSRF: {get}"
+
+#: src/omega_scan/domain/checks/cookies/service.py:145
+#, python-brace-format
+msgid "Le cookie '{get}' est à risque : {reason}."
+msgstr "Cookie '{get}' có rủi ro: {reason}."
+
+#: src/omega_scan/domain/checks/cookies/service.py:146
+msgid "Le cookie peut être envoyé lors de requêtes intersites, favorisant les attaques CSRF."
+msgstr "Cookie có thể được gửi trong các yêu cầu liên trang, tạo điều kiện cho tấn công CSRF."
+
+#: src/omega_scan/domain/checks/cookies/service.py:148
+msgid "Définir SameSite=Lax ou Strict, ou SameSite=None accompagné de Secure."
+msgstr "Đặt SameSite=Lax hoặc Strict, hoặc SameSite=None kèm Secure."
+
+#: src/omega_scan/domain/checks/cors/service.py:47
+msgid "CORS wildcard combiné à des credentials autorisés"
+msgstr "CORS wildcard kết hợp với cho phép thông tin xác thực"
+
+#: src/omega_scan/domain/checks/cors/service.py:53
+msgid "Access-Control-Allow-Origin: * est combiné à Access-Control-Allow-Credentials: true."
+msgstr "Access-Control-Allow-Origin: * được kết hợp với Access-Control-Allow-Credentials: true."
+
+#: src/omega_scan/domain/checks/cors/service.py:56
+msgid "N'importe quel site tiers peut lire des réponses authentifiées de l'utilisateur."
+msgstr "Bất kỳ trang bên thứ ba nào cũng có thể đọc các phản hồi đã xác thực của người dùng."
+
+#: src/omega_scan/domain/checks/cors/service.py:58
+msgid "Ne jamais combiner un wildcard avec Allow-Credentials ; whitelister les origines."
+msgstr "Không bao giờ kết hợp wildcard với Allow-Credentials; hãy lập danh sách trắng các nguồn gốc."
+
+#: src/omega_scan/domain/checks/cors/service.py:83
+msgid "Origine arbitraire réfléchie dans Access-Control-Allow-Origin"
+msgstr "Nguồn gốc tùy ý bị phản chiếu trong Access-Control-Allow-Origin"
+
+#: src/omega_scan/domain/checks/cors/service.py:89
+msgid "Le service reflète telle quelle une origine arbitraire et non reconnue dans Access-Control-Allow-Origin."
+msgstr "Dịch vụ phản chiếu nguyên vẹn một nguồn gốc tùy ý, không được công nhận vào Access-Control-Allow-Origin."
+
+#: src/omega_scan/domain/checks/cors/service.py:92
+msgid "Absence apparente de validation d'origine : un site tiers peut lire les réponses."
+msgstr "Dường như không kiểm tra nguồn gốc: trang bên thứ ba có thể đọc phản hồi."
+
+#: src/omega_scan/domain/checks/cors/service.py:94
+msgid "Valider l'origine reçue contre une liste explicite avant de la réfléchir."
+msgstr "Kiểm tra nguồn gốc nhận được với một danh sách rõ ràng trước khi phản chiếu."
+
+#: src/omega_scan/domain/checks/exposure/service.py:39
+#, python-brace-format
+msgid "Chemin admin accessible : {path}"
+msgstr "Đường dẫn quản trị truy cập được: {path}"
+
+#: src/omega_scan/domain/checks/exposure/service.py:44
+#, python-brace-format
+msgid "Le chemin {path} est accessible sans authentification."
+msgstr "Đường dẫn {path} truy cập được mà không cần xác thực."
+
+#: src/omega_scan/domain/checks/exposure/service.py:45
+msgid "Interface d'administration potentiellement exposée."
+msgstr "Giao diện quản trị có thể bị lộ."
+
+#: src/omega_scan/domain/checks/exposure/service.py:46
+msgid "Restreindre l'accès par IP ou exiger une authentification forte."
+msgstr "Giới hạn truy cập theo IP hoặc yêu cầu xác thực mạnh."
+
+#: src/omega_scan/domain/checks/exposure/service.py:87
+#, python-brace-format
+msgid "Fichier sensible accessible : {path}"
+msgstr "Tệp nhạy cảm truy cập được: {path}"
+
+#: src/omega_scan/domain/checks/exposure/service.py:92
+#, python-brace-format
+msgid "Le fichier {path} est accessible publiquement."
+msgstr "Tệp {path} có thể truy cập công khai."
+
+#: src/omega_scan/domain/checks/exposure/service.py:93
+msgid "Fuite de données sensibles (credentials, configuration)."
+msgstr "Rò rỉ dữ liệu nhạy cảm (thông tin xác thực, cấu hình)."
+
+#: src/omega_scan/domain/checks/exposure/service.py:94
+msgid "Bloquer l'accès à ces fichiers via la configuration du serveur web."
+msgstr "Chặn truy cập các tệp này qua cấu hình máy chủ web."
+
+#: src/omega_scan/domain/checks/headers/service.py:42
+msgid "Content-Security-Policy absente"
+msgstr "Thiếu Content-Security-Policy"
+
+#: src/omega_scan/domain/checks/headers/service.py:47
+msgid "Le header Content-Security-Policy est absent sur une page HTML."
+msgstr "Header Content-Security-Policy bị thiếu trên một trang HTML."
+
+#: src/omega_scan/domain/checks/headers/service.py:48
+msgid "Vulnérable aux attaques XSS et injection de contenu."
+msgstr "Dễ bị tấn công XSS và chèn nội dung."
+
+#: src/omega_scan/domain/checks/headers/service.py:49
+msgid "Ajouter un header Content-Security-Policy restrictif."
+msgstr "Thêm một header Content-Security-Policy chặt chẽ."
+
+#: src/omega_scan/domain/checks/headers/service.py:99
+msgid "Content-Security-Policy trop permissive"
+msgstr "Content-Security-Policy quá lỏng"
+
+#: src/omega_scan/domain/checks/headers/service.py:104
+#, python-brace-format
+msgid "CSP présente mais contient des directives permissives: {join}"
+msgstr "Có CSP nhưng chứa các chỉ thị lỏng lẻo: {join}"
+
+#: src/omega_scan/domain/checks/headers/service.py:105
+msgid "La protection CSP est affaiblie."
+msgstr "Lớp bảo vệ CSP bị suy yếu."
+
+#: src/omega_scan/domain/checks/headers/service.py:106
+msgid "Restreindre les directives CSP (éviter 'unsafe-inline', '*', etc.)."
+msgstr "Siết chặt các chỉ thị CSP (tránh 'unsafe-inline', '*', v.v.)."
+
+#: src/omega_scan/domain/checks/headers/service.py:111
+#, python-brace-format
+msgid "Motifs permissifs détectés: {join}"
+msgstr "Phát hiện mẫu lỏng lẻo: {join}"
+
+#: src/omega_scan/domain/checks/headers/service.py:150
+msgid "X-Content-Type-Options absent ou invalide"
+msgstr "X-Content-Type-Options thiếu hoặc không hợp lệ"
+
+#: src/omega_scan/domain/checks/headers/service.py:155
+msgid "Le header X-Content-Type-Options: nosniff est absent."
+msgstr "Thiếu header X-Content-Type-Options: nosniff."
+
+#: src/omega_scan/domain/checks/headers/service.py:156
+msgid "Vulnérable aux attaques MIME sniffing."
+msgstr "Dễ bị tấn công MIME sniffing."
+
+#: src/omega_scan/domain/checks/headers/service.py:157
+msgid "Ajouter le header: X-Content-Type-Options: nosniff"
+msgstr "Thêm header: X-Content-Type-Options: nosniff"
+
+#: src/omega_scan/domain/checks/headers/service.py:198 src/omega_scan/domain/checks/information_leaks/service.py:45
+msgid "Bannière Server exposée"
+msgstr "Lộ banner Server"
+
+#: src/omega_scan/domain/checks/headers/service.py:203
+#, python-brace-format
+msgid "Le header Server expose des informations: {server}"
+msgstr "Header Server làm lộ thông tin: {server}"
+
+#: src/omega_scan/domain/checks/headers/service.py:204 src/omega_scan/domain/checks/information_leaks/service.py:51
+msgid "Fuite d'information sur la technologie serveur."
+msgstr "Rò rỉ thông tin về công nghệ máy chủ."
+
+#: src/omega_scan/domain/checks/headers/service.py:205 src/omega_scan/domain/checks/information_leaks/service.py:52
+msgid "Configurer le serveur pour masquer ou minimiser le header Server."
+msgstr "Cấu hình máy chủ để ẩn hoặc rút gọn header Server."
+
+#: src/omega_scan/domain/checks/headers/service.py:257
+msgid "Cache-Control absent ou permissif"
+msgstr "Cache-Control thiếu hoặc quá lỏng"
+
+#: src/omega_scan/domain/checks/headers/service.py:263
+msgid "Le header Cache-Control est absent ou ne restreint pas explicitement la mise en cache (valeur observée : {cache_control!r})."
+msgstr "Header Cache-Control bị thiếu hoặc không giới hạn rõ ràng việc lưu bộ nhớ đệm (giá trị quan sát: {cache_control!r})."
+
+#: src/omega_scan/domain/checks/headers/service.py:266
+msgid "Du contenu potentiellement sensible pourrait être conservé par des caches partagés."
+msgstr "Nội dung có thể nhạy cảm có thể bị lưu lại bởi các bộ nhớ đệm dùng chung."
+
+#: src/omega_scan/domain/checks/headers/service.py:268
+msgid "Définir Cache-Control: no-store (ou private) sur les réponses porteuses de données utilisateur."
+msgstr "Đặt Cache-Control: no-store (hoặc private) cho các phản hồi chứa dữ liệu người dùng."
+
+#: src/omega_scan/domain/checks/information_leaks/service.py:50
+#, python-brace-format
+msgid "Le header Server expose des informations : {server}"
+msgstr "Header Server làm lộ thông tin: {server}"
+
+#: src/omega_scan/domain/checks/information_leaks/service.py:71
+msgid "Bannière X-Powered-By exposée"
+msgstr "Lộ banner X-Powered-By"
+
+#: src/omega_scan/domain/checks/information_leaks/service.py:76
+#, python-brace-format
+msgid "Le header X-Powered-By expose des informations : {powered_by}"
+msgstr "Header X-Powered-By làm lộ thông tin: {powered_by}"
+
+#: src/omega_scan/domain/checks/information_leaks/service.py:77
+msgid "Fuite d'information sur le framework/technologie."
+msgstr "Rò rỉ thông tin về framework/công nghệ."
+
+#: src/omega_scan/domain/checks/information_leaks/service.py:78
+msgid "Supprimer le header X-Powered-By de la configuration."
+msgstr "Gỡ header X-Powered-By khỏi cấu hình."
+
+#: src/omega_scan/domain/checks/information_leaks/service.py:119
+msgid "Messages d'erreur détaillés exposés"
+msgstr "Lộ thông báo lỗi chi tiết"
+
+#: src/omega_scan/domain/checks/information_leaks/service.py:124
+#, python-brace-format
+msgid "Des messages d'erreur détaillés sont visibles dans la réponse : {join}"
+msgstr "Thông báo lỗi chi tiết hiển thị trong phản hồi: {join}"
+
+#: src/omega_scan/domain/checks/information_leaks/service.py:125
+msgid "Fuite d'information sur l'implémentation, potentiellement exploitable."
+msgstr "Rò rỉ thông tin về cách triển khai, có thể bị khai thác."
+
+#: src/omega_scan/domain/checks/information_leaks/service.py:126
+msgid "Configurer le serveur pour afficher des pages d'erreur génériques en production."
+msgstr "Cấu hình máy chủ hiển thị trang lỗi chung chung trong môi trường production."
+
+#: src/omega_scan/domain/checks/information_leaks/service.py:173
+msgid "Stack trace exposé"
+msgstr "Lộ stack trace"
+
+#: src/omega_scan/domain/checks/information_leaks/service.py:178
+#, python-brace-format
+msgid "Un stack trace est visible dans la réponse : {join}"
+msgstr "Stack trace hiển thị trong phản hồi: {join}"
+
+#: src/omega_scan/domain/checks/information_leaks/service.py:179
+msgid "Fuite d'information critique sur l'implémentation, paths internes, versions."
+msgstr "Rò rỉ nghiêm trọng thông tin về cách triển khai, đường dẫn nội bộ, phiên bản."
+
+#: src/omega_scan/domain/checks/information_leaks/service.py:181
+msgid "Désactiver l'affichage des stack traces en production. Utiliser des pages d'erreur génériques."
+msgstr "Tắt hiển thị stack trace trong production. Dùng trang lỗi chung chung."
+
+#: src/omega_scan/domain/checks/information_leaks/service.py:217
+msgid "Fichier robots.txt présent"
+msgstr "Có tệp robots.txt"
+
+#: src/omega_scan/domain/checks/information_leaks/service.py:222
+msgid "Le fichier /robots.txt est présent et peut révéler des chemins sensibles."
+msgstr "Tệp /robots.txt tồn tại và có thể làm lộ các đường dẫn nhạy cảm."
+
+#: src/omega_scan/domain/checks/information_leaks/service.py:224
+msgid "Fuite d'information mineure sur la structure du site."
+msgstr "Rò rỉ nhỏ thông tin về cấu trúc trang web."
+
+#: src/omega_scan/domain/checks/information_leaks/service.py:225
+msgid "Vérifier que /robots.txt ne liste pas de chemins sensibles ou administratifs."
+msgstr "Kiểm tra rằng /robots.txt không liệt kê đường dẫn nhạy cảm hoặc quản trị."
+
+#: src/omega_scan/domain/checks/information_leaks/service.py:233
+#, python-brace-format
+msgid "{get}://{get2}/robots.txt"
+msgstr "{get}://{get2}/robots.txt"
+
+#: src/omega_scan/domain/checks/information_leaks/service.py:262
+msgid "Fichier security.txt présent"
+msgstr "Có tệp security.txt"
+
+#: src/omega_scan/domain/checks/information_leaks/service.py:267
+msgid "Le fichier /.well-known/security.txt est présent (RFC 9116)."
+msgstr "Tệp /.well-known/security.txt tồn tại (RFC 9116)."
+
+#: src/omega_scan/domain/checks/information_leaks/service.py:268
+msgid "Bonne pratique : facilite le signalement responsable de vulnérabilités."
+msgstr "Thực hành tốt: giúp việc báo cáo lỗ hổng có trách nhiệm dễ dàng hơn."
+
+#: src/omega_scan/domain/checks/information_leaks/service.py:269 src/omega_scan/domain/checks/transport/service.py:130
+msgid "Aucune action requise."
+msgstr "Không cần hành động."
+
+#: src/omega_scan/domain/checks/information_leaks/service.py:277
+#, python-brace-format
+msgid "{get}://{get2}/.well-known/security.txt"
+msgstr "{get}://{get2}/.well-known/security.txt"
+
+#: src/omega_scan/domain/checks/information_leaks/service.py:323
+#, python-brace-format
+msgid "Header technique exposé : {verbose_header}"
+msgstr "Lộ header kỹ thuật: {verbose_header}"
+
+#: src/omega_scan/domain/checks/information_leaks/service.py:328
+#, python-brace-format
+msgid "Le header {verbose_header} expose des informations techniques : {value}"
+msgstr "Header {verbose_header} làm lộ thông tin kỹ thuật: {value}"
+
+#: src/omega_scan/domain/checks/information_leaks/service.py:330
+msgid "Fuite d'information sur l'implémentation."
+msgstr "Rò rỉ thông tin về cách triển khai."
+
+#: src/omega_scan/domain/checks/information_leaks/service.py:331
+#, python-brace-format
+msgid "Supprimer le header {verbose_header} de la configuration."
+msgstr "Gỡ header {verbose_header} khỏi cấu hình."
+
+#: src/omega_scan/domain/checks/methods/policies.py:12
+msgid "Méthode HTTP OPTIONS activée"
+msgstr "Phương thức HTTP OPTIONS được bật"
+
+#: src/omega_scan/domain/checks/methods/policies.py:15
+msgid "La méthode OPTIONS est activée et peut révéler les méthodes autorisées."
+msgstr "Phương thức OPTIONS được bật và có thể làm lộ các phương thức được phép."
+
+#: src/omega_scan/domain/checks/methods/policies.py:16
+msgid "Fuite d'information mineure sur la configuration du serveur."
+msgstr "Rò rỉ nhỏ thông tin về cấu hình máy chủ."
+
+#: src/omega_scan/domain/checks/methods/policies.py:17
+msgid "Désactiver la méthode OPTIONS si elle n'est pas nécessaire."
+msgstr "Tắt phương thức OPTIONS nếu không cần."
+
+#: src/omega_scan/domain/checks/methods/policies.py:21
+msgid "Méthode HTTP TRACE activée"
+msgstr "Phương thức HTTP TRACE được bật"
+
+#: src/omega_scan/domain/checks/methods/policies.py:24
+msgid "La méthode TRACE est activée, ce qui peut faciliter les attaques Cross-Site Tracing (XST)."
+msgstr "Phương thức TRACE được bật, có thể tạo điều kiện cho tấn công Cross-Site Tracing (XST)."
+
+#: src/omega_scan/domain/checks/methods/policies.py:26
+msgid "Risque de vol de cookies ou d'identifiants via XST."
+msgstr "Rủi ro bị đánh cắp cookie hoặc thông tin xác thực qua XST."
+
+#: src/omega_scan/domain/checks/methods/policies.py:27
+msgid "Désactiver la méthode TRACE dans la configuration du serveur web."
+msgstr "Tắt phương thức TRACE trong cấu hình máy chủ web."
+
+#: src/omega_scan/domain/checks/methods/policies.py:31
+msgid "Méthode HTTP PUT activée"
+msgstr "Phương thức HTTP PUT được bật"
+
+#: src/omega_scan/domain/checks/methods/policies.py:34
+msgid "La méthode PUT est activée, permettant potentiellement l'upload de fichiers."
+msgstr "Phương thức PUT được bật, có thể cho phép tải tệp lên."
+
+#: src/omega_scan/domain/checks/methods/policies.py:36
+msgid "Risque de dépôt de contenu malveillant ou de modification de ressources."
+msgstr "Rủi ro bị đặt nội dung độc hại hoặc sửa đổi tài nguyên."
+
+#: src/omega_scan/domain/checks/methods/policies.py:37
+msgid "Désactiver la méthode PUT sauf si explicitement requise et sécurisée."
+msgstr "Tắt phương thức PUT trừ khi thực sự cần và đã được bảo vệ."
+
+#: src/omega_scan/domain/checks/methods/policies.py:41
+msgid "Méthode HTTP DELETE activée"
+msgstr "Phương thức HTTP DELETE được bật"
+
+#: src/omega_scan/domain/checks/methods/policies.py:44
+msgid "La méthode DELETE est activée, permettant potentiellement la suppression de ressources."
+msgstr "Phương thức DELETE được bật, có thể cho phép xóa tài nguyên."
+
+#: src/omega_scan/domain/checks/methods/policies.py:46
+msgid "Risque de suppression non autorisée de données."
+msgstr "Rủi ro dữ liệu bị xóa trái phép."
+
+#: src/omega_scan/domain/checks/methods/policies.py:47
+msgid "Désactiver la méthode DELETE sauf si explicitement requise et sécurisée."
+msgstr "Tắt phương thức DELETE trừ khi thực sự cần và đã được bảo vệ."
+
+#: src/omega_scan/domain/checks/methods/policies.py:52
+msgid "Méthode HTTP PATCH activée"
+msgstr "Phương thức HTTP PATCH được bật"
+
+#: src/omega_scan/domain/checks/methods/policies.py:55
+msgid "La méthode PATCH est activée, permettant la modification partielle de ressources."
+msgstr "Phương thức PATCH được bật, cho phép sửa đổi một phần tài nguyên."
+
+#: src/omega_scan/domain/checks/methods/policies.py:57
+msgid "Risque de modification non autorisée de données."
+msgstr "Rủi ro dữ liệu bị sửa đổi trái phép."
+
+#: src/omega_scan/domain/checks/methods/policies.py:58
+msgid "Désactiver la méthode PATCH sauf si explicitement requise et sécurisée."
+msgstr "Tắt phương thức PATCH trừ khi thực sự cần và đã được bảo vệ."
+
+#: src/omega_scan/domain/checks/methods/policies.py:62
+msgid "Méthode HTTP CONNECT activée"
+msgstr "Phương thức HTTP CONNECT được bật"
+
+#: src/omega_scan/domain/checks/methods/policies.py:65
+msgid "La méthode CONNECT est activée, permettant l'établissement de tunnels TCP."
+msgstr "Phương thức CONNECT được bật, cho phép thiết lập đường hầm TCP."
+
+#: src/omega_scan/domain/checks/methods/policies.py:67
+msgid "Risque d'utilisation du serveur comme proxy ouvert pour des attaques."
+msgstr "Rủi ro máy chủ bị dùng làm proxy mở để tấn công."
+
+#: src/omega_scan/domain/checks/methods/policies.py:68
+msgid "Restreindre la méthode CONNECT aux seuls ports nécessaires (ex: 443) ou la désactiver."
+msgstr "Giới hạn phương thức CONNECT chỉ ở các cổng cần thiết (vd: 443) hoặc tắt nó."
+
+#: src/omega_scan/domain/checks/methods/service.py:49
+msgid " Cependant, elle semble protégée par authentification."
+msgstr " Tuy nhiên, nó có vẻ được bảo vệ bằng xác thực."
+
+#: src/omega_scan/domain/checks/methods/service.py:51
+msgid "Risque mitigé par la présence d'une authentification."
+msgstr "Rủi ro được giảm nhờ có xác thực."
+
+#: src/omega_scan/domain/checks/methods/service.py:52
+msgid "Vérifier que l'authentification est robuste."
+msgstr "Kiểm tra rằng xác thực đủ mạnh."
+
+#: src/omega_scan/domain/checks/methods/service.py:78
+msgid " (statut incertain)"
+msgstr " (trạng thái chưa chắc chắn)"
+
+#: src/omega_scan/domain/checks/methods/service.py:83
+msgid " Le statut exact n'a pas pu être déterminé clairement."
+msgstr " Không xác định rõ được trạng thái chính xác."
+
+#: src/omega_scan/domain/checks/tls_depth/service.py:49
+#, python-brace-format
+msgid "Protocole TLS obsolète : {version}"
+msgstr "Giao thức TLS lỗi thời: {version}"
+
+#: src/omega_scan/domain/checks/tls_depth/service.py:54
+#, python-brace-format
+msgid "Le service négocie {version}, un protocole obsolète et vulnérable."
+msgstr "Dịch vụ thương lượng {version}, một giao thức lỗi thời và dễ bị tấn công."
+
+#: src/omega_scan/domain/checks/tls_depth/service.py:55
+msgid "Vulnérable aux attaques connues sur les protocoles TLS anciens (ex. POODLE, BEAST)."
+msgstr "Dễ bị các tấn công đã biết nhắm vào giao thức TLS cũ (vd. POODLE, BEAST)."
+
+#: src/omega_scan/domain/checks/tls_depth/service.py:57
+msgid "Désactiver les protocoles antérieurs à TLSv1.2 côté serveur."
+msgstr "Tắt các giao thức cũ hơn TLSv1.2 ở phía máy chủ."
+
+#: src/omega_scan/domain/checks/tls_depth/service.py:85
+#, python-brace-format
+msgid "Suite cryptographique faible : {cipher}"
+msgstr "Bộ mã hóa yếu: {cipher}"
+
+#: src/omega_scan/domain/checks/tls_depth/service.py:90
+#, python-brace-format
+msgid "La suite cryptographique négociée ({cipher}) est considérée faible."
+msgstr "Bộ mã hóa được thương lượng ({cipher}) được xem là yếu."
+
+#: src/omega_scan/domain/checks/tls_depth/service.py:91
+msgid "Le chiffrement peut être cassé ou affaibli face à un attaquant motivé."
+msgstr "Mã hóa có thể bị phá hoặc suy yếu trước kẻ tấn công có chủ đích."
+
+#: src/omega_scan/domain/checks/tls_depth/service.py:92
+msgid "Restreindre la configuration TLS du serveur aux suites modernes (ex. AEAD/GCM)."
+msgstr "Giới hạn cấu hình TLS của máy chủ ở các bộ mã hóa hiện đại (vd. AEAD/GCM)."
+
+#: src/omega_scan/domain/checks/transport/service.py:32
+msgid "HTTP accessible sans redirection vers HTTPS"
+msgstr "HTTP truy cập được mà không chuyển hướng sang HTTPS"
+
+#: src/omega_scan/domain/checks/transport/service.py:37
+msgid "Le service est accessible en HTTP sans redirection automatique vers HTTPS."
+msgstr "Dịch vụ truy cập được qua HTTP mà không tự động chuyển hướng sang HTTPS."
+
+#: src/omega_scan/domain/checks/transport/service.py:38
+msgid "Les données transitent en clair, exposées à l'interception."
+msgstr "Dữ liệu truyền dạng rõ, có thể bị chặn bắt."
+
+#: src/omega_scan/domain/checks/transport/service.py:39
+msgid "Configurer une redirection permanente (301) de HTTP vers HTTPS."
+msgstr "Cấu hình chuyển hướng vĩnh viễn (301) từ HTTP sang HTTPS."
+
+#: src/omega_scan/domain/checks/transport/service.py:44
+#, python-brace-format
+msgid "Final URL: {final_url}"
+msgstr "Final URL: {final_url}"
+
+#: src/omega_scan/domain/checks/transport/service.py:75
+msgid "HTTPS non accessible"
+msgstr "HTTPS không truy cập được"
+
+#: src/omega_scan/domain/checks/transport/service.py:80
+msgid "Le service n'est pas accessible en HTTPS."
+msgstr "Dịch vụ không truy cập được qua HTTPS."
+
+#: src/omega_scan/domain/checks/transport/service.py:81
+msgid "Aucune communication chiffrée possible, données exposées."
+msgstr "Không thể giao tiếp mã hóa, dữ liệu bị lộ."
+
+#: src/omega_scan/domain/checks/transport/service.py:82
+msgid "Configurer HTTPS avec un certificat valide."
+msgstr "Cấu hình HTTPS với một chứng chỉ hợp lệ."
+
+#: src/omega_scan/domain/checks/transport/service.py:87
+#, python-brace-format
+msgid "URL testée: {get}"
+msgstr "URL đã kiểm tra: {get}"
+
+#: src/omega_scan/domain/checks/transport/service.py:123
+msgid "HSTS non évalué (profil local-lab sur LAN)"
+msgstr "Không đánh giá HSTS (hồ sơ local-lab trên LAN)"
+
+#: src/omega_scan/domain/checks/transport/service.py:128
+msgid "HSTS n'est pas évalué en profil local-lab sur loopback/LAN."
+msgstr "HSTS không được đánh giá với hồ sơ local-lab trên loopback/LAN."
+
+#: src/omega_scan/domain/checks/transport/service.py:129
+msgid "Aucun impact en environnement local contrôlé."
+msgstr "Không có tác động trong môi trường cục bộ được kiểm soát."
+
+#: src/omega_scan/domain/checks/transport/service.py:146
+msgid "Header HSTS absent"
+msgstr "Thiếu header HSTS"
+
+#: src/omega_scan/domain/checks/transport/service.py:151
+msgid "Le header Strict-Transport-Security est absent."
+msgstr "Thiếu header Strict-Transport-Security."
+
+#: src/omega_scan/domain/checks/transport/service.py:152
+msgid "Les navigateurs ne forcent pas HTTPS, vulnérable aux attaques downgrade."
+msgstr "Trình duyệt không bắt buộc HTTPS, dễ bị tấn công hạ cấp."
+
+#: src/omega_scan/domain/checks/transport/service.py:153
+msgid "Ajouter le header: Strict-Transport-Security: max-age=31536000; includeSubDomains"
+msgstr "Thêm header: Strict-Transport-Security: max-age=31536000; includeSubDomains"
+
+#: src/omega_scan/domain/checks/transport/service.py:200
+msgid "HSTS max-age faible"
+msgstr "HSTS max-age thấp"
+
+#: src/omega_scan/domain/checks/transport/service.py:205
+#, python-brace-format
+msgid "Le max-age HSTS est de {max_age} secondes (< 1 an)."
+msgstr "HSTS max-age là {max_age} giây (< 1 năm)."
+
+#: src/omega_scan/domain/checks/transport/service.py:206
+msgid "La protection HSTS est de courte durée."
+msgstr "Lớp bảo vệ HSTS có thời hạn ngắn."
+
+#: src/omega_scan/domain/checks/transport/service.py:207
+msgid "Augmenter max-age à au moins 31536000 (1 an)."
+msgstr "Tăng max-age lên ít nhất 31536000 (1 năm)."
+
+#: src/omega_scan/domain/profiles/policies.py:79
+#, python-brace-format
+msgid "Profil inconnu : {name}. Choix : {value}"
+msgstr "Hồ sơ không xác định: {name}. Lựa chọn: {value}"
+
+#: src/omega_scan/domain/reports/service.py:56
+msgid "Scan incomplet : cible injoignable, aucune vérification possible."
+msgstr "Quét chưa hoàn tất: không truy cập được mục tiêu, không thể kiểm tra gì."
+
+#: src/omega_scan/domain/reports/service.py:59
+msgid "Posture de sécurité excellente."
+msgstr "Mức độ bảo mật rất tốt."
+
+#: src/omega_scan/domain/reports/service.py:62
+msgid "Posture correcte, quelques améliorations recommandées."
+msgstr "Mức độ bảo mật ổn, nên cải thiện vài điểm."
+
+#: src/omega_scan/domain/reports/service.py:65
+msgid "Posture moyenne, plusieurs points à corriger."
+msgstr "Mức độ bảo mật trung bình, cần sửa nhiều điểm."
+
+#: src/omega_scan/domain/reports/service.py:68
+msgid "Posture faible, corrections prioritaires nécessaires."
+msgstr "Mức độ bảo mật yếu, cần ưu tiên khắc phục."
+
+#: src/omega_scan/domain/reports/service.py:71
+msgid "Posture critique, action immédiate requise."
+msgstr "Mức độ bảo mật nghiêm trọng, cần hành động ngay."
+
+#: src/omega_scan/domain/targets/validation.py:62
+msgid "L'entrée cible est vide."
+msgstr "Ô mục tiêu đang trống."
+
+#: src/omega_scan/domain/targets/validation.py:81
+#, python-brace-format
+msgid "Impossible d'extraire un hôte valide de : {raw_input}"
+msgstr "Không trích được host hợp lệ từ: {raw_input}"
+
+#: src/omega_scan/infrastructure/exceptions.py:64
+msgid "Timeout de connexion"
+msgstr "Hết thời gian chờ kết nối"
+
+#: src/omega_scan/infrastructure/exceptions.py:69
+msgid "Connexion refusée"
+msgstr "Kết nối bị từ chối"
+
+#: src/omega_scan/infrastructure/exceptions.py:74
+msgid "Échec de résolution DNS"
+msgstr "Phân giải DNS thất bại"
+
+#: src/omega_scan/infrastructure/exceptions.py:79
+msgid "Échec du handshake TLS"
+msgstr "Bắt tay TLS thất bại"
+
+#: src/omega_scan/infrastructure/exceptions.py:84
+msgid "Connexion réinitialisée par le pair"
+msgstr "Kết nối bị phía bên kia đặt lại"
+
+#: src/omega_scan/infrastructure/network/httpx_connectivity_prober.py:30
+#, python-brace-format
+msgid "[CONNECTIVITY] Début du pré-scan pour {normalized_host}"
+msgstr "[CONNECTIVITY] Bắt đầu quét sơ bộ cho {normalized_host}"
+
+#: src/omega_scan/infrastructure/network/httpx_connectivity_prober.py:49
+#, python-brace-format
+msgid "[DNS] Résolution de {normalized_host}"
+msgstr "[DNS] Đang phân giải {normalized_host}"
+
+#: src/omega_scan/infrastructure/network/httpx_connectivity_prober.py:57
+#, python-brace-format
+msgid "[DNS] Résolu : {resolved}"
+msgstr "[DNS] Đã phân giải: {resolved}"
+
+#: src/omega_scan/infrastructure/network/httpx_connectivity_prober.py:59
+#, python-brace-format
+msgid "[DNS] Aucune adresse résolue pour {normalized_host}"
+msgstr "[DNS] Không phân giải được địa chỉ nào cho {normalized_host}"
+
+#: src/omega_scan/infrastructure/network/httpx_connectivity_prober.py:66
+#, python-brace-format
+msgid "Aucune adresse IP résolue pour {normalized_host}"
+msgstr "Không phân giải được địa chỉ IP nào cho {normalized_host}"
+
+#: src/omega_scan/infrastructure/network/httpx_connectivity_prober.py:75
+#, python-brace-format
+msgid "[DNS] Échec de résolution : {exc}"
+msgstr "[DNS] Phân giải thất bại: {exc}"
+
+#: src/omega_scan/infrastructure/network/httpx_connectivity_prober.py:114
+#, python-brace-format
+msgid "[HTTP] Test de {http_url}"
+msgstr "[HTTP] Kiểm tra {http_url}"
+
+#: src/omega_scan/infrastructure/network/httpx_connectivity_prober.py:133
+#, python-brace-format
+msgid "[HTTP] {http_url} -> ÉCHEC : {exc}"
+msgstr "[HTTP] {http_url} -> THẤT BẠI: {exc}"
+
+#: src/omega_scan/infrastructure/network/httpx_connectivity_prober.py:147
+#, python-brace-format
+msgid "[HTTPS] Test de {https_url}"
+msgstr "[HTTPS] Kiểm tra {https_url}"
+
+#: src/omega_scan/infrastructure/network/httpx_connectivity_prober.py:171
+#, python-brace-format
+msgid "[HTTPS] {https_url} -> ÉCHEC : {exc}"
+msgstr "[HTTPS] {https_url} -> THẤT BẠI: {exc}"
+
+#: src/omega_scan/infrastructure/network/httpx_connectivity_prober.py:189
+msgid "Aucun schéma accessible"
+msgstr "Không có giao thức nào truy cập được"
+
+#: src/omega_scan/infrastructure/network/httpx_connectivity_prober.py:191
+msgid "HTTP accessible, HTTPS injoignable"
+msgstr "HTTP truy cập được, HTTPS không truy cập được"
+
+#: src/omega_scan/infrastructure/network/httpx_connectivity_prober.py:193
+msgid "HTTPS accessible, HTTP injoignable"
+msgstr "HTTPS truy cập được, HTTP không truy cập được"
+
+#: src/omega_scan/infrastructure/network/httpx_connectivity_prober.py:197
+#, python-brace-format
+msgid "[CONNECTIVITY] Fin du pré-scan : HTTP={http_ok}, HTTPS={https_ok}, first={first_success}, latency={latency_overview_ms}ms"
+msgstr "[CONNECTIVITY] Kết thúc quét sơ bộ: HTTP={http_ok}, HTTPS={https_ok}, first={first_success}, latency={latency_overview_ms}ms"
+
+#: src/omega_scan/infrastructure/network/httpx_http_prober.py:224
+#, python-brace-format
+msgid "[HTTP_PROBE] Début de la collecte HTTP pour {normalized_host}"
+msgstr "[HTTP_PROBE] Bắt đầu thu thập HTTP cho {normalized_host}"
+
+#: src/omega_scan/infrastructure/network/httpx_http_prober.py:274
+#, python-brace-format
+msgid "[HTTP_PROBE] Fin de la collecte : preferred={preferred_scheme}, proxy={proxy_suspected}, content={content_profile}"
+msgstr "[HTTP_PROBE] Kết thúc thu thập: preferred={preferred_scheme}, proxy={proxy_suspected}, content={content_profile}"
+
+#: src/omega_scan/infrastructure/network/httpx_methods_prober.py:28
+#, python-brace-format
+msgid "[METHODS_PROBE] Début du test des méthodes HTTP pour {normalized_host}"
+msgstr "[METHODS_PROBE] Bắt đầu kiểm tra các phương thức HTTP cho {normalized_host}"
+
+#: src/omega_scan/infrastructure/network/httpx_methods_prober.py:35
+msgid "[METHODS_PROBE] Aucun schéma préféré, test des méthodes annulé"
+msgstr "[METHODS_PROBE] Không có giao thức ưu tiên, hủy kiểm tra phương thức"
+
+#: src/omega_scan/infrastructure/network/httpx_methods_prober.py:40
+msgid "[METHODS_PROBE] Pas d'URL finale, test des méthodes annulé"
+msgstr "[METHODS_PROBE] Không có URL cuối, hủy kiểm tra phương thức"
+
+#: src/omega_scan/infrastructure/network/httpx_methods_prober.py:53
+#, python-brace-format
+msgid "[METHODS_PROBE] Test de la méthode {method} sur {base_url}"
+msgstr "[METHODS_PROBE] Kiểm tra phương thức {method} trên {base_url}"
+
+#: src/omega_scan/infrastructure/network/httpx_methods_prober.py:91
+#, python-brace-format
+msgid "[METHODS_PROBE] Fin du test des méthodes : {count} méthodes testées"
+msgstr "[METHODS_PROBE] Kết thúc kiểm tra phương thức: đã kiểm tra {count} phương thức"
+
+#: src/omega_scan/infrastructure/network/httpx_path_prober.py:50
+#, python-brace-format
+msgid "[PATH_PROBE] Test catch-all : {probe_url}"
+msgstr "[PATH_PROBE] Kiểm tra catch-all: {probe_url}"
+
+#: src/omega_scan/infrastructure/network/httpx_path_prober.py:61
+#, python-brace-format
+msgid "[PATH_PROBE] Catch-all détecté (même profil : {probe_profile})"
+msgstr "[PATH_PROBE] Phát hiện catch-all (cùng đặc điểm: {probe_profile})"
+
+#: src/omega_scan/infrastructure/network/httpx_path_prober.py:64
+#, python-brace-format
+msgid "[PATH_PROBE] Réponse 200 sur chemin improbable (profil: {probe_profile})"
+msgstr "[PATH_PROBE] Phản hồi 200 trên đường dẫn khó có thật (đặc điểm: {probe_profile})"
+
+#: src/omega_scan/infrastructure/network/httpx_path_prober.py:70
+#, python-brace-format
+msgid "[PATH_PROBE] Test catch-all échoué : {exc}"
+msgstr "[PATH_PROBE] Kiểm tra catch-all thất bại: {exc}"
+
+#: src/omega_scan/infrastructure/network/httpx_path_prober.py:142
+#, python-brace-format
+msgid "[PATH_PROBE] Début du path probing pour {normalized_host}"
+msgstr "[PATH_PROBE] Bắt đầu path probing cho {normalized_host}"
+
+#: src/omega_scan/infrastructure/network/httpx_path_prober.py:147
+msgid "[PATH_PROBE] Path probing désactivé par le profil"
+msgstr "[PATH_PROBE] Path probing bị hồ sơ tắt"
+
+#: src/omega_scan/infrastructure/network/httpx_path_prober.py:153
+msgid "[PATH_PROBE] Aucun schéma préféré, path probing annulé"
+msgstr "[PATH_PROBE] Không có giao thức ưu tiên, hủy path probing"
+
+#: src/omega_scan/infrastructure/network/httpx_path_prober.py:158
+msgid "[PATH_PROBE] Pas d'URL finale, path probing annulé"
+msgstr "[PATH_PROBE] Không có URL cuối, hủy path probing"
+
+#: src/omega_scan/infrastructure/network/httpx_path_prober.py:163
+msgid "[PATH_PROBE] Test catch-all..."
+msgstr "[PATH_PROBE] Kiểm tra catch-all..."
+
+#: src/omega_scan/infrastructure/network/httpx_path_prober.py:169
+msgid "[PATH_PROBE] Catch-all détecté, les findings de path probing auront une confiance dégradée"
+msgstr "[PATH_PROBE] Phát hiện catch-all, các phát hiện của path probing sẽ có độ tin cậy giảm"
+
+#: src/omega_scan/infrastructure/network/httpx_path_prober.py:177
+#, python-brace-format
+msgid "[PATH_PROBE] Test de {count} chemins..."
+msgstr "[PATH_PROBE] Kiểm tra {count} đường dẫn..."
+
+#: src/omega_scan/infrastructure/network/httpx_path_prober.py:195
+#, python-brace-format
+msgid "[PATH_PROBE] Fin : {count} chemins testés, {count2} intéressants"
+msgstr "[PATH_PROBE] Kết thúc: đã kiểm tra {count} đường dẫn, {count2} đáng chú ý"
+
+#: src/omega_scan/infrastructure/network/httpx_tls_prober.py:73
+#, python-brace-format
+msgid "[TLS_PROBE] Début de la collecte TLS pour {normalized_host}"
+msgstr "[TLS_PROBE] Bắt đầu thu thập TLS cho {normalized_host}"
+
+#: src/omega_scan/infrastructure/network/httpx_tls_prober.py:94
+msgid "[TLS_PROBE] TLS désactivé par le profil"
+msgstr "[TLS_PROBE] TLS bị hồ sơ tắt"
+
+#: src/omega_scan/infrastructure/network/httpx_tls_prober.py:95
+msgid "TLS désactivé par le profil"
+msgstr "TLS bị hồ sơ tắt"
+
+#: src/omega_scan/infrastructure/network/httpx_tls_prober.py:111
+#, python-brace-format
+msgid "[TLS_PROBE] Connexion à {tls_host}:{tls_port} (SNI: {sni_hostname})"
+msgstr "[TLS_PROBE] Kết nối tới {tls_host}:{tls_port} (SNI: {sni_hostname})"
+
+#: src/omega_scan/infrastructure/network/httpx_tls_prober.py:159
+#, python-brace-format
+msgid "Le certificat ne correspond pas à {sni_hostname}. Possible multi-vhost."
+msgstr "Chứng chỉ không khớp với {sni_hostname}. Có thể là multi-vhost."
+
+#: src/omega_scan/infrastructure/network/httpx_tls_prober.py:166
+#, python-brace-format
+msgid "[TLS_PROBE] TLS OK : version={tls_version}, subject={certificate_subject}"
+msgstr "[TLS_PROBE] TLS OK: version={tls_version}, subject={certificate_subject}"
+
+#: src/omega_scan/infrastructure/network/httpx_tls_prober.py:171
+#, python-brace-format
+msgid "[TLS_PROBE] Certificat non valide : {exc}"
+msgstr "[TLS_PROBE] Chứng chỉ không hợp lệ: {exc}"
+
+#: src/omega_scan/infrastructure/network/httpx_tls_prober.py:177
+msgid "Certificat présent mais non approuvé par la chaîne de confiance."
+msgstr "Có chứng chỉ nhưng không được chuỗi tin cậy chấp thuận."
+
+#: src/omega_scan/infrastructure/network/httpx_tls_prober.py:181
+#, python-brace-format
+msgid "[TLS_PROBE] Erreur SSL (handshake échoué) : {exc}"
+msgstr "[TLS_PROBE] Lỗi SSL (bắt tay thất bại): {exc}"
+
+#: src/omega_scan/infrastructure/network/httpx_tls_prober.py:191
+#, python-brace-format
+msgid "[TLS_PROBE] Erreur inattendue : {exc}"
+msgstr "[TLS_PROBE] Lỗi không lường trước: {exc}"
+
+#: src/omega_scan/infrastructure/storage/sqlite/scan_repository.py:46
+msgid "Échec de sauvegarde du scan {get!r} : {exc}"
+msgstr "Không lưu được bản quét {get!r}: {exc}"
+
+#: src/omega_scan/infrastructure/storage/sqlite/scan_repository.py:55
+msgid "Échec de lecture du scan {scan_id!r} : {exc}"
+msgstr "Không đọc được bản quét {scan_id!r}: {exc}"
+
+#: src/omega_scan/infrastructure/storage/sqlite/scan_repository.py:75
+#, python-brace-format
+msgid "Échec de listage de l'historique des scans : {exc}"
+msgstr "Không liệt kê được lịch sử quét: {exc}"
+
+#: src/omega_scan/infrastructure/storage/sqlite/scan_repository.py:83
+#, python-brace-format
+msgid "Échec de purge de l'historique des scans : {exc}"
+msgstr "Không xóa được lịch sử quét: {exc}"
+
+#: src/omega_scan/infrastructure/storage/sqlite/target_repository.py:36
+msgid "Échec d'épinglage de la cible {normalized_host!r} : {exc}"
+msgstr "Không ghim được mục tiêu {normalized_host!r}: {exc}"
+
+#: src/omega_scan/infrastructure/storage/sqlite/target_repository.py:47
+msgid "Échec de désépinglage de la cible {normalized_host!r} : {exc}"
+msgstr "Không bỏ ghim được mục tiêu {normalized_host!r}: {exc}"
+
+#: src/omega_scan/infrastructure/storage/sqlite/target_repository.py:57
+msgid "Échec de lecture de la cible épinglée {normalized_host!r} : {exc}"
+msgstr "Không đọc được mục tiêu đã ghim {normalized_host!r}: {exc}"
+
+#: src/omega_scan/infrastructure/storage/sqlite/target_repository.py:75
+#, python-brace-format
+msgid "Échec de purge des cibles épinglées : {exc}"
+msgstr "Không xóa được các mục tiêu đã ghim: {exc}"
+
+#: src/omega_scan/interfaces/tui/app.py:39
+msgid "🔍 OMEGA-SCAN"
+msgstr "🔍 OMEGA-SCAN"
+
+#: src/omega_scan/interfaces/tui/screens/compare.py:40
+msgid "COMPARAISON"
+msgstr "SO SÁNH"
+
+#: src/omega_scan/interfaces/tui/screens/compare.py:45
+msgid "Nouveaux findings"
+msgstr "Phát hiện mới"
+
+#: src/omega_scan/interfaces/tui/screens/compare.py:46
+msgid "Findings résolus"
+msgstr "Phát hiện đã khắc phục"
+
+#: src/omega_scan/interfaces/tui/screens/compare.py:47
+msgid "Findings inchangés"
+msgstr "Phát hiện không đổi"
+
+#: src/omega_scan/interfaces/tui/screens/compare.py:49
+msgid "Findings changés"
+msgstr "Phát hiện đã thay đổi"
+
+#: src/omega_scan/interfaces/tui/screens/compare.py:54
+#, python-brace-format
+msgid "{rule_id} : {status} -> {status2}"
+msgstr "{rule_id}: {status} -> {status2}"
+
+#: src/omega_scan/interfaces/tui/screens/compare.py:70 src/omega_scan/interfaces/tui/screens/findings.py:39
+#, python-brace-format
+msgid "{rule_id} — {title}"
+msgstr "{rule_id} — {title}"
+
+#: src/omega_scan/interfaces/tui/screens/export_dialog.py:42
+msgid "Thème d'export (HTML uniquement)"
+msgstr "Giao diện xuất (chỉ HTML)"
+
+#: src/omega_scan/interfaces/tui/screens/export_dialog.py:87
+msgid "Export impossible"
+msgstr "Không thể xuất"
+
+#: src/omega_scan/interfaces/tui/screens/export_dialog.py:89
+msgid "Export réussi"
+msgstr "Xuất thành công"
+
+#: src/omega_scan/interfaces/tui/screens/export_dialog.py:89
+#, python-brace-format
+msgid "Écrit vers {value}"
+msgstr "Đã ghi vào {value}"
+
+#: src/omega_scan/interfaces/tui/screens/findings.py:40
+#, python-brace-format
+msgid "Statut: {status}  Sévérité: {severity}  Confiance: {confidence}"
+msgstr "Trạng thái: {status}  Mức độ: {severity}  Độ tin cậy: {confidence}"
+
+#: src/omega_scan/interfaces/tui/screens/findings.py:42
+#, python-brace-format
+msgid ""
+"[b]Impact[/b]\n"
+"{impact}"
+msgstr ""
+"[b]Tác động[/b]\n"
+"{impact}"
+
+#: src/omega_scan/interfaces/tui/screens/findings.py:43
+#, python-brace-format
+msgid ""
+"[b]Remediation[/b]\n"
+"{remediation}"
+msgstr ""
+"[b]Khắc phục[/b]\n"
+"{remediation}"
+
+#: src/omega_scan/interfaces/tui/screens/findings.py:45
+#, python-brace-format
+msgid ""
+"[b]Preuve[/b] ({source})\n"
+"{value}"
+msgstr ""
+"[b]Bằng chứng[/b] ({source})\n"
+"{value}"
+
+#: src/omega_scan/interfaces/tui/screens/findings.py:47
+msgid "Fermer"
+msgstr "Đóng"
+
+#: src/omega_scan/interfaces/tui/screens/findings.py:65
+#, python-brace-format
+msgid "RÉSULTATS — {normalized_host}"
+msgstr "KẾT QUẢ — {normalized_host}"
+
+#: src/omega_scan/interfaces/tui/screens/findings.py:71
+msgid "Cliquez sur une ligne (ou Entrée) pour le diagnostic détaillé de ce finding."
+msgstr "Nhấp vào một dòng (hoặc Enter) để xem chẩn đoán chi tiết của phát hiện này."
+
+#: src/omega_scan/interfaces/tui/screens/findings.py:75
+msgid "Toutes catégories"
+msgstr "Tất cả danh mục"
+
+#: src/omega_scan/interfaces/tui/screens/help_screen.py:24
+msgid "Approfondi"
+msgstr "Chuyên sâu"
+
+#: src/omega_scan/interfaces/tui/screens/help_screen.py:24
+msgid "Complet (défaut)"
+msgstr "Đầy đủ (mặc định)"
+
+#: src/omega_scan/interfaces/tui/screens/help_screen.py:24
+msgid "Usage"
+msgstr "Mục đích"
+
+#: src/omega_scan/interfaces/tui/screens/help_screen.py:24
+msgid "Vérif. rapide"
+msgstr "Kiểm tra nhanh"
+
+#: src/omega_scan/interfaces/tui/screens/help_screen.py:24
+msgid "localhost / LAN"
+msgstr "localhost / LAN"
+
+#: src/omega_scan/interfaces/tui/screens/help_screen.py:25
+msgid "Timeout connect/read"
+msgstr "Thời gian chờ connect/read"
+
+#: src/omega_scan/interfaces/tui/screens/help_screen.py:27
+msgid "Méthodes HTTP"
+msgstr "Phương thức HTTP"
+
+#: src/omega_scan/interfaces/tui/screens/help_screen.py:33
+msgid "Oui (complet)"
+msgstr "Có (đầy đủ)"
+
+#: src/omega_scan/interfaces/tui/screens/help_screen.py:33
+msgid "Oui (~20)"
+msgstr "Có (~20)"
+
+#: src/omega_scan/interfaces/tui/screens/help_screen.py:33
+msgid "Path probing"
+msgstr "Path probing"
+
+#: src/omega_scan/interfaces/tui/screens/help_screen.py:34
+msgid "Oui (détaillé)"
+msgstr "Có (chi tiết)"
+
+#: src/omega_scan/interfaces/tui/screens/help_screen.py:34
+msgid "Oui (tolérant)"
+msgstr "Có (nới lỏng)"
+
+#: src/omega_scan/interfaces/tui/screens/help_screen.py:35
+msgid "Catch-all"
+msgstr "Catch-all"
+
+#: src/omega_scan/interfaces/tui/screens/help_screen.py:36
+msgid "Non évaluée"
+msgstr "Không đánh giá"
+
+#: src/omega_scan/interfaces/tui/screens/help_screen.py:36
+msgid "Politique HSTS"
+msgstr "Chính sách HSTS"
+
+#: src/omega_scan/interfaces/tui/screens/help_screen.py:36
+msgid "Standard"
+msgstr "Chuẩn"
+
+#: src/omega_scan/interfaces/tui/screens/help_screen.py:36
+msgid "Strict"
+msgstr "Nghiêm ngặt"
+
+#: src/omega_scan/interfaces/tui/screens/help_screen.py:36
+msgid "Tolérante"
+msgstr "Nới lỏng"
+
+#: src/omega_scan/interfaces/tui/screens/help_screen.py:40
+msgid "vérification éclair avant mise en production"
+msgstr "kiểm tra chớp nhoáng trước khi đưa vào production"
+
+#: src/omega_scan/interfaces/tui/screens/help_screen.py:41
+msgid "audit complet d'un service en production, recommandé"
+msgstr "kiểm toán đầy đủ một dịch vụ production, khuyên dùng"
+
+#: src/omega_scan/interfaces/tui/screens/help_screen.py:42
+msgid "audit approfondi incluant les méthodes HTTP risquées"
+msgstr "kiểm toán chuyên sâu gồm cả các phương thức HTTP rủi ro"
+
+#: src/omega_scan/interfaces/tui/screens/help_screen.py:45
+msgid "scan de localhost ou LAN sans pénaliser les règles pensées pour le public, HSTS notamment"
+msgstr "quét localhost hoặc LAN mà không bị trừ điểm bởi các quy tắc dành cho dịch vụ công khai, nhất là HSTS"
+
+#: src/omega_scan/interfaces/tui/screens/help_screen.py:54
+msgid "Saisir une cible (IPv4, IPv6, hostname ou URL), choisir un profil (quick/standard/extended/local-lab), confirmer l'autorisation si la cible n'est pas déjà épinglée, puis lancer le scan."
+msgstr "Nhập một mục tiêu (IPv4, IPv6, hostname hoặc URL), chọn hồ sơ (quick/standard/extended/local-lab), xác nhận quyền nếu mục tiêu chưa được ghim, rồi bắt đầu quét."
+
+#: src/omega_scan/interfaces/tui/screens/help_screen.py:62
+msgid "Épingler un hôte dispense de recocher la confirmation d'autorisation à chaque scan sur cette même cible."
+msgstr "Ghim một host giúp không phải đánh dấu lại xác nhận quyền mỗi lần quét cùng mục tiêu đó."
+
+#: src/omega_scan/interfaces/tui/screens/help_screen.py:69
+msgid "Liste tous les scans passés : détail complet, comparaison entre deux scans, ou rejouer un scan sur la même cible."
+msgstr "Liệt kê mọi bản quét trước đây: chi tiết đầy đủ, so sánh hai bản quét, hoặc chạy lại một bản quét trên cùng mục tiêu."
+
+#: src/omega_scan/interfaces/tui/screens/help_screen.py:76
+msgid "Depuis le détail d'un scan : JSON (source de vérité), texte (rapport compact) ou HTML (rapport lisible et partageable)."
+msgstr "Từ chi tiết một bản quét: JSON (nguồn dữ liệu gốc), văn bản (báo cáo ngắn gọn) hoặc HTML (báo cáo dễ đọc, dễ chia sẻ)."
+
+#: src/omega_scan/interfaces/tui/screens/help_screen.py:83
+msgid "Omega-scan observe la posture de sécurité visible d'un service HTTP/HTTPS : il ne réalise jamais de test actif (pas de SQLi, XSS, RCE, scan de CVE, fuzzing ou bruteforce)."
+msgstr "Omega-scan quan sát mức độ bảo mật nhìn thấy được của một dịch vụ HTTP/HTTPS: không bao giờ kiểm thử chủ động (không SQLi, XSS, RCE, quét CVE, fuzzing hay bruteforce)."
+
+#: src/omega_scan/interfaces/tui/screens/help_screen.py:104
+msgid "Profils de scan"
+msgstr "Hồ sơ quét"
+
+#: src/omega_scan/interfaces/tui/screens/history.py:38
+msgid "Filtrer par hôte..."
+msgstr "Lọc theo host..."
+
+#: src/omega_scan/interfaces/tui/screens/quit_confirm.py:20
+msgid "QUITTER OMEGA-SCAN ?"
+msgstr "THOÁT OMEGA-SCAN?"
+
+#: src/omega_scan/interfaces/tui/screens/scan_progress.py:69
+#, python-brace-format
+msgid "relecture de {replay_scan_id}"
+msgstr "chạy lại {replay_scan_id}"
+
+#: src/omega_scan/interfaces/tui/screens/scan_progress.py:70
+#, python-brace-format
+msgid "Scan de {label} en cours..."
+msgstr "Đang quét {label}..."
+
+#: src/omega_scan/interfaces/tui/screens/scan_progress.py:135
+msgid "Scan refusé"
+msgstr "Quét bị từ chối"
+
+#: src/omega_scan/interfaces/tui/screens/scan_setup.py:45
+#, python-brace-format
+msgid "★ {normalized_host}"
+msgstr "★ {normalized_host}"
+
+#: src/omega_scan/interfaces/tui/screens/scan_setup.py:52
+msgid "Cibles épinglées (★) et récentes"
+msgstr "Mục tiêu đã ghim (★) và gần đây"
+
+#: src/omega_scan/interfaces/tui/screens/scan_setup.py:55
+msgid "ex. example.org, 192.168.1.10, https://intranet.lan:8443"
+msgstr "vd. example.org, 192.168.1.10, https://intranet.lan:8443"
+
+#: src/omega_scan/interfaces/tui/screens/scan_setup.py:64
+msgid "Non requis si la cible est déjà épinglée (écran Cibles)."
+msgstr "Không cần nếu mục tiêu đã được ghim (màn hình Mục tiêu)."
+
+#: src/omega_scan/interfaces/tui/screens/settings_screen.py:72
+msgid "Cibles et historique"
+msgstr "Mục tiêu và lịch sử"
+
+#: src/omega_scan/interfaces/tui/screens/settings_screen.py:128
+msgid "Toutes les cibles épinglées-autorisées seront désépinglées."
+msgstr "Tất cả mục tiêu đã ghim (được cho phép) sẽ bị bỏ ghim."
+
+#: src/omega_scan/interfaces/tui/screens/settings_screen.py:145
+msgid "Toutes les cibles ont été désépinglées."
+msgstr "Đã bỏ ghim tất cả mục tiêu."
+
+#: src/omega_scan/interfaces/tui/screens/targets.py:39
+msgid "Hôte à épingler..."
+msgstr "Host cần ghim..."
+
+#: src/omega_scan/interfaces/tui/screens/targets.py:45
+msgid "Désépingler la sélection"
+msgstr "Bỏ ghim mục đã chọn"
+
+#: src/omega_scan/interfaces/tui/screens/targets.py:90
+msgid "Cible invalide"
+msgstr "Mục tiêu không hợp lệ"
+
+#: src/omega_scan/interfaces/tui/widgets/authorization_checkbox.py:16
+msgid "Je confirme être autorisé à scanner cette cible"
+msgstr "Tôi xác nhận có quyền quét mục tiêu này"
+
+#: src/omega_scan/interfaces/tui/widgets/findings_table.py:22
+msgid "Catégorie"
+msgstr "Danh mục"
+
+#: src/omega_scan/interfaces/tui/widgets/findings_table.py:22 src/omega_scan/infrastructure/exporters/templates/report.html.jinja:236
+msgid "Règle"
+msgstr "Quy tắc"
+
+#: src/omega_scan/infrastructure/exporters/html_exporter.py:45
+#, python-brace-format
+msgid "[HTML_EXPORT] Export vers {output_path} (thème {export_theme})"
+msgstr "[HTML_EXPORT] Đang xuất sang {output_path} (giao diện {export_theme})"
+
+#: src/omega_scan/infrastructure/exporters/html_exporter.py:71
+#, python-brace-format
+msgid "[HTML_EXPORT] Export terminé : {output_path}"
+msgstr "[HTML_EXPORT] Đã xuất xong: {output_path}"
+
+#: src/omega_scan/infrastructure/exporters/json_exporter.py:47
+#, python-brace-format
+msgid "[JSON_EXPORT] Chemin absolu cible : {abs_path}"
+msgstr "[JSON_EXPORT] Đường dẫn đích tuyệt đối: {abs_path}"
+
+#: src/omega_scan/infrastructure/exporters/json_exporter.py:55
+#, python-brace-format
+msgid "[JSON_EXPORT] Export terminé avec succès : {abs_path} ({count} octets)"
+msgstr "[JSON_EXPORT] Xuất thành công: {abs_path} ({count} byte)"
+
+#: src/omega_scan/infrastructure/exporters/text_exporter.py:42
+#, python-brace-format
+msgid "[TEXT_EXPORT] Export vers {output_path}"
+msgstr "[TEXT_EXPORT] Đang xuất sang {output_path}"
+
+#: src/omega_scan/infrastructure/exporters/text_exporter.py:47
+msgid "OMEGA-SCAN ~ RAPPORT DE SCAN DE POSTURE DE SÉCURITÉ"
+msgstr "OMEGA-SCAN ~ BÁO CÁO QUÉT MỨC ĐỘ BẢO MẬT"
+
+#: src/omega_scan/infrastructure/exporters/text_exporter.py:52
+#, python-brace-format
+msgid "Scan ID      : {scan_id}"
+msgstr "Mã quét      : {scan_id}"
+
+#: src/omega_scan/infrastructure/exporters/text_exporter.py:53
+#, python-brace-format
+msgid "Cible        : {normalized_host}"
+msgstr "Mục tiêu     : {normalized_host}"
+
+#: src/omega_scan/infrastructure/exporters/text_exporter.py:54
+#, python-brace-format
+msgid "Profil       : {profile_name}"
+msgstr "Hồ sơ        : {profile_name}"
+
+#: src/omega_scan/infrastructure/exporters/text_exporter.py:55
+#, python-brace-format
+msgid "Démarré      : {started_at}"
+msgstr "Bắt đầu      : {started_at}"
+
+#: src/omega_scan/infrastructure/exporters/text_exporter.py:56
+#, python-brace-format
+msgid "Terminé      : {finished_at}"
+msgstr "Kết thúc     : {finished_at}"
+
+#: src/omega_scan/infrastructure/exporters/text_exporter.py:57
+#, python-brace-format
+msgid "Durée        : {value}"
+msgstr "Thời lượng   : {value}"
+
+#: src/omega_scan/infrastructure/exporters/text_exporter.py:58
+#, python-brace-format
+msgid "Machine      : {host_machine}"
+msgstr "Máy          : {host_machine}"
+
+#: src/omega_scan/infrastructure/exporters/text_exporter.py:65
+#, python-brace-format
+msgid "Note globale : {overall_rating}"
+msgstr "Điểm tổng    : {overall_rating}"
+
+#: src/omega_scan/infrastructure/exporters/text_exporter.py:66
+#, python-brace-format
+msgid "Statut       : {scan_status}"
+msgstr "Trạng thái   : {scan_status}"
+
+#: src/omega_scan/infrastructure/exporters/text_exporter.py:67
+#, python-brace-format
+msgid "Message      : {short_message}"
+msgstr "Thông điệp   : {short_message}"
+
+#: src/omega_scan/infrastructure/exporters/text_exporter.py:69
+#, python-brace-format
+msgid "Checks totaux    : {checks_total}"
+msgstr "Tổng số check    : {checks_total}"
+
+#: src/omega_scan/infrastructure/exporters/text_exporter.py:70
+#, python-brace-format
+msgid "Findings (W+F)   : {findings_total}"
+msgstr "Phát hiện (W+F)  : {findings_total}"
+
+#: src/omega_scan/infrastructure/exporters/text_exporter.py:73
+msgid "Ventilation par statut :"
+msgstr "Phân bố theo trạng thái:"
+
+#: src/omega_scan/infrastructure/exporters/text_exporter.py:80
+msgid "Ventilation par sévérité :"
+msgstr "Phân bố theo mức độ:"
+
+#: src/omega_scan/infrastructure/exporters/text_exporter.py:87
+msgid "Principaux problèmes :"
+msgstr "Vấn đề chính:"
+
+#: src/omega_scan/infrastructure/exporters/text_exporter.py:94
+msgid "FINDINGS DÉTAILLÉS"
+msgstr "PHÁT HIỆN CHI TIẾT"
+
+#: src/omega_scan/infrastructure/exporters/text_exporter.py:108
+#, python-brace-format
+msgid "    Règle      : {rule_id}"
+msgstr "    Quy tắc    : {rule_id}"
+
+#: src/omega_scan/infrastructure/exporters/text_exporter.py:109
+#, python-brace-format
+msgid "    Sévérité   : {value}"
+msgstr "    Mức độ     : {value}"
+
+#: src/omega_scan/infrastructure/exporters/text_exporter.py:110
+#, python-brace-format
+msgid "    Confiance  : {confidence}"
+msgstr "    Độ tin cậy : {confidence}"
+
+#: src/omega_scan/infrastructure/exporters/text_exporter.py:111
+#, python-brace-format
+msgid "    Description: {description}"
+msgstr "    Mô tả      : {description}"
+
+#: src/omega_scan/infrastructure/exporters/text_exporter.py:114
+#, python-brace-format
+msgid "    Impact     : {impact}"
+msgstr "    Tác động   : {impact}"
+
+#: src/omega_scan/infrastructure/exporters/text_exporter.py:116
+#, python-brace-format
+msgid "    Action     : {remediation}"
+msgstr "    Hành động  : {remediation}"
+
+#: src/omega_scan/infrastructure/exporters/text_exporter.py:118
+#, python-brace-format
+msgid "    Preuve     : {value}"
+msgstr "    Bằng chứng : {value}"
+
+#: src/omega_scan/infrastructure/exporters/text_exporter.py:126
+#, python-brace-format
+msgid "DNS résolu       : {value}"
+msgstr "DNS đã phân giải : {value}"
+
+#: src/omega_scan/infrastructure/exporters/text_exporter.py:128
+#, python-brace-format
+msgid "Adresses résolues: {join}"
+msgstr "Địa chỉ đã phân giải: {join}"
+
+#: src/omega_scan/infrastructure/exporters/text_exporter.py:129
+#, python-brace-format
+msgid "HTTP accessible  : {value}"
+msgstr "HTTP truy cập được : {value}"
+
+#: src/omega_scan/infrastructure/exporters/text_exporter.py:130
+#, python-brace-format
+msgid "HTTPS accessible : {value}"
+msgstr "HTTPS truy cập được: {value}"
+
+#: src/omega_scan/infrastructure/exporters/text_exporter.py:132
+#, python-brace-format
+msgid "Premier schéma   : {first_successful_scheme}"
+msgstr "Giao thức đầu tiên: {first_successful_scheme}"
+
+#: src/omega_scan/infrastructure/exporters/text_exporter.py:134
+#, python-brace-format
+msgid "Latence moyenne  : {value}"
+msgstr "Độ trễ trung bình: {value}"
+
+#: src/omega_scan/infrastructure/exporters/text_exporter.py:136
+#, python-brace-format
+msgid "Notes            : {connection_notes}"
+msgstr "Ghi chú          : {connection_notes}"
+
+#: src/omega_scan/infrastructure/exporters/text_exporter.py:144
+#, python-brace-format
+msgid "Handshake réussi : {value}"
+msgstr "Bắt tay thành công: {value}"
+
+#: src/omega_scan/infrastructure/exporters/text_exporter.py:146
+#, python-brace-format
+msgid "Version TLS      : {tls_version}"
+msgstr "Phiên bản TLS    : {tls_version}"
+
+#: src/omega_scan/infrastructure/exporters/text_exporter.py:148
+#, python-brace-format
+msgid "Cipher           : {cipher}"
+msgstr "Cipher           : {cipher}"
+
+#: src/omega_scan/infrastructure/exporters/text_exporter.py:150
+#, python-brace-format
+msgid "Sujet certificat : {certificate_subject}"
+msgstr "Chủ thể chứng chỉ: {certificate_subject}"
+
+#: src/omega_scan/infrastructure/exporters/text_exporter.py:152
+#, python-brace-format
+msgid "Émetteur         : {certificate_issuer}"
+msgstr "Nơi cấp          : {certificate_issuer}"
+
+#: src/omega_scan/infrastructure/exporters/text_exporter.py:154
+#, python-brace-format
+msgid "SAN              : {join}"
+msgstr "SAN              : {join}"
+
+#: src/omega_scan/infrastructure/exporters/text_exporter.py:156
+#, python-brace-format
+msgid "Validité         : {not_before} -> {not_after}"
+msgstr "Hiệu lực         : {not_before} -> {not_after}"
+
+#: src/omega_scan/infrastructure/exporters/text_exporter.py:157
+#, python-brace-format
+msgid "Hostname match   : {value}"
+msgstr "Hostname match   : {value}"
+
+#: src/omega_scan/infrastructure/exporters/text_exporter.py:159
+msgid "Auto-signé       : Oui"
+msgstr "Tự ký            : Có"
+
+#: src/omega_scan/infrastructure/exporters/text_exporter.py:161
+#, python-brace-format
+msgid "Erreur validation: {validation_error}"
+msgstr "Lỗi xác thực     : {validation_error}"
+
+#: src/omega_scan/infrastructure/exporters/text_exporter.py:163
+#, python-brace-format
+msgid "Notes            : {notes}"
+msgstr "Ghi chú          : {notes}"
+
+#: src/omega_scan/infrastructure/exporters/text_exporter.py:168
+msgid "ERREURS"
+msgstr "LỖI"
+
+#: src/omega_scan/infrastructure/exporters/text_exporter.py:174
+#, python-brace-format
+msgid "    Catégorie: {failure_category}"
+msgstr "    Danh mục: {failure_category}"
+
+#: src/omega_scan/infrastructure/exporters/text_exporter.py:179
+#, python-brace-format
+msgid "Rapport généré le {strftime} par Omega-scan v{scanner_version}"
+msgstr "Báo cáo được tạo lúc {strftime} bởi Omega-scan v{scanner_version}"
+
+#: src/omega_scan/infrastructure/exporters/text_exporter.py:187
+#, python-brace-format
+msgid "[TEXT_EXPORT] Export terminé : {output_path}"
+msgstr "[TEXT_EXPORT] Đã xuất xong: {output_path}"
+
+#: src/omega_scan/infrastructure/exporters/templates/report.html.jinja:6
+#, python-brace-format
+msgid "Omega-scan Rapport de scan - {normalized_host}"
+msgstr "Omega-scan Báo cáo quét - {normalized_host}"
+
+#: src/omega_scan/infrastructure/exporters/templates/report.html.jinja:167
+msgid "Omega-scan ~ Rapport de scan de sécurité"
+msgstr "Omega-scan ~ Báo cáo quét bảo mật"
+
+#: src/omega_scan/infrastructure/exporters/templates/report.html.jinja:180
+msgid "Durée :"
+msgstr "Thời lượng:"
+
+#: src/omega_scan/infrastructure/exporters/templates/report.html.jinja:183
+msgid "Démarré :"
+msgstr "Bắt đầu:"
+
+#: src/omega_scan/infrastructure/exporters/templates/report.html.jinja:186
+msgid "Terminé :"
+msgstr "Kết thúc:"
+
+#: src/omega_scan/infrastructure/exporters/templates/report.html.jinja:196
+msgid "Checks totaux"
+msgstr "Tổng số check"
+
+#: src/omega_scan/infrastructure/exporters/templates/report.html.jinja:200
+msgid "Findings (W+F)"
+msgstr "Phát hiện (W+F)"
+
+#: src/omega_scan/infrastructure/exporters/templates/report.html.jinja:214
+msgid "Findings détaillés"
+msgstr "Phát hiện chi tiết"
+
+#: src/omega_scan/infrastructure/exporters/templates/report.html.jinja:249
+msgid "Impact"
+msgstr "Tác động"
+
+#: src/omega_scan/infrastructure/exporters/templates/report.html.jinja:254
+msgid "Action recommandée"
+msgstr "Hành động khuyến nghị"
+
+#: src/omega_scan/infrastructure/exporters/templates/report.html.jinja:259
+msgid "Preuve"
+msgstr "Bằng chứng"
+
+#: src/omega_scan/infrastructure/exporters/templates/report.html.jinja:270
+msgid "Connectivité"
+msgstr "Kết nối"
+
+#: src/omega_scan/infrastructure/exporters/templates/report.html.jinja:273
+msgid "DNS résolu :"
+msgstr "DNS đã phân giải:"
+
+#: src/omega_scan/infrastructure/exporters/templates/report.html.jinja:276
+msgid "HTTP accessible :"
+msgstr "HTTP truy cập được:"
+
+#: src/omega_scan/infrastructure/exporters/templates/report.html.jinja:279
+msgid "HTTPS accessible :"
+msgstr "HTTPS truy cập được:"
+
+#: src/omega_scan/infrastructure/exporters/templates/report.html.jinja:283
+msgid "Premier schéma :"
+msgstr "Giao thức đầu tiên:"
+
+#: src/omega_scan/infrastructure/exporters/templates/report.html.jinja:288
+msgid "Latence moyenne :"
+msgstr "Độ trễ trung bình:"
+
+#: src/omega_scan/infrastructure/exporters/templates/report.html.jinja:297
+msgid "Handshake réussi :"
+msgstr "Bắt tay thành công:"
+
+#: src/omega_scan/infrastructure/exporters/templates/report.html.jinja:301
+msgid "Version TLS :"
+msgstr "Phiên bản TLS:"
+
+#: src/omega_scan/infrastructure/exporters/templates/report.html.jinja:306
+msgid "Cipher :"
+msgstr "Cipher:"
+
+#: src/omega_scan/infrastructure/exporters/templates/report.html.jinja:311
+msgid "Sujet certificat :"
+msgstr "Chủ thể chứng chỉ:"
+
+#: src/omega_scan/infrastructure/exporters/templates/report.html.jinja:316
+msgid "Émetteur :"
+msgstr "Nơi cấp:"
+
+#: src/omega_scan/infrastructure/exporters/templates/report.html.jinja:320
+msgid "Hostname match :"
+msgstr "Hostname match:"
+
+#: src/omega_scan/infrastructure/exporters/templates/report.html.jinja:324
+msgid "Auto-signé :"
+msgstr "Tự ký:"
+
+#: src/omega_scan/infrastructure/exporters/templates/report.html.jinja:336
+#, python-brace-format
+msgid "Catégorie: {failure_category}"
+msgstr "Danh mục: {failure_category}"
+
+#: src/omega_scan/infrastructure/exporters/templates/report.html.jinja:342
+#, python-brace-format
+msgid "Rapport généré le {generated_at} par"
+msgstr "Báo cáo được tạo lúc {generated_at} bởi"

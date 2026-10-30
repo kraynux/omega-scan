@@ -16,6 +16,7 @@ from omega_scan.domain.checks.tls_depth.policies import OBSOLETE_TLS_VERSIONS, W
 from omega_scan.domain.findings.builders import build_finding
 from omega_scan.domain.findings.evidence import Evidence
 from omega_scan.domain.findings.models import Finding
+from omega_scan.shared.i18n import _
 
 
 def _location(target: dict[str, Any]) -> dict[str, Any]:
@@ -45,14 +46,15 @@ def check_tls_version_001(
     return build_finding(
         rule_id="TLS-VERSION-001",
         category="transport",
-        title=f"Protocole TLS obsolete : {version}",
+        title=_("Protocole TLS obsolète : {version}").format(version=version),
         status="FAIL",
         severity="high",
         confidence="certain",
         applicability="applicable",
-        description=f"Le service negocie {version}, un protocole obsolete et vulnerable.",
-        impact="Vulnerable aux attaques connues sur les protocoles TLS anciens (ex. POODLE, BEAST).",
-        remediation="Desactiver les protocoles anterieurs a TLSv1.2 cote serveur.",
+        description=_("Le service négocie {version}, un protocole obsolète et vulnérable.").format(version=version),
+        impact=_("Vulnérable aux attaques connues sur les protocoles TLS anciens (ex. POODLE, "
+                 "BEAST)."),
+        remediation=_("Désactiver les protocoles antérieurs à TLSv1.2 côté serveur."),
         evidence=Evidence(type="tls_field", value=str(version), source="tls.handshake"),
         location=_location(target),
         references=["https://developer.mozilla.org/en-US/docs/Web/Security/Transport_Layer_Security"],
@@ -80,14 +82,15 @@ def check_tls_cipher_001(
     return build_finding(
         rule_id="TLS-CIPHER-001",
         category="transport",
-        title=f"Suite cryptographique faible : {cipher}",
+        title=_("Suite cryptographique faible : {cipher}").format(cipher=cipher),
         status="WARN",
         severity="medium",
         confidence="medium",
         applicability="applicable",
-        description=f"La suite cryptographique negociee ({cipher}) est consideree faible.",
-        impact="Le chiffrement peut etre casse ou affaibli face a un attaquant motive.",
-        remediation="Restreindre la configuration TLS du serveur aux suites modernes (ex. AEAD/GCM).",
+        description=_("La suite cryptographique négociée ({cipher}) est considérée faible.").format(cipher=cipher),
+        impact=_("Le chiffrement peut être cassé ou affaibli face à un attaquant motivé."),
+        remediation=_("Restreindre la configuration TLS du serveur aux suites modernes (ex. "
+                      "AEAD/GCM)."),
         evidence=Evidence(type="tls_field", value=cipher, source="tls.handshake"),
         location=_location(target),
         tags=["tls", "cipher", "transport"],

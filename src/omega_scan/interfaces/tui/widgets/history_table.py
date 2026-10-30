@@ -6,6 +6,8 @@ from typing import TYPE_CHECKING
 
 from textual.widgets import DataTable
 
+from omega_scan.shared.i18n import _
+
 if TYPE_CHECKING:
     from omega_scan.application.dto.scan_dto import ScanSummaryDTO
 
@@ -15,7 +17,7 @@ class HistoryTable(DataTable[str]):
 
     def on_mount(self) -> None:
         self.cursor_type = "row"
-        self.add_columns("Cible", "Date", "Statut", "Note", "Findings")
+        self.add_columns(_("Cible"), _("Date"), _("Statut"), _("Note"), _("Findings"))
 
     def set_scans(self, scans: tuple[ScanSummaryDTO, ...]) -> None:
         self.clear()

@@ -13,6 +13,7 @@ from typing import Any
 from omega_scan.domain.findings.builders import build_finding
 from omega_scan.domain.findings.evidence import Evidence
 from omega_scan.domain.findings.models import Finding
+from omega_scan.shared.i18n import _
 
 
 def _location(http_data: dict[str, Any], target: dict[str, Any]) -> dict[str, Any]:
@@ -43,17 +44,19 @@ def check_cor_wildcard_credentials_001(
     return build_finding(
         rule_id="COR-WILDCARD-CREDENTIALS-001",
         category="cors",
-        title="CORS wildcard combine a des credentials autorises",
+        title=_("CORS wildcard combiné à des credentials autorisés"),
         status="FAIL",
         severity="high",
         confidence="certain",
         applicability="applicable",
         description=(
-            "Access-Control-Allow-Origin: * est combine a "
-            "Access-Control-Allow-Credentials: true."
+            _("Access-Control-Allow-Origin: * est combiné à Access-Control-Allow-Credentials: "
+              "true.")
         ),
-        impact="N'importe quel site tiers peut lire des reponses authentifiees de l'utilisateur.",
-        remediation="Ne jamais combiner un wildcard avec Allow-Credentials ; whitelister les origines.",
+        impact=_("N'importe quel site tiers peut lire des réponses authentifiées de "
+                 "l'utilisateur."),
+        remediation=_("Ne jamais combiner un wildcard avec Allow-Credentials ; whitelister les "
+                      "origines."),
         evidence=Evidence(
             type="header", value="Access-Control-Allow-Origin: *", source="response.headers"
         ),
@@ -77,17 +80,18 @@ def check_cor_reflected_origin_001(
     return build_finding(
         rule_id="COR-REFLECTED-ORIGIN-001",
         category="cors",
-        title="Origine arbitraire reflechie dans Access-Control-Allow-Origin",
+        title=_("Origine arbitraire réfléchie dans Access-Control-Allow-Origin"),
         status="WARN",
         severity="medium",
         confidence="certain",
         applicability="applicable",
         description=(
-            "Le service reflete telle quelle une origine arbitraire et non reconnue "
-            "dans Access-Control-Allow-Origin."
+            _("Le service reflète telle quelle une origine arbitraire et non reconnue dans "
+              "Access-Control-Allow-Origin.")
         ),
-        impact="Absence apparente de validation d'origine : un site tiers peut lire les reponses.",
-        remediation="Valider l'origine recue contre une liste explicite avant de la reflechir.",
+        impact=_("Absence apparente de validation d'origine : un site tiers peut lire les "
+                 "réponses."),
+        remediation=_("Valider l'origine reçue contre une liste explicite avant de la réfléchir."),
         evidence=Evidence(
             type="header", value=str(cors.get("allow_origin")), source="response.headers"
         ),

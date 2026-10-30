@@ -17,6 +17,7 @@ from omega_scan.domain.scans.models import ScanError
 from omega_scan.domain.targets.models import Target
 from omega_scan.infrastructure.exceptions import build_error_from_exception
 from omega_scan.infrastructure.logging.app_logger import get_logger
+from omega_scan.shared.i18n import N_, _, log_text
 
 
 def _extract_san(cert_dict: dict[str, Any]) -> list[str]:
@@ -69,7 +70,7 @@ class HttpxTlsProber:
         errors: list[ScanError],
     ) -> dict[str, Any]:
         logger = get_logger()
-        logger.info(f"[TLS_PROBE] Debut de la collecte TLS pour {target.normalized_host}")
+        logger.info(log_text(N_("[TLS_PROBE] Début de la collecte TLS pour {normalized_host}"), normalized_host=target.normalized_host))
 
         tls_data: dict[str, Any] = {
             "attempted": False,
@@ -90,8 +91,8 @@ class HttpxTlsProber:
         }
 
         if not profile.tls_checks_enabled:
-            logger.info("[TLS_PROBE] TLS desactive par le profil")
-            tls_data["notes"] = "TLS desactive par le profil"
+            logger.info(N_("[TLS_PROBE] TLS désactivé par le profil"))
+            tls_data["notes"] = _("TLS désactivé par le profil")
             return tls_data
 
         tls_host = target.normalized_host
@@ -107,7 +108,8 @@ class HttpxTlsProber:
         timeout = profile.timeout_connect
 
         try:
-            logger.debug(f"[TLS_PROBE] Connexion a {tls_host}:{tls_port} (SNI: {sni_hostname})")
+            logger.debug(log_text(N_("[TLS_PROBE] Connexion à {tls_host}:{tls_port} (SNI: "
+                                     "{sni_hostname})"), tls_host=tls_host, tls_port=tls_port, sni_hostname=sni_hostname))
             sock = socket.create_connection((tls_host, tls_port), timeout=timeout)
             ssl_sock = context.wrap_socket(sock, server_hostname=sni_hostname)
 
@@ -154,27 +156,29 @@ class HttpxTlsProber:
 
                 if not tls_data["hostname_match"] and sni_hostname:
                     tls_data["notes"] = (
-                        f"Le certificat ne correspond pas a {sni_hostname}. Possible multi-vhost."
+                        _("Le certificat ne correspond pas à {sni_hostname}. Possible "
+                          "multi-vhost.").format(sni_hostname=sni_hostname)
                     )
                     logger.warning(f"[TLS_PROBE] {tls_data['notes']}")
 
             ssl_sock.close()
             logger.info(
-                f"[TLS_PROBE] TLS OK : version={tls_data['tls_version']}, "
-                f"subject={tls_data['certificate_subject']}"
+                log_text(N_("[TLS_PROBE] TLS OK : version={tls_version}, "
+                            "subject={certificate_subject}"), tls_version=tls_data['tls_version'], certificate_subject=tls_data['certificate_subject'])
             )
 
         except ssl.SSLCertVerificationError as exc:
-            logger.warning(f"[TLS_PROBE] Certificat non valide : {exc}")
+            logger.warning(log_text(N_("[TLS_PROBE] Certificat non valide : {exc}"), exc=exc))
             tls_data["handshake_success"] = True
             tls_data["validation_error"] = str(exc)
             tls_data["self_signed"] = (
                 "self signed" in str(exc).lower() or "self-signed" in str(exc).lower()
             )
-            tls_data["notes"] = "Certificat present mais non approuve par la chaine de confiance."
+            tls_data["notes"] = _("Certificat présent mais non approuvé par la chaîne de "
+                                  "confiance.")
 
         except ssl.SSLError as exc:
-            logger.warning(f"[TLS_PROBE] Erreur SSL (handshake echoue) : {exc}")
+            logger.warning(log_text(N_("[TLS_PROBE] Erreur SSL (handshake échoué) : {exc}"), exc=exc))
             errors.append(
                 build_error_from_exception(
                     exc, module="tls_probe", phase="tls_probe",
@@ -184,7 +188,7 @@ class HttpxTlsProber:
             tls_data["validation_error"] = str(exc)
 
         except Exception as exc:  # noqa: BLE001 - traduit en ScanError, jamais leve
-            logger.warning(f"[TLS_PROBE] Erreur inattendue : {exc}")
+            logger.warning(log_text(N_("[TLS_PROBE] Erreur inattendue : {exc}"), exc=exc))
             errors.append(
                 build_error_from_exception(
                     exc, module="tls_probe", phase="tls_probe",

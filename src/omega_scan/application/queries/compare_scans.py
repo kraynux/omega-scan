@@ -15,6 +15,7 @@ from omega_scan.core.results import Err, Ok, Result
 from omega_scan.domain.reports.comparison import compare_scans as compute_comparison
 from omega_scan.domain.scans.exceptions import ScanNotFoundError
 from omega_scan.ports.scan_repository import ScanRepository
+from omega_scan.shared.i18n import _
 
 
 def compare_scans(
@@ -25,11 +26,12 @@ def compare_scans(
 ) -> Result[ScanComparisonDTO, ScanNotFoundError]:
     previous = scan_repository.get(previous_scan_id)
     if previous is None:
-        return Err(ScanNotFoundError(f"Aucun scan trouve pour l'identifiant {previous_scan_id!r}."))
+        return Err(ScanNotFoundError(_("Aucun scan trouvé pour l'identifiant "
+                                       "{previous_scan_id!r}.").format(previous_scan_id=previous_scan_id)))
 
     current = scan_repository.get(current_scan_id)
     if current is None:
-        return Err(ScanNotFoundError(f"Aucun scan trouve pour l'identifiant {current_scan_id!r}."))
+        return Err(ScanNotFoundError(_("Aucun scan trouvé pour l'identifiant {current_scan_id!r}.").format(current_scan_id=current_scan_id)))
 
     comparison = compute_comparison(previous, current)
     return Ok(scan_comparison_to_dto(comparison))

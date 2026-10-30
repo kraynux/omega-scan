@@ -11,7 +11,9 @@ from typing import Any
 
 from textual.widgets import Checkbox
 
-_LABEL = "Je confirme etre autorise a scanner cette cible"
+from omega_scan.shared.i18n import _
+
+_LABEL = _("Je confirme être autorisé à scanner cette cible")
 
 
 class AuthorizationCheckbox(Checkbox):

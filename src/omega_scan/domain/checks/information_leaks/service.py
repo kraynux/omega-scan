@@ -13,6 +13,7 @@ from omega_scan.domain.checks.information_leaks.policies import (
 from omega_scan.domain.findings.builders import build_finding, degrade_confidence_for_proxy
 from omega_scan.domain.findings.evidence import Evidence
 from omega_scan.domain.findings.models import Finding
+from omega_scan.shared.i18n import _
 
 
 def check_inf_banner_001(
@@ -41,14 +42,14 @@ def check_inf_banner_001(
         findings.append(build_finding(
             rule_id="INF-BANNER-001",
             category="information_leak",
-            title="Banniere Server exposee",
+            title=_("Bannière Server exposée"),
             status="WARN",
             severity="low",
             confidence=confidence,
             applicability="applicable",
-            description=f"Le header Server expose des informations : {server}",
-            impact="Fuite d'information sur la technologie serveur.",
-            remediation="Configurer le serveur pour masquer ou minimiser le header Server.",
+            description=_("Le header Server expose des informations : {server}").format(server=server),
+            impact=_("Fuite d'information sur la technologie serveur."),
+            remediation=_("Configurer le serveur pour masquer ou minimiser le header Server."),
             evidence=Evidence(type="header", value=server, source="response.headers"),
             location={
                 "url": http_result.get("requested_url"),
@@ -67,14 +68,14 @@ def check_inf_banner_001(
         findings.append(build_finding(
             rule_id="INF-BANNER-001",
             category="information_leak",
-            title="Banniere X-Powered-By exposee",
+            title=_("Bannière X-Powered-By exposée"),
             status="WARN",
             severity="low",
             confidence=confidence,
             applicability="applicable",
-            description=f"Le header X-Powered-By expose des informations : {powered_by}",
-            impact="Fuite d'information sur le framework/technologie.",
-            remediation="Supprimer le header X-Powered-By de la configuration.",
+            description=_("Le header X-Powered-By expose des informations : {powered_by}").format(powered_by=powered_by),
+            impact=_("Fuite d'information sur le framework/technologie."),
+            remediation=_("Supprimer le header X-Powered-By de la configuration."),
             evidence=Evidence(type="header", value=powered_by, source="response.headers"),
             location={
                 "url": http_result.get("requested_url"),
@@ -115,14 +116,15 @@ def check_inf_error_001(
         return build_finding(
             rule_id="INF-ERROR-001",
             category="information_leak",
-            title="Messages d'erreur detailles exposes",
+            title=_("Messages d'erreur détaillés exposés"),
             status="WARN",
             severity="medium",
             confidence=confidence,
             applicability="applicable",
-            description=f"Des messages d'erreur detailles sont visibles dans la reponse : {', '.join(found_patterns[:3])}",
-            impact="Fuite d'information sur l'implementation, potentiellement exploitable.",
-            remediation="Configurer le serveur pour afficher des pages d'erreur generiques en production.",
+            description=_("Des messages d'erreur détaillés sont visibles dans la réponse : {join}").format(join=', '.join(found_patterns[:3])),
+            impact=_("Fuite d'information sur l'implémentation, potentiellement exploitable."),
+            remediation=_("Configurer le serveur pour afficher des pages d'erreur génériques "
+                          "en production."),
             evidence=Evidence(
                 type="body_content",
                 value=f"Patterns detectes : {', '.join(found_patterns[:3])}",
@@ -168,14 +170,16 @@ def check_inf_stack_001(
         return build_finding(
             rule_id="INF-STACK-001",
             category="information_leak",
-            title="Stack trace expose",
+            title=_("Stack trace exposé"),
             status="FAIL",
             severity="high",
             confidence=confidence,
             applicability="applicable",
-            description=f"Un stack trace est visible dans la reponse : {', '.join(found_patterns[:2])}",
-            impact="Fuite d'information critique sur l'implementation, paths internes, versions.",
-            remediation="Desactiver l'affichage des stack traces en production. Utiliser des pages d'erreur generiques.",
+            description=_("Un stack trace est visible dans la réponse : {join}").format(join=', '.join(found_patterns[:2])),
+            impact=_("Fuite d'information critique sur l'implémentation, paths internes, "
+                     "versions."),
+            remediation=_("Désactiver l'affichage des stack traces en production. Utiliser des "
+                          "pages d'erreur génériques."),
             evidence=Evidence(
                 type="body_content",
                 value=f"Stack trace detecte : {', '.join(found_patterns[:2])}",
@@ -210,21 +214,23 @@ def check_inf_robots_001(
         return build_finding(
             rule_id="INF-ROBOTS-001",
             category="information_leak",
-            title="Fichier robots.txt present",
+            title=_("Fichier robots.txt présent"),
             status="OK",
             severity="info",
             confidence="certain",
             applicability="applicable",
-            description="Le fichier /robots.txt est present et peut reveler des chemins sensibles.",
-            impact="Fuite d'information mineure sur la structure du site.",
-            remediation="Verifier que /robots.txt ne liste pas de chemins sensibles ou administratifs.",
+            description=_("Le fichier /robots.txt est présent et peut révéler des chemins "
+                          "sensibles."),
+            impact=_("Fuite d'information mineure sur la structure du site."),
+            remediation=_("Vérifier que /robots.txt ne liste pas de chemins sensibles ou "
+                          "administratifs."),
             evidence=Evidence(
                 type="status_code",
                 value=f"/robots.txt -> {robots_probe['status_code']}",
                 source="path_probe",
             ),
             location={
-                "url": f"{overview.get('preferred_scheme', 'https')}://{target.get('normalized_host')}/robots.txt",
+                "url": _("{get}://{get2}/robots.txt").format(get=overview.get('preferred_scheme', 'https'), get2=target.get('normalized_host')),
                 "host": target.get("normalized_host"),
                 "port": target.get("requested_port"),
                 "scheme": overview.get("preferred_scheme"),
@@ -253,14 +259,14 @@ def check_inf_securitytxt_001(
         return build_finding(
             rule_id="INF-SECURITYTXT-001",
             category="information_leak",
-            title="Fichier security.txt present",
+            title=_("Fichier security.txt présent"),
             status="OK",
             severity="info",
             confidence="certain",
             applicability="applicable",
-            description="Le fichier /.well-known/security.txt est present (RFC 9116).",
-            impact="Bonne pratique : facilite le signalement responsable de vulnerabilites.",
-            remediation="Aucune action requise.",
+            description=_("Le fichier /.well-known/security.txt est présent (RFC 9116)."),
+            impact=_("Bonne pratique : facilite le signalement responsable de vulnérabilités."),
+            remediation=_("Aucune action requise."),
             evidence=Evidence(
                 type="status_code",
                 value=f"/.well-known/security.txt -> {probe['status_code']}",
@@ -268,8 +274,7 @@ def check_inf_securitytxt_001(
             ),
             location={
                 "url": (
-                    f"{overview.get('preferred_scheme', 'https')}://"
-                    f"{target.get('normalized_host')}/.well-known/security.txt"
+                    _("{get}://{get2}/.well-known/security.txt").format(get=overview.get('preferred_scheme', 'https'), get2=target.get('normalized_host'))
                 ),
                 "host": target.get("normalized_host"),
                 "port": target.get("requested_port"),
@@ -315,14 +320,15 @@ def check_inf_header_001(
             findings.append(build_finding(
                 rule_id="INF-HEADER-001",
                 category="information_leak",
-                title=f"Header technique expose : {verbose_header}",
+                title=_("Header technique exposé : {verbose_header}").format(verbose_header=verbose_header),
                 status="WARN",
                 severity="low",
                 confidence=confidence,
                 applicability="applicable",
-                description=f"Le header {verbose_header} expose des informations techniques : {value}",
-                impact="Fuite d'information sur l'implementation.",
-                remediation=f"Supprimer le header {verbose_header} de la configuration.",
+                description=_("Le header {verbose_header} expose des informations techniques : "
+                              "{value}").format(verbose_header=verbose_header, value=value),
+                impact=_("Fuite d'information sur l'implémentation."),
+                remediation=_("Supprimer le header {verbose_header} de la configuration.").format(verbose_header=verbose_header),
                 evidence=Evidence(type="header", value=f"{verbose_header}: {value}", source="response.headers"),
                 location={
                     "url": http_result.get("requested_url"),

@@ -14,6 +14,7 @@ from omega_scan.interfaces.tui.screens._base import OmegaScreen
 from omega_scan.interfaces.tui.screens.compare import CompareScreen
 from omega_scan.interfaces.tui.screens.findings import FindingsScreen
 from omega_scan.interfaces.tui.widgets.history_table import HistoryTable
+from omega_scan.shared.i18n import _
 
 if TYPE_CHECKING:
     from omega_scan.app.dependency_container import DependencyContainer
@@ -33,20 +34,20 @@ class HistoryScreen(OmegaScreen):
     def compose(self) -> ComposeResult:
         yield Header()
         with Vertical(classes="omega-panel"):
-            yield Static("HISTORIQUE", classes="omega-title")
-            yield Input(placeholder="Filtrer par hote...", id="host-filter")
+            yield Static(_("HISTORIQUE"), classes="omega-title")
+            yield Input(placeholder=_("Filtrer par hôte..."), id="host-filter")
             yield HistoryTable(id="history-table")
             with Horizontal(classes="omega-actions"):
                 with Container(classes="omega-btn-frame"):
-                    yield Button("Voir le detail", id="view")
+                    yield Button(_("Voir le détail"), id="view")
                 with Container(classes="omega-btn-frame"):
-                    yield Button("Marquer comme reference", id="mark-reference")
+                    yield Button(_("Marquer comme référence"), id="mark-reference")
                 with Container(classes="omega-btn-frame"):
-                    yield Button("Comparer avec la reference", id="compare")
+                    yield Button(_("Comparer avec la référence"), id="compare")
                 with Container(classes="omega-btn-frame"):
-                    yield Button("Rejouer", id="replay")
+                    yield Button(_("Rejouer"), id="replay")
                 with Container(classes="omega-btn-frame"):
-                    yield Button("Retour", id="back")
+                    yield Button(_("Retour"), id="back")
         yield Footer()
 
     def on_mount(self) -> None:
@@ -78,17 +79,17 @@ class HistoryScreen(OmegaScreen):
             self.dismiss()
             return
         if self._selected_scan_id is None:
-            self.app.notify("Selectionnez d'abord une ligne.", severity="warning")
+            self.app.notify(_("Sélectionnez d'abord une ligne."), severity="warning")
             return
 
         if event.button.id == "view":
             self._push_details(self._selected_scan_id)
         elif event.button.id == "mark-reference":
             self._reference_scan_id = self._selected_scan_id
-            self.app.notify(f"Reference : {self._reference_scan_id}")
+            self.app.notify(_("Référence : {reference_scan_id}").format(reference_scan_id=self._reference_scan_id))
         elif event.button.id == "compare":
             if self._reference_scan_id is None:
-                self.app.notify("Marquez d'abord une reference.", severity="warning")
+                self.app.notify(_("Marquez d'abord une référence."), severity="warning")
                 return
             self.app.push_screen(
                 CompareScreen(
@@ -103,7 +104,7 @@ class HistoryScreen(OmegaScreen):
     def _push_details(self, scan_id: str) -> None:
         scan = get_scan_details(scan_repository=self._container.scan_repository, scan_id=scan_id)
         if scan is None:
-            self.app.notify("Scan introuvable.", severity="error")
+            self.app.notify(_("Scan introuvable."), severity="error")
             return
         self.app.push_screen(FindingsScreen(container=self._container, scan=scan))
 

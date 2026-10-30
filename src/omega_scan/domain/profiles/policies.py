@@ -8,6 +8,7 @@ from __future__ import annotations
 
 from omega_scan.domain.profiles.exceptions import UnknownProfileError
 from omega_scan.domain.profiles.models import ScanProfile
+from omega_scan.shared.i18n import _
 
 PROFILE_QUICK = ScanProfile(
     profile_name="quick",
@@ -75,5 +76,5 @@ PROFILES = {
 
 def get_profile(name: str) -> ScanProfile:
     if name not in PROFILES:
-        raise UnknownProfileError(f"Profil inconnu : {name}. Choix : {list(PROFILES.keys())}")
+        raise UnknownProfileError(_("Profil inconnu : {name}. Choix : {value}").format(name=name, value=list(PROFILES.keys())))
     return PROFILES[name]

@@ -11,6 +11,7 @@ from omega_scan.core.results import Err, Ok, Result
 from omega_scan.domain.scans.exceptions import ScanNotFoundError
 from omega_scan.ports.report_exporter import ReportExporter
 from omega_scan.ports.scan_repository import ScanRepository
+from omega_scan.shared.i18n import _
 
 
 def export_scan_report(
@@ -27,7 +28,7 @@ def export_scan_report(
     `export_theme` n'a d'effet que sur le format HTML."""
     run = scan_repository.get(scan_id)
     if run is None:
-        return Err(ScanNotFoundError(f"Aucun scan trouve pour l'identifiant {scan_id!r}."))
+        return Err(ScanNotFoundError(_("Aucun scan trouvé pour l'identifiant {scan_id!r}.").format(scan_id=scan_id)))
 
     output = report_exporter.export(
         run, output_path, export_format=export_format, export_theme=export_theme

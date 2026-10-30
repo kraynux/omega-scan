@@ -7,6 +7,7 @@ from typing import Any
 from omega_scan.domain.checks.methods.policies import METHOD_RULES
 from omega_scan.domain.findings.builders import build_finding, degrade_confidence_for_proxy
 from omega_scan.domain.findings.models import Finding
+from omega_scan.shared.i18n import _
 
 
 def _build_method_finding(
@@ -45,9 +46,10 @@ def _build_method_finding(
             severity="info",
             confidence="high",
             applicability="not_applicable",
-            description=rule["description"] + " Cependant, elle semble protegee par authentification.",
-            impact="Risque mitige par la presence d'une authentification.",
-            remediation="Verifier que l'authentification est robuste.",
+            description=rule["description"] + _(" Cependant, elle semble protégée par "
+                                                "authentification."),
+            impact=_("Risque mitigé par la présence d'une authentification."),
+            remediation=_("Vérifier que l'authentification est robuste."),
             location=location,
             tags=["methods", method.lower()],
         )
@@ -73,12 +75,13 @@ def _build_method_finding(
         return build_finding(
             rule_id=rule["rule_id"],
             category="methods",
-            title=rule["title"] + " (statut incertain)",
+            title=rule["title"] + _(" (statut incertain)"),
             status="WARN",
             severity="low",
             confidence="low",
             applicability="conditional",
-            description=rule["description"] + " Le statut exact n'a pas pu etre determine clairement.",
+            description=rule["description"] + _(" Le statut exact n'a pas pu être déterminé "
+                                                "clairement."),
             impact=rule["impact"],
             remediation=rule["remediation"],
             location=location,

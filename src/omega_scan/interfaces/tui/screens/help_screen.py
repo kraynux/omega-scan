@@ -7,81 +7,82 @@ from textual.containers import Container, Horizontal, VerticalScroll
 from textual.widgets import Button, DataTable, Footer, Header, Static
 
 from omega_scan.interfaces.tui.screens._base import OmegaScreen
+from omega_scan.shared.i18n import _
 
 _SHORTCUTS = (
-    ("Haut / Bas", "Naviguer entre les elements d'un ecran"),
-    ("Tab / Maj+Tab", "Naviguer entre les champs d'un formulaire"),
-    ("Echap", "Retour a l'ecran precedent (confirmation de sortie sur l'accueil)"),
-    ("t", "Theme suivant (applique immediatement, sans confirmation)"),
-    ("r", "Rafraichir la detection du terminal"),
-    ("a", "Cette aide"),
-    ("q", "Quitter (avec confirmation)"),
+    (_("Haut / Bas"), _("Naviguer entre les éléments d'un écran")),
+    (_("Tab / Maj+Tab"), _("Naviguer entre les champs d'un formulaire")),
+    (_("Échap"), _("Retour à l'écran précédent (confirmation de sortie sur l'accueil)")),
+    ("t", _("Thème suivant (appliqué immédiatement, sans confirmation)")),
+    ("r", _("Rafraîchir la détection du terminal")),
+    ("a", _("Cette aide")),
+    ("q", _("Quitter (avec confirmation)")),
 )
 
-_PROFILE_TABLE_COLUMNS = ("Parametre", "quick", "standard", "extended", "local-lab")
+_PROFILE_TABLE_COLUMNS = (_("Paramètre"), "quick", "standard", "extended", "local-lab")
 _PROFILE_TABLE_ROWS = (
-    ("Usage", "Verif. rapide", "Complet (defaut)", "Approfondi", "localhost / LAN"),
-    ("Timeout connect/read", "3s / 6s", "3s / 6s", "5s / 10s", "3s / 6s"),
+    (_("Usage"), _("Vérif. rapide"), _("Complet (défaut)"), _("Approfondi"), _("localhost / LAN")),
+    (_("Timeout connect/read"), "3s / 6s", "3s / 6s", "5s / 10s", "3s / 6s"),
     (
-        "Methodes HTTP",
+        _("Méthodes HTTP"),
         "OPTIONS",
         "OPTIONS, TRACE",
         "OPTIONS, TRACE, PUT, DELETE, PATCH",
         "OPTIONS, TRACE",
     ),
-    ("Path probing", "Non", "Oui (~20)", "Oui (complet)", "Oui (~20)"),
-    ("TLS", "Non", "Oui", "Oui (detaille)", "Oui (tolerant)"),
-    ("Catch-all", "-", "Oui", "Oui", "Oui"),
-    ("Politique HSTS", "Non evaluee", "Standard", "Strict", "Tolerante"),
+    (_("Path probing"), _("Non"), _("Oui (~20)"), _("Oui (complet)"), _("Oui (~20)")),
+    ("TLS", _("Non"), _("Oui"), _("Oui (détaillé)"), _("Oui (tolérant)")),
+    (_("Catch-all"), "-", _("Oui"), _("Oui"), _("Oui")),
+    (_("Politique HSTS"), _("Non évaluée"), _("Standard"), _("Strict"), _("Tolérante")),
 )
 
 _PROFILE_USAGE_NOTES = (
-    ("quick", "verification eclair avant mise en production"),
-    ("standard", "audit complet d'un service en production, recommande"),
-    ("extended", "audit approfondi incluant les methodes HTTP risquees"),
+    ("quick", _("vérification éclair avant mise en production")),
+    ("standard", _("audit complet d'un service en production, recommandé")),
+    ("extended", _("audit approfondi incluant les méthodes HTTP risquées")),
     (
         "local-lab",
-        ("scan de localhost ou LAN sans penaliser les regles pensees pour le "
-         "public, HSTS notamment"),
+        (_("scan de localhost ou LAN sans pénaliser les règles pensées pour le public, HSTS "
+           "notamment")),
     ),
 )
 
 _SECTIONS = (
     (
-        "Scanner",
+        _("Scanner"),
         (
-            "Saisir une cible (IPv4, IPv6, hostname ou URL), choisir un profil "
-            "(quick/standard/extended/local-lab), confirmer l'autorisation si la "
-            "cible n'est pas deja epinglee, puis lancer le scan."
+            _("Saisir une cible (IPv4, IPv6, hostname ou URL), choisir un profil "
+              "(quick/standard/extended/local-lab), confirmer l'autorisation si la cible n'est "
+              "pas déjà épinglée, puis lancer le scan.")
         ),
     ),
     (
-        "Cibles",
+        _("Cibles"),
         (
-            "Epingler un hote dispense de recocher la confirmation d'autorisation "
-            "a chaque scan sur cette meme cible."
+            _("Épingler un hôte dispense de recocher la confirmation d'autorisation à chaque "
+              "scan sur cette même cible.")
         ),
     ),
     (
-        "Historique",
+        _("Historique"),
         (
-            "Liste tous les scans passes : detail complet, comparaison entre deux "
-            "scans, ou rejouer un scan sur la meme cible."
+            _("Liste tous les scans passés : détail complet, comparaison entre deux scans, ou "
+              "rejouer un scan sur la même cible.")
         ),
     ),
     (
-        "Export",
+        _("Export"),
         (
-            "Depuis le detail d'un scan : JSON (source de verite), texte "
-            "(rapport compact) ou HTML (rapport lisible et partageable)."
+            _("Depuis le détail d'un scan : JSON (source de vérité), texte (rapport compact) "
+              "ou HTML (rapport lisible et partageable).")
         ),
     ),
 )
 
 _SCOPE_NOTICE = (
-    "Omega-scan observe la posture de securite visible d'un service "
-    "HTTP/HTTPS : il ne realise jamais de test actif (pas de SQLi, XSS, "
-    "RCE, scan de CVE, fuzzing ou bruteforce)."
+    _("Omega-scan observe la posture de sécurité visible d'un service HTTP/HTTPS : il ne "
+      "réalise jamais de test actif (pas de SQLi, XSS, RCE, scan de CVE, fuzzing ou "
+      "bruteforce).")
 )
 
 
@@ -91,16 +92,16 @@ class HelpScreen(OmegaScreen):
     def compose(self) -> ComposeResult:
         yield Header()
         with VerticalScroll(classes="omega-panel"):
-            yield Static("AIDE", classes="omega-title")
-            yield Static("Raccourcis clavier", classes="omega-subtitle")
+            yield Static(_("AIDE"), classes="omega-title")
+            yield Static(_("Raccourcis clavier"), classes="omega-subtitle")
             for key, description in _SHORTCUTS:
-                yield Static(f"{key:<14} {description}")
+                yield Static(_("{key:<14} {description}").format(key=key, description=description))
             yield Static("")
-            yield Static("Fonctions", classes="omega-subtitle")
+            yield Static(_("Fonctions"), classes="omega-subtitle")
             for title, description in _SECTIONS:
                 yield Static(f"[b]{title}[/b]\n{description}\n")
             yield Static("")
-            yield Static("Profils de scan", classes="omega-subtitle")
+            yield Static(_("Profils de scan"), classes="omega-subtitle")
             yield DataTable(id="profile-table")
             yield Static("")
             for name, note in _PROFILE_USAGE_NOTES:
@@ -108,7 +109,7 @@ class HelpScreen(OmegaScreen):
             yield Static("")
             yield Static(_SCOPE_NOTICE, classes="omega-subtitle")
             with Horizontal(classes="omega-actions"), Container(classes="omega-btn-frame"):
-                yield Button("Retour", id="back")
+                yield Button(_("Retour"), id="back")
         yield Footer()
 
     def on_mount(self) -> None:

@@ -18,6 +18,7 @@ from omega_scan.infrastructure.network._shaping import (
     normalize_cookies,
     normalize_redirect_chain,
 )
+from omega_scan.shared.i18n import N_, log_text
 
 BODY_PREVIEW_MAX_CHARS = 500
 
@@ -220,7 +221,7 @@ class HttpxHttpProber:
         errors: list[ScanError],
     ) -> dict[str, Any]:
         logger = get_logger()
-        logger.info(f"[HTTP_PROBE] Debut de la collecte HTTP pour {target.normalized_host}")
+        logger.info(log_text(N_("[HTTP_PROBE] Début de la collecte HTTP pour {normalized_host}"), normalized_host=target.normalized_host))
 
         http_result = None
         https_result = None
@@ -270,8 +271,8 @@ class HttpxHttpProber:
             )
 
         logger.info(
-            f"[HTTP_PROBE] Fin de la collecte : preferred={overview['preferred_scheme']}, "
-            f"proxy={overview['proxy_suspected']}, content={overview['content_profile']}"
+            log_text(N_("[HTTP_PROBE] Fin de la collecte : preferred={preferred_scheme}, "
+                        "proxy={proxy_suspected}, content={content_profile}"), preferred_scheme=overview['preferred_scheme'], proxy_suspected=overview['proxy_suspected'], content_profile=overview['content_profile'])
         )
 
         # Sonde CORS optionnelle (Lot M5), gatee comme le path probing (absente

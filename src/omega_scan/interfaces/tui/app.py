@@ -21,6 +21,7 @@ from omega_scan.interfaces.tui.controllers.startup_controller import (
     StartupState,
     resolve_startup_state,
 )
+from omega_scan.interfaces.tui.language_setting import notify_language_at_startup
 from omega_scan.interfaces.tui.rendering.stylesheet_loader import load_paths_for
 from omega_scan.interfaces.tui.rendering.textual_theme_builder import build_all_textual_themes
 from omega_scan.interfaces.tui.screens.help_screen import HelpScreen
@@ -28,13 +29,14 @@ from omega_scan.interfaces.tui.screens.home import HomeScreen
 from omega_scan.interfaces.tui.screens.quit_confirm import QuitConfirmScreen
 from omega_scan.interfaces.tui.screens.splash import SplashScreen
 from omega_scan.interfaces.tui.screens.terminal_warning import TerminalWarningScreen
+from omega_scan.shared.i18n import N_, _
 
 if TYPE_CHECKING:
     from textual.screen import Screen
 
     from omega_scan.app.dependency_container import DependencyContainer
 
-TITLE = "\U0001f50d OMEGA-SCAN"
+TITLE = _("🔍 OMEGA-SCAN")
 """Icone loupe incluse DANS la chaine de titre (pas via Header(icon=...))
 : HeaderIcon/HeaderTitle sont deux widgets Textual distincts, les fondre
 dans une seule chaine les fait apparaitre comme une unite au lieu d'une
@@ -48,11 +50,11 @@ class OmegaScanApp(App[None]):
 
     TITLE = TITLE
     BINDINGS: ClassVar[list[BindingType]] = [
-        Binding("q", "quit", "Quitter", show=True),
-        Binding("ctrl+q", "quit", "Quitter", show=False),
-        Binding("t", "cycle_theme", "Theme suivant", show=True),
-        Binding("r", "refresh_terminal", "Rafraichir", show=True),
-        Binding("a", "help", "Aide", show=True),
+        Binding("q", "quit", _("Quitter"), show=True),
+        Binding("ctrl+q", "quit", _("Quitter"), show=False),
+        Binding("t", "cycle_theme", _("Thème suivant"), show=True),
+        Binding("r", "refresh_terminal", _("Rafraîchir"), show=True),
+        Binding("a", "help", _("Aide"), show=True),
     ]
 
     def __init__(self, container: DependencyContainer) -> None:
@@ -64,12 +66,15 @@ class OmegaScanApp(App[None]):
         css_path = cast(
             "list[str | PurePath]", load_paths_for(self._startup_state.theme.render_profile)
         )
+        self.pending_language: str | None = None
+        """Langue choisie dans les Reglages : __main__.py relance l'interface apres la fermeture."""
         super().__init__(css_path=css_path)
         for theme in build_all_textual_themes():
             self.register_theme(theme)
         self.theme = self._startup_state.theme.theme_name
 
     def on_mount(self) -> None:
+        notify_language_at_startup(self)
         self.push_screen(SplashScreen(), self._after_splash)
 
     def _after_splash(self, _result: None) -> None:
@@ -77,8 +82,8 @@ class OmegaScanApp(App[None]):
         too_small = terminal.columns < MINIMUM_USABLE_COLUMNS or terminal.rows < MINIMUM_USABLE_ROWS
         if terminal.render_profile == RenderProfile.MONO.value or too_small:
             message = (
-                f"Terminal detecte : {terminal.family} ({terminal.columns}x{terminal.rows}). "
-                f"Rendu applique : {terminal.render_profile}."
+                _("Terminal détecté : {family} ({columns}x{rows}). Rendu appliqué : "
+                  "{render_profile}.").format(family=terminal.family, columns=terminal.columns, rows=terminal.rows, render_profile=terminal.render_profile)
             )
             self.push_screen(TerminalWarningScreen(message=message), self._show_home)
         else:
@@ -89,7 +94,7 @@ class OmegaScanApp(App[None]):
 
     def watch_theme(self, _theme_name: str) -> None:
         terminal = self._startup_state.terminal
-        self.sub_title = f"{self.theme} | {terminal.columns}x{terminal.rows}"
+        self.sub_title = _("{theme} | {columns}x{rows}").format(theme=self.theme, columns=terminal.columns, rows=terminal.rows)
 
     async def action_quit(self) -> None:
         """Surcharge : demande confirmation avant de fermer."""
@@ -106,7 +111,22 @@ class OmegaScanApp(App[None]):
         names = list(TUI_THEMES.keys())
         current_index = names.index(self.theme) if self.theme in names else 0
         next_name = names[(current_index + 1) % len(names)]
-        result = select_theme(settings_store=self._container.settings_store, theme_name=next_name)
+        try:
+            result = select_theme(settings_store=self._container.settings_store, theme_name=next_name)
+        except OSError as exc:
+            # Retour utilisateur (GROS BUG omega-fire : "t" fermait
+            # l'application) - meme correctif applique ici par coherence
+            # (audit de la suite) : select_theme() ne rattrape que les
+            # noms de theme invalides via Result/Err (validation), jamais
+            # une erreur de persistance disque (permissions, disque
+            # plein, systeme de fichiers en lecture seule) - celle-ci
+            # remontait donc brute et faisait planter cette action sans
+            # aucun rattrapage. Le theme change quand meme visuellement
+            # (self.theme = next_name plus bas) : seule la PERSISTANCE
+            # du choix echoue, pas la fonctionnalite immediate.
+            self.notify(_("Thème appliqué mais non enregistré : {exc}").format(exc=exc), severity="warning")
+            self.theme = next_name
+            return
         if isinstance(result, Err):
             self.notify(str(result.error), severity="error")
             return
@@ -119,8 +139,8 @@ class OmegaScanApp(App[None]):
         reel (Textual ne redeclenche pas ce watcher tout seul)."""
         terminal = detect_terminal(terminal_detector=self._container.terminal_detector)
         self._startup_state = StartupState(terminal=terminal, theme=self._startup_state.theme)
-        self.sub_title = f"{self.theme} | {terminal.columns}x{terminal.rows}"
-        self.notify(f"{terminal.family} ({terminal.columns}x{terminal.rows})", title="Terminal rafraichi")
+        self.sub_title = _("{theme} | {columns}x{rows}").format(theme=self.theme, columns=terminal.columns, rows=terminal.rows)
+        self.notify(_("{family} ({columns}x{rows})").format(family=terminal.family, columns=terminal.columns, rows=terminal.rows), title=_("Terminal rafraîchi"))
 
     def action_help(self) -> None:
         self.push_screen(HelpScreen())
@@ -131,13 +151,13 @@ class OmegaScanApp(App[None]):
         action generique de Textual jamais concue pour cette application
         (aucun widget ici ne beneficie d'un agrandissement plein ecran isole)
         et source de plantages reels signales par l'utilisateur."""
-        yield SystemCommand("Theme", "Changer le theme actif", self.action_change_theme)
+        yield SystemCommand(_("Thème"), _("Changer le thème actif"), self.action_change_theme)
         yield SystemCommand(
-            "Quitter", "Quitter l'application (avec confirmation)", self.action_quit
+            _("Quitter"), _("Quitter l'application (avec confirmation)"), self.action_quit
         )
         yield SystemCommand(
-            "Capture d'ecran",
-            "Enregistrer une capture SVG de l'ecran courant",
+            _("Capture d'écran"),
+            _("Enregistrer une capture SVG de l'écran courant"),
             self._deliver_screenshot_to_configured_dir,
         )
 
@@ -157,10 +177,10 @@ class OmegaScanApp(App[None]):
         """Filet de securite unique cote TUI (ARCHITECTURE.md §5.4) :
         toute exception technique non prevue est journalisee puis affichee
         comme notification, sans jamais fermer l'application."""
-        logging.getLogger("omega_scan").error("Exception non prevue", exc_info=error)
+        logging.getLogger("omega_scan").error(N_("Exception non prévue"), exc_info=error)
         self.notify(
             str(error) or type(error).__name__,
-            title="Erreur inattendue",
+            title=_("Erreur inattendue"),
             severity="error",
             timeout=10,
         )

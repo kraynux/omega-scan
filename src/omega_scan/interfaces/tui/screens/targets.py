@@ -14,6 +14,7 @@ from omega_scan.application.queries.list_targets import list_targets
 from omega_scan.core.results import Err
 from omega_scan.interfaces.tui.screens._base import OmegaScreen
 from omega_scan.shared.clock import utc_now
+from omega_scan.shared.i18n import _
 
 if TYPE_CHECKING:
     from omega_scan.app.dependency_container import DependencyContainer
@@ -31,23 +32,23 @@ class TargetsScreen(OmegaScreen):
     def compose(self) -> ComposeResult:
         yield Header()
         with Vertical(classes="omega-panel"):
-            yield Static("CIBLES EPINGLEES", classes="omega-title")
+            yield Static(_("CIBLES ÉPINGLÉES"), classes="omega-title")
             table: DataTable[str] = DataTable(id="targets-table")
             table.cursor_type = "row"
             yield table
-            yield Input(placeholder="Hote a epingler...", id="host-input")
-            yield Input(placeholder="Note (optionnel)", id="note-input")
+            yield Input(placeholder=_("Hôte à épingler..."), id="host-input")
+            yield Input(placeholder=_("Note (optionnel)"), id="note-input")
             with Horizontal(classes="omega-actions"):
                 with Container(classes="omega-btn-frame"):
-                    yield Button("Epingler", id="pin", variant="primary")
+                    yield Button(_("Épingler"), id="pin", variant="primary")
                 with Container(classes="omega-btn-frame"):
-                    yield Button("Desepingler la selection", id="unpin")
+                    yield Button(_("Désépingler la sélection"), id="unpin")
                 with Container(classes="omega-btn-frame"):
-                    yield Button("Retour", id="back")
+                    yield Button(_("Retour"), id="back")
         yield Footer()
 
     def on_mount(self) -> None:
-        self.query_one("#targets-table", DataTable).add_columns("Hote", "Epingle le", "Note")
+        self.query_one("#targets-table", DataTable).add_columns(_("Hôte"), _("Épinglé le"), _("Note"))
         self._refresh()
 
     def _refresh(self) -> None:
@@ -77,7 +78,7 @@ class TargetsScreen(OmegaScreen):
         note_input = self.query_one("#note-input", Input)
         raw_input = host_input.value.strip()
         if not raw_input:
-            self.app.notify("Saisissez un hote.", severity="warning")
+            self.app.notify(_("Saisissez un hôte."), severity="warning")
             return
         result = pin_target(
             target_repository=self._container.target_repository,
@@ -86,7 +87,7 @@ class TargetsScreen(OmegaScreen):
             note=note_input.value.strip() or None,
         )
         if isinstance(result, Err):
-            self.app.notify(str(result.error), title="Cible invalide", severity="error")
+            self.app.notify(str(result.error), title=_("Cible invalide"), severity="error")
             return
         host_input.value = ""
         note_input.value = ""
@@ -94,7 +95,7 @@ class TargetsScreen(OmegaScreen):
 
     def _unpin(self) -> None:
         if self._selected_host is None:
-            self.app.notify("Selectionnez d'abord une ligne.", severity="warning")
+            self.app.notify(_("Sélectionnez d'abord une ligne."), severity="warning")
             return
         unpin_target(target_repository=self._container.target_repository, normalized_host=self._selected_host)
         self._selected_host = None

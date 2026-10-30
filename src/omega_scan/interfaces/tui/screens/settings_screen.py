@@ -16,8 +16,10 @@ from omega_scan.application.commands.select_render_profile import select_render_
 from omega_scan.application.commands.select_theme import select_theme
 from omega_scan.core.enums import RenderProfile
 from omega_scan.core.results import Err
+from omega_scan.interfaces.tui.language_setting import LanguageSetting
 from omega_scan.interfaces.tui.screens._base import OmegaScreen
 from omega_scan.interfaces.tui.screens.confirm import ConfirmScreen
+from omega_scan.shared.i18n import _
 
 if TYPE_CHECKING:
     from omega_scan.app.dependency_container import DependencyContainer
@@ -36,44 +38,46 @@ class SettingsScreen(OmegaScreen):
         store = self._container.settings_store
         yield Header()
         with Vertical(classes="omega-form-panel"):
-            yield Static("REGLAGES", classes="omega-title")
+            yield Static(_("RÉGLAGES"), classes="omega-title")
 
-            yield Static("Theme", classes="omega-subtitle")
+            yield Static(_("Thème"), classes="omega-subtitle")
             yield Select(
                 [(name, name) for name in TUI_THEMES],
                 value=self.app.theme,
                 id="theme-select",
             )
 
-            yield Static("Profil de rendu (redemarrage requis)", classes="omega-subtitle")
+            yield Static(_("Profil de rendu (redémarrage requis)"), classes="omega-subtitle")
             current_override = store.get("render_profile_override", "")
             yield Select(
-                [("Automatique", _AUTO)] + [(p.value, p.value) for p in RenderProfile],
+                [(_("Automatique"), _AUTO)] + [(p.value, p.value) for p in RenderProfile],
                 value=current_override or _AUTO,
                 id="render-profile-select",
             )
 
-            yield Static("Export", classes="omega-subtitle")
+            yield LanguageSetting(self._container.settings_store)
+
+            yield Static(_("Export"), classes="omega-subtitle")
             yield Input(
                 value=store.get(_EXPORTS_DIR_KEY, str(self._container.default_exports_dir)) or "",
                 id="exports-dir-input",
             )
 
-            yield Static("Captures d'ecran", classes="omega-subtitle")
+            yield Static(_("Captures d'écran"), classes="omega-subtitle")
             yield Input(
                 value=store.get(_SCREENSHOTS_DIR_KEY, str(self._container.default_screenshots_dir)) or "",
                 id="screenshots-dir-input",
             )
 
-            yield Static("Cibles et historique", classes="omega-subtitle")
+            yield Static(_("Cibles et historique"), classes="omega-subtitle")
             with Horizontal(classes="omega-actions"):
                 with Container(classes="omega-btn-frame"):
-                    yield Button("Effacer toutes les cibles", id="clear-targets", variant="error")
+                    yield Button(_("Effacer toutes les cibles"), id="clear-targets", variant="error")
                 with Container(classes="omega-btn-frame"):
-                    yield Button("Vider l'historique", id="clear-history", variant="error")
+                    yield Button(_("Vider l'historique"), id="clear-history", variant="error")
 
             with Horizontal(classes="omega-actions"), Container(classes="omega-btn-frame"):
-                yield Button("Retour", id="back")
+                yield Button(_("Retour"), id="back")
         yield Footer()
 
     def on_select_changed(self, event: Select.Changed) -> None:
@@ -112,7 +116,7 @@ class SettingsScreen(OmegaScreen):
     def _apply_render_profile(self, value: str) -> None:
         profile = None if value == _AUTO else RenderProfile(value)
         select_render_profile(settings_store=self._container.settings_store, render_profile=profile)
-        self.app.notify("Applique au prochain demarrage.", title="Profil de rendu")
+        self.app.notify(_("Appliqué au prochain démarrage."), title=_("Profil de rendu"))
 
     def on_button_pressed(self, event: Button.Pressed) -> None:
         if event.button.id == "back":
@@ -120,16 +124,16 @@ class SettingsScreen(OmegaScreen):
         elif event.button.id == "clear-targets":
             self.app.push_screen(
                 ConfirmScreen(
-                    title="EFFACER TOUTES LES CIBLES ?",
-                    message="Toutes les cibles epinglees-autorisees seront desepinglees.",
+                    title=_("EFFACER TOUTES LES CIBLES ?"),
+                    message=_("Toutes les cibles épinglées-autorisées seront désépinglées."),
                 ),
                 self._clear_targets_if_confirmed,
             )
         elif event.button.id == "clear-history":
             self.app.push_screen(
                 ConfirmScreen(
-                    title="VIDER L'HISTORIQUE ?",
-                    message="Tous les scans persistes seront definitivement supprimes.",
+                    title=_("VIDER L'HISTORIQUE ?"),
+                    message=_("Tous les scans persistés seront définitivement supprimés."),
                 ),
                 self._clear_history_if_confirmed,
             )
@@ -138,10 +142,10 @@ class SettingsScreen(OmegaScreen):
         if not confirmed:
             return
         clear_all_targets(target_repository=self._container.target_repository)
-        self.app.notify("Toutes les cibles ont ete desepinglees.")
+        self.app.notify(_("Toutes les cibles ont été désépinglées."))
 
     def _clear_history_if_confirmed(self, confirmed: bool | None) -> None:
         if not confirmed:
             return
         clear_scan_history(scan_repository=self._container.scan_repository)
-        self.app.notify("Historique vide.")
+        self.app.notify(_("Historique vidé."))
