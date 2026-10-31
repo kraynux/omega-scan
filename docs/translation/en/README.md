@@ -7,8 +7,7 @@
 
 **Web security posture scanner**
 
-> Built by **kraynux** for **Omega-server** 
-[https://kraynux.snake-mackarel.ts.net](https://kraynux.snake-mackarel.ts.net)
+> Built by [kraynux](https://github.com/kraynux) for [Omega-Server](https://kraynux.snake-mackarel.ts.net)   
 
 Official page: [OMEGA-SCAN](https://kraynux.snake-mackarel.ts.net/omega-scan/) &nbsp; Preview: [Screenshots](https://kraynux.snake-mackarel.ts.net/omega-scan/screenshots/)  
 

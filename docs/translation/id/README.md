@@ -7,8 +7,7 @@
 
 **Pemindai postur keamanan web**
 
-> Dibuat oleh **kraynux** untuk **Omega-server** 
-[https://kraynux.snake-mackarel.ts.net](https://kraynux.snake-mackarel.ts.net)
+> Dibuat oleh [kraynux](https://github.com/kraynux) untuk [Omega-Server](https://kraynux.snake-mackarel.ts.net)   
 
 Halaman resmi: [OMEGA-SCAN](https://kraynux.snake-mackarel.ts.net/omega-scan/) &nbsp; Pratinjau: [Screenshots](https://kraynux.snake-mackarel.ts.net/omega-scan/screenshots/)  
 

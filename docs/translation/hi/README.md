@@ -7,8 +7,7 @@
 
 **वेब सुरक्षा स्थिति स्कैनर**
 
-> **Omega-server** के लिए **kraynux** द्वारा निर्मित 
-[https://kraynux.snake-mackarel.ts.net](https://kraynux.snake-mackarel.ts.net)
+> [Omega-Server](https://kraynux.snake-mackarel.ts.net) के लिए [kraynux](https://github.com/kraynux) द्वारा निर्मित   
 
 आधिकारिक पेज: [OMEGA-SCAN](https://kraynux.snake-mackarel.ts.net/omega-scan/) &nbsp; झलक: [Screenshots](https://kraynux.snake-mackarel.ts.net/omega-scan/screenshots/)  
 

@@ -7,8 +7,7 @@
 
 **Công cụ quét tình trạng bảo mật web**
 
-> Được **kraynux** xây dựng cho **Omega-server** 
-[https://kraynux.snake-mackarel.ts.net](https://kraynux.snake-mackarel.ts.net)
+> Được [kraynux](https://github.com/kraynux) xây dựng cho [Omega-Server](https://kraynux.snake-mackarel.ts.net)   
 
 Trang chính thức: [OMEGA-SCAN](https://kraynux.snake-mackarel.ts.net/omega-scan/) &nbsp; Ảnh chụp màn hình: [Screenshots](https://kraynux.snake-mackarel.ts.net/omega-scan/screenshots/)  
 

@@ -7,8 +7,7 @@
 
 **Scanner van de webbeveiligingshouding**
 
-> Gemaakt door **kraynux** voor **Omega-server** 
-[https://kraynux.snake-mackarel.ts.net](https://kraynux.snake-mackarel.ts.net)
+> Gemaakt door [kraynux](https://github.com/kraynux) voor [Omega-Server](https://kraynux.snake-mackarel.ts.net)   
 
 Officiële pagina: [OMEGA-SCAN](https://kraynux.snake-mackarel.ts.net/omega-scan/) &nbsp; Voorbeeld: [Screenshots](https://kraynux.snake-mackarel.ts.net/omega-scan/screenshots/)  
 

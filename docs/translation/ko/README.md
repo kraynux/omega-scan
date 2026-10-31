@@ -7,8 +7,7 @@
 
 **웹 보안 상태 스캐너**
 
-> **Omega-server**를 위해 **kraynux**가 개발 
-[https://kraynux.snake-mackarel.ts.net](https://kraynux.snake-mackarel.ts.net)
+> [Omega-Server](https://kraynux.snake-mackarel.ts.net)를 위해 [kraynux](https://github.com/kraynux)가 개발   
 
 공식 페이지: [OMEGA-SCAN](https://kraynux.snake-mackarel.ts.net/omega-scan/) &nbsp; 미리보기: [Screenshots](https://kraynux.snake-mackarel.ts.net/omega-scan/screenshots/)  
 

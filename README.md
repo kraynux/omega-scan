@@ -7,8 +7,7 @@
 
 **Scanner de posture de sécurité web**
 
-> Élaboré par **kraynux** pour **Omega-server** 
-[https://kraynux.snake-mackarel.ts.net](https://kraynux.snake-mackarel.ts.net)
+> Élaboré par [kraynux](https://github.com/kraynux) pour [Omega-Server](https://kraynux.snake-mackarel.ts.net)   
 
 Page officiel : [OMEGA-SCAN](https://kraynux.snake-mackarel.ts.net/omega-scan/) &nbsp; Apercu : [Screenshots](https://kraynux.snake-mackarel.ts.net/omega-scan/screenshots/)  
 

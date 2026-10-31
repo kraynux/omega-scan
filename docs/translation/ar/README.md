@@ -7,8 +7,7 @@
 
 **ماسح الوضع الأمني لخدمات الويب**
 
-> طوّره **kraynux** من أجل **Omega-server** 
-[https://kraynux.snake-mackarel.ts.net](https://kraynux.snake-mackarel.ts.net)
+> طوّره [kraynux](https://github.com/kraynux) من أجل [Omega-Server](https://kraynux.snake-mackarel.ts.net)   
 
 الصفحة الرسمية: [OMEGA-SCAN](https://kraynux.snake-mackarel.ts.net/omega-scan/) &nbsp; معاينة: [Screenshots](https://kraynux.snake-mackarel.ts.net/omega-scan/screenshots/)  
 

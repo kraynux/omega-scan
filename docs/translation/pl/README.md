@@ -7,8 +7,7 @@
 
 **Skaner stanu bezpieczeństwa usług WWW**
 
-> Stworzone przez **kraynux** dla **Omega-server** 
-[https://kraynux.snake-mackarel.ts.net](https://kraynux.snake-mackarel.ts.net)
+> Stworzone przez [kraynux](https://github.com/kraynux) dla [Omega-Server](https://kraynux.snake-mackarel.ts.net)   
 
 Oficjalna strona: [OMEGA-SCAN](https://kraynux.snake-mackarel.ts.net/omega-scan/) &nbsp; Podgląd: [Screenshots](https://kraynux.snake-mackarel.ts.net/omega-scan/screenshots/)  
 
