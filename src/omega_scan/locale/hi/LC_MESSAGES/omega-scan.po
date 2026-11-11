@@ -7,7 +7,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Omega-Status: testing\n"
+"X-Omega-Status: validated\n"
 
 #: src/omega_scan/application/commands/export_scan_report.py:31 src/omega_scan/application/commands/replay_scan.py:45
 msgid "Aucun scan trouvé pour l'identifiant {scan_id!r}."
@@ -997,115 +997,115 @@ msgstr "इस निष्कर्ष का विस्तृत निद�
 msgid "Toutes catégories"
 msgstr "सभी श्रेणियाँ"
 
-#: src/omega_scan/interfaces/tui/screens/help_screen.py:24
+#: src/omega_scan/interfaces/tui/screens/help_screen.py:25
 msgid "Approfondi"
 msgstr "गहन"
 
-#: src/omega_scan/interfaces/tui/screens/help_screen.py:24
+#: src/omega_scan/interfaces/tui/screens/help_screen.py:25
 msgid "Complet (défaut)"
 msgstr "पूर्ण (डिफ़ॉल्ट)"
 
-#: src/omega_scan/interfaces/tui/screens/help_screen.py:24
+#: src/omega_scan/interfaces/tui/screens/help_screen.py:25
 msgid "Usage"
 msgstr "उपयोग"
 
-#: src/omega_scan/interfaces/tui/screens/help_screen.py:24
+#: src/omega_scan/interfaces/tui/screens/help_screen.py:25
 msgid "Vérif. rapide"
 msgstr "त्वरित जाँच"
 
-#: src/omega_scan/interfaces/tui/screens/help_screen.py:24
+#: src/omega_scan/interfaces/tui/screens/help_screen.py:25
 msgid "localhost / LAN"
 msgstr "localhost / LAN"
 
-#: src/omega_scan/interfaces/tui/screens/help_screen.py:25
+#: src/omega_scan/interfaces/tui/screens/help_screen.py:26
 msgid "Timeout connect/read"
 msgstr "connect/read समय सीमा"
 
-#: src/omega_scan/interfaces/tui/screens/help_screen.py:27
+#: src/omega_scan/interfaces/tui/screens/help_screen.py:28
 msgid "Méthodes HTTP"
 msgstr "HTTP विधियाँ"
 
-#: src/omega_scan/interfaces/tui/screens/help_screen.py:33
+#: src/omega_scan/interfaces/tui/screens/help_screen.py:34
 msgid "Oui (complet)"
 msgstr "हाँ (पूर्ण)"
 
-#: src/omega_scan/interfaces/tui/screens/help_screen.py:33
+#: src/omega_scan/interfaces/tui/screens/help_screen.py:34
 msgid "Oui (~20)"
 msgstr "हाँ (~20)"
 
-#: src/omega_scan/interfaces/tui/screens/help_screen.py:33
+#: src/omega_scan/interfaces/tui/screens/help_screen.py:34
 msgid "Path probing"
 msgstr "Path probing"
 
-#: src/omega_scan/interfaces/tui/screens/help_screen.py:34
+#: src/omega_scan/interfaces/tui/screens/help_screen.py:35
 msgid "Oui (détaillé)"
 msgstr "हाँ (विस्तृत)"
 
-#: src/omega_scan/interfaces/tui/screens/help_screen.py:34
+#: src/omega_scan/interfaces/tui/screens/help_screen.py:35
 msgid "Oui (tolérant)"
 msgstr "हाँ (उदार)"
 
-#: src/omega_scan/interfaces/tui/screens/help_screen.py:35
+#: src/omega_scan/interfaces/tui/screens/help_screen.py:36
 msgid "Catch-all"
 msgstr "Catch-all"
 
-#: src/omega_scan/interfaces/tui/screens/help_screen.py:36
+#: src/omega_scan/interfaces/tui/screens/help_screen.py:37
 msgid "Non évaluée"
 msgstr "मूल्यांकन नहीं"
 
-#: src/omega_scan/interfaces/tui/screens/help_screen.py:36
+#: src/omega_scan/interfaces/tui/screens/help_screen.py:37
 msgid "Politique HSTS"
 msgstr "HSTS नीति"
 
-#: src/omega_scan/interfaces/tui/screens/help_screen.py:36
+#: src/omega_scan/interfaces/tui/screens/help_screen.py:37
 msgid "Standard"
 msgstr "मानक"
 
-#: src/omega_scan/interfaces/tui/screens/help_screen.py:36
+#: src/omega_scan/interfaces/tui/screens/help_screen.py:37
 msgid "Strict"
 msgstr "सख्त"
 
-#: src/omega_scan/interfaces/tui/screens/help_screen.py:36
+#: src/omega_scan/interfaces/tui/screens/help_screen.py:37
 msgid "Tolérante"
 msgstr "उदार"
 
-#: src/omega_scan/interfaces/tui/screens/help_screen.py:40
+#: src/omega_scan/interfaces/tui/screens/help_screen.py:41
 msgid "vérification éclair avant mise en production"
 msgstr "प्रोडक्शन में जाने से पहले त्वरित जाँच"
 
-#: src/omega_scan/interfaces/tui/screens/help_screen.py:41
+#: src/omega_scan/interfaces/tui/screens/help_screen.py:42
 msgid "audit complet d'un service en production, recommandé"
 msgstr "प्रोडक्शन सेवा का पूर्ण ऑडिट, अनुशंसित"
 
-#: src/omega_scan/interfaces/tui/screens/help_screen.py:42
+#: src/omega_scan/interfaces/tui/screens/help_screen.py:43
 msgid "audit approfondi incluant les méthodes HTTP risquées"
 msgstr "जोखिम भरी HTTP विधियों सहित गहन ऑडिट"
 
-#: src/omega_scan/interfaces/tui/screens/help_screen.py:45
+#: src/omega_scan/interfaces/tui/screens/help_screen.py:46
 msgid "scan de localhost ou LAN sans pénaliser les règles pensées pour le public, HSTS notamment"
 msgstr "सार्वजनिक सेवाओं के नियमों (विशेषकर HSTS) से अंक काटे बिना localhost या LAN का स्कैन"
 
-#: src/omega_scan/interfaces/tui/screens/help_screen.py:54
+#: src/omega_scan/interfaces/tui/screens/help_screen.py:55
 msgid "Saisir une cible (IPv4, IPv6, hostname ou URL), choisir un profil (quick/standard/extended/local-lab), confirmer l'autorisation si la cible n'est pas déjà épinglée, puis lancer le scan."
 msgstr "एक लक्ष्य दर्ज करें (IPv4, IPv6, होस्टनाम या URL), प्रोफ़ाइल चुनें (quick/standard/extended/local-lab), यदि लक्ष्य पहले से पिन नहीं है तो अनुमति की पुष्टि करें, फिर स्कैन शुरू करें।"
 
-#: src/omega_scan/interfaces/tui/screens/help_screen.py:62
+#: src/omega_scan/interfaces/tui/screens/help_screen.py:63
 msgid "Épingler un hôte dispense de recocher la confirmation d'autorisation à chaque scan sur cette même cible."
 msgstr "किसी होस्ट को पिन करने से उसी लक्ष्य के हर स्कैन पर अनुमति की पुष्टि दोबारा चिह्नित नहीं करनी पड़ती।"
 
-#: src/omega_scan/interfaces/tui/screens/help_screen.py:69
+#: src/omega_scan/interfaces/tui/screens/help_screen.py:70
 msgid "Liste tous les scans passés : détail complet, comparaison entre deux scans, ou rejouer un scan sur la même cible."
 msgstr "सभी पिछले स्कैन की सूची: पूर्ण विवरण, दो स्कैन की तुलना, या उसी लक्ष्य पर स्कैन फिर से चलाना।"
 
-#: src/omega_scan/interfaces/tui/screens/help_screen.py:76
+#: src/omega_scan/interfaces/tui/screens/help_screen.py:77
 msgid "Depuis le détail d'un scan : JSON (source de vérité), texte (rapport compact) ou HTML (rapport lisible et partageable)."
 msgstr "स्कैन के विवरण से: JSON (सत्य का स्रोत), टेक्स्ट (संक्षिप्त रिपोर्ट) या HTML (पठनीय और साझा करने योग्य रिपोर्ट)।"
 
-#: src/omega_scan/interfaces/tui/screens/help_screen.py:83
+#: src/omega_scan/interfaces/tui/screens/help_screen.py:84
 msgid "Omega-scan observe la posture de sécurité visible d'un service HTTP/HTTPS : il ne réalise jamais de test actif (pas de SQLi, XSS, RCE, scan de CVE, fuzzing ou bruteforce)."
 msgstr "Omega-scan किसी HTTP/HTTPS सेवा की दिखाई देने वाली सुरक्षा स्थिति का अवलोकन करता है: यह कभी सक्रिय परीक्षण नहीं करता (कोई SQLi, XSS, RCE, CVE स्कैन, फ़ज़िंग या ब्रूटफ़ोर्स नहीं)।"
 
-#: src/omega_scan/interfaces/tui/screens/help_screen.py:104
+#: src/omega_scan/interfaces/tui/screens/help_screen.py:111
 msgid "Profils de scan"
 msgstr "स्कैन प्रोफ़ाइल"
 

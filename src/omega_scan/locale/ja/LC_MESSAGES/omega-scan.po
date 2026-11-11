@@ -7,7 +7,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Omega-Status: testing\n"
+"X-Omega-Status: validated\n"
 
 #: src/omega_scan/application/commands/export_scan_report.py:31 src/omega_scan/application/commands/replay_scan.py:45
 msgid "Aucun scan trouvé pour l'identifiant {scan_id!r}."
@@ -997,115 +997,115 @@ msgstr "行をクリック（または Enter）すると、この検出事項の
 msgid "Toutes catégories"
 msgstr "すべてのカテゴリ"
 
-#: src/omega_scan/interfaces/tui/screens/help_screen.py:24
+#: src/omega_scan/interfaces/tui/screens/help_screen.py:25
 msgid "Approfondi"
 msgstr "詳細"
 
-#: src/omega_scan/interfaces/tui/screens/help_screen.py:24
+#: src/omega_scan/interfaces/tui/screens/help_screen.py:25
 msgid "Complet (défaut)"
 msgstr "完全（既定）"
 
-#: src/omega_scan/interfaces/tui/screens/help_screen.py:24
+#: src/omega_scan/interfaces/tui/screens/help_screen.py:25
 msgid "Usage"
 msgstr "用途"
 
-#: src/omega_scan/interfaces/tui/screens/help_screen.py:24
+#: src/omega_scan/interfaces/tui/screens/help_screen.py:25
 msgid "Vérif. rapide"
 msgstr "簡易確認"
 
-#: src/omega_scan/interfaces/tui/screens/help_screen.py:24
+#: src/omega_scan/interfaces/tui/screens/help_screen.py:25
 msgid "localhost / LAN"
 msgstr "localhost / LAN"
 
-#: src/omega_scan/interfaces/tui/screens/help_screen.py:25
+#: src/omega_scan/interfaces/tui/screens/help_screen.py:26
 msgid "Timeout connect/read"
 msgstr "connect/read タイムアウト"
 
-#: src/omega_scan/interfaces/tui/screens/help_screen.py:27
+#: src/omega_scan/interfaces/tui/screens/help_screen.py:28
 msgid "Méthodes HTTP"
 msgstr "HTTP メソッド"
 
-#: src/omega_scan/interfaces/tui/screens/help_screen.py:33
+#: src/omega_scan/interfaces/tui/screens/help_screen.py:34
 msgid "Oui (complet)"
 msgstr "はい（完全）"
 
-#: src/omega_scan/interfaces/tui/screens/help_screen.py:33
+#: src/omega_scan/interfaces/tui/screens/help_screen.py:34
 msgid "Oui (~20)"
 msgstr "はい（約 20）"
 
-#: src/omega_scan/interfaces/tui/screens/help_screen.py:33
+#: src/omega_scan/interfaces/tui/screens/help_screen.py:34
 msgid "Path probing"
 msgstr "Path probing"
 
-#: src/omega_scan/interfaces/tui/screens/help_screen.py:34
+#: src/omega_scan/interfaces/tui/screens/help_screen.py:35
 msgid "Oui (détaillé)"
 msgstr "はい（詳細）"
 
-#: src/omega_scan/interfaces/tui/screens/help_screen.py:34
+#: src/omega_scan/interfaces/tui/screens/help_screen.py:35
 msgid "Oui (tolérant)"
 msgstr "はい（寛容）"
 
-#: src/omega_scan/interfaces/tui/screens/help_screen.py:35
+#: src/omega_scan/interfaces/tui/screens/help_screen.py:36
 msgid "Catch-all"
 msgstr "Catch-all"
 
-#: src/omega_scan/interfaces/tui/screens/help_screen.py:36
+#: src/omega_scan/interfaces/tui/screens/help_screen.py:37
 msgid "Non évaluée"
 msgstr "評価なし"
 
-#: src/omega_scan/interfaces/tui/screens/help_screen.py:36
+#: src/omega_scan/interfaces/tui/screens/help_screen.py:37
 msgid "Politique HSTS"
 msgstr "HSTS ポリシー"
 
-#: src/omega_scan/interfaces/tui/screens/help_screen.py:36
+#: src/omega_scan/interfaces/tui/screens/help_screen.py:37
 msgid "Standard"
 msgstr "標準"
 
-#: src/omega_scan/interfaces/tui/screens/help_screen.py:36
+#: src/omega_scan/interfaces/tui/screens/help_screen.py:37
 msgid "Strict"
 msgstr "厳格"
 
-#: src/omega_scan/interfaces/tui/screens/help_screen.py:36
+#: src/omega_scan/interfaces/tui/screens/help_screen.py:37
 msgid "Tolérante"
 msgstr "寛容"
 
-#: src/omega_scan/interfaces/tui/screens/help_screen.py:40
+#: src/omega_scan/interfaces/tui/screens/help_screen.py:41
 msgid "vérification éclair avant mise en production"
 msgstr "本番投入前の簡易確認"
 
-#: src/omega_scan/interfaces/tui/screens/help_screen.py:41
+#: src/omega_scan/interfaces/tui/screens/help_screen.py:42
 msgid "audit complet d'un service en production, recommandé"
 msgstr "本番サービスの完全な監査、推奨"
 
-#: src/omega_scan/interfaces/tui/screens/help_screen.py:42
+#: src/omega_scan/interfaces/tui/screens/help_screen.py:43
 msgid "audit approfondi incluant les méthodes HTTP risquées"
 msgstr "危険な HTTP メソッドを含む詳細な監査"
 
-#: src/omega_scan/interfaces/tui/screens/help_screen.py:45
+#: src/omega_scan/interfaces/tui/screens/help_screen.py:46
 msgid "scan de localhost ou LAN sans pénaliser les règles pensées pour le public, HSTS notamment"
 msgstr "公開向けのルール（特に HSTS）で減点せずに localhost や LAN をスキャン"
 
-#: src/omega_scan/interfaces/tui/screens/help_screen.py:54
+#: src/omega_scan/interfaces/tui/screens/help_screen.py:55
 msgid "Saisir une cible (IPv4, IPv6, hostname ou URL), choisir un profil (quick/standard/extended/local-lab), confirmer l'autorisation si la cible n'est pas déjà épinglée, puis lancer le scan."
 msgstr "ターゲット（IPv4、IPv6、ホスト名、または URL）を入力し、プロファイル（quick/standard/extended/local-lab）を選び、ターゲットがまだピン留めされていなければ許可を確認してから、スキャンを開始します。"
 
-#: src/omega_scan/interfaces/tui/screens/help_screen.py:62
+#: src/omega_scan/interfaces/tui/screens/help_screen.py:63
 msgid "Épingler un hôte dispense de recocher la confirmation d'autorisation à chaque scan sur cette même cible."
 msgstr "ホストをピン留めすると、同じターゲットをスキャンするたびに許可の確認をチェックし直す必要がなくなります。"
 
-#: src/omega_scan/interfaces/tui/screens/help_screen.py:69
+#: src/omega_scan/interfaces/tui/screens/help_screen.py:70
 msgid "Liste tous les scans passés : détail complet, comparaison entre deux scans, ou rejouer un scan sur la même cible."
 msgstr "過去のすべてのスキャンを一覧表示：完全な詳細、2 つのスキャンの比較、または同じターゲットでの再実行。"
 
-#: src/omega_scan/interfaces/tui/screens/help_screen.py:76
+#: src/omega_scan/interfaces/tui/screens/help_screen.py:77
 msgid "Depuis le détail d'un scan : JSON (source de vérité), texte (rapport compact) ou HTML (rapport lisible et partageable)."
 msgstr "スキャンの詳細から：JSON（信頼できる情報源）、テキスト（簡潔なレポート）、HTML（読みやすく共有しやすいレポート）。"
 
-#: src/omega_scan/interfaces/tui/screens/help_screen.py:83
+#: src/omega_scan/interfaces/tui/screens/help_screen.py:84
 msgid "Omega-scan observe la posture de sécurité visible d'un service HTTP/HTTPS : il ne réalise jamais de test actif (pas de SQLi, XSS, RCE, scan de CVE, fuzzing ou bruteforce)."
 msgstr "Omega-scan は HTTP/HTTPS サービスの見えるセキュリティ状態を観察します：能動的なテストは一切行いません（SQLi、XSS、RCE、CVE スキャン、ファジング、総当たりはなし）。"
 
-#: src/omega_scan/interfaces/tui/screens/help_screen.py:104
+#: src/omega_scan/interfaces/tui/screens/help_screen.py:111
 msgid "Profils de scan"
 msgstr "スキャンプロファイル"
 

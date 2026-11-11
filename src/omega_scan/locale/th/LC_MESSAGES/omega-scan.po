@@ -7,7 +7,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Omega-Status: testing\n"
+"X-Omega-Status: validated\n"
 
 #: src/omega_scan/application/commands/export_scan_report.py:31 src/omega_scan/application/commands/replay_scan.py:45
 msgid "Aucun scan trouvé pour l'identifiant {scan_id!r}."
@@ -997,115 +997,115 @@ msgstr "คลิกที่แถว (หรือ Enter) เพื่อด�
 msgid "Toutes catégories"
 msgstr "ทุกหมวดหมู่"
 
-#: src/omega_scan/interfaces/tui/screens/help_screen.py:24
+#: src/omega_scan/interfaces/tui/screens/help_screen.py:25
 msgid "Approfondi"
 msgstr "เชิงลึก"
 
-#: src/omega_scan/interfaces/tui/screens/help_screen.py:24
+#: src/omega_scan/interfaces/tui/screens/help_screen.py:25
 msgid "Complet (défaut)"
 msgstr "ครบถ้วน (ค่าเริ่มต้น)"
 
-#: src/omega_scan/interfaces/tui/screens/help_screen.py:24
+#: src/omega_scan/interfaces/tui/screens/help_screen.py:25
 msgid "Usage"
 msgstr "การใช้งาน"
 
-#: src/omega_scan/interfaces/tui/screens/help_screen.py:24
+#: src/omega_scan/interfaces/tui/screens/help_screen.py:25
 msgid "Vérif. rapide"
 msgstr "ตรวจสอบด่วน"
 
-#: src/omega_scan/interfaces/tui/screens/help_screen.py:24
+#: src/omega_scan/interfaces/tui/screens/help_screen.py:25
 msgid "localhost / LAN"
 msgstr "localhost / LAN"
 
-#: src/omega_scan/interfaces/tui/screens/help_screen.py:25
+#: src/omega_scan/interfaces/tui/screens/help_screen.py:26
 msgid "Timeout connect/read"
 msgstr "หมดเวลา connect/read"
 
-#: src/omega_scan/interfaces/tui/screens/help_screen.py:27
+#: src/omega_scan/interfaces/tui/screens/help_screen.py:28
 msgid "Méthodes HTTP"
 msgstr "เมธอด HTTP"
 
-#: src/omega_scan/interfaces/tui/screens/help_screen.py:33
+#: src/omega_scan/interfaces/tui/screens/help_screen.py:34
 msgid "Oui (complet)"
 msgstr "ใช่ (ครบถ้วน)"
 
-#: src/omega_scan/interfaces/tui/screens/help_screen.py:33
+#: src/omega_scan/interfaces/tui/screens/help_screen.py:34
 msgid "Oui (~20)"
 msgstr "ใช่ (~20)"
 
-#: src/omega_scan/interfaces/tui/screens/help_screen.py:33
+#: src/omega_scan/interfaces/tui/screens/help_screen.py:34
 msgid "Path probing"
 msgstr "Path probing"
 
-#: src/omega_scan/interfaces/tui/screens/help_screen.py:34
+#: src/omega_scan/interfaces/tui/screens/help_screen.py:35
 msgid "Oui (détaillé)"
 msgstr "ใช่ (ละเอียด)"
 
-#: src/omega_scan/interfaces/tui/screens/help_screen.py:34
+#: src/omega_scan/interfaces/tui/screens/help_screen.py:35
 msgid "Oui (tolérant)"
 msgstr "ใช่ (ผ่อนปรน)"
 
-#: src/omega_scan/interfaces/tui/screens/help_screen.py:35
+#: src/omega_scan/interfaces/tui/screens/help_screen.py:36
 msgid "Catch-all"
 msgstr "Catch-all"
 
-#: src/omega_scan/interfaces/tui/screens/help_screen.py:36
+#: src/omega_scan/interfaces/tui/screens/help_screen.py:37
 msgid "Non évaluée"
 msgstr "ไม่ประเมิน"
 
-#: src/omega_scan/interfaces/tui/screens/help_screen.py:36
+#: src/omega_scan/interfaces/tui/screens/help_screen.py:37
 msgid "Politique HSTS"
 msgstr "นโยบาย HSTS"
 
-#: src/omega_scan/interfaces/tui/screens/help_screen.py:36
+#: src/omega_scan/interfaces/tui/screens/help_screen.py:37
 msgid "Standard"
 msgstr "มาตรฐาน"
 
-#: src/omega_scan/interfaces/tui/screens/help_screen.py:36
+#: src/omega_scan/interfaces/tui/screens/help_screen.py:37
 msgid "Strict"
 msgstr "เข้มงวด"
 
-#: src/omega_scan/interfaces/tui/screens/help_screen.py:36
+#: src/omega_scan/interfaces/tui/screens/help_screen.py:37
 msgid "Tolérante"
 msgstr "ผ่อนปรน"
 
-#: src/omega_scan/interfaces/tui/screens/help_screen.py:40
+#: src/omega_scan/interfaces/tui/screens/help_screen.py:41
 msgid "vérification éclair avant mise en production"
 msgstr "ตรวจสอบรวดเร็วก่อนขึ้นระบบใช้งานจริง"
 
-#: src/omega_scan/interfaces/tui/screens/help_screen.py:41
+#: src/omega_scan/interfaces/tui/screens/help_screen.py:42
 msgid "audit complet d'un service en production, recommandé"
 msgstr "ตรวจสอบบริการที่ใช้งานจริงอย่างครบถ้วน แนะนำ"
 
-#: src/omega_scan/interfaces/tui/screens/help_screen.py:42
+#: src/omega_scan/interfaces/tui/screens/help_screen.py:43
 msgid "audit approfondi incluant les méthodes HTTP risquées"
 msgstr "ตรวจสอบเชิงลึกรวมถึงเมธอด HTTP ที่มีความเสี่ยง"
 
-#: src/omega_scan/interfaces/tui/screens/help_screen.py:45
+#: src/omega_scan/interfaces/tui/screens/help_screen.py:46
 msgid "scan de localhost ou LAN sans pénaliser les règles pensées pour le public, HSTS notamment"
 msgstr "สแกน localhost หรือ LAN โดยไม่หักคะแนนจากกฎสำหรับบริการสาธารณะ โดยเฉพาะ HSTS"
 
-#: src/omega_scan/interfaces/tui/screens/help_screen.py:54
+#: src/omega_scan/interfaces/tui/screens/help_screen.py:55
 msgid "Saisir une cible (IPv4, IPv6, hostname ou URL), choisir un profil (quick/standard/extended/local-lab), confirmer l'autorisation si la cible n'est pas déjà épinglée, puis lancer le scan."
 msgstr "ป้อนเป้าหมาย (IPv4, IPv6, ชื่อโฮสต์ หรือ URL) เลือกโปรไฟล์ (quick/standard/extended/local-lab) ยืนยันสิทธิ์หากเป้าหมายยังไม่ได้ปักหมุด แล้วเริ่มสแกน"
 
-#: src/omega_scan/interfaces/tui/screens/help_screen.py:62
+#: src/omega_scan/interfaces/tui/screens/help_screen.py:63
 msgid "Épingler un hôte dispense de recocher la confirmation d'autorisation à chaque scan sur cette même cible."
 msgstr "การปักหมุดโฮสต์ทำให้ไม่ต้องติ๊กยืนยันสิทธิ์ใหม่ทุกครั้งที่สแกนเป้าหมายเดิม"
 
-#: src/omega_scan/interfaces/tui/screens/help_screen.py:69
+#: src/omega_scan/interfaces/tui/screens/help_screen.py:70
 msgid "Liste tous les scans passés : détail complet, comparaison entre deux scans, ou rejouer un scan sur la même cible."
 msgstr "แสดงการสแกนที่ผ่านมาทั้งหมด: รายละเอียดครบถ้วน เปรียบเทียบสองการสแกน หรือเรียกใช้การสแกนซ้ำบนเป้าหมายเดิม"
 
-#: src/omega_scan/interfaces/tui/screens/help_screen.py:76
+#: src/omega_scan/interfaces/tui/screens/help_screen.py:77
 msgid "Depuis le détail d'un scan : JSON (source de vérité), texte (rapport compact) ou HTML (rapport lisible et partageable)."
 msgstr "จากรายละเอียดการสแกน: JSON (แหล่งข้อมูลหลัก) ข้อความ (รายงานกระชับ) หรือ HTML (รายงานอ่านง่ายและแชร์ได้)"
 
-#: src/omega_scan/interfaces/tui/screens/help_screen.py:83
+#: src/omega_scan/interfaces/tui/screens/help_screen.py:84
 msgid "Omega-scan observe la posture de sécurité visible d'un service HTTP/HTTPS : il ne réalise jamais de test actif (pas de SQLi, XSS, RCE, scan de CVE, fuzzing ou bruteforce)."
 msgstr "Omega-scan สังเกตสถานะความปลอดภัยที่มองเห็นได้ของบริการ HTTP/HTTPS: ไม่เคยทดสอบเชิงรุก (ไม่มี SQLi, XSS, RCE, การสแกน CVE, fuzzing หรือ bruteforce)"
 
-#: src/omega_scan/interfaces/tui/screens/help_screen.py:104
+#: src/omega_scan/interfaces/tui/screens/help_screen.py:111
 msgid "Profils de scan"
 msgstr "โปรไฟล์การสแกน"
 

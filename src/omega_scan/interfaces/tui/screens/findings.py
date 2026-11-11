@@ -65,7 +65,9 @@ class FindingsScreen(OmegaScreen):
             yield Static(_("RÉSULTATS — {normalized_host}").format(normalized_host=self._scan.normalized_host), classes="omega-title")
             yield GradeBadge(
                 overall_rating=self._scan.summary.overall_rating,
-                short_message=self._scan.summary.short_message,
+                # Message enregistre en francais (scan lance en CLI ou dans une autre langue) :
+                # retraduit a l'affichage, comme les titres du tableau et les exports (R1).
+                short_message=_(self._scan.summary.short_message),
             )
             yield Static(
                 _("Cliquez sur une ligne (ou Entrée) pour le diagnostic détaillé de ce finding."),

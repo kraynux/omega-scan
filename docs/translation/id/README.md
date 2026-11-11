@@ -24,6 +24,13 @@ Halaman resmi: [OMEGA-SCAN](https://kraynux.snake-mackarel.ts.net/omega-scan/) &
 
 **Omega-scan** adalah alat TUI + CLI yang menganalisis kerapian konfigurasi yang terlihat dari luar pada layanan HTTP/HTTPS Anda. Alat ini mengamati, mengumpulkan fakta, menerapkan aturan interpretasi, dan menghasilkan laporan yang dapat ditindaklanjuti, tanpa pernah melakukan serangan aktif. Alat dari rangkaian `omega-`, disusun dengan Clean Architecture — lihat `ARCHITECTURE.md` untuk detail teknis lengkap.
 
+<p align="center">
+  <img src="https://raw.githubusercontent.com/kraynux/kraynux/refs/heads/main/docs/translation/id/omega-scan/A.png" width="24%" />
+  <img src="https://raw.githubusercontent.com/kraynux/kraynux/refs/heads/main/docs/translation/id/omega-scan/B.png" width="24%" />
+  <img src="https://raw.githubusercontent.com/kraynux/kraynux/refs/heads/main/docs/translation/id/omega-scan/C.png" width="24%" />
+  <img src="https://raw.githubusercontent.com/kraynux/kraynux/refs/heads/main/docs/translation/id/omega-scan/D.png" width="24%" />
+</p>
+
 ## 1. Visi dan cakupan
 
 Omega-scan adalah pemindai postur keamanan web untuk administrasi sistem: memeriksa dengan cepat kerapian konfigurasi yang terlihat dari sebuah layanan HTTP/HTTPS di localhost, LAN, atau target eksternal, termasuk di balik terowongan seperti Tailscale Funnel.
@@ -126,6 +133,10 @@ Alur: layar pembuka (tertutup dengan satu tombol atau klik) → menu utama → i
 ### Bahasa antarmuka
 
 Antarmuka tersedia dalam 17 bahasa: Prancis, Inggris, Spanyol, Portugis (Brasil), Italia, Jerman, Belanda, Polandia, Rusia, Tionghoa Sederhana, Vietnam, Thai, Indonesia, Jepang, Korea, Hindi, dan Arab. Pilihan dibuat di Pengaturan (“Langue / Language”) dan berlaku setelah antarmuka dimulai ulang; variabel `OMEGA_SCAN_LANG` (misalnya `OMEGA_SCAN_LANG=id ./omega-scan.sh`) memaksakan bahasa untuk satu sesi. Jika dijalankan dari omega-suite, omega-scan memakai bahasa rangkaian. Di konsol teks Linux (TTY), bahasa beraksara non-Latin ditampilkan dalam bahasa Inggris selama sesi itu. Baris perintah tetap berbahasa Prancis.
+
+### Kontak dan dukungan
+
+Bantuan (tombol `a`) menyediakan layar **Kontak dan dukungan**: *Traktir kopi* (halaman PayPal pengembang), *Hubungi dukungan* (alamat email dan formulir kontak situs, ditampilkan apa adanya), *Daftarkan saya sebagai pengguna (anonim)*, dan *Periksa pembaruan*. Pendaftaran bersifat sukarela, nonaktif secara bawaan, dan dikirim hanya sekali: hanya digunakan untuk menghitung pengguna dan, jika Anda mau, benua atau negara mereka (daftar tertutup, tidak pernah teks bebas). Yang dikirim adalah kunci yang diambil secara acak, nama perangkat lunak (`omega-scan`), dan versinya; tidak pernah nama, nama mesin, pengaturan, target, maupun hasil. Alamat IP tidak disimpan dalam pendaftaran, tetapi, seperti setiap kunjungan, melewati pemeriksaan keamanan dan log server penerima. Penarikan kapan saja dari layar yang sama (*Jangan daftarkan saya lagi*). Pemeriksaan pembaruan hanya membaca daftar versi yang dipublikasikan di situs, dan tidak pernah tanpa klik.
 
 ### Mode skrip (CLI)
 

@@ -24,6 +24,13 @@ Página oficial: [OMEGA-SCAN](https://kraynux.snake-mackarel.ts.net/omega-scan/)
 
 **Omega-scan** é uma ferramenta TUI + CLI que analisa a higiene de configuração visível dos seus serviços HTTP/HTTPS. Ela observa, coleta fatos, aplica regras interpretativas e produz relatórios acionáveis, sem jamais realizar um ataque ativo. Ferramenta da suíte `omega-`, estruturada em Clean Architecture — veja `ARCHITECTURE.md` para todos os detalhes técnicos.
 
+<p align="center">
+  <img src="https://raw.githubusercontent.com/kraynux/kraynux/refs/heads/main/docs/translation/pt-BR/omega-scan/A.png" width="24%" />
+  <img src="https://raw.githubusercontent.com/kraynux/kraynux/refs/heads/main/docs/translation/pt-BR/omega-scan/B.png" width="24%" />
+  <img src="https://raw.githubusercontent.com/kraynux/kraynux/refs/heads/main/docs/translation/pt-BR/omega-scan/C.png" width="24%" />
+  <img src="https://raw.githubusercontent.com/kraynux/kraynux/refs/heads/main/docs/translation/pt-BR/omega-scan/D.png" width="24%" />
+</p>
+
 ## 1. Visão e escopo
 
 O Omega-scan é um scanner de postura de segurança web, voltado à administração de sistemas: verificar rapidamente a higiene de configuração visível de um serviço HTTP/HTTPS em localhost, na LAN ou em um alvo externo, inclusive por trás de um túnel como o Tailscale Funnel.
@@ -126,6 +133,10 @@ Percurso: tela de abertura (fecha com uma tecla ou um clique) → menu principal
 ### Idiomas da interface
 
 A interface está disponível em 17 idiomas: francês, inglês, espanhol, português (Brasil), italiano, alemão, holandês, polonês, russo, chinês simplificado, vietnamita, tailandês, indonésio, japonês, coreano, hindi e árabe. A escolha é feita em Configurações («Langue / Language») e vale após reiniciar a interface; a variável `OMEGA_SCAN_LANG` (por exemplo `OMEGA_SCAN_LANG=pt-BR ./omega-scan.sh`) força um idioma durante uma sessão. Iniciado pelo omega-suite, o omega-scan usa o idioma da suíte. Em um console de texto Linux (TTY), os idiomas de escrita não latina aparecem em inglês durante a sessão. A linha de comando continua em francês.
+
+### Contato e suporte
+
+A ajuda (tecla `a`) oferece uma tela **Contato e suporte**: *Pagar um café* (página PayPal do desenvolvedor), *Contatar o suporte* (endereço de e-mail e formulário de contato do site, exibidos em claro), *Declarar-me usuário (anônimo)* e *Verificar atualizações*. A declaração é voluntária, desativada por padrão e enviada uma única vez: serve apenas para contar os usuários e, se desejado, seu continente ou país (listas fechadas, nunca texto livre). Ela envia uma chave sorteada ao acaso, o nome do software (`omega-scan`) e sua versão; nunca um nome, um nome de máquina, uma configuração, um alvo ou um resultado. O endereço IP não é registrado nas declarações, mas, como em qualquer visita, passa pelos controles de segurança e pelo registro do servidor de recepção. Retirada a qualquer momento na mesma tela (*Não me declarar mais*). A verificação de atualizações apenas lê a lista de versões publicadas no site, e nunca sem um clique.
 
 ### Modo scriptável (CLI)
 

@@ -24,6 +24,13 @@ Offizielle Seite: [OMEGA-SCAN](https://kraynux.snake-mackarel.ts.net/omega-scan/
 
 **Omega-scan** ist ein TUI- und CLI-Werkzeug, das die sichtbare Konfigurationshygiene Ihrer HTTP/HTTPS-Dienste analysiert. Es beobachtet, sammelt Fakten, wendet interpretierende Regeln an und erstellt umsetzbare Berichte, ohne jemals einen aktiven Angriff auszuführen. Werkzeug der Suite `omega-`, aufgebaut nach Clean Architecture — siehe `ARCHITECTURE.md` für alle technischen Details.
 
+<p align="center">
+  <img src="https://raw.githubusercontent.com/kraynux/kraynux/refs/heads/main/docs/translation/de/omega-scan/A.png" width="24%" />
+  <img src="https://raw.githubusercontent.com/kraynux/kraynux/refs/heads/main/docs/translation/de/omega-scan/B.png" width="24%" />
+  <img src="https://raw.githubusercontent.com/kraynux/kraynux/refs/heads/main/docs/translation/de/omega-scan/C.png" width="24%" />
+  <img src="https://raw.githubusercontent.com/kraynux/kraynux/refs/heads/main/docs/translation/de/omega-scan/D.png" width="24%" />
+</p>
+
 ## 1. Vision und Umfang
 
 Omega-scan ist ein Scanner für die Sicherheitslage von Webdiensten, gedacht für die Systemadministration: schnell die sichtbare Konfigurationshygiene eines HTTP/HTTPS-Dienstes auf localhost, im LAN oder auf einem externen Ziel prüfen, auch hinter einem Tunnel wie Tailscale Funnel.
@@ -126,6 +133,10 @@ Ablauf: Startbildschirm (schließt sich per Tastendruck oder Klick) → Hauptmen
 ### Sprachen der Oberfläche
 
 Die Oberfläche ist in 17 Sprachen verfügbar: Französisch, Englisch, Spanisch, Portugiesisch (Brasilien), Italienisch, Deutsch, Niederländisch, Polnisch, Russisch, vereinfachtes Chinesisch, Vietnamesisch, Thailändisch, Indonesisch, Japanisch, Koreanisch, Hindi und Arabisch. Die Auswahl erfolgt in den Einstellungen („Langue / Language“) und gilt nach einem Neustart der Oberfläche; die Variable `OMEGA_SCAN_LANG` (zum Beispiel `OMEGA_SCAN_LANG=de ./omega-scan.sh`) erzwingt eine Sprache für eine Sitzung. Aus omega-suite gestartet, übernimmt omega-scan die Sprache der Suite. Auf einer Linux-Textkonsole (TTY) werden Sprachen mit nicht lateinischer Schrift für die Sitzung auf Englisch angezeigt. Die Kommandozeile bleibt auf Französisch.
+
+### Kontakt und Support
+
+Die Hilfe (Taste `a`) bietet einen Bildschirm **Kontakt und Support**: *Einen Kaffee spendieren* (PayPal-Seite des Entwicklers), *Support kontaktieren* (E-Mail-Adresse und Kontaktformular der Website, im Klartext angezeigt), *Mich als Nutzer melden (anonym)* und *Updates prüfen*. Die Meldung ist freiwillig, standardmäßig deaktiviert und wird nur ein einziges Mal gesendet: Sie dient nur dazu, die Nutzer zu zählen und, wenn gewünscht, ihren Kontinent oder ihr Land (geschlossene Listen, nie Freitext). Gesendet werden ein zufällig gezogener Schlüssel, der Name der Software (`omega-scan`) und ihre Version; nie ein Name, ein Rechnername, eine Einstellung, ein Ziel oder ein Ergebnis. Die IP-Adresse wird in den Meldungen nicht gespeichert, durchläuft aber wie jeder Besuch die Sicherheitsprüfungen und das Protokoll des Empfangsservers. Rückzug jederzeit über denselben Bildschirm (*Mich nicht mehr melden*). Die Update-Prüfung liest nur die Liste der auf der Website veröffentlichten Versionen, und nie ohne Klick.
 
 ### Skriptfähiger Modus (CLI)
 

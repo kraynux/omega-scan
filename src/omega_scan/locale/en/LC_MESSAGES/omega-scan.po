@@ -7,7 +7,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Omega-Status: testing\n"
+"X-Omega-Status: validated\n"
 
 #: src/omega_scan/application/commands/export_scan_report.py:31 src/omega_scan/application/commands/replay_scan.py:45
 msgid "Aucun scan trouvé pour l'identifiant {scan_id!r}."
@@ -993,111 +993,111 @@ msgstr "Click a row (or Enter) for the detailed diagnosis of this finding."
 msgid "Toutes catégories"
 msgstr "All categories"
 
-#: src/omega_scan/interfaces/tui/screens/help_screen.py:24
+#: src/omega_scan/interfaces/tui/screens/help_screen.py:25
 msgid "Approfondi"
 msgstr "In-depth"
 
-#: src/omega_scan/interfaces/tui/screens/help_screen.py:24
+#: src/omega_scan/interfaces/tui/screens/help_screen.py:25
 msgid "Complet (défaut)"
 msgstr "Complete (default)"
 
-#: src/omega_scan/interfaces/tui/screens/help_screen.py:24
+#: src/omega_scan/interfaces/tui/screens/help_screen.py:25
 msgid "Usage"
 msgstr "Use"
 
-#: src/omega_scan/interfaces/tui/screens/help_screen.py:24
+#: src/omega_scan/interfaces/tui/screens/help_screen.py:25
 msgid "localhost / LAN"
 msgstr "localhost / LAN"
 
-#: src/omega_scan/interfaces/tui/screens/help_screen.py:25
+#: src/omega_scan/interfaces/tui/screens/help_screen.py:26
 msgid "Timeout connect/read"
 msgstr "Connect/read timeout"
 
-#: src/omega_scan/interfaces/tui/screens/help_screen.py:27
+#: src/omega_scan/interfaces/tui/screens/help_screen.py:28
 msgid "Méthodes HTTP"
 msgstr "HTTP methods"
 
-#: src/omega_scan/interfaces/tui/screens/help_screen.py:33
+#: src/omega_scan/interfaces/tui/screens/help_screen.py:34
 msgid "Oui (complet)"
 msgstr "Yes (complete)"
 
-#: src/omega_scan/interfaces/tui/screens/help_screen.py:33
+#: src/omega_scan/interfaces/tui/screens/help_screen.py:34
 msgid "Oui (~20)"
 msgstr "Yes (~20)"
 
-#: src/omega_scan/interfaces/tui/screens/help_screen.py:33
+#: src/omega_scan/interfaces/tui/screens/help_screen.py:34
 msgid "Path probing"
 msgstr "Path probing"
 
-#: src/omega_scan/interfaces/tui/screens/help_screen.py:34
+#: src/omega_scan/interfaces/tui/screens/help_screen.py:35
 msgid "Oui (détaillé)"
 msgstr "Yes (detailed)"
 
-#: src/omega_scan/interfaces/tui/screens/help_screen.py:34
+#: src/omega_scan/interfaces/tui/screens/help_screen.py:35
 msgid "Oui (tolérant)"
 msgstr "Yes (tolerant)"
 
-#: src/omega_scan/interfaces/tui/screens/help_screen.py:35
+#: src/omega_scan/interfaces/tui/screens/help_screen.py:36
 msgid "Catch-all"
 msgstr "Catch-all"
 
-#: src/omega_scan/interfaces/tui/screens/help_screen.py:36
+#: src/omega_scan/interfaces/tui/screens/help_screen.py:37
 msgid "Non évaluée"
 msgstr "Not evaluated"
 
-#: src/omega_scan/interfaces/tui/screens/help_screen.py:36
+#: src/omega_scan/interfaces/tui/screens/help_screen.py:37
 msgid "Politique HSTS"
 msgstr "HSTS policy"
 
-#: src/omega_scan/interfaces/tui/screens/help_screen.py:36
+#: src/omega_scan/interfaces/tui/screens/help_screen.py:37
 msgid "Standard"
 msgstr "Standard"
 
-#: src/omega_scan/interfaces/tui/screens/help_screen.py:36
+#: src/omega_scan/interfaces/tui/screens/help_screen.py:37
 msgid "Strict"
 msgstr "Strict"
 
-#: src/omega_scan/interfaces/tui/screens/help_screen.py:36
+#: src/omega_scan/interfaces/tui/screens/help_screen.py:37
 msgid "Tolérante"
 msgstr "Tolerant"
 
-#: src/omega_scan/interfaces/tui/screens/help_screen.py:40
+#: src/omega_scan/interfaces/tui/screens/help_screen.py:41
 msgid "vérification éclair avant mise en production"
 msgstr "quick check before going to production"
 
-#: src/omega_scan/interfaces/tui/screens/help_screen.py:41
+#: src/omega_scan/interfaces/tui/screens/help_screen.py:42
 msgid "audit complet d'un service en production, recommandé"
 msgstr "complete audit of a production service, recommended"
 
-#: src/omega_scan/interfaces/tui/screens/help_screen.py:42
+#: src/omega_scan/interfaces/tui/screens/help_screen.py:43
 msgid "audit approfondi incluant les méthodes HTTP risquées"
 msgstr "in-depth audit including risky HTTP methods"
 
-#: src/omega_scan/interfaces/tui/screens/help_screen.py:45
+#: src/omega_scan/interfaces/tui/screens/help_screen.py:46
 msgid "scan de localhost ou LAN sans pénaliser les règles pensées pour le public, HSTS notamment"
 msgstr "scan of localhost or LAN without penalizing rules meant for public services, HSTS in particular"
 
-#: src/omega_scan/interfaces/tui/screens/help_screen.py:54
+#: src/omega_scan/interfaces/tui/screens/help_screen.py:55
 msgid "Saisir une cible (IPv4, IPv6, hostname ou URL), choisir un profil (quick/standard/extended/local-lab), confirmer l'autorisation si la cible n'est pas déjà épinglée, puis lancer le scan."
 msgstr "Enter a target (IPv4, IPv6, hostname or URL), choose a profile (quick/standard/extended/local-lab), confirm the authorization if the target is not already pinned, then launch the scan."
 
-#: src/omega_scan/interfaces/tui/screens/help_screen.py:62
+#: src/omega_scan/interfaces/tui/screens/help_screen.py:63
 msgid "Épingler un hôte dispense de recocher la confirmation d'autorisation à chaque scan sur cette même cible."
 msgstr "Pinning a host spares you from ticking the authorization confirmation again for every scan of that same target."
 
-#: src/omega_scan/interfaces/tui/screens/help_screen.py:69
+#: src/omega_scan/interfaces/tui/screens/help_screen.py:70
 msgid "Liste tous les scans passés : détail complet, comparaison entre deux scans, ou rejouer un scan sur la même cible."
 msgstr "Lists all past scans: full details, comparison between two scans, or replay a scan on the same target."
 
-#: src/omega_scan/interfaces/tui/screens/help_screen.py:76
+#: src/omega_scan/interfaces/tui/screens/help_screen.py:77
 msgid "Depuis le détail d'un scan : JSON (source de vérité), texte (rapport compact) ou HTML (rapport lisible et partageable)."
 msgstr "From a scan's details: JSON (source of truth), text (compact report) or HTML (readable, shareable report)."
 
-#: src/omega_scan/interfaces/tui/screens/help_screen.py:83
+#: src/omega_scan/interfaces/tui/screens/help_screen.py:84
 msgid "Omega-scan observe la posture de sécurité visible d'un service HTTP/HTTPS : il ne réalise jamais de test actif (pas de SQLi, XSS, RCE, scan de CVE, fuzzing ou bruteforce)."
 msgstr "Omega-scan observes the visible security posture of an HTTP/HTTPS service: it never performs active testing (no SQLi, XSS, RCE, CVE scanning, fuzzing or brute force)."
 
-#: src/omega_scan/interfaces/tui/screens/help_screen.py:104
+#: src/omega_scan/interfaces/tui/screens/help_screen.py:111
 msgid "Profils de scan"
 msgstr "Scan profiles"
 
@@ -1168,7 +1168,7 @@ msgstr "Rule"
 msgid "Échec de désépinglage de la cible {normalized_host!r} : {exc}"
 msgstr "Could not unpin target {normalized_host!r}: {exc}"
 
-#: src/omega_scan/interfaces/tui/screens/help_screen.py:24
+#: src/omega_scan/interfaces/tui/screens/help_screen.py:25
 msgid "Vérif. rapide"
 msgstr "Quick check"
 

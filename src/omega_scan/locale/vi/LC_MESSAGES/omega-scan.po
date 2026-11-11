@@ -7,7 +7,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Omega-Status: testing\n"
+"X-Omega-Status: validated\n"
 
 #: src/omega_scan/application/commands/export_scan_report.py:31 src/omega_scan/application/commands/replay_scan.py:45
 msgid "Aucun scan trouvé pour l'identifiant {scan_id!r}."
@@ -997,115 +997,115 @@ msgstr "Nhấp vào một dòng (hoặc Enter) để xem chẩn đoán chi tiế
 msgid "Toutes catégories"
 msgstr "Tất cả danh mục"
 
-#: src/omega_scan/interfaces/tui/screens/help_screen.py:24
+#: src/omega_scan/interfaces/tui/screens/help_screen.py:25
 msgid "Approfondi"
 msgstr "Chuyên sâu"
 
-#: src/omega_scan/interfaces/tui/screens/help_screen.py:24
+#: src/omega_scan/interfaces/tui/screens/help_screen.py:25
 msgid "Complet (défaut)"
 msgstr "Đầy đủ (mặc định)"
 
-#: src/omega_scan/interfaces/tui/screens/help_screen.py:24
+#: src/omega_scan/interfaces/tui/screens/help_screen.py:25
 msgid "Usage"
 msgstr "Mục đích"
 
-#: src/omega_scan/interfaces/tui/screens/help_screen.py:24
+#: src/omega_scan/interfaces/tui/screens/help_screen.py:25
 msgid "Vérif. rapide"
 msgstr "Kiểm tra nhanh"
 
-#: src/omega_scan/interfaces/tui/screens/help_screen.py:24
+#: src/omega_scan/interfaces/tui/screens/help_screen.py:25
 msgid "localhost / LAN"
 msgstr "localhost / LAN"
 
-#: src/omega_scan/interfaces/tui/screens/help_screen.py:25
+#: src/omega_scan/interfaces/tui/screens/help_screen.py:26
 msgid "Timeout connect/read"
 msgstr "Thời gian chờ connect/read"
 
-#: src/omega_scan/interfaces/tui/screens/help_screen.py:27
+#: src/omega_scan/interfaces/tui/screens/help_screen.py:28
 msgid "Méthodes HTTP"
 msgstr "Phương thức HTTP"
 
-#: src/omega_scan/interfaces/tui/screens/help_screen.py:33
+#: src/omega_scan/interfaces/tui/screens/help_screen.py:34
 msgid "Oui (complet)"
 msgstr "Có (đầy đủ)"
 
-#: src/omega_scan/interfaces/tui/screens/help_screen.py:33
+#: src/omega_scan/interfaces/tui/screens/help_screen.py:34
 msgid "Oui (~20)"
 msgstr "Có (~20)"
 
-#: src/omega_scan/interfaces/tui/screens/help_screen.py:33
+#: src/omega_scan/interfaces/tui/screens/help_screen.py:34
 msgid "Path probing"
 msgstr "Path probing"
 
-#: src/omega_scan/interfaces/tui/screens/help_screen.py:34
+#: src/omega_scan/interfaces/tui/screens/help_screen.py:35
 msgid "Oui (détaillé)"
 msgstr "Có (chi tiết)"
 
-#: src/omega_scan/interfaces/tui/screens/help_screen.py:34
+#: src/omega_scan/interfaces/tui/screens/help_screen.py:35
 msgid "Oui (tolérant)"
 msgstr "Có (nới lỏng)"
 
-#: src/omega_scan/interfaces/tui/screens/help_screen.py:35
+#: src/omega_scan/interfaces/tui/screens/help_screen.py:36
 msgid "Catch-all"
 msgstr "Catch-all"
 
-#: src/omega_scan/interfaces/tui/screens/help_screen.py:36
+#: src/omega_scan/interfaces/tui/screens/help_screen.py:37
 msgid "Non évaluée"
 msgstr "Không đánh giá"
 
-#: src/omega_scan/interfaces/tui/screens/help_screen.py:36
+#: src/omega_scan/interfaces/tui/screens/help_screen.py:37
 msgid "Politique HSTS"
 msgstr "Chính sách HSTS"
 
-#: src/omega_scan/interfaces/tui/screens/help_screen.py:36
+#: src/omega_scan/interfaces/tui/screens/help_screen.py:37
 msgid "Standard"
 msgstr "Chuẩn"
 
-#: src/omega_scan/interfaces/tui/screens/help_screen.py:36
+#: src/omega_scan/interfaces/tui/screens/help_screen.py:37
 msgid "Strict"
 msgstr "Nghiêm ngặt"
 
-#: src/omega_scan/interfaces/tui/screens/help_screen.py:36
+#: src/omega_scan/interfaces/tui/screens/help_screen.py:37
 msgid "Tolérante"
 msgstr "Nới lỏng"
 
-#: src/omega_scan/interfaces/tui/screens/help_screen.py:40
+#: src/omega_scan/interfaces/tui/screens/help_screen.py:41
 msgid "vérification éclair avant mise en production"
 msgstr "kiểm tra chớp nhoáng trước khi đưa vào production"
 
-#: src/omega_scan/interfaces/tui/screens/help_screen.py:41
+#: src/omega_scan/interfaces/tui/screens/help_screen.py:42
 msgid "audit complet d'un service en production, recommandé"
 msgstr "kiểm toán đầy đủ một dịch vụ production, khuyên dùng"
 
-#: src/omega_scan/interfaces/tui/screens/help_screen.py:42
+#: src/omega_scan/interfaces/tui/screens/help_screen.py:43
 msgid "audit approfondi incluant les méthodes HTTP risquées"
 msgstr "kiểm toán chuyên sâu gồm cả các phương thức HTTP rủi ro"
 
-#: src/omega_scan/interfaces/tui/screens/help_screen.py:45
+#: src/omega_scan/interfaces/tui/screens/help_screen.py:46
 msgid "scan de localhost ou LAN sans pénaliser les règles pensées pour le public, HSTS notamment"
 msgstr "quét localhost hoặc LAN mà không bị trừ điểm bởi các quy tắc dành cho dịch vụ công khai, nhất là HSTS"
 
-#: src/omega_scan/interfaces/tui/screens/help_screen.py:54
+#: src/omega_scan/interfaces/tui/screens/help_screen.py:55
 msgid "Saisir une cible (IPv4, IPv6, hostname ou URL), choisir un profil (quick/standard/extended/local-lab), confirmer l'autorisation si la cible n'est pas déjà épinglée, puis lancer le scan."
 msgstr "Nhập một mục tiêu (IPv4, IPv6, hostname hoặc URL), chọn hồ sơ (quick/standard/extended/local-lab), xác nhận quyền nếu mục tiêu chưa được ghim, rồi bắt đầu quét."
 
-#: src/omega_scan/interfaces/tui/screens/help_screen.py:62
+#: src/omega_scan/interfaces/tui/screens/help_screen.py:63
 msgid "Épingler un hôte dispense de recocher la confirmation d'autorisation à chaque scan sur cette même cible."
 msgstr "Ghim một host giúp không phải đánh dấu lại xác nhận quyền mỗi lần quét cùng mục tiêu đó."
 
-#: src/omega_scan/interfaces/tui/screens/help_screen.py:69
+#: src/omega_scan/interfaces/tui/screens/help_screen.py:70
 msgid "Liste tous les scans passés : détail complet, comparaison entre deux scans, ou rejouer un scan sur la même cible."
 msgstr "Liệt kê mọi bản quét trước đây: chi tiết đầy đủ, so sánh hai bản quét, hoặc chạy lại một bản quét trên cùng mục tiêu."
 
-#: src/omega_scan/interfaces/tui/screens/help_screen.py:76
+#: src/omega_scan/interfaces/tui/screens/help_screen.py:77
 msgid "Depuis le détail d'un scan : JSON (source de vérité), texte (rapport compact) ou HTML (rapport lisible et partageable)."
 msgstr "Từ chi tiết một bản quét: JSON (nguồn dữ liệu gốc), văn bản (báo cáo ngắn gọn) hoặc HTML (báo cáo dễ đọc, dễ chia sẻ)."
 
-#: src/omega_scan/interfaces/tui/screens/help_screen.py:83
+#: src/omega_scan/interfaces/tui/screens/help_screen.py:84
 msgid "Omega-scan observe la posture de sécurité visible d'un service HTTP/HTTPS : il ne réalise jamais de test actif (pas de SQLi, XSS, RCE, scan de CVE, fuzzing ou bruteforce)."
 msgstr "Omega-scan quan sát mức độ bảo mật nhìn thấy được của một dịch vụ HTTP/HTTPS: không bao giờ kiểm thử chủ động (không SQLi, XSS, RCE, quét CVE, fuzzing hay bruteforce)."
 
-#: src/omega_scan/interfaces/tui/screens/help_screen.py:104
+#: src/omega_scan/interfaces/tui/screens/help_screen.py:111
 msgid "Profils de scan"
 msgstr "Hồ sơ quét"
 

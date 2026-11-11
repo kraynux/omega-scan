@@ -69,7 +69,7 @@ def execute(
         meta={
             "scan_id": scan_id,
             "scanner_name": "Omega-Scan",
-            "scanner_version": "2.5.0",
+            "scanner_version": "2.6.0",
             "started_at": started_at_iso,
             "finished_at": finished_at_iso,
             "duration_ms": compute_duration_ms(started_at_iso, finished_at_iso),

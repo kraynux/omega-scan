@@ -24,6 +24,13 @@
 
 **Omega-scan** 是一个 TUI + CLI 工具，用于分析你的 HTTP/HTTPS 服务在外部可见的配置规范程度。它观察、收集事实、应用解释性规则，并生成可据以行动的报告，绝不进行任何主动攻击。它是 `omega-` 套件中的一个工具，采用 Clean Architecture 构建 — 完整技术细节见 `ARCHITECTURE.md`。
 
+<p align="center">
+  <img src="https://raw.githubusercontent.com/kraynux/kraynux/refs/heads/main/docs/translation/zh-CN/omega-scan/A.png" width="24%" />
+  <img src="https://raw.githubusercontent.com/kraynux/kraynux/refs/heads/main/docs/translation/zh-CN/omega-scan/B.png" width="24%" />
+  <img src="https://raw.githubusercontent.com/kraynux/kraynux/refs/heads/main/docs/translation/zh-CN/omega-scan/C.png" width="24%" />
+  <img src="https://raw.githubusercontent.com/kraynux/kraynux/refs/heads/main/docs/translation/zh-CN/omega-scan/D.png" width="24%" />
+</p>
+
 ## 1. 愿景与范围
 
 Omega-scan 是面向系统管理的 Web 安全态势扫描器：快速检查 localhost、局域网或外部目标上 HTTP/HTTPS 服务的可见配置规范程度，包括位于 Tailscale Funnel 之类隧道之后的服务。
@@ -126,6 +133,10 @@ cd ~/omega-scan && chmod +x install.sh && ./install.sh
 ### 界面语言
 
 界面提供 17 种语言：法语、英语、西班牙语、葡萄牙语（巴西）、意大利语、德语、荷兰语、波兰语、俄语、简体中文、越南语、泰语、印尼语、日语、韩语、印地语和阿拉伯语。在设置中选择（“Langue / Language”），重启界面后生效；变量 `OMEGA_SCAN_LANG`（例如 `OMEGA_SCAN_LANG=zh-CN ./omega-scan.sh`）可在一次会话中强制使用某种语言。从 omega-suite 启动时，omega-scan 使用套件的语言。在 Linux 文本控制台（TTY）上，非拉丁文字的语言在本次会话中以英语显示。命令行保持法语。
+
+### 联系与支持
+
+帮助（`a` 键）提供 **联系与支持** 界面：*请我喝杯咖啡*（开发者的 PayPal 页面）、*联系支持*（明文显示的电子邮件地址和网站联系表单）、*登记为用户（匿名）* 和 *检查更新*。 登记是自愿的，默认关闭，且只发送一次：仅用于统计用户数量，以及（如您愿意）其所在的大洲或国家（封闭列表，绝无自由文本）。它发送一个随机生成的密钥、软件名称（`omega-scan`）及其版本；绝不发送姓名、机器名称、设置、目标或结果。IP 地址不会记录在登记中，但与任何访问一样，会经过接收服务器的安全检查和日志。 可随时在同一界面撤回（*不再登记我*）。 检查更新仅读取网站上已发布版本的列表，且从不在未点击的情况下进行。
 
 ### 脚本模式（CLI）
 

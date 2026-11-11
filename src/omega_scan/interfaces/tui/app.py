@@ -143,7 +143,7 @@ class OmegaScanApp(App[None]):
         self.notify(_("{family} ({columns}x{rows})").format(family=terminal.family, columns=terminal.columns, rows=terminal.rows), title=_("Terminal rafraîchi"))
 
     def action_help(self) -> None:
-        self.push_screen(HelpScreen())
+        self.push_screen(HelpScreen(container=self._container))
 
     def get_system_commands(self, screen: Screen) -> Iterable[SystemCommand]:
         """Remplace la liste par defaut de Textual plutot que d'appeler

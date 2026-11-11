@@ -24,6 +24,13 @@ Officiële pagina: [OMEGA-SCAN](https://kraynux.snake-mackarel.ts.net/omega-scan
 
 **Omega-scan** is een TUI- en CLI-tool die de zichtbare configuratiehygiëne van uw HTTP/HTTPS-diensten analyseert. Hij observeert, verzamelt feiten, past interpretatieve regels toe en levert bruikbare rapporten, zonder ooit een actieve aanval uit te voeren. Tool van de suite `omega-`, opgebouwd volgens Clean Architecture — zie `ARCHITECTURE.md` voor alle technische details.
 
+<p align="center">
+  <img src="https://raw.githubusercontent.com/kraynux/kraynux/refs/heads/main/docs/translation/nl/omega-scan/A.png" width="24%" />
+  <img src="https://raw.githubusercontent.com/kraynux/kraynux/refs/heads/main/docs/translation/nl/omega-scan/B.png" width="24%" />
+  <img src="https://raw.githubusercontent.com/kraynux/kraynux/refs/heads/main/docs/translation/nl/omega-scan/C.png" width="24%" />
+  <img src="https://raw.githubusercontent.com/kraynux/kraynux/refs/heads/main/docs/translation/nl/omega-scan/D.png" width="24%" />
+</p>
+
 ## 1. Visie en reikwijdte
 
 Omega-scan is een scanner van de webbeveiligingshouding, bedoeld voor systeembeheer: snel de zichtbare configuratiehygiëne van een HTTP/HTTPS-dienst controleren op localhost, in het LAN of op een extern doel, ook achter een tunnel zoals Tailscale Funnel.
@@ -126,6 +133,10 @@ Verloop: startscherm (sluit met een toets of een klik) → hoofdmenu → invoer 
 ### Talen van de interface
 
 De interface is beschikbaar in 17 talen: Frans, Engels, Spaans, Portugees (Brazilië), Italiaans, Duits, Nederlands, Pools, Russisch, vereenvoudigd Chinees, Vietnamees, Thai, Indonesisch, Japans, Koreaans, Hindi en Arabisch. De keuze gebeurt in de Instellingen („Langue / Language”) en geldt na een herstart van de interface; de variabele `OMEGA_SCAN_LANG` (bijvoorbeeld `OMEGA_SCAN_LANG=nl ./omega-scan.sh`) legt voor één sessie een taal op. Gestart vanuit omega-suite neemt omega-scan de taal van de suite over. Op een Linux-tekstconsole (TTY) worden talen met een niet-Latijns schrift voor die sessie in het Engels getoond. De opdrachtregel blijft in het Frans.
+
+### Contact en ondersteuning
+
+De hulp (toets `a`) biedt een scherm **Contact en ondersteuning**: *Trakteer op een koffie* (PayPal-pagina van de ontwikkelaar), *Contact opnemen met ondersteuning* (e-mailadres en contactformulier van de site, leesbaar weergegeven), *Mij aanmelden als gebruiker (anoniem)* en *Updates controleren*. De aanmelding is vrijwillig, standaard uitgeschakeld en wordt maar één keer verzonden: ze dient alleen om de gebruikers te tellen en, als u dat wilt, hun continent of land (gesloten lijsten, nooit vrije tekst). Ze verzendt een willekeurig gekozen sleutel, de naam van de software (`omega-scan`) en de versie; nooit een naam, een machinenaam, een instelling, een doel of een resultaat. Het IP-adres wordt niet opgeslagen in de aanmeldingen, maar gaat, zoals bij elk bezoek, door de beveiligingscontroles en het logboek van de ontvangende server. Intrekken kan op elk moment vanuit hetzelfde scherm (*Mij niet meer aanmelden*). De updatecontrole leest alleen de lijst van versies die op de site gepubliceerd zijn, en nooit zonder klik.
 
 ### Scriptbare modus (CLI)
 

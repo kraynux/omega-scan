@@ -7,7 +7,10 @@ import sqlite3
 from dataclasses import dataclass, field
 from pathlib import Path
 
+from omega_lib.infrastructure.declaration import build_contact_support
+from omega_lib.infrastructure.declaration.app_version import project_version
 from omega_lib.infrastructure.terminal.detector import SystemTerminalDetector
+from omega_lib.ports.declaration import ContactSupportServices
 
 from omega_scan.application.pipeline.hooks.audit_hook import AuditSink
 from omega_scan.infrastructure.config import paths
@@ -24,6 +27,11 @@ from omega_scan.infrastructure.storage.sqlite.connection import open_connection
 from omega_scan.infrastructure.storage.sqlite.migrations import apply_schema
 from omega_scan.infrastructure.storage.sqlite.scan_repository import SqliteScanRepository
 from omega_scan.infrastructure.storage.sqlite.target_repository import SqliteTargetRepository
+
+SOFTWARE = "omega-scan"
+"""Nom du logiciel pour la reception des declarations et le site (download/)."""
+PROJECT_ROOT = Path(__file__).resolve().parents[3]
+"""Racine du projet : pyproject.toml, seule source de la version."""
 
 
 @dataclass(frozen=True, slots=True)
@@ -49,6 +57,9 @@ class DependencyContainer:
     technical_logger: logging.Logger
     default_exports_dir: Path = field(default_factory=paths.exports_dir)
     default_screenshots_dir: Path = field(default_factory=paths.screenshots_dir)
+    contact_support: ContactSupportServices | None = None
+    """Aide -> Contact et support (omega-lib, D-016, 2026-11-09) : declaration anonyme une seule
+    fois, mises a jour, navigateur. None : bouton masque (conteneur partiel des tests)."""
 
 
 def build_container(*, var_dir: Path | None = None) -> DependencyContainer:
@@ -62,6 +73,7 @@ def build_container(*, var_dir: Path | None = None) -> DependencyContainer:
     audit_logger = AuditLogger(base / "audit.jsonl")
 
     return DependencyContainer(
+        contact_support=build_contact_support(SOFTWARE, project_version(PROJECT_ROOT, SOFTWARE), base),
         connection=connection,
         target_repository=SqliteTargetRepository(connection),
         scan_repository=SqliteScanRepository(connection),
